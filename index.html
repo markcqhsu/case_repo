@@ -66,6 +66,8 @@
     padding: 16px 20px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
+  .changelog-header { padding-bottom: 12px; margin-bottom: 12px; border-bottom: 1px solid var(--border); }
+  .changelog-list { max-height: 300px; overflow-y: auto; }
   .changelog-entry { margin-bottom: 14px; }
   .changelog-entry:last-child { margin-bottom: 0; }
   .changelog-entry .date { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; font-weight: 600; }
@@ -274,7 +276,10 @@
   <header>
     <details class="version-toggle" id="changelogDetails">
       <summary id="versionBadge">v1.0.0</summary>
-      <div class="changelog-box" id="changelogContent"></div>
+      <div class="changelog-box">
+        <div class="changelog-header" id="changelogHeader"></div>
+        <div class="changelog-list" id="changelogContent"></div>
+      </div>
     </details>
     <h1>AI / 自動化案例庫</h1>
     <p>分享用 AI 或自動化工具解決廠內流程問題的實際案例</p>
@@ -330,9 +335,10 @@ function domainFromUrl(url) {
 
 function renderVersion(changelog) {
   document.getElementById('versionBadge').textContent = changelog.version;
+  document.getElementById('changelogHeader').innerHTML =
+    `<div class="date">目前版本</div><div class="notes">${escapeHtml(changelog.version)}</div>`;
   const content = document.getElementById('changelogContent');
-  content.innerHTML = `<div class="changelog-entry"><div class="date">目前版本</div><div class="notes">${escapeHtml(changelog.version)}</div></div>` +
-    changelog.entries.map(e => `
+  content.innerHTML = changelog.entries.map(e => `
       <div class="changelog-entry">
         <div class="date">${escapeHtml(e.date)}</div>
         <div class="notes">${escapeHtml(e.notes)}</div>
