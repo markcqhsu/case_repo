@@ -39,51 +39,63 @@
     color: var(--text);
   }
   header {
-    padding: 48px 24px 32px;
+    padding: 40px 24px 24px;
     text-align: center;
+    position: relative;
   }
   header h1 {
     margin: 0 0 8px;
-    font-size: 28px;
+    font-size: 26px;
     font-weight: 700;
   }
   header p {
     margin: 0;
     color: var(--text-muted);
-    font-size: 15px;
+    font-size: 14px;
+  }
+  #versionBadge {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 999px;
+    cursor: pointer;
+    border: none;
   }
   .controls {
     max-width: 960px;
-    margin: 0 auto 32px;
-    padding: 0 24px;
+    margin: 0 auto 28px;
+    padding: 0 20px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
   }
   #search {
     width: 100%;
     padding: 12px 16px;
-    font-size: 15px;
+    font-size: 16px;
     border: 1px solid var(--border);
     border-radius: 10px;
     background: var(--card-bg);
     color: var(--text);
   }
   #search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
-  #tagFilters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
+  .filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .filter-row .filter-label { font-size: 12px; color: var(--text-muted); margin-right: 2px; }
   .tag-btn {
     border: 1px solid var(--border);
     background: var(--card-bg);
     color: var(--text-muted);
-    padding: 6px 14px;
+    padding: 7px 14px;
     border-radius: 999px;
     font-size: 13px;
     cursor: pointer;
     transition: all 0.15s ease;
+    white-space: nowrap;
   }
   .tag-btn:hover { border-color: var(--accent); color: var(--accent); }
   .tag-btn.active {
@@ -94,12 +106,12 @@
   main {
     max-width: 960px;
     margin: 0 auto;
-    padding: 0 24px 64px;
+    padding: 0 20px 56px;
   }
   #grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 18px;
   }
   .card {
     background: var(--card-bg);
@@ -127,8 +139,15 @@
     font-size: 13px;
   }
   .card .body { padding: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
-  .card h3 { margin: 0; font-size: 16px; font-weight: 600; }
-  .card .problem {
+  .card .category-badge {
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+  .card h3 { margin: 0; font-size: 16px; font-weight: 600; line-height: 1.35; }
+  .card .summary {
     font-size: 13px;
     color: var(--text-muted);
     line-height: 1.5;
@@ -156,70 +175,101 @@
     padding: 60px 0;
     display: none;
   }
-  /* modal */
-  #overlay {
+  /* overlay (shared by detail + changelog) */
+  .overlay {
     position: fixed;
     inset: 0;
     background: rgba(0,0,0,0.5);
     display: none;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     padding: 24px;
     z-index: 10;
+    overflow-y: auto;
   }
-  #overlay.open { display: flex; }
-  #modal {
+  .overlay.open { display: flex; }
+  .panel {
     background: var(--card-bg);
     color: var(--text);
-    max-width: 640px;
+    max-width: 680px;
     width: 100%;
-    max-height: 88vh;
-    overflow-y: auto;
     border-radius: 16px;
     padding: 28px;
     position: relative;
+    margin: 24px auto;
   }
-  #modal img {
+  .panel img {
     width: 100%;
     border-radius: 10px;
     margin-bottom: 16px;
     display: block;
   }
-  #modal h2 { margin: 0 0 12px; font-size: 20px; }
-  #modal .field { margin-bottom: 14px; }
-  #modal .field label {
+  .panel h2 { margin: 0 0 4px; font-size: 19px; line-height: 1.4; }
+  .panel .subtitle { color: var(--text-muted); font-size: 14px; margin-bottom: 16px; line-height: 1.6; }
+  .panel .field { margin-bottom: 18px; }
+  .panel .field label {
     display: block;
     font-size: 12px;
     font-weight: 600;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 0.03em;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
   }
-  #modal .field div, #modal .field a { font-size: 14px; line-height: 1.6; }
-  #modal a { color: var(--accent); }
-  #closeBtn {
+  .panel .field .text { font-size: 14px; line-height: 1.7; white-space: pre-line; }
+  .panel .field ol { margin: 0; padding-left: 20px; font-size: 14px; line-height: 1.7; }
+  .panel .field ol li { margin-bottom: 4px; }
+  .panel .field a { color: var(--accent); word-break: break-all; }
+  .panel .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 12px;
+    background: var(--accent-soft);
+    border-radius: 10px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+  }
+  .panel .meta-grid div { font-size: 13px; }
+  .panel .meta-grid label { display: block; font-size: 11px; color: var(--text-muted); margin-bottom: 2px; }
+  .closeBtn {
     position: absolute;
-    top: 16px;
-    right: 16px;
+    top: 14px;
+    right: 14px;
     background: none;
     border: none;
-    font-size: 20px;
+    font-size: 22px;
+    line-height: 1;
+    padding: 6px;
     cursor: pointer;
     color: var(--text-muted);
+  }
+  .changelog-entry { margin-bottom: 14px; }
+  .changelog-entry .date { font-size: 12px; color: var(--text-muted); margin-bottom: 2px; }
+  .changelog-entry .notes { font-size: 14px; line-height: 1.6; }
+
+  @media (max-width: 600px) {
+    header { padding: 56px 16px 20px; }
+    header h1 { font-size: 21px; }
+    #versionBadge { top: 12px; right: 12px; font-size: 11px; padding: 4px 10px; }
+    .controls, main { padding-left: 16px; padding-right: 16px; }
+    #grid { grid-template-columns: 1fr; gap: 14px; }
+    .overlay { padding: 0; align-items: stretch; }
+    .panel { max-width: none; width: 100%; min-height: 100%; border-radius: 0; margin: 0; padding: 20px 16px 32px; }
+    .panel .meta-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
 <body>
 
 <header>
+  <button id="versionBadge"></button>
   <h1>AI / 自動化案例庫</h1>
   <p>分享用 AI 或自動化工具解決廠內流程問題的實際案例</p>
 </header>
 
 <div class="controls">
-  <input id="search" type="text" placeholder="搜尋標題、問題、工具、製作人..." />
-  <div id="tagFilters"></div>
+  <input id="search" type="text" placeholder="搜尋標題、問題、工具、製作人、關鍵字..." />
+  <div class="filter-row" id="categoryFilters"></div>
 </div>
 
 <main>
@@ -227,52 +277,120 @@
   <div id="empty">找不到符合的案例</div>
 </main>
 
-<div id="overlay">
-  <div id="modal">
-    <button id="closeBtn" aria-label="關閉">&times;</button>
-    <div id="modalContent"></div>
+<div class="overlay" id="detailOverlay">
+  <div class="panel" id="detailPanel">
+    <button class="closeBtn" data-close aria-label="關閉">&times;</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<div class="overlay" id="changelogOverlay">
+  <div class="panel" id="changelogPanel" style="max-width:480px;">
+    <button class="closeBtn" data-close aria-label="關閉">&times;</button>
+    <div id="changelogContent"></div>
   </div>
 </div>
 
 <script>
 let cases = [];
-let activeTag = null;
+let activeCategory = null;
 
 async function load() {
-  const res = await fetch('data/cases.json');
-  cases = await res.json();
-  renderTags();
+  const [casesRes, changelogRes] = await Promise.all([
+    fetch('data/cases.json'),
+    fetch('data/changelog.json')
+  ]);
+  cases = await casesRes.json();
+  const changelog = await changelogRes.json();
+  renderVersion(changelog);
+  renderCategoryFilters();
   render();
 }
 
-function allTags() {
+function renderVersion(changelog) {
+  document.getElementById('versionBadge').textContent = changelog.version;
+  const content = document.getElementById('changelogContent');
+  content.innerHTML = `<h2>改版紀錄</h2><div class="subtitle">目前版本：${escapeHtml(changelog.version)}</div>` +
+    changelog.entries.map(e => `
+      <div class="changelog-entry">
+        <div class="date">${escapeHtml(e.date)}</div>
+        <div class="notes">${escapeHtml(e.notes)}</div>
+      </div>
+    `).join('');
+}
+
+/* ---------- 通用資料工具：容忍每筆案例欄位形狀不同（字串 / 陣列 / 成對物件） ---------- */
+
+function isEmpty(v) {
+  if (v == null) return true;
+  if (Array.isArray(v)) return v.length === 0;
+  if (typeof v === 'string') return v.trim() === '';
+  return false;
+}
+
+function itemLabel(item) {
+  return typeof item === 'string' ? item : (item.name || '');
+}
+
+function renderListItems(items) {
+  return `<ol>${items.map(i => {
+    if (typeof i === 'string') return `<li>${escapeHtml(i)}</li>`;
+    return `<li><strong>${escapeHtml(i.name || '')}</strong>${i.desc ? '：' + escapeHtml(i.desc) : ''}</li>`;
+  }).join('')}</ol>`;
+}
+
+function renderContent(val) {
+  if (isEmpty(val)) return null;
+  if (typeof val === 'string') return `<div class="text">${escapeHtml(val)}</div>`;
+  if (Array.isArray(val)) return renderListItems(val);
+  return null;
+}
+
+function field(label, val) {
+  const html = renderContent(val);
+  if (!html) return '';
+  return `<div class="field"><label>${escapeHtml(label)}</label>${html}</div>`;
+}
+
+function chipsField(label, items) {
+  if (isEmpty(items)) return '';
+  return `<div class="field"><label>${escapeHtml(label)}</label><div class="chips">${items.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div></div>`;
+}
+
+/* ---------- 分類篩選 + 搜尋 ---------- */
+
+function allCategories() {
   const s = new Set();
-  cases.forEach(c => (c.tags || []).forEach(t => s.add(t)));
+  cases.forEach(c => (c.category || []).forEach(t => s.add(t)));
   return [...s];
 }
 
-function renderTags() {
-  const el = document.getElementById('tagFilters');
-  el.innerHTML = '';
-  allTags().forEach(tag => {
+function renderCategoryFilters() {
+  const el = document.getElementById('categoryFilters');
+  el.innerHTML = '<span class="filter-label">分類</span>';
+  allCategories().forEach(cat => {
     const btn = document.createElement('button');
     btn.className = 'tag-btn';
-    btn.textContent = tag;
+    btn.textContent = cat;
     btn.onclick = () => {
-      activeTag = activeTag === tag ? null : tag;
-      renderTags();
+      activeCategory = activeCategory === cat ? null : cat;
+      renderCategoryFilters();
       render();
     };
-    if (activeTag === tag) btn.classList.add('active');
+    if (activeCategory === cat) btn.classList.add('active');
     el.appendChild(btn);
   });
 }
 
 function matches(c, q) {
-  if (activeTag && !(c.tags || []).includes(activeTag)) return false;
+  if (activeCategory && !(c.category || []).includes(activeCategory)) return false;
   if (!q) return true;
-  const haystack = [c.title, c.problem, c.design, c.author, ...(c.tools||[]), ...(c.tags||[])]
-    .join(' ').toLowerCase();
+  const toolNames = (c.tools || []).map(itemLabel);
+  const haystack = [
+    c.title, c.summary, c.problem_background, c.core_problem, c.solution,
+    c.author, c.unit_request, c.unit_owner,
+    ...(c.category || []), ...toolNames, ...(c.keywords || [])
+  ].join(' ').toLowerCase();
   return haystack.includes(q.toLowerCase());
 }
 
@@ -289,7 +407,7 @@ function render() {
 function renderCard(c) {
   const card = document.createElement('div');
   card.className = 'card';
-  card.onclick = () => openModal(c);
+  card.onclick = () => openDetail(c);
 
   const thumb = document.createElement('div');
   thumb.className = 'thumb';
@@ -302,9 +420,10 @@ function renderCard(c) {
   const body = document.createElement('div');
   body.className = 'body';
   body.innerHTML = `
+    <div class="category-badge">${(c.category || []).map(escapeHtml).join(' / ')}</div>
     <h3>${escapeHtml(c.title)}</h3>
-    <div class="problem">${escapeHtml(c.problem || '')}</div>
-    <div class="chips">${(c.tools||[]).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
+    <div class="summary">${escapeHtml(c.summary || '')}</div>
+    <div class="chips">${(c.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
     <div class="meta">製作人：${escapeHtml(c.author || '未提供')}</div>
   `;
 
@@ -313,37 +432,41 @@ function renderCard(c) {
   return card;
 }
 
-function openModal(c) {
-  const content = document.getElementById('modalContent');
+function openDetail(c) {
+  const content = document.getElementById('detailContent');
+
+  const metaItems = [
+    ['案例分類', (c.category || []).join('、')],
+    ['需求單位', c.unit_request],
+    ['負責單位', c.unit_owner],
+    ['案例負責人', c.author],
+    ['案例狀態', c.status],
+    ['適用地區', c.region],
+  ].filter(([, v]) => !isEmpty(v));
+
   content.innerHTML = `
     ${c.screenshot ? `<img src="${c.screenshot}" alt="${escapeHtml(c.title)}" />` : ''}
     <h2>${escapeHtml(c.title)}</h2>
-    <div class="field">
-      <label>網址</label>
-      <div>${c.url ? `<a href="${c.url}" target="_blank" rel="noopener">${escapeHtml(c.url)}</a>` : '未提供'}</div>
-    </div>
-    <div class="field">
-      <label>製作人</label>
-      <div>${escapeHtml(c.author || '未提供')}</div>
-    </div>
-    <div class="field">
-      <label>使用工具</label>
-      <div class="chips">${(c.tools||[]).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
-    </div>
-    <div class="field">
-      <label>解決問題</label>
-      <div>${escapeHtml(c.problem || '未提供')}</div>
-    </div>
-    <div class="field">
-      <label>設計架構思路</label>
-      <div>${escapeHtml(c.design || '未提供')}</div>
-    </div>
-  `;
-  document.getElementById('overlay').classList.add('open');
-}
+    <div class="subtitle">${escapeHtml(c.summary || '')}</div>
 
-function closeModal() {
-  document.getElementById('overlay').classList.remove('open');
+    ${metaItems.length ? `<div class="meta-grid">${metaItems.map(([label, v]) => `<div><label>${escapeHtml(label)}</label>${escapeHtml(v)}</div>`).join('')}</div>` : ''}
+
+    ${c.url ? `<div class="field"><label>網站連結</label><div class="text"><a href="${c.url}" target="_blank" rel="noopener">${escapeHtml(c.url)}</a></div></div>` : ''}
+    ${field('問題背景', c.problem_background)}
+    ${field('核心問題', c.core_problem)}
+    ${field('解決方案', c.solution)}
+    ${field('執行流程', c.process)}
+    ${field('主要功能', c.features)}
+    ${field('AI 的應用方式', c.ai_usage)}
+    ${field('使用工具', c.tools)}
+    ${field('執行成果', c.results)}
+    ${field('產生價值', c.value)}
+    ${chipsField('可複製與延伸應用', c.extensions)}
+    ${field('使用限制與注意事項', c.limitations)}
+    ${field('成功關鍵', c.success_key)}
+    ${chipsField('案例關鍵字', c.keywords)}
+  `;
+  document.getElementById('detailOverlay').classList.add('open');
 }
 
 function escapeHtml(str) {
@@ -354,9 +477,18 @@ function escapeHtml(str) {
 }
 
 document.getElementById('search').addEventListener('input', render);
-document.getElementById('closeBtn').addEventListener('click', closeModal);
-document.getElementById('overlay').addEventListener('click', (e) => {
-  if (e.target.id === 'overlay') closeModal();
+document.getElementById('versionBadge').addEventListener('click', () => {
+  document.getElementById('changelogOverlay').classList.add('open');
+});
+document.querySelectorAll('[data-close]').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.target.closest('.overlay').classList.remove('open');
+  });
+});
+document.querySelectorAll('.overlay').forEach(ov => {
+  ov.addEventListener('click', (e) => {
+    if (e.target === ov) ov.classList.remove('open');
+  });
 });
 
 load();
