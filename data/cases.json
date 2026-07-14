@@ -198,7 +198,7 @@
     "summary": "建立職安衛法規整理網站，讓職安衛人員只要貼上政府法規網址，即可將法規條文自動轉換成公司使用的法規鑑定登錄表格式，並匯出為 Excel 或 PDF。使用者可直接在整理後的表格中填寫執行現況、符合性評估及相關說明，減少人工逐條複製法規內容的時間。",
     "screenshot": "assets/a700-regulations-demo.png",
     "url": "https://markcqhsu.github.io/A700_regulations/",
-    "category": ["法規管理", "文件整理", "行政效率"],
+    "category": ["法規管理", "文件整理", "行政效率", "資料整理"],
     "unit_request": "職安衛單位",
     "unit_owner": "數位發展部",
     "author": "徐馬克",
