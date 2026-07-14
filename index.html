@@ -34,13 +34,34 @@
     padding: 44px 24px 26px;
     text-align: center;
   }
-  .version-toggle {
+  .header-topright {
     position: absolute;
     top: 16px;
     right: 16px;
-    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
     z-index: 6;
   }
+  .lang-toggle {
+    display: flex;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    overflow: hidden;
+    background: var(--card-bg);
+  }
+  .lang-btn {
+    border: none;
+    background: var(--card-bg);
+    color: var(--text-muted);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 7px 13px;
+    cursor: pointer;
+  }
+  .lang-btn + .lang-btn { border-left: 1.5px solid var(--border); }
+  .lang-btn.active { background: var(--accent); color: #fff; }
+  .version-toggle { position: relative; margin: 0; }
   .version-toggle summary {
     list-style: none;
     display: inline-block;
@@ -272,15 +293,21 @@
 
 <section id="listView">
   <header>
-    <details class="version-toggle" id="changelogDetails">
-      <summary id="versionBadge">v1.0.0</summary>
-      <div class="changelog-box">
-        <div class="changelog-header" id="changelogHeader"></div>
-        <div class="changelog-list" id="changelogContent"></div>
+    <div class="header-topright">
+      <div class="lang-toggle">
+        <button class="lang-btn" data-lang="zh">中文</button>
+        <button class="lang-btn" data-lang="en">EN</button>
       </div>
-    </details>
-    <h1>宏全AI應用推動案例庫</h1>
-    <p>分享用 AI 或自動化工具解決廠內流程問題的實際案例</p>
+      <details class="version-toggle" id="changelogDetails">
+        <summary id="versionBadge">v1.0.0</summary>
+        <div class="changelog-box">
+          <div class="changelog-header" id="changelogHeader"></div>
+          <div class="changelog-list" id="changelogContent"></div>
+        </div>
+      </details>
+    </div>
+    <h1 id="pageTitle">宏全AI應用推動案例庫</h1>
+    <p id="pageSubtitle">分享用 AI 或自動化工具解決廠內流程問題的實際案例</p>
     <span id="totalCount"></span>
   </header>
 
@@ -304,7 +331,77 @@
 
 <script>
 let cases = [];
+let changelogData = null;
 let activeCategory = null;
+let currentLang = localStorage.getItem('caseLibLang') || 'zh';
+
+const UI_STRINGS = {
+  zh: {
+    pageTitle: '宏全AI應用推動案例庫',
+    subtitle: '分享用 AI 或自動化工具解決廠內流程問題的實際案例',
+    searchPlaceholder: '搜尋標題、問題、工具、製作人、關鍵字...',
+    filterLabel: '分類',
+    all: '全部',
+    empty: '找不到符合的案例',
+    totalCount: (n) => `共收錄 ${n} 個案例`,
+    authorLabel: '製作人',
+    ownerLabel: '負責單位',
+    noScreenshot: '尚無畫面',
+    noUrl: '尚無網站連結',
+    backBtn: '← 返回案例庫',
+    currentVersion: '目前版本',
+    notProvided: '未提供',
+    listSep: '、',
+    colon: '：',
+    divider: ' ｜ '
+  },
+  en: {
+    pageTitle: 'Hon Chuan AI Application Case Library',
+    subtitle: 'Real cases of using AI or automation tools to solve in-plant process problems',
+    searchPlaceholder: 'Search title, problem, tool, author, keyword...',
+    filterLabel: 'Category',
+    all: 'All',
+    empty: 'No matching cases found',
+    totalCount: (n) => `${n} cases collected`,
+    authorLabel: 'Author',
+    ownerLabel: 'Owning Unit',
+    noScreenshot: 'No screenshot yet',
+    noUrl: 'No website link yet',
+    backBtn: '← Back to Case Library',
+    currentVersion: 'Current Version',
+    notProvided: 'Not provided',
+    listSep: ', ',
+    colon: ': ',
+    divider: ' | '
+  }
+};
+
+const FIELD_LABELS = {
+  category: { zh: '案例分類', en: 'Category' },
+  unit_request: { zh: '需求單位', en: 'Requesting Unit' },
+  unit_owner: { zh: '負責單位', en: 'Owning Unit' },
+  author: { zh: '案例負責人', en: 'Case Owner' },
+  status: { zh: '案例狀態', en: 'Status' },
+  region: { zh: '適用地區', en: 'Region' },
+  url: { zh: '網站連結', en: 'Website Link' },
+  problem_background: { zh: '問題背景', en: 'Background' },
+  core_problem: { zh: '核心問題', en: 'Core Problem' },
+  solution: { zh: '解決方案', en: 'Solution' },
+  process: { zh: '執行流程', en: 'Process' },
+  features: { zh: '主要功能', en: 'Key Features' },
+  ai_usage: { zh: 'AI 的應用方式', en: 'How AI Was Used' },
+  tools: { zh: '使用工具', en: 'Tools Used' },
+  results: { zh: '執行成果', en: 'Results' },
+  value: { zh: '產生價值', en: 'Value Created' },
+  extensions: { zh: '可複製與延伸應用', en: 'Reusable & Extended Applications' },
+  limitations: { zh: '使用限制與注意事項', en: 'Limitations & Notes' },
+  success_key: { zh: '成功關鍵', en: 'Key to Success' },
+  keywords: { zh: '案例關鍵字', en: 'Keywords' }
+};
+
+function ui() { return UI_STRINGS[currentLang]; }
+function flabel(key) { return FIELD_LABELS[key][currentLang]; }
+function loc(c) { return c.i18n[currentLang] || c.i18n.zh; }
 
 async function load() {
   const [casesRes, changelogRes] = await Promise.all([
@@ -312,16 +409,45 @@ async function load() {
     fetch('data/changelog.json')
   ]);
   cases = await casesRes.json();
-  const changelog = await changelogRes.json();
-  renderVersion(changelog);
+  changelogData = await changelogRes.json();
+  applyStaticText();
+  renderVersion();
   renderCategoryFilters();
-  document.getElementById('totalCount').textContent = `共收錄 ${cases.length} 個案例`;
+  render();
+  routeFromHash();
+}
+
+function applyStaticText() {
+  const s = ui();
+  document.title = s.pageTitle;
+  document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en';
+  document.getElementById('pageTitle').textContent = s.pageTitle;
+  document.getElementById('pageSubtitle').textContent = s.subtitle;
+  document.getElementById('search').placeholder = s.searchPlaceholder;
+  document.getElementById('empty').textContent = s.empty;
+  document.getElementById('backBtn').textContent = s.backBtn;
+  if (cases.length) {
+    document.getElementById('totalCount').textContent = s.totalCount(cases.length);
+  }
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === currentLang);
+  });
+}
+
+function setLang(lang) {
+  if (lang === currentLang) return;
+  currentLang = lang;
+  localStorage.setItem('caseLibLang', lang);
+  activeCategory = null;
+  applyStaticText();
+  renderVersion();
+  renderCategoryFilters();
   render();
   routeFromHash();
 }
 
 function domainFromUrl(url) {
-  if (!url) return '尚無網站連結';
+  if (!url) return ui().noUrl;
   try {
     const u = new URL(url);
     const path = u.pathname.replace(/\/$/, '');
@@ -331,12 +457,13 @@ function domainFromUrl(url) {
   }
 }
 
-function renderVersion(changelog) {
-  document.getElementById('versionBadge').textContent = changelog.version;
+function renderVersion() {
+  if (!changelogData) return;
+  document.getElementById('versionBadge').textContent = changelogData.version;
   document.getElementById('changelogHeader').innerHTML =
-    `<div class="date">目前版本</div><div class="notes">${escapeHtml(changelog.version)}</div>`;
+    `<div class="date">${escapeHtml(ui().currentVersion)}</div><div class="notes">${escapeHtml(changelogData.version)}</div>`;
   const content = document.getElementById('changelogContent');
-  content.innerHTML = changelog.entries.map(e => `
+  content.innerHTML = changelogData.entries.map(e => `
       <div class="changelog-entry">
         <div class="date">${escapeHtml(e.date)}</div>
         <div class="notes">${escapeHtml(e.notes)}</div>
@@ -360,7 +487,7 @@ function itemLabel(item) {
 function renderListItems(items) {
   return `<ol>${items.map(i => {
     if (typeof i === 'string') return `<li>${escapeHtml(i)}</li>`;
-    return `<li><strong>${escapeHtml(i.name || '')}</strong>${i.desc ? '：' + escapeHtml(i.desc) : ''}</li>`;
+    return `<li><strong>${escapeHtml(i.name || '')}</strong>${i.desc ? ui().colon + escapeHtml(i.desc) : ''}</li>`;
   }).join('')}</ol>`;
 }
 
@@ -371,32 +498,32 @@ function renderContent(val) {
   return null;
 }
 
-function field(label, val) {
+function field(key, val) {
   const html = renderContent(val);
   if (!html) return '';
-  return `<div class="field"><label>${escapeHtml(label)}</label>${html}</div>`;
+  return `<div class="field"><label>${escapeHtml(flabel(key))}</label>${html}</div>`;
 }
 
-function chipsField(label, items) {
+function chipsField(key, items) {
   if (isEmpty(items)) return '';
-  return `<div class="field"><label>${escapeHtml(label)}</label><div class="chips">${items.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div></div>`;
+  return `<div class="field"><label>${escapeHtml(flabel(key))}</label><div class="chips">${items.map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div></div>`;
 }
 
 /* ---------- 分類篩選 + 搜尋 ---------- */
 
 function allCategories() {
   const s = new Set();
-  cases.forEach(c => (c.category || []).forEach(t => s.add(t)));
+  cases.forEach(c => (loc(c).category || []).forEach(t => s.add(t)));
   return [...s];
 }
 
 function renderCategoryFilters() {
   const el = document.getElementById('categoryFilters');
-  el.innerHTML = '<span class="filter-label">分類</span>';
+  el.innerHTML = `<span class="filter-label">${escapeHtml(ui().filterLabel)}</span>`;
 
   const allBtn = document.createElement('button');
   allBtn.className = 'tag-btn';
-  allBtn.textContent = '全部';
+  allBtn.textContent = ui().all;
   allBtn.onclick = () => {
     activeCategory = null;
     renderCategoryFilters();
@@ -420,13 +547,14 @@ function renderCategoryFilters() {
 }
 
 function matches(c, q) {
-  if (activeCategory && !(c.category || []).includes(activeCategory)) return false;
+  const lc = loc(c);
+  if (activeCategory && !(lc.category || []).includes(activeCategory)) return false;
   if (!q) return true;
-  const toolNames = (c.tools || []).map(itemLabel);
+  const toolNames = (lc.tools || []).map(itemLabel);
   const haystack = [
-    c.title, c.summary, c.problem_background, c.core_problem, c.solution,
-    c.author, c.unit_request, c.unit_owner,
-    ...(c.category || []), ...toolNames, ...(c.keywords || [])
+    lc.title, lc.summary, lc.problem_background, lc.core_problem, lc.solution,
+    lc.author, lc.unit_request, lc.unit_owner,
+    ...(lc.category || []), ...toolNames, ...(lc.keywords || [])
   ].join(' ').toLowerCase();
   return haystack.includes(q.toLowerCase());
 }
@@ -442,6 +570,8 @@ function render() {
 }
 
 function renderCard(c) {
+  const lc = loc(c);
+  const s = ui();
   const card = document.createElement('div');
   card.className = 'card';
   card.onclick = () => { location.hash = 'case/' + encodeURIComponent(c.id); };
@@ -456,19 +586,19 @@ function renderCard(c) {
   const thumb = document.createElement('div');
   thumb.className = 'thumb';
   if (c.screenshot) {
-    thumb.innerHTML = `<img src="${c.screenshot}" alt="${escapeHtml(c.title)}" loading="lazy" />`;
+    thumb.innerHTML = `<img src="${c.screenshot}" alt="${escapeHtml(lc.title)}" loading="lazy" />`;
   } else {
-    thumb.innerHTML = `<span class="placeholder">尚無畫面</span>`;
+    thumb.innerHTML = `<span class="placeholder">${escapeHtml(s.noScreenshot)}</span>`;
   }
 
   const body = document.createElement('div');
   body.className = 'body';
   body.innerHTML = `
-    <h3>${escapeHtml(c.title)}</h3>
-    <div class="type-badge">${(c.category || []).map(escapeHtml).join('、')}</div>
-    <div class="summary">${escapeHtml(c.summary || '')}</div>
-    <div class="chips">${(c.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
-    <div class="meta">製作人：${escapeHtml(c.author || '未提供')}${c.unit_owner ? ` ｜ 負責單位：${escapeHtml(c.unit_owner)}` : ''}</div>
+    <h3>${escapeHtml(lc.title)}</h3>
+    <div class="type-badge">${(lc.category || []).map(escapeHtml).join(s.listSep)}</div>
+    <div class="summary">${escapeHtml(lc.summary || '')}</div>
+    <div class="chips">${(lc.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
+    <div class="meta">${escapeHtml(s.authorLabel)}${s.colon}${escapeHtml(lc.author || s.notProvided)}${lc.unit_owner ? `${s.divider}${escapeHtml(s.ownerLabel)}${s.colon}${escapeHtml(lc.unit_owner)}` : ''}</div>
   `;
 
   card.appendChild(browserBar);
@@ -480,38 +610,39 @@ function renderCard(c) {
 /* ---------- 詳情頁（全頁切換，非覆蓋層） ---------- */
 
 function renderDetail(c) {
+  const lc = loc(c);
   const content = document.getElementById('detailContent');
 
   const metaItems = [
-    ['案例分類', (c.category || []).join('、')],
-    ['需求單位', c.unit_request],
-    ['負責單位', c.unit_owner],
-    ['案例負責人', c.author],
-    ['案例狀態', c.status],
-    ['適用地區', c.region],
+    [flabel('category'), (lc.category || []).join(ui().listSep)],
+    [flabel('unit_request'), lc.unit_request],
+    [flabel('unit_owner'), lc.unit_owner],
+    [flabel('author'), lc.author],
+    [flabel('status'), lc.status],
+    [flabel('region'), lc.region],
   ].filter(([, v]) => !isEmpty(v));
 
   content.innerHTML = `
-    ${c.screenshot ? `<div class="hero"><img src="${c.screenshot}" alt="${escapeHtml(c.title)}" /></div>` : ''}
-    <h2>${escapeHtml(c.title)}</h2>
-    <div class="subtitle">${escapeHtml(c.summary || '')}</div>
+    ${c.screenshot ? `<div class="hero"><img src="${c.screenshot}" alt="${escapeHtml(lc.title)}" /></div>` : ''}
+    <h2>${escapeHtml(lc.title)}</h2>
+    <div class="subtitle">${escapeHtml(lc.summary || '')}</div>
 
     ${metaItems.length ? `<div class="meta-grid">${metaItems.map(([label, v]) => `<div><label>${escapeHtml(label)}</label>${escapeHtml(v)}</div>`).join('')}</div>` : ''}
 
-    ${c.url ? `<div class="field"><label>網站連結</label><div class="text"><a href="${c.url}" target="_blank" rel="noopener">${escapeHtml(c.url)}</a></div></div>` : ''}
-    ${field('問題背景', c.problem_background)}
-    ${field('核心問題', c.core_problem)}
-    ${field('解決方案', c.solution)}
-    ${field('執行流程', c.process)}
-    ${field('主要功能', c.features)}
-    ${field('AI 的應用方式', c.ai_usage)}
-    ${field('使用工具', c.tools)}
-    ${field('執行成果', c.results)}
-    ${field('產生價值', c.value)}
-    ${chipsField('可複製與延伸應用', c.extensions)}
-    ${field('使用限制與注意事項', c.limitations)}
-    ${field('成功關鍵', c.success_key)}
-    ${chipsField('案例關鍵字', c.keywords)}
+    ${c.url ? `<div class="field"><label>${escapeHtml(flabel('url'))}</label><div class="text"><a href="${c.url}" target="_blank" rel="noopener">${escapeHtml(c.url)}</a></div></div>` : ''}
+    ${field('problem_background', lc.problem_background)}
+    ${field('core_problem', lc.core_problem)}
+    ${field('solution', lc.solution)}
+    ${field('process', lc.process)}
+    ${field('features', lc.features)}
+    ${field('ai_usage', lc.ai_usage)}
+    ${field('tools', lc.tools)}
+    ${field('results', lc.results)}
+    ${field('value', lc.value)}
+    ${chipsField('extensions', lc.extensions)}
+    ${field('limitations', lc.limitations)}
+    ${field('success_key', lc.success_key)}
+    ${chipsField('keywords', lc.keywords)}
   `;
 }
 
@@ -545,6 +676,9 @@ function escapeHtml(str) {
 
 document.getElementById('search').addEventListener('input', render);
 document.getElementById('backBtn').addEventListener('click', () => { location.hash = ''; });
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
 window.addEventListener('hashchange', routeFromHash);
 
 load();

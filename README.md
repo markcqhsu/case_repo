@@ -1,6 +1,7 @@
-# AI / 自動化案例庫
+# 宏全AI應用推動案例庫
 
-分享用 AI 或自動化工具解決廠內流程問題的實際案例，可搜尋、依案例分類篩選，支援手機瀏覽。
+分享用 AI 或自動化工具解決廠內流程問題的實際案例，可搜尋、依案例分類篩選，支援手機瀏覽，
+右上角可切換中文／英文介面。
 
 ## 新增案例
 
@@ -17,18 +18,36 @@
 每個案例的欄位不需要完全一樣（例如有些案例沒有「執行流程」或「成功關鍵」），
 留空或不寫的欄位不會顯示在網頁上。
 
-## 資料結構
+## 資料結構（中英雙語）
 
-`data/cases.json` 是一個陣列，每筆案例大致包含：
+`data/cases.json` 是一個陣列，每筆案例的結構是：
 
-- 基本資料：`title`、`summary`、`screenshot`、`url`、`category`、`unit_request`、`unit_owner`、`author`、`status`、`region`
+```json
+{
+  "id": "唯一代號",
+  "screenshot": "assets/檔名.jpg",
+  "url": "https://...",
+  "i18n": {
+    "zh": { ...中文內容... },
+    "en": { ...英文內容... }
+  }
+}
+```
+
+`id`、`screenshot`、`url` 是中英共用的欄位，不需要分語言。
+`i18n.zh` 和 `i18n.en` 底下各自包含：
+
+- 基本資料：`title`、`summary`、`category`、`unit_request`、`unit_owner`、`author`、`status`、`region`
 - 內容：`problem_background`、`core_problem`、`solution`
-- 清單類：`process`、`features`、`ai_usage`、`results`、`value`、`extensions`、`limitations`、`keywords`
+- 清單類：`process`、`features`、`ai_usage`、`tools`、`results`、`value`、`extensions`、`limitations`、`keywords`
 - `success_key`
 
 清單類欄位可以是純文字陣列（例：`["步驟一", "步驟二"]`），
 也可以是「名稱＋說明」的物件陣列（例：`[{"name": "功能一", "desc": "說明"}]`），
 兩種格式都能正常顯示，方便不同案例的內容形式。
+
+用 `scripts/import_case.py` 匯入時，會先把中文內容原樣複製一份到 `i18n.en`，
+記得之後請 Claude 或自己把英文版內容翻譯一遍，不然英文介面看到的還是中文。
 
 ## 版本與改版紀錄
 

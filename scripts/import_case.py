@@ -4,6 +4,7 @@
 用法：
   python3 scripts/import_case.py 案例檔案.md
 """
+import copy
 import json
 import re
 import sys
@@ -41,6 +42,7 @@ SECTION_MAP = {
 LIST_FIELDS = {"process", "ai_usage", "results", "extensions", "limitations"}
 PAIR_LIST_FIELDS = {"features", "tools", "value"}
 DELIM_LIST_FIELDS = {"category", "keywords"}
+SHARED_FIELDS = {"screenshot", "url"}
 
 
 def parse_sections(text):
@@ -112,8 +114,15 @@ def build_case(sections, existing_count):
         else:
             data[key] = clean_block(raw)
 
-    data["id"] = f"case-{existing_count + 1:03d}"
-    return data
+    shared = {key: data.pop(key, "") for key in SHARED_FIELDS}
+
+    return {
+        "id": f"case-{existing_count + 1:03d}",
+        **shared,
+        # 網站是中英雙語，這裡先把中文內容原樣複製一份到 en，
+        # 之後要記得請 Claude 或自己把 i18n.en 的內容翻成英文。
+        "i18n": {"zh": data, "en": copy.deepcopy(data)},
+    }
 
 
 def main():
@@ -131,7 +140,7 @@ def main():
     sections = parse_sections(src.read_text(encoding="utf-8"))
     case = build_case(sections, len(cases))
 
-    if not case.get("title"):
+    if not case["i18n"]["zh"].get("title"):
         print("警告：案例標題是空的，請檢查檔案格式。")
         sys.exit(1)
 
@@ -139,8 +148,9 @@ def main():
     CASES_JSON.write_text(
         json.dumps(cases, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-    print(f"已加入案例：{case['title']}（id: {case['id']}）")
+    print(f"已加入案例：{case['i18n']['zh']['title']}（id: {case['id']}）")
     print(f"寫入：{CASES_JSON}")
+    print("提醒：i18n.en 目前只是中文內容的複製，記得請 Claude 或自己翻譯成英文。")
 
 
 if __name__ == "__main__":

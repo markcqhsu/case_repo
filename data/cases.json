@@ -1,309 +1,621 @@
 [
   {
     "id": "qrcode-cap-demo",
-    "title": "QR Code 瓶蓋互動展示系統",
-    "summary": "建立一套可實際展示「一瓶一碼」功能的 QR Code 測試系統，讓業務人員在向客戶推廣 QR Code 瓶蓋時，不再只依賴簡報或口頭說明，而是可以直接使用實體樣品進行掃碼展示。",
     "screenshot": "assets/qrcode-cap-demo.jpg",
     "url": "https://markcqhsu.github.io/QR_Demo/index.html?code=TEST001",
-    "category": ["業務推廣", "數位行銷", "產品展示"],
-    "unit_request": "業務單位",
-    "unit_owner": "數位發展部",
-    "author": "徐馬克",
-    "status": "已完成測試版本",
-    "region": "台灣、海外市場",
-    "tools": [
-      { "name": "Claude", "desc": "用於需求整理、網頁程式碼產生、功能修改與除錯。" },
-      { "name": "GitHub", "desc": "用於儲存與管理網站程式碼。" },
-      { "name": "GitHub Pages", "desc": "用於部署測試網站，讓業務人員可直接透過網址進行展示。" }
-    ],
-    "problem_background": "公司在推廣 QR Code 瓶蓋時，業務人員通常只能透過簡報、圖片或口頭方式向客戶說明產品功能。由於客戶無法在現場實際掃描 QR Code 並體驗操作流程，因此較難直觀理解「一瓶一碼」、「防止重複兌換」及「多語言互動」等功能，影響產品展示效果與業務溝通效率。",
-    "core_problem": "業務人員缺少一套可以搭配實體瓶蓋使用的展示環境，無法在拜訪客戶、參加展覽或進行產品提案時，實際呈現 QR Code 瓶蓋的應用方式。",
-    "solution": "建立一個 QR Code 瓶蓋測試網站，並為每一組展示用 QR Code 設定不同的識別碼。由塑蓋廠協助製作帶有 QR Code 的瓶蓋樣品，業務人員可在客戶現場直接使用手機掃描瓶蓋上的 QR Code，展示完整的使用流程。掃描後，系統會依照 QR Code 的專屬代碼顯示對應頁面，並記錄該代碼是否已經被掃描或使用。",
-    "process": [
-      "請塑蓋廠將 QR Code 製作於瓶蓋樣品上。",
-      "業務人員攜帶實體樣品拜訪客戶。",
-      "客戶使用手機掃描瓶蓋上的 QR Code。",
-      "系統呈現首次掃描或重複掃描的不同結果。",
-      "依客戶需求切換中文、英文或泰文介面。"
-    ],
-    "features": [
-      { "name": "一瓶一碼", "desc": "每一個瓶蓋都具有獨立的 QR Code 識別碼，可模擬一個產品對應一組專屬代碼的應用情境。" },
-      { "name": "重複掃碼提示", "desc": "當同一組 QR Code 被再次掃描時，系統會顯示已掃描或已使用提示，讓客戶理解此功能可應用於：防偽驗證、抽獎活動、點數兌換、優惠券領取、一次性活動資格、商品追蹤。" },
-      { "name": "多國語言支援", "desc": "目前支援繁體中文、英文、泰文，可依照業務推廣地區與客戶語言需求，持續增加其他語言版本。" },
-      { "name": "行動裝置支援", "desc": "網站可透過手機瀏覽器直接開啟，不需另外安裝 App，適合業務拜訪、展覽及客戶提案使用。" }
-    ],
-    "ai_usage": [
-      "釐清網站功能需求",
-      "規劃使用者操作流程",
-      "產生網頁程式碼",
-      "設計多語言內容",
-      "協助程式除錯",
-      "優化手機版頁面",
-      "建立 GitHub Pages 部署流程"
-    ],
-    "results": [
-      "建立可實際操作的 QR Code 瓶蓋展示網站。",
-      "將原本只能透過口頭說明的功能，轉換為可掃描、可操作的實體展示。",
-      "業務人員不需要具備程式開發能力，即可直接使用。",
-      "可搭配瓶蓋樣品、產品提案及展覽活動使用。",
-      "提升客戶對 QR Code 瓶蓋應用方式的理解。",
-      "降低業務與客戶之間的溝通成本。",
-      "建立後續客製化專案的初步驗證環境。"
-    ],
-    "value": [
-      { "name": "對業務單位", "desc": "讓業務人員從「說明功能」轉變為「直接展示功能」，提高產品提案的具體性與說服力。" },
-      { "name": "對客戶", "desc": "客戶可以親自操作並理解 QR Code 瓶蓋的使用情境，更容易提出進一步需求。" },
-      { "name": "對公司", "desc": "在正式投入大型系統開發前，先透過低成本原型驗證市場需求，降低開發錯誤與投資風險。" }
-    ],
-    "extensions": [
-      "瓶蓋防偽驗證", "商品真偽查詢", "消費者抽獎活動", "點數累積與兌換",
-      "優惠券領取", "產品履歷查詢", "生產批號追蹤", "客戶問卷調查",
-      "行銷活動導流", "經銷商或通路管理", "售後服務登錄", "多國市場產品展示"
-    ],
-    "limitations": [
-      "使用者資料與個資保護",
-      "QR Code 防複製機制",
-      "資料庫與掃碼紀錄保存",
-      "系統流量與穩定性",
-      "活動規則與兌換邏輯",
-      "後台管理功能",
-      "網路安全",
-      "正式網域與主機部署",
-      "客戶資料權限管理",
-      "系統維護責任"
-    ],
-    "success_key": "本案例的重點並不是建立一個完整的大型系統，而是先利用 AI 快速製作可操作的原型，讓需求單位能夠實際使用、測試與收集回饋。透過小規模驗證，可以先確認客戶是否理解、業務是否方便使用，以及哪些功能真正具有價值，再決定是否進一步投入正式開發。",
-    "keywords": ["QR Code", "智慧瓶蓋", "一瓶一碼", "防偽", "重複掃碼", "業務展示", "多語言", "Claude", "GitHub Pages", "AI 程式開發", "快速原型", "概念驗證"]
+    "i18n": {
+      "zh": {
+        "title": "QR Code 瓶蓋互動展示系統",
+        "summary": "建立一套可實際展示「一瓶一碼」功能的 QR Code 測試系統，讓業務人員在向客戶推廣 QR Code 瓶蓋時，不再只依賴簡報或口頭說明，而是可以直接使用實體樣品進行掃碼展示。",
+        "category": ["業務推廣", "數位行銷", "產品展示"],
+        "unit_request": "業務單位",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "已完成測試版本",
+        "region": "台灣、海外市場",
+        "tools": [
+          { "name": "Claude", "desc": "用於需求整理、網頁程式碼產生、功能修改與除錯。" },
+          { "name": "GitHub", "desc": "用於儲存與管理網站程式碼。" },
+          { "name": "GitHub Pages", "desc": "用於部署測試網站，讓業務人員可直接透過網址進行展示。" }
+        ],
+        "problem_background": "公司在推廣 QR Code 瓶蓋時，業務人員通常只能透過簡報、圖片或口頭方式向客戶說明產品功能。由於客戶無法在現場實際掃描 QR Code 並體驗操作流程，因此較難直觀理解「一瓶一碼」、「防止重複兌換」及「多語言互動」等功能，影響產品展示效果與業務溝通效率。",
+        "core_problem": "業務人員缺少一套可以搭配實體瓶蓋使用的展示環境，無法在拜訪客戶、參加展覽或進行產品提案時，實際呈現 QR Code 瓶蓋的應用方式。",
+        "solution": "建立一個 QR Code 瓶蓋測試網站，並為每一組展示用 QR Code 設定不同的識別碼。由塑蓋廠協助製作帶有 QR Code 的瓶蓋樣品，業務人員可在客戶現場直接使用手機掃描瓶蓋上的 QR Code，展示完整的使用流程。掃描後，系統會依照 QR Code 的專屬代碼顯示對應頁面，並記錄該代碼是否已經被掃描或使用。",
+        "process": [
+          "請塑蓋廠將 QR Code 製作於瓶蓋樣品上。",
+          "業務人員攜帶實體樣品拜訪客戶。",
+          "客戶使用手機掃描瓶蓋上的 QR Code。",
+          "系統呈現首次掃描或重複掃描的不同結果。",
+          "依客戶需求切換中文、英文或泰文介面。"
+        ],
+        "features": [
+          { "name": "一瓶一碼", "desc": "每一個瓶蓋都具有獨立的 QR Code 識別碼，可模擬一個產品對應一組專屬代碼的應用情境。" },
+          { "name": "重複掃碼提示", "desc": "當同一組 QR Code 被再次掃描時，系統會顯示已掃描或已使用提示，讓客戶理解此功能可應用於：防偽驗證、抽獎活動、點數兌換、優惠券領取、一次性活動資格、商品追蹤。" },
+          { "name": "多國語言支援", "desc": "目前支援繁體中文、英文、泰文，可依照業務推廣地區與客戶語言需求，持續增加其他語言版本。" },
+          { "name": "行動裝置支援", "desc": "網站可透過手機瀏覽器直接開啟，不需另外安裝 App，適合業務拜訪、展覽及客戶提案使用。" }
+        ],
+        "ai_usage": [
+          "釐清網站功能需求",
+          "規劃使用者操作流程",
+          "產生網頁程式碼",
+          "設計多語言內容",
+          "協助程式除錯",
+          "優化手機版頁面",
+          "建立 GitHub Pages 部署流程"
+        ],
+        "results": [
+          "建立可實際操作的 QR Code 瓶蓋展示網站。",
+          "將原本只能透過口頭說明的功能，轉換為可掃描、可操作的實體展示。",
+          "業務人員不需要具備程式開發能力，即可直接使用。",
+          "可搭配瓶蓋樣品、產品提案及展覽活動使用。",
+          "提升客戶對 QR Code 瓶蓋應用方式的理解。",
+          "降低業務與客戶之間的溝通成本。",
+          "建立後續客製化專案的初步驗證環境。"
+        ],
+        "value": [
+          { "name": "對業務單位", "desc": "讓業務人員從「說明功能」轉變為「直接展示功能」，提高產品提案的具體性與說服力。" },
+          { "name": "對客戶", "desc": "客戶可以親自操作並理解 QR Code 瓶蓋的使用情境，更容易提出進一步需求。" },
+          { "name": "對公司", "desc": "在正式投入大型系統開發前，先透過低成本原型驗證市場需求，降低開發錯誤與投資風險。" }
+        ],
+        "extensions": [
+          "瓶蓋防偽驗證", "商品真偽查詢", "消費者抽獎活動", "點數累積與兌換",
+          "優惠券領取", "產品履歷查詢", "生產批號追蹤", "客戶問卷調查",
+          "行銷活動導流", "經銷商或通路管理", "售後服務登錄", "多國市場產品展示"
+        ],
+        "limitations": [
+          "使用者資料與個資保護",
+          "QR Code 防複製機制",
+          "資料庫與掃碼紀錄保存",
+          "系統流量與穩定性",
+          "活動規則與兌換邏輯",
+          "後台管理功能",
+          "網路安全",
+          "正式網域與主機部署",
+          "客戶資料權限管理",
+          "系統維護責任"
+        ],
+        "success_key": "本案例的重點並不是建立一個完整的大型系統，而是先利用 AI 快速製作可操作的原型，讓需求單位能夠實際使用、測試與收集回饋。透過小規模驗證，可以先確認客戶是否理解、業務是否方便使用，以及哪些功能真正具有價值，再決定是否進一步投入正式開發。",
+        "keywords": ["QR Code", "智慧瓶蓋", "一瓶一碼", "防偽", "重複掃碼", "業務展示", "多語言", "Claude", "GitHub Pages", "AI 程式開發", "快速原型", "概念驗證"]
+      },
+      "en": {
+        "title": "QR Code Bottle Cap Interactive Demo System",
+        "summary": "Built a QR code bottle cap demo system that lets sales staff show the real \"one bottle, one code\" experience to customers in person, using an actual sample cap instead of relying only on slides or verbal explanation.",
+        "category": ["Business Promotion", "Digital Marketing", "Product Demonstration"],
+        "unit_request": "Sales Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "Test Version Completed",
+        "region": "Taiwan, Overseas Markets",
+        "tools": [
+          { "name": "Claude", "desc": "Used for requirements clarification, generating web code, making changes, and debugging." },
+          { "name": "GitHub", "desc": "Used to store and manage the website's source code." },
+          { "name": "GitHub Pages", "desc": "Used to deploy the demo site so sales staff can showcase it directly via a URL." }
+        ],
+        "problem_background": "When promoting QR code bottle caps, sales staff could usually only explain the feature through slides, photos, or verbal description. Since customers couldn't actually scan a QR code and try the flow on the spot, it was hard for them to intuitively grasp concepts like \"one bottle, one code\", \"preventing duplicate redemption\", and \"multi-language interaction\" — which limited the demo's impact and slowed down sales communication.",
+        "core_problem": "Sales staff lacked a demo environment that could be paired with a physical bottle cap, so they had no way to actually show how QR code bottle caps work during customer visits, trade shows, or proposals.",
+        "solution": "Built a QR code bottle cap demo website and assigned a unique code to each demo QR code. The cap manufacturer produced sample caps with QR codes printed on them, so sales staff could scan the cap's QR code directly with a phone in front of the customer and walk through the full flow. After scanning, the system shows a page based on the code's unique ID and records whether that code has already been scanned or used.",
+        "process": [
+          "Ask the cap manufacturer to print QR codes on sample bottle caps.",
+          "Sales staff bring the physical samples to customer visits.",
+          "Customers scan the QR code on the cap with their phone.",
+          "The system shows a different result for a first scan versus a repeat scan.",
+          "Switch between Chinese, English, or Thai based on the customer's needs."
+        ],
+        "features": [
+          { "name": "One Bottle, One Code", "desc": "Every bottle cap has its own unique QR code, simulating a scenario where each product maps to one dedicated code." },
+          { "name": "Duplicate Scan Notice", "desc": "When the same QR code is scanned again, the system shows an \"already scanned/used\" notice, helping customers understand how this can be applied to anti-counterfeiting, lucky draws, point redemption, coupon claims, one-time event eligibility, and product tracking." },
+          { "name": "Multi-language Support", "desc": "Currently supports Traditional Chinese, English, and Thai, with more languages to be added as sales expand into new regions." },
+          { "name": "Mobile-friendly", "desc": "The site opens directly in a phone browser with no app install required, making it ideal for customer visits, trade shows, and proposals." }
+        ],
+        "ai_usage": [
+          "Clarifying the website's functional requirements",
+          "Planning the user flow",
+          "Generating the web code",
+          "Designing multi-language content",
+          "Helping debug the code",
+          "Optimizing the mobile layout",
+          "Setting up the GitHub Pages deployment"
+        ],
+        "results": [
+          "Built a working QR code bottle cap demo website.",
+          "Turned a feature that could only be explained verbally into something customers can scan and try themselves.",
+          "Sales staff can use it directly with no coding skills required.",
+          "Can be paired with sample caps, product proposals, and trade show events.",
+          "Improved customer understanding of how QR code bottle caps can be used.",
+          "Lowered the communication cost between sales and customers.",
+          "Created an early-stage validation environment for future custom projects."
+        ],
+        "value": [
+          { "name": "For the Sales Team", "desc": "Shifts sales staff from \"explaining the feature\" to \"demonstrating the feature\", making product pitches more concrete and persuasive." },
+          { "name": "For Customers", "desc": "Customers can try it themselves and understand how QR code bottle caps work in practice, making it easier for them to raise further requirements." },
+          { "name": "For the Company", "desc": "Validates market demand through a low-cost prototype before committing to full-scale development, reducing development risk and wasted investment." }
+        ],
+        "extensions": [
+          "Bottle cap anti-counterfeiting verification", "Product authenticity lookup", "Consumer lucky draws", "Points accumulation and redemption",
+          "Coupon claims", "Product traceability lookup", "Production batch tracking", "Customer surveys",
+          "Marketing campaign traffic", "Distributor/channel management", "After-sales service registration", "Multi-market product demos"
+        ],
+        "limitations": [
+          "User data and privacy protection",
+          "QR code anti-copy mechanism",
+          "Database and scan-record storage",
+          "System traffic and stability",
+          "Event rules and redemption logic",
+          "Admin/back-office features",
+          "Network security",
+          "Production domain and hosting setup",
+          "Customer data access control",
+          "System maintenance ownership"
+        ],
+        "success_key": "The point of this case isn't to build a full-scale system — it's to use AI to quickly build a working prototype so the requesting team can actually use it, test it, and gather feedback. Small-scale validation lets us confirm whether customers understand it, whether sales staff find it easy to use, and which features are genuinely valuable, before deciding whether to invest further in full development.",
+        "keywords": ["QR Code", "Smart Bottle Cap", "One Bottle One Code", "Anti-counterfeiting", "Duplicate Scan Detection", "Sales Demo", "Multi-language", "Claude", "GitHub Pages", "AI Development", "Rapid Prototyping", "Proof of Concept"]
+      }
+    }
   },
   {
     "id": "beverage-odm-finder",
-    "title": "飲料代工產線智慧查詢網站",
-    "summary": "利用 AI 協助整理集團現有的飲料代工產線資料，並製作成互動式查詢網站。業務人員或客戶可以根據飲料類型、產品規格、設備及認證需求，快速查詢較合適的生產線，作為後續業務洽談與產線評估的參考。",
     "screenshot": "assets/beverage-odm-demo.jpg",
     "url": "https://markcqhsu.github.io/beverage-odm/",
-    "category": ["業務支援", "產線查詢", "知識整理"],
-    "unit_request": "業務單位",
-    "unit_owner": "數位發展部",
-    "author": "徐馬克",
-    "status": "正式上線",
-    "region": "",
-    "tools": ["Claude", "GitHub", "GitHub Pages", "集團現有產線資料"],
-    "problem_background": "集團在不同地區擁有多條飲料代工產線，各產線支援的飲料類型、設備條件、包裝規格及認證有所不同。當業務人員收到客戶需求時，通常需要查詢不同資料，或詢問熟悉各工廠產線的人員，才能初步判斷適合的生產地點與產線。由於資料較為分散，也不容易讓客戶快速了解集團的整體代工能力。",
-    "core_problem": "如何將集團現有的產線資料整合成簡單、容易查詢的工具，讓業務人員及客戶可以根據產品需求，快速找到較合適的產線。",
-    "solution": "整理集團現有的飲料代工產線、設備、規格及認證資料，並利用 AI 協助進行資料分類、網站流程規劃與程式開發。使用者只要依照產品需求選擇相關條件，網站即可協助篩選較符合需求的產線，作為後續評估與洽談的參考。",
-    "process": [],
-    "features": [
-      "方便業務人員或客戶根據飲料類型、產品規格、設備及認證需求，查詢較合適的飲料代工產線。",
-      "網站同時提供中文、英文及日文介面，方便不同地區的使用者查詢。"
-    ],
-    "ai_usage": [
-      "整理及分類集團產線資料",
-      "將複雜的產線條件轉換成查詢選項",
-      "規劃網站操作流程",
-      "建立產線篩選邏輯",
-      "產生及修改網站程式碼",
-      "建立多國語言內容",
-      "協助測試與程式除錯"
-    ],
-    "results": [
-      "將分散的產線資訊整理成可查詢的結構化資料。",
-      "建立可供業務及客戶自行操作的產線查詢網站。",
-      "縮短業務查找產線資料及跨單位確認的時間。",
-      "降低產線資訊對特定人員經驗的依賴。",
-      "讓客戶更容易了解集團的飲料代工能力。",
-      "將原本靜態的資料轉換成互動式查詢工具。"
-    ],
-    "value": [
-      { "name": "對業務人員", "desc": "收到客戶需求後，可以先透過網站進行初步查詢，更快速地判斷可能合適的產線。" },
-      { "name": "對客戶", "desc": "可以依照自己的產品需求進行查詢，更容易了解集團可提供的飲料代工服務。" }
-    ],
-    "extensions": [
-      "塑膠瓶蓋規格查詢", "瓶胚與瓶型查詢", "爪蓋規格查詢",
-      "標籤材料與印刷方式查詢", "集團設備與生產能力查詢", "其他產品選型與業務支援工具"
-    ],
-    "limitations": [
-      "網站提供的結果主要用於初步查詢及需求溝通，不代表正式的生產承諾。",
-      "實際能否生產，仍需由相關單位進一步確認產品配方、包裝規格、生產數量、工廠產能、認證、排程及其他生產條件。",
-      "產線資料也需要定期更新，以確保網站資訊與實際生產狀況一致。"
-    ],
-    "success_key": "",
-    "keywords": ["飲料代工", "產線查詢", "產線資料", "業務支援", "知識整理", "多國語言", "Claude", "GitHub Pages", "AI 程式開發"]
+    "i18n": {
+      "zh": {
+        "title": "飲料代工產線智慧查詢網站",
+        "summary": "利用 AI 協助整理集團現有的飲料代工產線資料，並製作成互動式查詢網站。業務人員或客戶可以根據飲料類型、產品規格、設備及認證需求，快速查詢較合適的生產線，作為後續業務洽談與產線評估的參考。",
+        "category": ["業務支援", "產線查詢", "知識整理"],
+        "unit_request": "業務單位",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "正式上線",
+        "region": "",
+        "tools": ["Claude", "GitHub", "GitHub Pages", "集團現有產線資料"],
+        "problem_background": "集團在不同地區擁有多條飲料代工產線，各產線支援的飲料類型、設備條件、包裝規格及認證有所不同。當業務人員收到客戶需求時，通常需要查詢不同資料，或詢問熟悉各工廠產線的人員，才能初步判斷適合的生產地點與產線。由於資料較為分散，也不容易讓客戶快速了解集團的整體代工能力。",
+        "core_problem": "如何將集團現有的產線資料整合成簡單、容易查詢的工具，讓業務人員及客戶可以根據產品需求，快速找到較合適的產線。",
+        "solution": "整理集團現有的飲料代工產線、設備、規格及認證資料，並利用 AI 協助進行資料分類、網站流程規劃與程式開發。使用者只要依照產品需求選擇相關條件，網站即可協助篩選較符合需求的產線，作為後續評估與洽談的參考。",
+        "process": [],
+        "features": [
+          "方便業務人員或客戶根據飲料類型、產品規格、設備及認證需求，查詢較合適的飲料代工產線。",
+          "網站同時提供中文、英文及日文介面，方便不同地區的使用者查詢。"
+        ],
+        "ai_usage": [
+          "整理及分類集團產線資料",
+          "將複雜的產線條件轉換成查詢選項",
+          "規劃網站操作流程",
+          "建立產線篩選邏輯",
+          "產生及修改網站程式碼",
+          "建立多國語言內容",
+          "協助測試與程式除錯"
+        ],
+        "results": [
+          "將分散的產線資訊整理成可查詢的結構化資料。",
+          "建立可供業務及客戶自行操作的產線查詢網站。",
+          "縮短業務查找產線資料及跨單位確認的時間。",
+          "降低產線資訊對特定人員經驗的依賴。",
+          "讓客戶更容易了解集團的飲料代工能力。",
+          "將原本靜態的資料轉換成互動式查詢工具。"
+        ],
+        "value": [
+          { "name": "對業務人員", "desc": "收到客戶需求後，可以先透過網站進行初步查詢，更快速地判斷可能合適的產線。" },
+          { "name": "對客戶", "desc": "可以依照自己的產品需求進行查詢，更容易了解集團可提供的飲料代工服務。" }
+        ],
+        "extensions": [
+          "塑膠瓶蓋規格查詢", "瓶胚與瓶型查詢", "爪蓋規格查詢",
+          "標籤材料與印刷方式查詢", "集團設備與生產能力查詢", "其他產品選型與業務支援工具"
+        ],
+        "limitations": [
+          "網站提供的結果主要用於初步查詢及需求溝通，不代表正式的生產承諾。",
+          "實際能否生產，仍需由相關單位進一步確認產品配方、包裝規格、生產數量、工廠產能、認證、排程及其他生產條件。",
+          "產線資料也需要定期更新，以確保網站資訊與實際生產狀況一致。"
+        ],
+        "success_key": "",
+        "keywords": ["飲料代工", "產線查詢", "產線資料", "業務支援", "知識整理", "多國語言", "Claude", "GitHub Pages", "AI 程式開發"]
+      },
+      "en": {
+        "title": "Beverage Contract Manufacturing Line Finder",
+        "summary": "Used AI to help organize the group's existing beverage contract manufacturing line data into an interactive lookup website. Sales staff and customers can search by beverage type, product spec, equipment, and certification needs to quickly find a suitable production line for follow-up business discussions and line evaluation.",
+        "category": ["Sales Support", "Production Line Lookup", "Knowledge Organization"],
+        "unit_request": "Sales Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "Officially Launched",
+        "region": "",
+        "tools": ["Claude", "GitHub", "GitHub Pages", "Group's Existing Production Line Data"],
+        "problem_background": "The group operates multiple beverage contract manufacturing lines across different regions, each supporting different beverage types, equipment conditions, packaging specs, and certifications. When sales staff receive a customer request, they usually need to search through different sources or ask people familiar with each plant's lines just to get a rough sense of a suitable production location. Because the data is scattered, it's also hard for customers to quickly grasp the group's overall contract manufacturing capabilities.",
+        "core_problem": "How to consolidate the group's existing production line data into a simple, searchable tool so sales staff and customers can quickly find a suitable line based on product requirements.",
+        "solution": "Organized the group's existing beverage contract manufacturing lines, equipment, specs, and certification data, and used AI to help with data classification, site planning, and development. Users simply select the relevant conditions based on their product needs, and the site helps filter production lines that best match the requirements as a reference for further evaluation and discussion.",
+        "process": [],
+        "features": [
+          "Lets sales staff or customers search for a suitable beverage contract manufacturing line based on beverage type, product spec, equipment, and certification needs.",
+          "The site is available in Chinese, English, and Japanese to serve users from different regions."
+        ],
+        "ai_usage": [
+          "Organizing and classifying the group's production line data",
+          "Turning complex line conditions into searchable filter options",
+          "Planning the site's user flow",
+          "Building the line-filtering logic",
+          "Generating and editing the website code",
+          "Creating multi-language content",
+          "Helping with testing and debugging"
+        ],
+        "results": [
+          "Turned scattered production line information into structured, searchable data.",
+          "Built a production line lookup site that sales and customers can use themselves.",
+          "Reduced the time sales staff spend finding line data and cross-checking with other teams.",
+          "Reduced reliance on any one person's knowledge of the production lines.",
+          "Made it easier for customers to understand the group's beverage contract manufacturing capabilities.",
+          "Turned static reference data into an interactive lookup tool."
+        ],
+        "value": [
+          { "name": "For Sales Staff", "desc": "After receiving a customer request, they can run a quick initial search on the site to judge which line might be suitable, much faster than before." },
+          { "name": "For Customers", "desc": "Customers can search based on their own product needs, making it easier to understand the contract manufacturing services the group can offer." }
+        ],
+        "extensions": [
+          "Plastic bottle cap spec lookup", "Preform and bottle shape lookup", "Tamper-evident cap spec lookup",
+          "Label material and printing method lookup", "Group equipment and production capacity lookup", "Other product selection and sales support tools"
+        ],
+        "limitations": [
+          "The results are mainly for early-stage lookup and requirement discussion, and do not represent a formal production commitment.",
+          "Whether production is actually feasible still needs to be confirmed by the relevant teams — covering product formula, packaging spec, order quantity, plant capacity, certification, scheduling, and other production conditions.",
+          "The production line data also needs to be updated regularly to keep the site's information consistent with actual production status."
+        ],
+        "success_key": "",
+        "keywords": ["Beverage Contract Manufacturing", "Production Line Lookup", "Production Line Data", "Sales Support", "Knowledge Organization", "Multi-language", "Claude", "GitHub Pages", "AI Development"]
+      }
+    }
   },
   {
     "id": "aseptic-f3-transfer-ocr",
-    "title": "調撥單辨識與 Excel 自動產生系統",
-    "summary": "利用 Claude OCR 辨識調撥單中的文字與欄位資料，並自動整理及產生 Excel 檔案。現場人員只需要上傳調撥單的圖片或 PDF，系統即可協助完成資料辨識、批次彙整及 Excel 匯出，減少人工輸入與整理時間。",
     "screenshot": "assets/aseptic-f3-demo.png",
     "url": "https://markcqhsu.github.io/Aseptic_f3/",
-    "category": ["現場作業", "文件辨識", "資料整理"],
-    "unit_request": "宏全三廠",
-    "unit_owner": "數位發展部",
-    "author": "徐馬克",
-    "status": "實際測試與使用中",
-    "region": "",
-    "tools": [
-      { "name": "Claude OCR", "desc": "辨識調撥單文字與欄位資料。屬於付費服務，目前實際使用費用約為每月 1 美元，費用會依上傳的單據數量、頁數及辨識使用量而有所變動。" },
-      "GitHub",
-      "GitHub Pages",
-      "Excel 匯出功能"
-    ],
-    "problem_background": "現場人員收到調撥單後，需要人工查看單據內容，再將日期、品號、數量、棧板數及其他資料輸入 Excel。當調撥單數量較多時，人工輸入及整理需要花費較多時間，也可能發生資料輸入錯誤或遺漏。",
-    "core_problem": "如何減少現場人員人工查看及輸入調撥單資料的時間，並將多張單據快速整理成統一的 Excel 檔案。",
-    "solution": "建立調撥單辨識系統，讓現場人員上傳調撥單的圖片或 PDF。系統利用 Claude OCR 辨識單據內容，解析日期、所別、裝運單號、品號、數量及棧板數等資料，經人員確認後，可將多張調撥單彙整並匯出成 Excel 檔案。",
-    "process": [],
-    "features": [
-      "支援上傳調撥單圖片及 PDF，系統可自動辨識單據內容、彙整多張調撥單，並產生 Excel 檔案。",
-      "PDF 可進行多頁批次辨識，使用者也能在匯出前確認辨識結果，降低資料錯誤的風險。"
-    ],
-    "ai_usage": [
-      "辨識調撥單文字",
-      "解析單據欄位",
-      "擷取品號與數量",
-      "處理不同格式的調撥單",
-      "將辨識結果轉換為結構化資料",
-      "辨識完成後仍保留人工確認步驟，避免因圖片品質、手寫內容或單據格式差異造成錯誤。"
-    ],
-    "results": [
-      "將調撥單內容自動轉換為結構化資料。",
-      "支援 JPG、PNG、BMP 圖片及多頁 PDF 上傳。",
-      "可一次處理多張或多頁調撥單。",
-      "自動彙整品號、數量與相關資料。",
-      "可將整理結果匯出為 Excel 檔案。",
-      "減少現場人員人工輸入及整理資料的時間。",
-      "降低大量人工輸入可能產生的錯誤。"
-    ],
-    "value": [
-      { "name": "對現場人員", "desc": "不需要逐筆將調撥單內容輸入 Excel，只需上傳檔案並確認辨識結果，即可完成資料整理。" },
-      { "name": "對管理人員", "desc": "調撥資料可以用一致的格式進行彙整，方便後續查詢、庫存管理及資料分析。" },
-      { "name": "對公司", "desc": "以每月約 1 美元的 AI 使用成本，降低重複性人工操作時間，並驗證 AI 文件辨識在現場作業中的實際應用價值。" }
-    ],
-    "extensions": [
-      "訂購單辨識", "出貨單辨識", "送貨單辨識", "庫存單據整理",
-      "生產報表輸入", "品質檢查表整理", "發票及費用單據辨識", "其他紙本表單數位化"
-    ],
-    "limitations": [
-      "OCR 辨識結果會受到單據清晰度、拍攝角度、圖片解析度及文件格式影響，因此匯出 Excel 前仍需由使用者確認。",
-      "若系統辨識到不在既有清單中的品號，需由人員確認或新增，避免錯誤資料直接計入庫存表。",
-      "Claude OCR 為外部付費服務，正式使用時需留意單據內容是否包含敏感或機密資料。",
-      "需留意 API 使用權限與帳號管理。",
-      "需留意每月辨識費用及使用量。",
-      "需留意 OCR 服務中斷時的替代處理方式。"
-    ],
-    "success_key": "",
-    "keywords": ["調撥單", "OCR", "Claude", "文件辨識", "PDF 批次處理", "Excel", "自動化", "現場作業", "資料整理"]
+    "i18n": {
+      "zh": {
+        "title": "調撥單辨識與 Excel 自動產生系統",
+        "summary": "利用 Claude OCR 辨識調撥單中的文字與欄位資料，並自動整理及產生 Excel 檔案。現場人員只需要上傳調撥單的圖片或 PDF，系統即可協助完成資料辨識、批次彙整及 Excel 匯出，減少人工輸入與整理時間。",
+        "category": ["現場作業", "文件辨識", "資料整理"],
+        "unit_request": "宏全三廠",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "實際測試與使用中",
+        "region": "",
+        "tools": [
+          { "name": "Claude OCR", "desc": "辨識調撥單文字與欄位資料。屬於付費服務，目前實際使用費用約為每月 1 美元，費用會依上傳的單據數量、頁數及辨識使用量而有所變動。" },
+          "GitHub",
+          "GitHub Pages",
+          "Excel 匯出功能"
+        ],
+        "problem_background": "現場人員收到調撥單後，需要人工查看單據內容，再將日期、品號、數量、棧板數及其他資料輸入 Excel。當調撥單數量較多時，人工輸入及整理需要花費較多時間，也可能發生資料輸入錯誤或遺漏。",
+        "core_problem": "如何減少現場人員人工查看及輸入調撥單資料的時間，並將多張單據快速整理成統一的 Excel 檔案。",
+        "solution": "建立調撥單辨識系統，讓現場人員上傳調撥單的圖片或 PDF。系統利用 Claude OCR 辨識單據內容，解析日期、所別、裝運單號、品號、數量及棧板數等資料，經人員確認後，可將多張調撥單彙整並匯出成 Excel 檔案。",
+        "process": [],
+        "features": [
+          "支援上傳調撥單圖片及 PDF，系統可自動辨識單據內容、彙整多張調撥單，並產生 Excel 檔案。",
+          "PDF 可進行多頁批次辨識，使用者也能在匯出前確認辨識結果，降低資料錯誤的風險。"
+        ],
+        "ai_usage": [
+          "辨識調撥單文字",
+          "解析單據欄位",
+          "擷取品號與數量",
+          "處理不同格式的調撥單",
+          "將辨識結果轉換為結構化資料",
+          "辨識完成後仍保留人工確認步驟，避免因圖片品質、手寫內容或單據格式差異造成錯誤。"
+        ],
+        "results": [
+          "將調撥單內容自動轉換為結構化資料。",
+          "支援 JPG、PNG、BMP 圖片及多頁 PDF 上傳。",
+          "可一次處理多張或多頁調撥單。",
+          "自動彙整品號、數量與相關資料。",
+          "可將整理結果匯出為 Excel 檔案。",
+          "減少現場人員人工輸入及整理資料的時間。",
+          "降低大量人工輸入可能產生的錯誤。"
+        ],
+        "value": [
+          { "name": "對現場人員", "desc": "不需要逐筆將調撥單內容輸入 Excel，只需上傳檔案並確認辨識結果，即可完成資料整理。" },
+          { "name": "對管理人員", "desc": "調撥資料可以用一致的格式進行彙整，方便後續查詢、庫存管理及資料分析。" },
+          { "name": "對公司", "desc": "以每月約 1 美元的 AI 使用成本，降低重複性人工操作時間，並驗證 AI 文件辨識在現場作業中的實際應用價值。" }
+        ],
+        "extensions": [
+          "訂購單辨識", "出貨單辨識", "送貨單辨識", "庫存單據整理",
+          "生產報表輸入", "品質檢查表整理", "發票及費用單據辨識", "其他紙本表單數位化"
+        ],
+        "limitations": [
+          "OCR 辨識結果會受到單據清晰度、拍攝角度、圖片解析度及文件格式影響，因此匯出 Excel 前仍需由使用者確認。",
+          "若系統辨識到不在既有清單中的品號，需由人員確認或新增，避免錯誤資料直接計入庫存表。",
+          "Claude OCR 為外部付費服務，正式使用時需留意單據內容是否包含敏感或機密資料。",
+          "需留意 API 使用權限與帳號管理。",
+          "需留意每月辨識費用及使用量。",
+          "需留意 OCR 服務中斷時的替代處理方式。"
+        ],
+        "success_key": "",
+        "keywords": ["調撥單", "OCR", "Claude", "文件辨識", "PDF 批次處理", "Excel", "自動化", "現場作業", "資料整理"]
+      },
+      "en": {
+        "title": "Transfer Order Recognition & Excel Auto-Generation System",
+        "summary": "Uses Claude OCR to recognize the text and fields on transfer orders and automatically compiles them into an Excel file. Frontline staff simply upload a photo or PDF of the transfer order, and the system handles recognition, batch consolidation, and Excel export — cutting down manual data entry and organizing time.",
+        "category": ["Frontline Operations", "Document Recognition", "Data Organization"],
+        "unit_request": "Hon Chuan Plant 3",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "In Actual Testing and Use",
+        "region": "",
+        "tools": [
+          { "name": "Claude OCR", "desc": "Recognizes the text and field data on transfer orders. This is a paid service; actual usage currently costs about US$1 per month, varying with the number of documents, pages, and recognition volume uploaded." },
+          "GitHub",
+          "GitHub Pages",
+          "Excel Export"
+        ],
+        "problem_background": "After receiving a transfer order, frontline staff had to manually review the document and then enter the date, item number, quantity, pallet count, and other data into Excel. When there were many transfer orders, manual entry and organizing took a lot of time and was prone to data entry errors or omissions.",
+        "core_problem": "How to reduce the time frontline staff spend manually reviewing and entering transfer order data, and quickly consolidate multiple documents into a unified Excel file.",
+        "solution": "Built a transfer order recognition system that lets frontline staff upload a photo or PDF of a transfer order. Claude OCR recognizes the document content and parses out the date, department, shipment number, item number, quantity, pallet count, and other data. After staff confirm the results, multiple transfer orders can be consolidated and exported to an Excel file.",
+        "process": [],
+        "features": [
+          "Supports uploading transfer order images and PDFs; the system automatically recognizes the document content, consolidates multiple transfer orders, and generates an Excel file.",
+          "PDFs can be recognized in multi-page batches, and users can confirm the recognition results before exporting to reduce the risk of data errors."
+        ],
+        "ai_usage": [
+          "Recognizing text on transfer orders",
+          "Parsing document fields",
+          "Extracting item numbers and quantities",
+          "Handling different transfer order formats",
+          "Converting recognition results into structured data",
+          "Keeping a manual confirmation step after recognition to avoid errors from image quality, handwriting, or format differences."
+        ],
+        "results": [
+          "Automatically converts transfer order content into structured data.",
+          "Supports JPG, PNG, BMP images and multi-page PDF uploads.",
+          "Can process multiple documents or pages at once.",
+          "Automatically consolidates item numbers, quantities, and related data.",
+          "Can export the organized results as an Excel file.",
+          "Reduces the time frontline staff spend on manual data entry and organizing.",
+          "Lowers the risk of errors from large-volume manual entry."
+        ],
+        "value": [
+          { "name": "For Frontline Staff", "desc": "No need to enter transfer order content line by line into Excel — just upload the file and confirm the recognition results to complete the data organization." },
+          { "name": "For Managers", "desc": "Transfer data can be consolidated in a consistent format, making it easier for follow-up lookup, inventory management, and data analysis." },
+          { "name": "For the Company", "desc": "At an AI usage cost of about US$1 per month, this reduces repetitive manual work time and validates the real-world value of AI document recognition in frontline operations." }
+        ],
+        "extensions": [
+          "Purchase order recognition", "Shipping order recognition", "Delivery note recognition", "Inventory document organization",
+          "Production report entry", "Quality inspection sheet organization", "Invoice and expense document recognition", "Digitizing other paper forms"
+        ],
+        "limitations": [
+          "Recognition results are affected by document clarity, photo angle, image resolution, and file format, so users still need to confirm results before exporting to Excel.",
+          "If the system recognizes an item number not on the existing list, staff need to confirm or add it manually to avoid incorrect data being recorded directly into the inventory sheet.",
+          "Claude OCR is an external paid service; formal use should take into account whether document content contains sensitive or confidential data.",
+          "Attention should be paid to API access rights and account management.",
+          "Attention should be paid to monthly recognition costs and usage volume.",
+          "Attention should be paid to backup procedures in case the OCR service is unavailable."
+        ],
+        "success_key": "",
+        "keywords": ["Transfer Order", "OCR", "Claude", "Document Recognition", "PDF Batch Processing", "Excel", "Automation", "Frontline Operations", "Data Organization"]
+      }
+    }
   },
   {
     "id": "a700-regulations",
-    "title": "宏全職安衛法規整理網站",
-    "summary": "建立職安衛法規整理網站，讓職安衛人員只要貼上政府法規網址，即可將法規條文自動轉換成公司使用的法規鑑定登錄表格式，並匯出為 Excel 或 PDF。使用者可直接在整理後的表格中填寫執行現況、符合性評估及相關說明，減少人工逐條複製法規內容的時間。",
     "screenshot": "assets/a700-regulations-demo.png",
     "url": "https://markcqhsu.github.io/A700_regulations/",
-    "category": ["法規管理", "文件整理", "行政效率", "資料整理"],
-    "unit_request": "職安衛單位",
-    "unit_owner": "數位發展部",
-    "author": "徐馬克",
-    "status": "正式版本",
-    "region": "",
-    "tools": ["Claude", "GitHub", "GitHub Pages", "Excel 匯出功能", "PDF 匯出功能"],
-    "problem_background": "職安衛人員在進行法規鑑定時，需要將政府法規網站上的條文逐條複製到 Excel，再依公司格式整理成法規鑑定登錄表。當法規條文較多時，逐條複製、整理欄位及調整格式會花費大量時間，也容易發生條文遺漏、複製錯誤或格式不一致的情況。",
-    "core_problem": "如何減少職安衛人員手動複製與整理法規條文的時間，並快速轉換成公司可直接使用的法規鑑定登錄表。",
-    "solution": "建立法規整理網站，讓使用者貼上政府法規頁面的網址。系統自動讀取法規名稱、條號及條文內容，並依照公司的法規鑑定登錄表格式完成整理，使用者可再填寫執行現況、符合性評估及相關說明，最後匯出為 Excel 或 PDF。",
-    "process": [],
-    "features": [
-      "使用者貼上政府法規網址後，系統可自動擷取並整理法規條文，轉換為公司法規鑑定登錄表格式。",
-      "整理結果可匯出成 Excel 或 PDF，供職安衛人員進一步填寫與保存。",
-      { "name": "支援多種政府法規查詢網站", "desc": "水利法規查詢系統、經濟部主管法規查詢系統、地方政府法規查詢系統、內政部主管法規共用系統、環境部主管法規共用系統。" }
-    ],
-    "ai_usage": [
-      "分析不同政府法規網站的頁面格式",
-      "規劃法規條文擷取與轉換邏輯",
-      "建立不同網站格式的讀取方式",
-      "產生及修改網站程式碼",
-      "整理法規資料欄位",
-      "建立 Excel 與 PDF 匯出功能",
-      "協助測試與程式除錯"
-    ],
-    "results": [
-      "將政府法規條文自動轉換成公司使用的法規鑑定登錄表。",
-      "減少職安衛人員逐條複製及整理法規的時間。",
-      "降低法規條文遺漏或複製錯誤的風險。",
-      "統一法規鑑定資料的整理格式。",
-      "支援不同政府機關及地方政府的法規網站。",
-      "可直接匯出 Excel 或 PDF，方便後續填寫、審查與保存。"
-    ],
-    "value": [
-      { "name": "對職安衛人員", "desc": "不需要再將法規條文一條一條複製到 Excel，只需貼上法規網址，即可快速建立可編輯的法規鑑定登錄表。" },
-      { "name": "對管理人員", "desc": "法規資料可以用一致的格式進行整理，方便後續審查、追蹤及管理。" },
-      { "name": "對公司", "desc": "將重複性高的法規整理工作自動化，減少行政作業時間，讓職安衛人員可以將更多時間投入法規判斷、現場確認與改善追蹤。" }
-    ],
-    "extensions": [
-      "環保法規整理", "食品安全法規整理", "消防法規整理", "勞動法規整理",
-      "品質管理相關法規整理", "各國法規及客戶規範整理", "公司內部規章轉換與彙整"
-    ],
-    "limitations": [
-      "系統主要負責擷取及整理法規條文，並不會自動判斷公司是否符合相關規定。",
-      "法規適用性、執行現況及符合性評估，仍需由職安衛或相關專業人員確認。",
-      "由於政府法規網站可能調整頁面結構或資料格式，若網站改版，部分法規網址可能需要更新讀取方式。",
-      "匯出前仍應確認法規名稱是否正確。",
-      "匯出前仍應確認條號及條文是否完整。",
-      "匯出前仍應確認法規是否為最新版本，是否有修法、廢止或施行日期變更。",
-      "匯出前仍應確認是否適用於公司及相關廠區。"
-    ],
-    "success_key": "",
-    "keywords": ["職安衛", "法規整理", "法規鑑定", "Excel", "PDF", "自動化", "Claude", "政府法規", "行政效率", "法規管理"]
+    "i18n": {
+      "zh": {
+        "title": "宏全職安衛法規整理網站",
+        "summary": "建立職安衛法規整理網站，讓職安衛人員只要貼上政府法規網址，即可將法規條文自動轉換成公司使用的法規鑑定登錄表格式，並匯出為 Excel 或 PDF。使用者可直接在整理後的表格中填寫執行現況、符合性評估及相關說明，減少人工逐條複製法規內容的時間。",
+        "category": ["法規管理", "文件整理", "行政效率", "資料整理"],
+        "unit_request": "職安衛單位",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "正式版本",
+        "region": "",
+        "tools": ["Claude", "GitHub", "GitHub Pages", "Excel 匯出功能", "PDF 匯出功能"],
+        "problem_background": "職安衛人員在進行法規鑑定時，需要將政府法規網站上的條文逐條複製到 Excel，再依公司格式整理成法規鑑定登錄表。當法規條文較多時，逐條複製、整理欄位及調整格式會花費大量時間，也容易發生條文遺漏、複製錯誤或格式不一致的情況。",
+        "core_problem": "如何減少職安衛人員手動複製與整理法規條文的時間，並快速轉換成公司可直接使用的法規鑑定登錄表。",
+        "solution": "建立法規整理網站，讓使用者貼上政府法規頁面的網址。系統自動讀取法規名稱、條號及條文內容，並依照公司的法規鑑定登錄表格式完成整理，使用者可再填寫執行現況、符合性評估及相關說明，最後匯出為 Excel 或 PDF。",
+        "process": [],
+        "features": [
+          "使用者貼上政府法規網址後，系統可自動擷取並整理法規條文，轉換為公司法規鑑定登錄表格式。",
+          "整理結果可匯出成 Excel 或 PDF，供職安衛人員進一步填寫與保存。",
+          { "name": "支援多種政府法規查詢網站", "desc": "水利法規查詢系統、經濟部主管法規查詢系統、地方政府法規查詢系統、內政部主管法規共用系統、環境部主管法規共用系統。" }
+        ],
+        "ai_usage": [
+          "分析不同政府法規網站的頁面格式",
+          "規劃法規條文擷取與轉換邏輯",
+          "建立不同網站格式的讀取方式",
+          "產生及修改網站程式碼",
+          "整理法規資料欄位",
+          "建立 Excel 與 PDF 匯出功能",
+          "協助測試與程式除錯"
+        ],
+        "results": [
+          "將政府法規條文自動轉換成公司使用的法規鑑定登錄表。",
+          "減少職安衛人員逐條複製及整理法規的時間。",
+          "降低法規條文遺漏或複製錯誤的風險。",
+          "統一法規鑑定資料的整理格式。",
+          "支援不同政府機關及地方政府的法規網站。",
+          "可直接匯出 Excel 或 PDF，方便後續填寫、審查與保存。"
+        ],
+        "value": [
+          { "name": "對職安衛人員", "desc": "不需要再將法規條文一條一條複製到 Excel，只需貼上法規網址，即可快速建立可編輯的法規鑑定登錄表。" },
+          { "name": "對管理人員", "desc": "法規資料可以用一致的格式進行整理，方便後續審查、追蹤及管理。" },
+          { "name": "對公司", "desc": "將重複性高的法規整理工作自動化，減少行政作業時間，讓職安衛人員可以將更多時間投入法規判斷、現場確認與改善追蹤。" }
+        ],
+        "extensions": [
+          "環保法規整理", "食品安全法規整理", "消防法規整理", "勞動法規整理",
+          "品質管理相關法規整理", "各國法規及客戶規範整理", "公司內部規章轉換與彙整"
+        ],
+        "limitations": [
+          "系統主要負責擷取及整理法規條文，並不會自動判斷公司是否符合相關規定。",
+          "法規適用性、執行現況及符合性評估，仍需由職安衛或相關專業人員確認。",
+          "由於政府法規網站可能調整頁面結構或資料格式，若網站改版，部分法規網址可能需要更新讀取方式。",
+          "匯出前仍應確認法規名稱是否正確。",
+          "匯出前仍應確認條號及條文是否完整。",
+          "匯出前仍應確認法規是否為最新版本，是否有修法、廢止或施行日期變更。",
+          "匯出前仍應確認是否適用於公司及相關廠區。"
+        ],
+        "success_key": "",
+        "keywords": ["職安衛", "法規整理", "法規鑑定", "Excel", "PDF", "自動化", "Claude", "政府法規", "行政效率", "法規管理"]
+      },
+      "en": {
+        "title": "Hon Chuan EHS Regulation Organizer",
+        "summary": "Built a regulation organizer site so EHS staff only need to paste a government regulation URL to automatically convert the legal text into the company's regulation assessment register format, exportable as Excel or PDF. Users can then fill in the implementation status, compliance assessment, and related notes directly in the organized table, cutting down the time spent manually copying regulation text.",
+        "category": ["Regulatory Management", "Document Organization", "Administrative Efficiency", "Data Organization"],
+        "unit_request": "EHS Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "Official Release",
+        "region": "",
+        "tools": ["Claude", "GitHub", "GitHub Pages", "Excel Export", "PDF Export"],
+        "problem_background": "When conducting regulation assessments, EHS staff had to manually copy each article of a regulation from a government website into Excel, then organize it into the company's regulation assessment register format. When there were many articles, copying, formatting, and organizing the fields took a lot of time and was prone to missed articles, copy errors, or inconsistent formatting.",
+        "core_problem": "How to reduce the time EHS staff spend manually copying and organizing regulation text, and quickly convert it into a regulation assessment register the company can use directly.",
+        "solution": "Built a regulation organizer site where users paste the URL of a government regulation page. The system automatically reads the regulation name, article numbers, and article text, and organizes it into the company's regulation assessment register format. Users can then fill in the implementation status, compliance assessment, and related notes, and finally export the result as Excel or PDF.",
+        "process": [],
+        "features": [
+          "After pasting a government regulation URL, the system automatically extracts and organizes the regulation text into the company's regulation assessment register format.",
+          "The organized results can be exported as Excel or PDF for EHS staff to fill in further and keep on file.",
+          { "name": "Supports multiple government regulation lookup sites", "desc": "Including the Water Resources regulation lookup system, the Ministry of Economic Affairs regulation lookup system, local government regulation lookup systems, the Ministry of the Interior shared regulation system, and the Ministry of Environment shared regulation system." }
+        ],
+        "ai_usage": [
+          "Analyzing the page structure of different government regulation sites",
+          "Planning the logic for extracting and converting regulation text",
+          "Building read methods for different site formats",
+          "Generating and editing the website code",
+          "Organizing the regulation data fields",
+          "Building the Excel and PDF export features",
+          "Helping with testing and debugging"
+        ],
+        "results": [
+          "Automatically converts government regulation text into the company's regulation assessment register.",
+          "Reduces the time EHS staff spend copying and organizing regulations article by article.",
+          "Lowers the risk of missed articles or copy errors.",
+          "Standardizes the format of regulation assessment data.",
+          "Supports regulation sites from different government agencies and local governments.",
+          "Can export directly to Excel or PDF for easy follow-up completion, review, and record-keeping."
+        ],
+        "value": [
+          { "name": "For EHS Staff", "desc": "No longer need to copy regulation text article by article into Excel — just paste the regulation URL to quickly build an editable regulation assessment register." },
+          { "name": "For Managers", "desc": "Regulation data can be organized in a consistent format, making follow-up review, tracking, and management easier." },
+          { "name": "For the Company", "desc": "Automates highly repetitive regulation organizing work, reducing administrative time so EHS staff can spend more time on regulatory judgment, on-site checks, and improvement tracking." }
+        ],
+        "extensions": [
+          "Environmental regulation organization", "Food safety regulation organization", "Fire safety regulation organization", "Labor regulation organization",
+          "Quality management regulation organization", "Organizing regulations and customer requirements across countries", "Converting and consolidating internal company policies"
+        ],
+        "limitations": [
+          "The system is mainly responsible for extracting and organizing regulation text — it does not automatically judge whether the company complies with the relevant rules.",
+          "Regulation applicability, implementation status, and compliance assessment still need to be confirmed by EHS or other relevant specialists.",
+          "Since government regulation sites may change their page structure or data format, some regulation URLs may need updated read methods if a site is redesigned.",
+          "Before exporting, users should still confirm the regulation name is correct.",
+          "Before exporting, users should still confirm the article numbers and text are complete.",
+          "Before exporting, users should still confirm the regulation is the latest version and check for any amendments, repeals, or changes to the effective date.",
+          "Before exporting, users should still confirm whether it applies to the company and relevant sites."
+        ],
+        "success_key": "",
+        "keywords": ["EHS", "Regulation Organization", "Regulation Assessment", "Excel", "PDF", "Automation", "Claude", "Government Regulations", "Administrative Efficiency", "Regulatory Management"]
+      }
+    }
   },
   {
     "id": "thc-products-list-app",
-    "title": "產品型錄 APP（iOS 版本）",
-    "summary": "將集團產品規格整理成 iOS 產品型錄 APP，讓業務人員可透過手機或平板快速查詢瓶蓋、瓶胚及相關產品資訊。使用者可依產品條件進行搜尋與篩選，減少查找型錄、規格表或詢問不同單位的時間，方便業務拜訪客戶及日常產品查詢。",
     "screenshot": "assets/thc-products-list-app.jpg",
     "url": "https://apps.apple.com/tw/app/thc-products-list/id6749604154",
-    "category": ["業務支援", "產品查詢", "行動應用"],
-    "unit_request": "業務",
-    "unit_owner": "數位發展部",
-    "author": "徐馬克",
-    "status": "正式上架",
-    "region": "",
-    "tools": ["AI 程式開發工具", "Flutter", "Firebase", "Apple App Store", "集團現有產品規格資料"],
-    "problem_background": "集團產品種類及規格較多，產品資料可能分散在型錄、規格表或不同檔案中。業務人員在拜訪客戶或回覆產品需求時，需要花時間查找相關資料，若不熟悉產品，也可能需要詢問其他同仁才能確認規格。",
-    "core_problem": "如何將集團產品資料集中整理，讓業務人員可以隨時透過手機快速查詢產品規格。",
-    "solution": "將集團現有產品規格整理成資料庫，並開發 iOS 產品型錄 APP。業務人員可透過搜尋及篩選功能，查詢瓶蓋、瓶胚等產品的尺寸、重量、瓶口類型及生產據點等資訊，作為客戶溝通與產品選型的參考。App Store 頁面顯示，目前收錄超過 200 種產品規格，涵蓋台灣、中國及東南亞多個生產據點。",
-    "process": [],
-    "features": [
-      "方便業務人員透過手機或平板，快速搜尋及查詢集團產品規格。",
-      "產品資料可由後端更新，不需每次重新發布 APP，即可取得最新產品資訊。APP 目前支援繁體中文與英文介面，並可於 iPhone、iPad 等裝置使用。"
-    ],
-    "ai_usage": [
-      "整理及分類產品規格資料",
-      "規劃產品搜尋與篩選方式",
-      "協助 APP 程式開發",
-      "產生及修改程式碼",
-      "協助測試與程式除錯",
-      "優化操作介面及多國語言內容"
-    ],
-    "results": [
-      "將分散的產品資訊整理成行動版產品型錄。",
-      "建立產品搜尋及條件篩選功能。",
-      "方便業務人員在客戶現場即時查詢產品資料。",
-      "降低對紙本型錄及分散檔案的依賴。",
-      "產品資料可由後端持續更新。",
-      "APP 已正式上架 Apple App Store。"
-    ],
-    "value": [
-      { "name": "對業務人員", "desc": "可隨時透過手機查詢產品資料，更快速地回覆客戶問題及進行產品介紹。" },
-      { "name": "對客戶", "desc": "業務人員能在溝通過程中即時提供較完整的產品規格，提升需求確認與產品選型效率。" },
-      { "name": "對公司", "desc": "將產品資料轉換成可集中管理、持續更新及方便使用的數位型錄，逐步累積集團產品知識。" }
-    ],
-    "extensions": [
-      "Android 版本", "飲料代工產線查詢", "產品報價與詢價", "電子型錄分享",
-      "客戶需求配對", "產品文件及規格書下載", "業務知識庫"
-    ],
-    "limitations": [
-      "APP 中的資料主要供產品查詢及業務溝通參考，正式規格、供應地點、產能、最低訂購量及交期，仍需由相關單位進一步確認。",
-      "產品資料也需要定期維護，確保 APP 內容與最新產品規格一致。",
-      "目前 APP 需要 iOS 15.0 或以上版本；Apple App Store 顯示，開發者聲明此 APP 不收集使用者資料。"
-    ],
-    "success_key": "",
-    "keywords": ["產品型錄", "iOS APP", "產品規格", "業務支援", "瓶蓋", "瓶胚", "Flutter", "Firebase", "AI 程式開發"]
+    "i18n": {
+      "zh": {
+        "title": "產品型錄 APP（iOS 版本）",
+        "summary": "將集團產品規格整理成 iOS 產品型錄 APP，讓業務人員可透過手機或平板快速查詢瓶蓋、瓶胚及相關產品資訊。使用者可依產品條件進行搜尋與篩選，減少查找型錄、規格表或詢問不同單位的時間，方便業務拜訪客戶及日常產品查詢。",
+        "category": ["業務支援", "產品查詢", "行動應用"],
+        "unit_request": "業務",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "正式上架",
+        "region": "",
+        "tools": ["AI 程式開發工具", "Flutter", "Firebase", "Apple App Store", "集團現有產品規格資料"],
+        "problem_background": "集團產品種類及規格較多，產品資料可能分散在型錄、規格表或不同檔案中。業務人員在拜訪客戶或回覆產品需求時，需要花時間查找相關資料，若不熟悉產品，也可能需要詢問其他同仁才能確認規格。",
+        "core_problem": "如何將集團產品資料集中整理，讓業務人員可以隨時透過手機快速查詢產品規格。",
+        "solution": "將集團現有產品規格整理成資料庫，並開發 iOS 產品型錄 APP。業務人員可透過搜尋及篩選功能，查詢瓶蓋、瓶胚等產品的尺寸、重量、瓶口類型及生產據點等資訊，作為客戶溝通與產品選型的參考。App Store 頁面顯示，目前收錄超過 200 種產品規格，涵蓋台灣、中國及東南亞多個生產據點。",
+        "process": [],
+        "features": [
+          "方便業務人員透過手機或平板，快速搜尋及查詢集團產品規格。",
+          "產品資料可由後端更新，不需每次重新發布 APP，即可取得最新產品資訊。APP 目前支援繁體中文與英文介面，並可於 iPhone、iPad 等裝置使用。"
+        ],
+        "ai_usage": [
+          "整理及分類產品規格資料",
+          "規劃產品搜尋與篩選方式",
+          "協助 APP 程式開發",
+          "產生及修改程式碼",
+          "協助測試與程式除錯",
+          "優化操作介面及多國語言內容"
+        ],
+        "results": [
+          "將分散的產品資訊整理成行動版產品型錄。",
+          "建立產品搜尋及條件篩選功能。",
+          "方便業務人員在客戶現場即時查詢產品資料。",
+          "降低對紙本型錄及分散檔案的依賴。",
+          "產品資料可由後端持續更新。",
+          "APP 已正式上架 Apple App Store。"
+        ],
+        "value": [
+          { "name": "對業務人員", "desc": "可隨時透過手機查詢產品資料，更快速地回覆客戶問題及進行產品介紹。" },
+          { "name": "對客戶", "desc": "業務人員能在溝通過程中即時提供較完整的產品規格，提升需求確認與產品選型效率。" },
+          { "name": "對公司", "desc": "將產品資料轉換成可集中管理、持續更新及方便使用的數位型錄，逐步累積集團產品知識。" }
+        ],
+        "extensions": [
+          "Android 版本", "飲料代工產線查詢", "產品報價與詢價", "電子型錄分享",
+          "客戶需求配對", "產品文件及規格書下載", "業務知識庫"
+        ],
+        "limitations": [
+          "APP 中的資料主要供產品查詢及業務溝通參考，正式規格、供應地點、產能、最低訂購量及交期，仍需由相關單位進一步確認。",
+          "產品資料也需要定期維護，確保 APP 內容與最新產品規格一致。",
+          "目前 APP 需要 iOS 15.0 或以上版本；Apple App Store 顯示，開發者聲明此 APP 不收集使用者資料。"
+        ],
+        "success_key": "",
+        "keywords": ["產品型錄", "iOS APP", "產品規格", "業務支援", "瓶蓋", "瓶胚", "Flutter", "Firebase", "AI 程式開發"]
+      },
+      "en": {
+        "title": "Product Catalog App (iOS)",
+        "summary": "Organized the group's product specifications into an iOS product catalog app, letting sales staff quickly look up bottle caps, preforms, and related product information from a phone or tablet. Users can search and filter by product criteria, cutting down the time spent digging through catalogs, spec sheets, or asking other departments — handy for customer visits and everyday product lookups.",
+        "category": ["Sales Support", "Product Lookup", "Mobile App"],
+        "unit_request": "Sales",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "Officially Released",
+        "region": "",
+        "tools": ["AI Development Tools", "Flutter", "Firebase", "Apple App Store", "Group's Existing Product Specification Data"],
+        "problem_background": "The group has a wide range of products and specs, and product data can be scattered across catalogs, spec sheets, or different files. When visiting customers or responding to product questions, sales staff had to spend time searching for the right data, and if unfamiliar with a product, might also need to ask colleagues to confirm the spec.",
+        "core_problem": "How to consolidate the group's product data so sales staff can quickly look up product specs from their phone at any time.",
+        "solution": "Organized the group's existing product specs into a database and developed an iOS product catalog app. Sales staff can use search and filter features to look up dimensions, weight, neck finish type, and production site for bottle caps, preforms, and other products, as a reference for customer conversations and product selection. Per the App Store listing, the app currently covers more than 200 product specs across production sites in Taiwan, China, and Southeast Asia.",
+        "process": [],
+        "features": [
+          "Lets sales staff quickly search and look up group product specs from a phone or tablet.",
+          "Product data can be updated on the backend without needing to republish the app, so the latest product information is always available. The app currently supports Traditional Chinese and English, and runs on iPhone and iPad."
+        ],
+        "ai_usage": [
+          "Organizing and classifying product spec data",
+          "Planning the product search and filter approach",
+          "Assisting with app development",
+          "Generating and editing code",
+          "Helping with testing and debugging",
+          "Optimizing the interface and multi-language content"
+        ],
+        "results": [
+          "Turned scattered product information into a mobile product catalog.",
+          "Built product search and filter features.",
+          "Lets sales staff look up product data on the spot during customer visits.",
+          "Reduced reliance on paper catalogs and scattered files.",
+          "Product data can be continuously updated from the backend.",
+          "The app is officially live on the Apple App Store."
+        ],
+        "value": [
+          { "name": "For Sales Staff", "desc": "Can look up product data from their phone at any time, responding to customer questions and presenting products faster." },
+          { "name": "For Customers", "desc": "Sales staff can provide more complete product specs in real time during conversations, improving requirement confirmation and product selection efficiency." },
+          { "name": "For the Company", "desc": "Turns product data into a centrally managed, continuously updated, and easy-to-use digital catalog, gradually building up the group's product knowledge base." }
+        ],
+        "extensions": [
+          "Android version", "Beverage contract manufacturing line lookup", "Product quotes and inquiries", "Digital catalog sharing",
+          "Customer requirement matching", "Product document and spec sheet downloads", "Sales knowledge base"
+        ],
+        "limitations": [
+          "The data in the app is mainly for product lookup and sales communication reference — official specs, supply locations, capacity, minimum order quantity, and lead time still need to be confirmed by the relevant teams.",
+          "Product data also needs regular maintenance to keep the app's content consistent with the latest product specs.",
+          "The app currently requires iOS 15.0 or above; per the App Store listing, the developer states this app does not collect user data."
+        ],
+        "success_key": "",
+        "keywords": ["Product Catalog", "iOS App", "Product Specifications", "Sales Support", "Bottle Caps", "Preforms", "Flutter", "Firebase", "AI Development"]
+      }
+    }
   }
 ]
