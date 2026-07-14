@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>AI / 自動化案例庫</title>
+<title>宏全AI應用推動案例庫</title>
 <style>
   :root {
     --bg: #f5f6f8;
@@ -243,15 +243,13 @@
   .meta-grid div { font-size: 15px; }
   .meta-grid label { display: block; font-size: 12.5px; color: var(--text-muted); font-weight: 700; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.02em; }
 
-  .field { margin-bottom: 22px; }
+  .field { margin-bottom: 26px; }
   .field label {
     display: block;
-    font-size: 13px;
-    font-weight: 700;
-    color: var(--accent);
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 10px;
   }
   .field .text { font-size: 16px; line-height: 1.8; white-space: pre-line; }
   .field ol { margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.8; }
@@ -281,7 +279,7 @@
         <div class="changelog-list" id="changelogContent"></div>
       </div>
     </details>
-    <h1>AI / 自動化案例庫</h1>
+    <h1>宏全AI應用推動案例庫</h1>
     <p>分享用 AI 或自動化工具解決廠內流程問題的實際案例</p>
     <span id="totalCount"></span>
   </header>
@@ -395,6 +393,18 @@ function allCategories() {
 function renderCategoryFilters() {
   const el = document.getElementById('categoryFilters');
   el.innerHTML = '<span class="filter-label">分類</span>';
+
+  const allBtn = document.createElement('button');
+  allBtn.className = 'tag-btn';
+  allBtn.textContent = '全部';
+  allBtn.onclick = () => {
+    activeCategory = null;
+    renderCategoryFilters();
+    render();
+  };
+  if (activeCategory === null) allBtn.classList.add('active');
+  el.appendChild(allBtn);
+
   allCategories().forEach(cat => {
     const btn = document.createElement('button');
     btn.className = 'tag-btn';
