@@ -1,0 +1,13 @@
+[
+  {
+    "id": "sample-001",
+    "title": "範例案例：塑蓋不良率 OCR 紀錄表",
+    "screenshot": "assets/sample-001.png",
+    "url": "https://example.com/demo",
+    "author": "王小明",
+    "tools": ["Claude Code", "Google Sheets API", "PaddleOCR"],
+    "problem": "現場紙本紀錄不良率需要人工謄打進 Excel，耗時且容易出錯。",
+    "design": "用手機拍照上傳，OCR 辨識表格內容後自動寫入 Google Sheet，並用 Cloud Run 部署辨識 API，前端用 GitHub Pages 靜態頁面呼叫。",
+    "tags": ["OCR", "流程自動化", "品保"]
+  }
+]
