@@ -16,6 +16,7 @@
     --chip-bg: #eef2ff;
     --chip-text: #2c3e8f;
     --image-bg: #eceef2;
+    --titlebar-bg: #e7e9ee;
   }
   @media (prefers-color-scheme: dark) {
     :root {
@@ -29,6 +30,7 @@
       --chip-bg: #232945;
       --chip-text: #b3c1ff;
       --image-bg: #26292f;
+      --titlebar-bg: #24272e;
     }
   }
   * { box-sizing: border-box; }
@@ -73,7 +75,17 @@
   .changelog-entry .date { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; font-weight: 600; }
   .changelog-entry .notes { font-size: 15px; line-height: 1.6; }
   header h1 { margin: 0 0 10px; font-size: 30px; font-weight: 800; letter-spacing: -0.01em; }
-  header p { margin: 0; color: var(--text-muted); font-size: 16px; }
+  header p { margin: 0 0 14px; color: var(--text-muted); font-size: 16px; }
+  #totalCount {
+    display: inline-block;
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    color: var(--text);
+    font-size: 13.5px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 999px;
+  }
 
   /* ---------- controls ---------- */
   .controls {
@@ -127,6 +139,30 @@
     flex-direction: column;
   }
   .card:hover { border-color: var(--accent); }
+  .card .browser-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    background: var(--titlebar-bg);
+    border-bottom: 1.5px solid var(--border);
+  }
+  .card .traffic-lights { display: flex; gap: 6px; flex-shrink: 0; }
+  .card .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .card .dot.red { background: #ff5f57; }
+  .card .dot.yellow { background: #febc2e; }
+  .card .dot.green { background: #28c840; }
+  .card .url-pill {
+    flex: 1;
+    background: var(--card-bg);
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--text-muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .card .thumb {
     width: 100%;
     height: 180px;
@@ -139,7 +175,16 @@
   .card .thumb img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
   .card .thumb .placeholder { color: var(--text-muted); font-size: 14px; }
   .card .body { padding: 18px; display: flex; flex-direction: column; gap: 9px; flex: 1; }
-  .card .category-badge { font-size: 12.5px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.03em; }
+  .card .type-badge {
+    display: inline-block;
+    align-self: flex-start;
+    background: var(--chip-bg);
+    color: var(--chip-text);
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 999px;
+  }
   .card h3 { margin: 0; font-size: 18px; font-weight: 700; line-height: 1.35; }
   .card .summary {
     font-size: 14.5px;
@@ -150,9 +195,22 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .card .meta { font-size: 13.5px; color: var(--text-muted); margin-top: auto; }
+  .card .meta { font-size: 13.5px; color: var(--text-muted); }
   .chips { display: flex; flex-wrap: wrap; gap: 7px; }
   .chip { background: var(--chip-bg); color: var(--chip-text); font-size: 13px; font-weight: 600; padding: 4px 11px; border-radius: 999px; }
+  .card .cta-btn {
+    display: block;
+    text-align: center;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    padding: 12px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin-top: auto;
+  }
+  .card .cta-btn:hover { opacity: 0.9; }
   #empty { text-align: center; color: var(--text-muted); font-size: 16px; padding: 60px 0; display: none; }
 
   /* ---------- detail view (full page, no overlay) ---------- */
@@ -237,6 +295,7 @@
     </details>
     <h1>AI / 自動化案例庫</h1>
     <p>分享用 AI 或自動化工具解決廠內流程問題的實際案例</p>
+    <span id="totalCount"></span>
   </header>
 
   <div class="controls">
@@ -270,8 +329,20 @@ async function load() {
   const changelog = await changelogRes.json();
   renderVersion(changelog);
   renderCategoryFilters();
+  document.getElementById('totalCount').textContent = `共收錄 ${cases.length} 個案例`;
   render();
   routeFromHash();
+}
+
+function domainFromUrl(url) {
+  if (!url) return '尚無網站連結';
+  try {
+    const u = new URL(url);
+    const path = u.pathname.replace(/\/$/, '');
+    return u.hostname + path;
+  } catch (e) {
+    return url;
+  }
 }
 
 function renderVersion(changelog) {
@@ -376,6 +447,13 @@ function renderCard(c) {
   card.className = 'card';
   card.onclick = () => { location.hash = 'case/' + encodeURIComponent(c.id); };
 
+  const browserBar = document.createElement('div');
+  browserBar.className = 'browser-bar';
+  browserBar.innerHTML = `
+    <div class="traffic-lights"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+    <div class="url-pill">${escapeHtml(domainFromUrl(c.url))}</div>
+  `;
+
   const thumb = document.createElement('div');
   thumb.className = 'thumb';
   if (c.screenshot) {
@@ -387,13 +465,18 @@ function renderCard(c) {
   const body = document.createElement('div');
   body.className = 'body';
   body.innerHTML = `
-    <div class="category-badge">${(c.category || []).map(escapeHtml).join(' / ')}</div>
     <h3>${escapeHtml(c.title)}</h3>
+    <div class="type-badge">${(c.category || []).map(escapeHtml).join('、')}</div>
     <div class="summary">${escapeHtml(c.summary || '')}</div>
     <div class="chips">${(c.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
     <div class="meta">製作人：${escapeHtml(c.author || '未提供')}</div>
+    ${c.url ? `<a class="cta-btn" href="${c.url}" target="_blank" rel="noopener">前往網站 →</a>` : ''}
   `;
+  if (c.url) {
+    body.querySelector('.cta-btn').addEventListener('click', (e) => e.stopPropagation());
+  }
 
+  card.appendChild(browserBar);
   card.appendChild(thumb);
   card.appendChild(body);
   return card;
