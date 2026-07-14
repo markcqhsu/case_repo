@@ -18,21 +18,6 @@
     --image-bg: #eceef2;
     --titlebar-bg: #e7e9ee;
   }
-  @media (prefers-color-scheme: dark) {
-    :root {
-      --bg: #14161a;
-      --card-bg: #1d2026;
-      --text: #eceef1;
-      --text-muted: #a2a9b4;
-      --border: #333740;
-      --accent: #7c9bff;
-      --accent-soft: #232945;
-      --chip-bg: #232945;
-      --chip-text: #b3c1ff;
-      --image-bg: #26292f;
-      --titlebar-bg: #24272e;
-    }
-  }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
   body {
@@ -45,10 +30,17 @@
 
   /* ---------- header ---------- */
   header {
+    position: relative;
     padding: 44px 24px 26px;
     text-align: center;
   }
-  .version-toggle { display: flex; justify-content: center; margin-bottom: 14px; }
+  .version-toggle {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    margin: 0;
+    z-index: 6;
+  }
   .version-toggle summary {
     list-style: none;
     display: inline-block;
@@ -62,13 +54,17 @@
   }
   .version-toggle summary::-webkit-details-marker { display: none; }
   .changelog-box {
-    max-width: 420px;
-    margin: 14px auto 0;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    width: 300px;
+    max-width: calc(100vw - 32px);
     text-align: left;
     background: var(--card-bg);
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 16px 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
   .changelog-entry { margin-bottom: 14px; }
   .changelog-entry:last-child { margin-bottom: 0; }
@@ -198,19 +194,6 @@
   .card .meta { font-size: 13.5px; color: var(--text-muted); }
   .chips { display: flex; flex-wrap: wrap; gap: 7px; }
   .chip { background: var(--chip-bg); color: var(--chip-text); font-size: 13px; font-weight: 600; padding: 4px 11px; border-radius: 999px; }
-  .card .cta-btn {
-    display: block;
-    text-align: center;
-    background: var(--accent);
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    padding: 12px;
-    border-radius: 10px;
-    text-decoration: none;
-    margin-top: auto;
-  }
-  .card .cta-btn:hover { opacity: 0.9; }
   #empty { text-align: center; color: var(--text-muted); font-size: 16px; padding: 60px 0; display: none; }
 
   /* ---------- detail view (full page, no overlay) ---------- */
@@ -470,11 +453,7 @@ function renderCard(c) {
     <div class="summary">${escapeHtml(c.summary || '')}</div>
     <div class="chips">${(c.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
     <div class="meta">製作人：${escapeHtml(c.author || '未提供')}</div>
-    ${c.url ? `<a class="cta-btn" href="${c.url}" target="_blank" rel="noopener">前往網站 →</a>` : ''}
   `;
-  if (c.url) {
-    body.querySelector('.cta-btn').addEventListener('click', (e) => e.stopPropagation());
-  }
 
   card.appendChild(browserBar);
   card.appendChild(thumb);
