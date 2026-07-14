@@ -452,7 +452,7 @@ function renderCard(c) {
     <div class="type-badge">${(c.category || []).map(escapeHtml).join('、')}</div>
     <div class="summary">${escapeHtml(c.summary || '')}</div>
     <div class="chips">${(c.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
-    <div class="meta">製作人：${escapeHtml(c.author || '未提供')}</div>
+    <div class="meta">製作人：${escapeHtml(c.author || '未提供')}${c.unit_owner ? ` ｜ 負責單位：${escapeHtml(c.unit_owner)}` : ''}</div>
   `;
 
   card.appendChild(browserBar);
