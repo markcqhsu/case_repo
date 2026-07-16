@@ -1,6 +1,7 @@
 [
   {
     "id": "qrcode-cap-demo",
+    "updated": "2026.07",
     "screenshot": "assets/qrcode-cap-demo.jpg",
     "url": "https://markcqhsu.github.io/QR_Demo/index.html?code=TEST001",
     "i18n": {
@@ -266,6 +267,7 @@
   },
   {
     "id": "beverage-odm-finder",
+    "updated": "2026.07",
     "screenshot": "assets/beverage-odm-demo.jpg",
     "url": "https://markcqhsu.github.io/beverage-odm/",
     "i18n": {
@@ -433,6 +435,7 @@
   },
   {
     "id": "aseptic-f3-transfer-ocr",
+    "updated": "2026.07",
     "screenshot": "assets/aseptic-f3-demo.png",
     "url": "https://markcqhsu.github.io/Aseptic_f3/",
     "i18n": {
@@ -624,6 +627,7 @@
   },
   {
     "id": "a700-regulations",
+    "updated": "2026.07",
     "screenshot": "assets/a700-regulations-demo.png",
     "url": "https://markcqhsu.github.io/A700_regulations/",
     "i18n": {
@@ -823,6 +827,7 @@
   },
   {
     "id": "thc-products-list-app",
+    "updated": "2026.07",
     "screenshot": "assets/thc-products-list-app.jpg",
     "url": "https://apps.apple.com/tw/app/thc-products-list/id6749604154",
     "i18n": {
@@ -1000,6 +1005,7 @@
   },
   {
     "id": "case-006",
+    "updated": "2026.07",
     "screenshot": "assets/coa-automation-demo.png",
     "url": "https://n8n.honchuan.com.tw:5678/signin",
     "i18n": {

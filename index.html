@@ -396,7 +396,8 @@ const FIELD_LABELS = {
   extensions: { zh: '可複製與延伸應用', en: 'Reusable & Extended Applications' },
   limitations: { zh: '使用限制與注意事項', en: 'Limitations & Notes' },
   success_key: { zh: '成功關鍵', en: 'Key to Success' },
-  keywords: { zh: '案例關鍵字', en: 'Keywords' }
+  keywords: { zh: '案例關鍵字', en: 'Keywords' },
+  updated: { zh: '更新時間', en: 'Updated' }
 };
 
 function ui() { return UI_STRINGS[currentLang]; }
@@ -559,11 +560,22 @@ function matches(c, q) {
   return haystack.includes(q.toLowerCase());
 }
 
+function sortedByNewest(list) {
+  return list
+    .map((c, idx) => ({ c, idx }))
+    .sort((a, b) => {
+      const cmp = (b.c.updated || '').localeCompare(a.c.updated || '');
+      if (cmp !== 0) return cmp;
+      return b.idx - a.idx;
+    })
+    .map(x => x.c);
+}
+
 function render() {
   const q = document.getElementById('search').value.trim();
   const grid = document.getElementById('grid');
   const empty = document.getElementById('empty');
-  const filtered = cases.filter(c => matches(c, q));
+  const filtered = sortedByNewest(cases.filter(c => matches(c, q)));
   grid.innerHTML = '';
   empty.style.display = filtered.length ? 'none' : 'block';
   filtered.forEach(c => grid.appendChild(renderCard(c)));
@@ -598,7 +610,7 @@ function renderCard(c) {
     <div class="type-badge">${(lc.category || []).map(escapeHtml).join(s.listSep)}</div>
     <div class="summary">${escapeHtml(lc.summary || '')}</div>
     <div class="chips">${(lc.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
-    <div class="meta">${escapeHtml(s.authorLabel)}${s.colon}${escapeHtml(lc.author || s.notProvided)}${lc.unit_owner ? `${s.divider}${escapeHtml(s.ownerLabel)}${s.colon}${escapeHtml(lc.unit_owner)}` : ''}</div>
+    <div class="meta">${escapeHtml(s.authorLabel)}${s.colon}${escapeHtml(lc.author || s.notProvided)}${lc.unit_owner ? `${s.divider}${escapeHtml(s.ownerLabel)}${s.colon}${escapeHtml(lc.unit_owner)}` : ''}${c.updated ? `${s.divider}${escapeHtml(flabel('updated'))}${s.colon}${escapeHtml(c.updated)}` : ''}</div>
   `;
 
   card.appendChild(browserBar);
@@ -620,6 +632,7 @@ function renderDetail(c) {
     [flabel('author'), lc.author],
     [flabel('status'), lc.status],
     [flabel('region'), lc.region],
+    [flabel('updated'), c.updated],
   ].filter(([, v]) => !isEmpty(v));
 
   content.innerHTML = `
