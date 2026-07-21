@@ -214,7 +214,7 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .card .meta { font-size: 13.5px; color: var(--text-muted); }
+  .card .meta { font-size: 13.5px; color: var(--text-muted); display: flex; flex-direction: column; gap: 2px; }
   .chips { display: flex; flex-wrap: wrap; gap: 7px; }
   .chip { background: var(--chip-bg); color: var(--chip-text); font-size: 13px; font-weight: 600; padding: 4px 11px; border-radius: 999px; }
   #empty { text-align: center; color: var(--text-muted); font-size: 16px; padding: 60px 0; display: none; }
@@ -610,7 +610,11 @@ function renderCard(c) {
     <div class="type-badge">${(lc.category || []).map(escapeHtml).join(s.listSep)}</div>
     <div class="summary">${escapeHtml(lc.summary || '')}</div>
     <div class="chips">${(lc.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
-    <div class="meta">${escapeHtml(s.authorLabel)}${s.colon}${escapeHtml(lc.author || s.notProvided)}${lc.unit_owner ? `${s.divider}${escapeHtml(s.ownerLabel)}${s.colon}${escapeHtml(lc.unit_owner)}` : ''}${c.updated ? `${s.divider}${escapeHtml(flabel('updated'))}${s.colon}${escapeHtml(c.updated)}` : ''}</div>
+    <div class="meta">
+      <div>${escapeHtml(s.authorLabel)}${s.colon}${escapeHtml(lc.author || s.notProvided)}</div>
+      ${lc.unit_owner ? `<div>${escapeHtml(s.ownerLabel)}${s.colon}${escapeHtml(lc.unit_owner)}</div>` : ''}
+      ${c.updated ? `<div>${escapeHtml(flabel('updated'))}${s.colon}${escapeHtml(c.updated)}</div>` : ''}
+    </div>
   `;
 
   card.appendChild(browserBar);
