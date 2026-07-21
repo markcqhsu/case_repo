@@ -1240,5 +1240,135 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-007",
+    "updated": "2026.07",
+    "screenshot": "assets/thc-annual-report-demo.png",
+    "url": "https://thc-annual-report.vercel.app/",
+    "i18n": {
+      "zh": {
+        "title": "宏全半年報提醒系統",
+        "summary": "宏全半年報提醒系統：會議報告倒數計時器。內建議程表，點選自動帶入時間，翻頁鐘倒數，提前3分鐘與時間到各提醒一次（音效＋通知），超時正計時。支援全螢幕、自選提示音、議程可自行編輯。",
+        "category": [
+          "小工具"
+        ],
+        "unit_request": "",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "",
+        "region": "",
+        "problem_background": "",
+        "core_problem": "",
+        "solution": "",
+        "process": [],
+        "features": [
+          {
+            "name": "議程表",
+            "desc": "內建會議議程表，點選項目自動帶入該項目的時間"
+          },
+          {
+            "name": "翻頁鐘倒數",
+            "desc": "以翻頁鐘樣式顯示倒數計時"
+          },
+          {
+            "name": "雙重提醒",
+            "desc": "提前 3 分鐘與時間到時各提醒一次，音效搭配通知"
+          },
+          {
+            "name": "超時正計時",
+            "desc": "時間到後自動轉為正計時，方便掌握超時狀況"
+          },
+          {
+            "name": "全螢幕顯示",
+            "desc": "支援全螢幕播放，適合會議現場投影"
+          },
+          {
+            "name": "自選提示音",
+            "desc": "可自行選擇提醒音效"
+          },
+          {
+            "name": "議程可編輯",
+            "desc": "議程內容可自行編輯調整"
+          }
+        ],
+        "ai_usage": [],
+        "tools": [],
+        "results": [],
+        "value": [],
+        "extensions": [],
+        "limitations": [],
+        "success_key": "",
+        "keywords": [
+          "半年報",
+          "會議報告",
+          "倒數計時器",
+          "議程表",
+          "翻頁鐘",
+          "小工具"
+        ]
+      },
+      "en": {
+        "title": "THC Semi-Annual Report Reminder System",
+        "summary": "THC Semi-Annual Report Reminder System: a countdown timer for meeting presentations. Includes a built-in agenda list — clicking an item auto-fills its time slot — with a flip-clock style countdown. Sends a reminder (sound + notification) 3 minutes before time is up and again when time is up, then switches to a count-up timer if the speaker runs over. Supports full-screen display, a choice of alert sounds, and an editable agenda.",
+        "category": [
+          "Utility"
+        ],
+        "unit_request": "",
+        "unit_owner": "Digital Development Dept.",
+        "author": "Mark Hsu",
+        "status": "",
+        "region": "",
+        "problem_background": "",
+        "core_problem": "",
+        "solution": "",
+        "process": [],
+        "features": [
+          {
+            "name": "Agenda list",
+            "desc": "Built-in meeting agenda — clicking an item auto-fills that item’s time"
+          },
+          {
+            "name": "Flip-clock countdown",
+            "desc": "Countdown displayed in a flip-clock style"
+          },
+          {
+            "name": "Double reminder",
+            "desc": "Reminds once 3 minutes before time is up and once when time is up, with sound and notification"
+          },
+          {
+            "name": "Overtime count-up",
+            "desc": "Automatically switches to a count-up timer once time is up, to track overtime"
+          },
+          {
+            "name": "Full-screen display",
+            "desc": "Supports full-screen playback, suited for projecting during meetings"
+          },
+          {
+            "name": "Custom alert sound",
+            "desc": "Lets users choose their own reminder sound"
+          },
+          {
+            "name": "Editable agenda",
+            "desc": "Agenda content can be freely edited and adjusted"
+          }
+        ],
+        "ai_usage": [],
+        "tools": [],
+        "results": [],
+        "value": [],
+        "extensions": [],
+        "limitations": [],
+        "success_key": "",
+        "keywords": [
+          "semi-annual report",
+          "meeting presentation",
+          "countdown timer",
+          "agenda",
+          "flip clock",
+          "utility"
+        ]
+      }
+    }
   }
 ]
