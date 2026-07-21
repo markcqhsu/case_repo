@@ -1370,5 +1370,241 @@
         ]
       }
     }
+  },
+  {
+    "id": "linebot-push-query",
+    "updated": "2026.07",
+    "screenshot": "assets/linebot-push-query-demo.png",
+    "url": "https://n8n.honchuan.com.tw:5678/signin",
+    "i18n": {
+      "zh": {
+        "title": "LINEBOT 應用 : 推播功能與資料即時查詢",
+        "summary": "建立兩種 LINE Bot 應用架構：方案一為 LINE Bot 搭配 n8n，依排程或文字關鍵字觸發，主動推播工作待辦提醒、會議提醒、每日工作回報，並可查詢班表與電話分機表；方案二為 LINE Bot 搭配雲端資料庫，透過互動式選單並整合 LLM 語言模型，讓使用者即時查詢產品異常排除等資料，系統自動回覆可能原因、對策建議與參考圖片。",
+        "category": [
+          "品保工作流程",
+          "自動化",
+          "產品查詢"
+        ],
+        "unit_request": "台宏品保",
+        "unit_owner": "台宏品保處",
+        "author": "謝欣錫",
+        "status": "已完成雛型並於品保群組實際使用中",
+        "region": "",
+        "problem_background": "品保單位過去仰賴人工在 LINE 群組手動整理並發送工作提醒、會議通知、每日工作回報，也需要有人隨時待命回覆班表、電話分機及產品異常排除等查詢。隨著查詢量增加，人工發送與逐一回覆的方式耗費大量時間，也容易發生提醒漏發或回覆延遲的情況。",
+        "core_problem": "如何讓 LINE Bot 依排程或關鍵字自動推播提醒與回報，並讓使用者可透過文字或選單即時查詢班表、聯絡資訊及產品異常排除建議，減少人工整理與逐一回覆查詢的時間。",
+        "solution": "整體規劃為兩個互補的方案：\n\n方案一（LINE Bot 搭配 n8n，主動推播）：先在資料夾建立文字或圖片等原始資料（excel、word、jpg 等格式皆可），再透過 n8n 工作流設定判斷機制，依「定時」或「文字觸發」兩種方式運作。定時推播可用於工作待辦提醒、會議提醒及每日工作回報；文字觸發則用於查詢班表、電話分機表及表定工作事項，使用者只要在群組輸入指定格式的關鍵字（例如「問＋時間＋(課別/產品)＋(班別)」），機器人便會自動查詢並回覆結果。\n\n方案二（LINE Bot 搭配雲端資料庫，資料即時查詢）：先將文字與圖片資料建立至雲端資料庫，使用者透過互動式選單（依產品類別，例如塑蓋、鋁蓋、爪蓋、PET 瓶）點選欲查詢的項目，並整合 LLM 語言模型於雲端資料庫中搜尋，自動回覆可能原因、對策建議，並附上參考圖片。",
+        "process": [
+          "方案一：於資料夾建立文字／圖片等原始資料。",
+          "方案一：於 n8n 設定工作流的判斷機制（定時或文字觸發）。",
+          "方案一：時間到達時自動推播工作待辦提醒、會議提醒或每日工作回報。",
+          "方案一：使用者輸入指定關鍵字格式，觸發機器人查詢班表、電話分機表或表定工作事項並回覆。",
+          "方案二：於雲端資料庫建立文字／圖片資料。",
+          "方案二：使用者透過互動式選單依產品類別點選欲查詢的項目。",
+          "方案二：LINE Bot 整合 LLM 語言模型，於雲端資料庫中搜尋對應資料。",
+          "方案二：機器人自動回覆搜尋結果，包含可能原因、對策建議及參考圖片。"
+        ],
+        "features": [
+          {
+            "name": "定時推播",
+            "desc": "依排程自動推播工作待辦提醒、會議提醒與每日工作回報，無需人工手動發送。"
+          },
+          {
+            "name": "文字觸發查詢",
+            "desc": "使用者輸入指定格式關鍵字，即可查詢班表、電話分機表及表定工作事項。"
+          },
+          {
+            "name": "互動式選單查詢",
+            "desc": "依產品類別點選查詢異常排除資訊，不需要輸入文字。"
+          },
+          {
+            "name": "LLM 智慧回覆",
+            "desc": "整合語言模型於雲端資料庫中搜尋，自動回覆可能原因與對策建議，並附上參考圖片。"
+          },
+          {
+            "name": "雙軌架構彈性運用",
+            "desc": "依情境選擇 n8n 主動推播或雲端資料庫即時查詢，可單獨或搭配使用。"
+          }
+        ],
+        "ai_usage": [
+          "使用 LLM 語言模型理解使用者輸入的查詢文字並比對雲端資料庫內容",
+          "依據異常關鍵字自動歸納可能原因與對策建議",
+          "協助設計 n8n 工作流的判斷邏輯與訊息格式"
+        ],
+        "tools": [
+          {
+            "name": "LINE Bot",
+            "desc": "作為使用者互動介面，接收訊息並推播、回覆查詢結果"
+          },
+          {
+            "name": "n8n",
+            "desc": "設定自動化工作流，處理定時推播與文字觸發判斷"
+          },
+          {
+            "name": "雲端資料庫",
+            "desc": "儲存文字與圖片資料，供互動式選單與 LLM 搜尋使用"
+          },
+          {
+            "name": "LLM 語言模型",
+            "desc": "理解查詢內容並自動生成搜尋回覆"
+          }
+        ],
+        "results": [
+          "主動推播工作待辦提醒、會議提醒與每日工作回報，減少人工手動發送訊息的時間。",
+          "使用者可透過文字關鍵字即時查詢班表、電話分機表及表定工作事項。",
+          "透過互動式選單即可查詢產品異常排除建議，不需要另外翻閱文件或詢問其他同仁。",
+          "導入 LLM 語言模型後，查詢回覆可包含可能原因分析與具體對策建議，並附上參考圖片。"
+        ],
+        "value": [
+          {
+            "name": "對品保人員",
+            "desc": "減少手動整理與逐一回覆查詢的時間，同仁可直接透過 LINE 取得所需資訊。"
+          },
+          {
+            "name": "對現場人員",
+            "desc": "可隨時透過 LINE 查詢班表、聯絡資訊及異常排除建議，不需等待專人回覆。"
+          },
+          {
+            "name": "對公司",
+            "desc": "將原本分散於個人經驗與人工回覆的知識整合進雲端資料庫與自動化流程，方便後續維護與擴充應用。"
+          }
+        ],
+        "extensions": [
+          "其他部門的工作提醒與會議通知推播",
+          "各類表單、規範或作業指南的即時查詢",
+          "設備異常排除或維修知識庫查詢",
+          "客服或內部問答機器人"
+        ],
+        "limitations": [
+          "雲端資料庫內容需持續更新維護，才能確保 LLM 回覆的正確性",
+          "n8n 工作流的定時與觸發規則需依實際需求調整，避免誤觸發或漏發",
+          "屬輔助查詢與提醒工具，實際異常排除仍須由專業人員確認"
+        ],
+        "success_key": "將原本分散在各同仁記憶與人工整理中的排班、聯絡及異常排除知識，整合進雲端資料庫與自動化工作流，並透過 LINE Bot 提供即時、一致的推播與查詢管道。",
+        "keywords": [
+          "LINEBOT",
+          "n8n",
+          "雲端資料庫",
+          "推播",
+          "即時查詢",
+          "LLM",
+          "自動化",
+          "品保"
+        ]
+      },
+      "en": {
+        "title": "LINE Bot Application: Push Notifications & Real-Time Data Lookup",
+        "summary": "Two complementary LINE Bot architectures were built. Scheme 1 pairs LINE Bot with n8n: triggered by a schedule or a text keyword, it proactively pushes to-do reminders, meeting reminders, and daily work reports, and can also look up shift schedules and phone extension lists. Scheme 2 pairs LINE Bot with a cloud database: through an interactive menu integrated with an LLM, users can look up information such as product defect troubleshooting in real time, and the system automatically replies with likely causes, recommended countermeasures, and reference photos.",
+        "category": [
+          "QA Workflow",
+          "Automation",
+          "Product Lookup"
+        ],
+        "unit_request": "Thai Hong Quality Assurance",
+        "unit_owner": "Thai Hong QA Department",
+        "author": "Hsieh Hsin-Hsi",
+        "status": "Prototype completed and already in active use within the QA group",
+        "region": "",
+        "problem_background": "QA staff used to rely on manually compiling and posting work reminders, meeting notices, and daily work reports in LINE groups, and someone always had to be on standby to answer questions about shift schedules, phone extensions, and product defect troubleshooting. As the volume of questions grew, sending reminders and replying to each query manually consumed a large amount of time, and reminders were sometimes missed or replies delayed.",
+        "core_problem": "How to let a LINE Bot automatically push reminders and reports on a schedule or by keyword, and let users look up shift schedules, contact information, and product defect troubleshooting advice in real time through text or a menu — reducing the time spent on manual compilation and answering queries one by one.",
+        "solution": "The overall plan consists of two complementary schemes:\n\nScheme 1 (LINE Bot + n8n, proactive push): Raw data (text or images, in formats such as Excel, Word, or JPG) is first set up in a folder. An n8n workflow is then configured with a decision mechanism that runs on either a \"schedule\" or a \"text trigger.\" Scheduled pushes are used for to-do reminders, meeting reminders, and daily work reports; text-triggered pushes are used to look up shift schedules, phone extension lists, and scheduled tasks — a user simply types a keyword in the specified format in the group (e.g. \"Ask + time + (section/product) + (shift)\"), and the bot automatically looks it up and replies.\n\nScheme 2 (LINE Bot + cloud database, real-time lookup): Text and image data is first built into a cloud database. Users select what they want to look up through an interactive menu (by product category, e.g. plastic caps, aluminum caps, claw caps, PET bottles), and an LLM integrated into the bot searches the cloud database and automatically replies with likely causes, recommended countermeasures, and reference photos.",
+        "process": [
+          "Scheme 1: Set up raw text/image data in a folder.",
+          "Scheme 1: Configure the n8n workflow's decision mechanism (schedule or text trigger).",
+          "Scheme 1: When the scheduled time arrives, automatically push a to-do reminder, meeting reminder, or daily work report.",
+          "Scheme 1: A user types a keyword in the specified format, triggering the bot to look up and reply with the shift schedule, phone extension list, or scheduled task.",
+          "Scheme 2: Build text/image data into the cloud database.",
+          "Scheme 2: A user selects the item to look up through an interactive menu by product category.",
+          "Scheme 2: The LINE Bot's integrated LLM searches the cloud database for matching data.",
+          "Scheme 2: The bot automatically replies with the search result, including likely causes, recommended countermeasures, and reference photos."
+        ],
+        "features": [
+          {
+            "name": "Scheduled push",
+            "desc": "Automatically pushes to-do reminders, meeting reminders, and daily work reports on a schedule, without any manual sending."
+          },
+          {
+            "name": "Text-triggered lookup",
+            "desc": "A user types a keyword in the specified format to look up shift schedules, phone extension lists, and scheduled tasks."
+          },
+          {
+            "name": "Interactive menu lookup",
+            "desc": "Look up defect troubleshooting information by selecting a product category, with no need to type any text."
+          },
+          {
+            "name": "LLM-powered replies",
+            "desc": "An integrated language model searches the cloud database and automatically replies with likely causes and recommended countermeasures, along with reference photos."
+          },
+          {
+            "name": "Flexible dual-track architecture",
+            "desc": "Choose n8n proactive push or cloud-database real-time lookup depending on the scenario — usable separately or together."
+          }
+        ],
+        "ai_usage": [
+          "Uses an LLM to understand the user's query text and match it against the cloud database content",
+          "Automatically summarizes likely causes and recommended countermeasures based on defect keywords",
+          "Assists in designing the decision logic and message formats for the n8n workflow"
+        ],
+        "tools": [
+          {
+            "name": "LINE Bot",
+            "desc": "Serves as the user interaction interface, receiving messages and pushing/replying with query results"
+          },
+          {
+            "name": "n8n",
+            "desc": "Configures the automation workflow, handling scheduled pushes and text-trigger decisions"
+          },
+          {
+            "name": "Cloud database",
+            "desc": "Stores text and image data for the interactive menu and LLM search to use"
+          },
+          {
+            "name": "LLM",
+            "desc": "Understands query content and automatically generates the search reply"
+          }
+        ],
+        "results": [
+          "Proactively pushes to-do reminders, meeting reminders, and daily work reports, cutting down the time spent sending messages manually.",
+          "Users can look up shift schedules, phone extension lists, and scheduled tasks in real time using text keywords.",
+          "Product defect troubleshooting advice can be looked up through an interactive menu, with no need to check documents or ask colleagues.",
+          "With the LLM in place, query replies can include an analysis of likely causes and concrete recommended countermeasures, along with reference photos."
+        ],
+        "value": [
+          {
+            "name": "For QA staff",
+            "desc": "Reduces time spent manually compiling information and answering queries one by one — colleagues can get what they need directly through LINE."
+          },
+          {
+            "name": "For frontline staff",
+            "desc": "Can look up shift schedules, contact information, and troubleshooting advice through LINE at any time, without waiting for someone to reply."
+          },
+          {
+            "name": "For the company",
+            "desc": "Integrates knowledge that used to be scattered across individual experience and manual replies into a cloud database and automated workflow, making it easier to maintain and extend going forward."
+          }
+        ],
+        "extensions": [
+          "Work reminders and meeting notifications pushed for other departments",
+          "Real-time lookup of forms, regulations, or operating guides",
+          "Equipment troubleshooting or repair knowledge base lookup",
+          "Customer service or internal Q&A bots"
+        ],
+        "limitations": [
+          "The cloud database content must be kept continuously up to date for the LLM's replies to remain accurate",
+          "The n8n workflow's scheduling and trigger rules need to be tuned to actual needs to avoid false triggers or missed pushes",
+          "This is a supporting lookup and reminder tool — actual defect resolution still requires confirmation by qualified staff"
+        ],
+        "success_key": "Knowledge that used to be scattered across individual staff members' memory and manual compilation — shift schedules, contacts, and defect troubleshooting — was consolidated into a cloud database and automated workflow, with LINE Bot providing a real-time, consistent channel for both push notifications and lookups.",
+        "keywords": [
+          "LINE Bot",
+          "n8n",
+          "Cloud Database",
+          "Push Notification",
+          "Real-Time Lookup",
+          "LLM",
+          "Automation",
+          "Quality Assurance"
+        ]
+      }
+    }
   }
 ]

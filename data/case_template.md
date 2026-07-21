@@ -36,6 +36,9 @@
 ## 網站連結
 
 
+## 影片介紹
+（選填，YouTube 影片連結，例：https://www.youtube.com/watch?v=xxxxxxxxxxx，會自動嵌入播放器）
+
 ## 畫面截圖
 （截圖檔名，放在 assets/ 資料夾下，例：assets/my-case.jpg）
 

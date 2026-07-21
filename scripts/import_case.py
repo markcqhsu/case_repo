@@ -23,6 +23,7 @@ SECTION_MAP = {
     "案例狀態": "status",
     "適用地區": "region",
     "網站連結": "url",
+    "影片介紹": "video",
     "畫面截圖": "screenshot",
     "問題背景": "problem_background",
     "核心問題": "core_problem",
@@ -42,7 +43,7 @@ SECTION_MAP = {
 LIST_FIELDS = {"process", "ai_usage", "results", "extensions", "limitations"}
 PAIR_LIST_FIELDS = {"features", "tools", "value"}
 DELIM_LIST_FIELDS = {"category", "keywords"}
-SHARED_FIELDS = {"screenshot", "url"}
+SHARED_FIELDS = {"screenshot", "url", "video"}
 
 
 def parse_sections(text):

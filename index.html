@@ -248,6 +248,18 @@
   }
   .hero img { max-width: 100%; max-height: 60vh; object-fit: contain; display: block; }
 
+  .video-embed {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: var(--image-bg);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
   #detailContent h2 { margin: 0 0 8px; font-size: 26px; line-height: 1.4; font-weight: 800; }
   #detailContent .subtitle { color: var(--text-muted); font-size: 16.5px; line-height: 1.65; margin-bottom: 20px; }
 
@@ -384,6 +396,7 @@ const FIELD_LABELS = {
   status: { zh: '案例狀態', en: 'Status' },
   region: { zh: '適用地區', en: 'Region' },
   url: { zh: '網站連結', en: 'Website Link' },
+  video: { zh: '影片介紹', en: 'Video Walkthrough' },
   problem_background: { zh: '問題背景', en: 'Background' },
   core_problem: { zh: '核心問題', en: 'Core Problem' },
   solution: { zh: '解決方案', en: 'Solution' },
@@ -625,6 +638,15 @@ function renderCard(c) {
 
 /* ---------- 詳情頁（全頁切換，非覆蓋層） ---------- */
 
+function youtubeEmbedUrl(url) {
+  if (!url) return null;
+  let m = url.match(/^https?:\/\/(?:www\.)?youtu\.be\/([\w-]{11})/);
+  if (!m) m = url.match(/^https?:\/\/(?:www\.)?youtube\.com\/watch\?(?:.*&)?v=([\w-]{11})/);
+  if (!m) m = url.match(/^https?:\/\/(?:www\.)?youtube\.com\/embed\/([\w-]{11})/);
+  if (!m) m = url.match(/^https?:\/\/(?:www\.)?youtube\.com\/shorts\/([\w-]{11})/);
+  return m ? `https://www.youtube.com/embed/${m[1]}` : null;
+}
+
 function renderDetail(c) {
   const lc = loc(c);
   const content = document.getElementById('detailContent');
@@ -639,7 +661,10 @@ function renderDetail(c) {
     [flabel('updated'), c.updated],
   ].filter(([, v]) => !isEmpty(v));
 
+  const videoEmbed = youtubeEmbedUrl(c.video);
+
   content.innerHTML = `
+    ${videoEmbed ? `<div class="video-embed"><iframe src="${videoEmbed}" title="${escapeHtml(lc.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>` : ''}
     ${c.screenshot ? `<div class="hero"><img src="${c.screenshot}" alt="${escapeHtml(lc.title)}" /></div>` : ''}
     <h2>${escapeHtml(lc.title)}</h2>
     <div class="subtitle">${escapeHtml(lc.summary || '')}</div>
