@@ -43,7 +43,7 @@ SECTION_MAP = {
 LIST_FIELDS = {"process", "ai_usage", "results", "extensions", "limitations", "video"}
 PAIR_LIST_FIELDS = {"features", "tools", "value"}
 DELIM_LIST_FIELDS = {"category", "keywords"}
-SHARED_FIELDS = {"screenshot", "url", "video"}
+SHARED_FIELDS = {"screenshot", "screenshots", "url", "video"}
 
 
 def parse_sections(text):
@@ -106,7 +106,10 @@ def build_case(sections, existing_count):
     data = {}
     for label, key in SECTION_MAP.items():
         raw = sections.get(label, [])
-        if key in LIST_FIELDS:
+        if key == "screenshot" and any(line.strip().startswith("- ") for line in raw):
+            # 多張截圖：改存成 screenshots 陣列，交給前端相簿呈現
+            data["screenshots"] = parse_list(raw)
+        elif key in LIST_FIELDS:
             data[key] = parse_list(raw)
         elif key in PAIR_LIST_FIELDS:
             data[key] = parse_pair_list(raw)
@@ -115,10 +118,11 @@ def build_case(sections, existing_count):
         else:
             data[key] = clean_block(raw)
 
-    shared = {key: data.pop(key, "") for key in SHARED_FIELDS}
+    shared = {key: data.pop(key, "") for key in SHARED_FIELDS if key in data}
 
     return {
         "id": f"case-{existing_count + 1:03d}",
+        "number": existing_count + 1,
         **shared,
         # 網站是中英雙語，這裡先把中文內容原樣複製一份到 en，
         # 之後要記得請 Claude 或自己把 i18n.en 的內容翻成英文。

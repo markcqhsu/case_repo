@@ -1,6 +1,7 @@
 [
   {
     "id": "qrcode-cap-demo",
+    "number": 1,
     "updated": "2026.07",
     "screenshot": "assets/qrcode-cap-demo.jpg",
     "url": "https://markcqhsu.github.io/QR_Demo/index.html?code=TEST001",
@@ -267,6 +268,7 @@
   },
   {
     "id": "beverage-odm-finder",
+    "number": 2,
     "updated": "2026.07",
     "screenshot": "assets/beverage-odm-demo.jpg",
     "url": "https://markcqhsu.github.io/beverage-odm/",
@@ -435,6 +437,7 @@
   },
   {
     "id": "aseptic-f3-transfer-ocr",
+    "number": 3,
     "updated": "2026.07",
     "screenshot": "assets/aseptic-f3-demo.png",
     "url": "https://markcqhsu.github.io/Aseptic_f3/",
@@ -627,6 +630,7 @@
   },
   {
     "id": "a700-regulations",
+    "number": 4,
     "updated": "2026.07",
     "screenshot": "assets/a700-regulations-demo.png",
     "url": "https://markcqhsu.github.io/A700_regulations/",
@@ -827,6 +831,7 @@
   },
   {
     "id": "thc-products-list-app",
+    "number": 5,
     "updated": "2026.07",
     "screenshot": "assets/thc-products-list-app.jpg",
     "url": "https://apps.apple.com/tw/app/thc-products-list/id6749604154",
@@ -1005,6 +1010,7 @@
   },
   {
     "id": "case-006",
+    "number": 6,
     "updated": "2026.07",
     "screenshot": "assets/coa-automation-demo.png",
     "url": "https://n8n.honchuan.com.tw:5678/signin",
@@ -1243,6 +1249,7 @@
   },
   {
     "id": "case-007",
+    "number": 7,
     "updated": "2026.07",
     "screenshot": "assets/thc-annual-report-demo.png",
     "url": "https://thc-annual-report.vercel.app/",
@@ -1391,6 +1398,7 @@
   },
   {
     "id": "linebot-push-query",
+    "number": 8,
     "updated": "2026.07",
     "screenshot": "assets/linebot-push-query-demo.png",
     "url": "https://n8n.honchuan.com.tw:5678/signin",
@@ -1627,6 +1635,7 @@
   },
   {
     "id": "ai-video-production",
+    "number": 9,
     "screenshot": "assets/ai-video-production-demo.png",
     "url": "",
     "video": [
@@ -1645,9 +1654,9 @@
         "author": "陳芝妮（無菌二廠）",
         "status": "正式版本",
         "region": "",
-        "problem_background": "職安衛中心過去製作教育訓練與宣導影片時，需要真人錄製旁白，再另外進行字幕聽打與校對，若需要多國語言版本，還要重新錄音、翻譯與後製，整支影片至少需要兩天以上的時間才能完成，遇到修改需求時也得重新走一次錄製流程。",
+        "problem_background": "職安衛中心過去製作教育訓練與宣導影片時，需要真人錄製旁白，再另外進行字幕聽打與校對，若需要多國語言版本，還要重新錄音、翻譯與後製，整支影片至少需要兩天以上的時間才能完成，遇到修改需求時也得重新走一次錄製流程。以印尼語教育訓練影片為例，過去需請翻譯人員將內容翻成印尼文，但翻譯人員對內容不熟悉，容易造成翻譯不完整、無法確實傳達，加上影片沒有字幕、翻譯時間也不好約，一支僅 40 分鐘的影片，錄製作業就需要 2 天；事前蒐集教育訓練所需的參考影片，也要花很長時間才能抓取完成。",
         "core_problem": "如何縮短影片旁白錄製與多國語言字幕製作所需的時間與人力，同時維持一定的影片品質與正確性。",
-        "solution": "改以 AI 技術取代真人錄製，透過 AI 生成旁白語音、自動產生字幕，並將旁白與字幕轉換為多國語言版本，將原本至少兩天以上的錄製與後製流程，縮短為同一天內即可完成初版影片，且可同步輸出多國語言版本。",
+        "solution": "改以 AI 技術取代真人錄製，透過 AI 生成旁白語音、自動產生字幕，並將旁白與字幕轉換為多國語言版本，將原本至少兩天以上的錄製與後製流程，縮短為同一天內即可完成初版影片，且可同步輸出多國語言版本。改用 AI 後，在沒有用量限制的情況下，教材最快 1 天即可完成；若受用量限制，則約需一週。原本費時許久的參考影片蒐集作業，現在也只需 30 分鐘。",
         "process": [
           "準備影片腳本與畫面素材",
           "以 AI 工具生成旁白語音",
@@ -1691,7 +1700,9 @@
         "results": [
           "影片製作時間從至少兩天以上縮短為當天可完成初版",
           "可同步產出多國語言版本，不需為每種語言重新錄製",
-          "減少協調真人錄音與後製字幕所需的人力"
+          "減少協調真人錄音與後製字幕所需的人力",
+          "以 40 分鐘的印尼語教育訓練影片為例，錄製與翻譯作業從原本需要 2 天，縮短為無用量限制時 1 天可完成（有用量限制時約需一週）",
+          "教育訓練用參考影片的蒐集時間，從原本要花很長時間，縮短為 30 分鐘"
         ],
         "value": [
           {
@@ -1732,9 +1743,9 @@
         "author": "Chih-Ni Chen (Aseptic Plant 2)",
         "status": "Production",
         "region": "",
-        "problem_background": "The EHS Center previously needed a real person to record narration for training and awareness videos, followed by separate subtitle transcription and proofreading. Multilingual versions required re-recording, translation, and post-production all over again, so a single video took at least two days to complete, and any revision meant repeating the whole recording process.",
+        "problem_background": "The EHS Center previously needed a real person to record narration for training and awareness videos, followed by separate subtitle transcription and proofreading. Multilingual versions required re-recording, translation, and post-production all over again, so a single video took at least two days to complete, and any revision meant repeating the whole recording process. For example, for an Indonesian-language training video, a translator had to translate the script into Indonesian, but the translator wasn't familiar with the content, which often led to incomplete or inaccurate translations. With no subtitles and translator availability hard to schedule, a video as short as 40 minutes took 2 full days to record. Gathering the reference footage needed for training beforehand also took a long time.",
         "core_problem": "How to cut the time and manpower needed for narration recording and multilingual subtitle production, while keeping video quality and accuracy intact.",
-        "solution": "Replaced manual recording with AI: AI generates the narration voice, automatically produces subtitles, and converts narration and subtitles into multiple languages. What used to take at least two days of recording and post-production can now produce a first-cut video within the same day, with multilingual versions available at the same time.",
+        "solution": "Replaced manual recording with AI: AI generates the narration voice, automatically produces subtitles, and converts narration and subtitles into multiple languages. What used to take at least two days of recording and post-production can now produce a first-cut video within the same day, with multilingual versions available at the same time. After switching to AI, with no usage limits, materials can be completed in as little as 1 day; when usage is capped, it takes about a week instead. Gathering reference footage, which used to take a long time, now takes only 30 minutes.",
         "process": [
           "Prepare the video script and footage",
           "Generate narration audio with AI tools",
@@ -1778,7 +1789,9 @@
         "results": [
           "Video production time dropped from at least two days to a same-day first cut",
           "Multilingual versions can be produced simultaneously, without re-recording for each language",
-          "Reduced manpower needed to coordinate live recording and post-production subtitling"
+          "Reduced manpower needed to coordinate live recording and post-production subtitling",
+          "For a 40-minute Indonesian-language training video, recording and translation dropped from 2 days to 1 day with no usage limits (about a week when usage is capped)",
+          "Time to gather reference footage for training videos dropped from a lengthy manual search to 30 minutes"
         ],
         "value": [
           {
@@ -1810,5 +1823,200 @@
       }
     },
     "updated": "2026.07"
+  },
+  {
+    "id": "workload-risk-analysis",
+    "number": 10,
+    "screenshot": "assets/workload-risk-analysis-demo.png",
+    "url": "",
+    "updated": "2026.07",
+    "i18n": {
+      "zh": {
+        "title": "異常工作負荷風險資料整合與分析",
+        "summary": "因應《職業安全衛生法》四大計畫之一「異常工作負荷促發疾病預防計畫」，需整合員工健康、過勞狀況及加班時數等資料，進行員工危害風險等級分析。本次共需處理約 683 筆資料，並針對三項不同來源的資料進行整併與交叉分析。原本若以人工方式逐筆整理、比對及判斷，預估需花費近一個月；透過 Claude 協助處理後，約 15 分鐘即可完成，大幅提升資料整理與分析效率。",
+        "category": [
+          "資料整理"
+        ],
+        "unit_request": "無菌二廠",
+        "unit_owner": "職安衛中心",
+        "author": "陳佳勳（無菌二廠）",
+        "status": "正式版本",
+        "region": "",
+        "problem_background": "為執行異常工作負荷促發疾病預防計畫，需要整合以下三項資料：健康總表暨十年心血管疾病風險評估、員工過勞量表、員工加班時數。由於三項資料來自不同檔案，欄位格式、資料內容及人員排序可能不一致，因此必須先進行資料清理、對應及整併，再進一步交叉分析員工的健康風險、過勞程度與工作負荷。本次需處理約 683 筆員工資料，若完全依靠人工逐筆整理與比對，流程繁雜且耗時，預估需近一個月才能完成。",
+        "core_problem": "如何快速整合不同來源、不同格式的大量員工資料，並完成交叉分析與風險分級，減少人工逐筆整理、比對及判斷所需的時間。",
+        "solution": "利用 Claude 協助整理三項不同來源的資料，統一欄位格式並建立員工資料對應關係。完成資料整併後，再依健康風險、過勞量表及加班時數進行交叉分析，快速整理出員工危害風險等級，供職安衛人員進一步確認及執行後續管理措施。透過 AI 處理原本大量、繁雜且高度重複的資料整理程序，讓人員將時間集中在結果確認、風險判斷及後續改善，而不是耗費在逐筆複製與比對資料。",
+        "process": [],
+        "features": [
+          "整合不同來源的員工資料。",
+          "統一欄位與資料格式。",
+          "對應三份資料中的相同員工。",
+          "交叉分析健康風險、過勞程度及加班時數。",
+          "協助整理員工危害風險等級。",
+          "產生可供職安衛人員確認與後續追蹤的分析結果。"
+        ],
+        "ai_usage": [
+          "分析不同檔案的資料結構",
+          "清理及統一資料格式",
+          "建立員工資料配對關係",
+          "整併三項不同來源的資料",
+          "執行條件比對與交叉分析",
+          "整理危害風險等級",
+          "檢查資料缺漏與異常內容",
+          "AI 主要負責大量且重複的資料整理與初步分析，最終風險判定及後續處理仍由職安衛專業人員確認"
+        ],
+        "tools": [
+          "Claude",
+          "Excel",
+          "員工健康及工時相關資料"
+        ],
+        "results": [
+          "完成約 683 筆員工資料整合。",
+          "完成三項不同來源資料的交叉分析。",
+          "將原本預估近一個月的工作縮短至約 15 分鐘。",
+          "大幅減少人工逐筆整理及比對資料的時間。",
+          "降低資料遺漏、對應錯誤及判斷不一致的風險。",
+          "提升風險評估流程的速度與一致性。",
+          "讓職安衛人員可以更快進入風險確認及後續管理階段。"
+        ],
+        "value": [
+          {
+            "name": "對執行人員",
+            "desc": "不需要再逐筆整理及比對大量資料，大幅降低重複性作業時間與工作負擔。"
+          },
+          {
+            "name": "對職安衛人員",
+            "desc": "可快速取得整合後的風險分析結果，將時間集中在高風險人員確認、健康管理及改善措施規劃。"
+          },
+          {
+            "name": "對公司",
+            "desc": "以 AI 協助處理繁雜的資料整合程序，將近一個月的工作縮短至約 15 分鐘，提升作業效率，也使風險評估流程更加快速、一致且有效率。"
+          }
+        ],
+        "extensions": [
+          "員工健康檢查資料整理",
+          "高風險族群篩選",
+          "工時與出勤資料分析",
+          "職業健康管理名單整理",
+          "教育訓練完成狀況分析",
+          "跨檔案員工資料整併",
+          "大量問卷與評估表分析"
+        ],
+        "limitations": [
+          "AI 產生的分析結果仍需由職安衛專業人員進行確認，不應直接作為最終醫療或健康判斷。",
+          "員工姓名或識別資料是否正確對應",
+          "原始資料是否完整及為最新版本",
+          "重複、空白或異常資料是否已處理",
+          "風險分級條件是否符合公司規範",
+          "個人健康資料的存取權限及保密要求",
+          "分析結果是否經過職安衛專業人員複核"
+        ],
+        "success_key": "",
+        "keywords": [
+          "職業安全衛生",
+          "異常工作負荷",
+          "員工健康",
+          "過勞量表",
+          "加班時數",
+          "資料整合",
+          "交叉分析",
+          "Claude",
+          "風險分級",
+          "資料整理"
+        ]
+      },
+      "en": {
+        "title": "Abnormal Workload Risk Data Integration & Analysis",
+        "summary": "In response to the \"Abnormal Workload-Induced Disease Prevention Plan\" — one of the four core plans under the Occupational Safety and Health Act — employee health, burnout, and overtime data needed to be integrated to analyze each employee's hazard risk level. This round covered about 683 records, merging and cross-analyzing three separate data sources. Manually organizing, matching, and judging the data record by record was estimated to take nearly a month; with Claude's help, it was completed in about 15 minutes, greatly improving data organization and analysis efficiency.",
+        "category": [
+          "Data Organization"
+        ],
+        "unit_request": "Aseptic Plant 2",
+        "unit_owner": "EHS Center",
+        "author": "Chia-Hsun Chen (Aseptic Plant 2)",
+        "status": "Production",
+        "region": "",
+        "problem_background": "Carrying out the Abnormal Workload-Induced Disease Prevention Plan required integrating three data sources: the health summary sheet with the 10-year cardiovascular disease risk assessment, the employee burnout scale, and employee overtime hours. Since the three data sets came from different files with inconsistent field formats, content, and employee ordering, the data first had to be cleaned, matched, and merged before cross-analyzing each employee's health risk, burnout level, and workload. This round covered about 683 employee records; doing this entirely by hand — organizing and matching record by record — was a complex, time-consuming process estimated to take nearly a month.",
+        "core_problem": "How to quickly integrate large volumes of employee data from different sources and formats, complete the cross-analysis and risk grading, and cut down the time needed for manual record-by-record organizing, matching, and judgment.",
+        "solution": "Used Claude to help organize the three data sources, standardize the field formats, and build a mapping between records for the same employee. After merging the data, it was cross-analyzed by health risk, burnout scale, and overtime hours to quickly produce each employee's hazard risk level, for EHS staff to further confirm and act on with follow-up management measures. Using AI to handle what was originally a large-volume, complex, and highly repetitive data organization process let staff focus their time on confirming results, judging risk, and planning improvements, instead of on copying and matching data record by record.",
+        "process": [],
+        "features": [
+          "Integrates employee data from different sources.",
+          "Standardizes fields and data formats.",
+          "Matches the same employee across three data sets.",
+          "Cross-analyzes health risk, burnout level, and overtime hours.",
+          "Helps organize employee hazard risk levels.",
+          "Produces analysis results EHS staff can confirm and track further."
+        ],
+        "ai_usage": [
+          "Analyzing the data structure of different files",
+          "Cleaning and standardizing data formats",
+          "Building employee record matching relationships",
+          "Merging three different data sources",
+          "Running conditional matching and cross-analysis",
+          "Organizing hazard risk levels",
+          "Checking for missing or abnormal data",
+          "AI is mainly responsible for the large-volume, repetitive data organization and initial analysis — final risk determination and follow-up handling are still confirmed by EHS professionals"
+        ],
+        "tools": [
+          "Claude",
+          "Excel",
+          "Employee health and working-hours data"
+        ],
+        "results": [
+          "Completed integration of about 683 employee records.",
+          "Completed cross-analysis of three different data sources.",
+          "Cut work originally estimated at nearly a month down to about 15 minutes.",
+          "Greatly reduced the time spent on manual record-by-record organizing and matching.",
+          "Lowered the risk of missing data, mismatches, and inconsistent judgment.",
+          "Improved the speed and consistency of the risk assessment process.",
+          "Let EHS staff move faster into risk confirmation and follow-up management."
+        ],
+        "value": [
+          {
+            "name": "For the Staff Doing the Work",
+            "desc": "No longer need to organize and match large volumes of data record by record, greatly reducing repetitive workload and time."
+          },
+          {
+            "name": "For EHS Staff",
+            "desc": "Can quickly get integrated risk analysis results and focus their time on confirming high-risk individuals, health management, and planning improvement measures."
+          },
+          {
+            "name": "For the Company",
+            "desc": "Using AI to handle a complex data integration process cut work that used to take nearly a month down to about 15 minutes, improving efficiency and making the risk assessment process faster, more consistent, and more effective."
+          }
+        ],
+        "extensions": [
+          "Employee health check-up data organization",
+          "High-risk group screening",
+          "Working hours and attendance data analysis",
+          "Occupational health management list organization",
+          "Training completion status analysis",
+          "Cross-file employee data merging",
+          "Large-scale survey and assessment form analysis"
+        ],
+        "limitations": [
+          "AI-generated analysis results still need to be confirmed by EHS professionals and should not be used directly as a final medical or health determination.",
+          "Whether employee names or identifying data are correctly matched",
+          "Whether the source data is complete and up to date",
+          "Whether duplicate, blank, or abnormal data has been handled",
+          "Whether the risk grading criteria comply with company rules",
+          "Access permissions and confidentiality requirements for personal health data",
+          "Whether the analysis results have been reviewed by EHS professionals"
+        ],
+        "success_key": "",
+        "keywords": [
+          "Occupational Safety and Health",
+          "Abnormal Workload",
+          "Employee Health",
+          "Burnout Scale",
+          "Overtime Hours",
+          "Data Integration",
+          "Cross-Analysis",
+          "Claude",
+          "Risk Grading",
+          "Data Organization"
+        ]
+      }
+    }
   }
 ]

@@ -42,7 +42,11 @@
 - https://youtu.be/yyyyyyyyyyy）
 
 ## 畫面截圖
-（截圖檔名，放在 assets/ 資料夾下，例：assets/my-case.jpg）
+（截圖檔名，放在 assets/ 資料夾下，例：assets/my-case.jpg；
+若有多張截圖，改用清單格式，一行一個並用「- 」開頭，網站會自動做成可切換的相簿，例：
+- assets/my-case-1.jpg
+- assets/my-case-2.jpg
+- assets/my-case-3.jpg）
 
 ## 問題背景
 
