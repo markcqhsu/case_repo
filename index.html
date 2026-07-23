@@ -670,7 +670,7 @@ function renderDetail(c) {
 
   content.innerHTML = `
     ${videoEmbeds.map(src => `<div class="video-embed"><iframe src="${src}" title="${escapeHtml(lc.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>`).join('')}
-    ${c.screenshot ? `<div class="hero"><img src="${c.screenshot}" alt="${escapeHtml(lc.title)}" /></div>` : ''}
+    ${(c.screenshot && !videoEmbeds.length) ? `<div class="hero"><img src="${c.screenshot}" alt="${escapeHtml(lc.title)}" /></div>` : ''}
     <h2>${escapeHtml(lc.title)}</h2>
     <div class="subtitle">${escapeHtml(lc.summary || '')}</div>
 

@@ -30,6 +30,7 @@ AI 影片製作：多國語言旁白與字幕自動化
 - https://youtu.be/TzqYtkT_En8
 
 ## 畫面截圖
+assets/ai-video-production-demo.png
 
 
 ## 問題背景
