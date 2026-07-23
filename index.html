@@ -395,12 +395,25 @@
   .lb-rank.gold { background: #fde68a; color: #92400e; }
   .lb-rank.silver { background: #e5e7eb; color: #374151; }
   .lb-rank.bronze { background: #fbd38d; color: #7c2d12; }
-  .lb-body { flex: 1; min-width: 0; }
-  .lb-name { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; font-weight: 700; font-size: 16px; margin-bottom: 7px; }
-  .lb-name span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .lb-count { flex-shrink: 0; color: var(--accent); font-weight: 800; font-size: 14px; }
-  .lb-bar-track { background: var(--image-bg); border-radius: 999px; height: 8px; overflow: hidden; }
-  .lb-bar-fill { background: var(--accent); height: 100%; border-radius: 999px; }
+  .lb-name {
+    flex: 1;
+    min-width: 0;
+    font-weight: 700;
+    font-size: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .lb-count {
+    flex-shrink: 0;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
   #detailContent .case-number {
     display: inline-block;
     background: var(--accent);
@@ -987,17 +1000,14 @@ function renderLeaderboard() {
   document.getElementById('leaderboardSubtitle').textContent = s.leaderboardSubtitle;
 
   const ranking = computeLeaderboard();
-  const max = ranking.length ? ranking[0][1] : 1;
   const rankClass = (i) => (i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '');
 
   const list = document.getElementById('leaderboardList');
   list.innerHTML = ranking.map(([unit, count], i) => `
     <div class="lb-row" data-unit="${escapeHtml(unit)}">
       <div class="lb-rank ${rankClass(i)}">${i + 1}</div>
-      <div class="lb-body">
-        <div class="lb-name"><span>${escapeHtml(unit)}</span><span class="lb-count">${escapeHtml(s.caseCountLabel(count))}</span></div>
-        <div class="lb-bar-track"><div class="lb-bar-fill" style="width:${Math.round((count / max) * 100)}%"></div></div>
-      </div>
+      <div class="lb-name">${escapeHtml(unit)}</div>
+      <div class="lb-count">${escapeHtml(s.caseCountLabel(count))}</div>
     </div>
   `).join('');
 

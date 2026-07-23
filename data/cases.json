@@ -2018,5 +2018,162 @@
         ]
       }
     }
+  },
+  {
+    "id": "ehs-training-materials",
+    "number": 11,
+    "screenshots": [
+      "assets/ehs-training-materials-01.jpg",
+      "assets/ehs-training-materials-02.jpg",
+      "assets/ehs-training-materials-03.jpg",
+      "assets/ehs-training-materials-04.jpg",
+      "assets/ehs-training-materials-05.jpg",
+      "assets/ehs-training-materials-06.jpg",
+      "assets/ehs-training-materials-07.jpg",
+      "assets/ehs-training-materials-08.jpg",
+      "assets/ehs-training-materials-09.jpg",
+      "assets/ehs-training-materials-10.jpg",
+      "assets/ehs-training-materials-11.jpg"
+    ],
+    "url": "",
+    "updated": "2026.07",
+    "i18n": {
+      "zh": {
+        "title": "AI 職安衛教育訓練教材製作",
+        "summary": "原本較為枯燥、文字量大的職安衛教育訓練內容，透過 GPT 協助重新整理重點、轉換表達方式，並產生圖文並茂的教材。將複雜的法規與安全知識轉化為更直觀、容易理解的圖像與說明，不僅提升教材的可讀性，也有助於增加同仁的學習意願與記憶效果，讓職安衛教育訓練更生動、更有效率。",
+        "category": [
+          "文宣製作"
+        ],
+        "unit_owner": "職安衛中心",
+        "author": "林玟臻（無菌二廠）",
+        "status": "正式版本",
+        "region": "",
+        "problem_background": "職安衛教育訓練教材過去多以純文字為主，內容枯燥、文字量大，同仁閱讀與吸收不易，複雜的法規條文與安全知識也不容易轉化為現場容易理解的說明。",
+        "core_problem": "如何將複雜的法規與安全知識，轉換成同仁容易閱讀、容易理解的教材，提升學習意願與記憶效果。",
+        "solution": "透過 GPT 協助重新整理教材重點、轉換表達方式，並產生圖文並茂的宣導海報，將原本以文字為主的職安衛教育訓練內容，轉化為更直觀的圖像與說明。",
+        "process": [],
+        "features": [
+          "防禦駕駛安全宣導（一般版、機車版、在地路線版）",
+          "預防捲夾安全宣導",
+          "預防中暑安全宣導",
+          "高空墜落預防宣導",
+          "化學品危害預防宣導",
+          "雨天騎車安全宣導",
+          "職災風險辨識與改善對策模擬圖：標註照片中的風險位置與說明，並產生改善前後對比圖"
+        ],
+        "ai_usage": [
+          "整理教育訓練內容重點，轉換為更簡明易懂的表達方式",
+          "將文字為主的法規與安全知識，轉換成圖文並茂的宣導海報",
+          "依現場照片標註風險位置，並產生改善對策模擬圖"
+        ],
+        "tools": [
+          "GPT"
+        ],
+        "results": [
+          "已產出多份圖文並茂的職安衛宣導教材，涵蓋防禦駕駛、預防中暑、高空墜落預防、化學品危害預防、預防捲夾等主題。",
+          "可依現場實際照片，快速產生風險標註說明與改善對策模擬圖。",
+          "教材從純文字說明，轉變為圖像化、更容易閱讀的宣導海報。"
+        ],
+        "value": [
+          {
+            "name": "對同仁",
+            "desc": "圖文並茂的教材更直觀、容易理解，有助於提升學習意願與記憶效果。"
+          },
+          {
+            "name": "對職安衛中心",
+            "desc": "不需仰賴美編或外包設計，即可自行快速產出宣導教材，讓教育訓練更生動、更有效率。"
+          }
+        ],
+        "extensions": [
+          "各類安全宣導海報製作",
+          "教育訓練簡報圖像化",
+          "現場稽核照片標註與改善建議產出",
+          "跨廠區、跨語言的安全宣導教材"
+        ],
+        "limitations": [
+          "AI 產生的圖像與說明仍需由職安衛專業人員確認內容正確性，符合實際法規與現場情境。",
+          "涉及具體風險判斷與改善對策，仍須由專業人員複核後才能正式對外宣導。"
+        ],
+        "success_key": "",
+        "keywords": [
+          "職業安全衛生",
+          "教育訓練",
+          "文宣製作",
+          "GPT",
+          "圖文教材",
+          "風險辨識",
+          "防禦駕駛",
+          "宣導海報"
+        ]
+      },
+      "en": {
+        "title": "AI-Assisted EHS Training Material Production",
+        "summary": "EHS training content used to be dense, text-heavy, and dry. With GPT's help, the key points were reorganized, the way ideas were expressed was reworked, and the content was turned into visual, easy-to-follow materials. Turning complex regulations and safety knowledge into more intuitive images and explanations not only makes the materials more readable, it also boosts employees' willingness to learn and helps them remember the content, making EHS training more engaging and efficient.",
+        "category": [
+          "Communications & Materials"
+        ],
+        "unit_owner": "EHS Center",
+        "author": "Wen-Chen Lin (Aseptic Plant 2)",
+        "status": "Production",
+        "region": "",
+        "problem_background": "EHS training materials used to be mostly plain text — dense and dry, making them hard for employees to read and absorb. Complex regulatory text and safety knowledge were also difficult to translate into explanations that were easy to understand on the shop floor.",
+        "core_problem": "How to turn complex regulations and safety knowledge into materials employees can read and understand easily, boosting their willingness to learn and how well they retain the content.",
+        "solution": "Used GPT to help reorganize the key points of the training materials, rework how the content was expressed, and produce illustrated awareness posters — turning EHS training content that used to be mostly text into more intuitive images and explanations.",
+        "process": [],
+        "features": [
+          "Defensive driving safety posters (general version, motorcycle version, local-route version)",
+          "Anti-entanglement safety poster",
+          "Heat stroke prevention poster",
+          "Fall-from-height prevention poster",
+          "Chemical hazard prevention poster",
+          "Rainy-day riding safety poster",
+          "Hazard identification with improvement mock-ups: marks risk locations and explanations directly on site photos, and generates before/after improvement visuals"
+        ],
+        "ai_usage": [
+          "Organizing the key points of training content into clearer, simpler explanations",
+          "Converting text-heavy regulations and safety knowledge into illustrated awareness posters",
+          "Marking hazard locations on site photos and generating improvement mock-ups"
+        ],
+        "tools": [
+          "GPT"
+        ],
+        "results": [
+          "Produced multiple illustrated EHS awareness materials covering defensive driving, heat stroke prevention, fall prevention, chemical hazard prevention, and anti-entanglement.",
+          "Can quickly turn real site photos into hazard annotations and improvement mock-ups.",
+          "Materials shifted from plain text explanations to image-driven, easier-to-read awareness posters."
+        ],
+        "value": [
+          {
+            "name": "For Employees",
+            "desc": "Illustrated materials are more intuitive and easier to understand, helping boost willingness to learn and retention."
+          },
+          {
+            "name": "For the EHS Center",
+            "desc": "Can produce awareness materials quickly in-house without relying on graphic designers or outside vendors, making training more engaging and efficient."
+          }
+        ],
+        "extensions": [
+          "Producing other types of safety awareness posters",
+          "Turning training slide decks into more visual formats",
+          "Annotating site audit photos and generating improvement suggestions",
+          "Cross-site, multilingual safety awareness materials"
+        ],
+        "limitations": [
+          "AI-generated images and explanations still need to be confirmed by EHS professionals for accuracy against actual regulations and site conditions.",
+          "Specific risk judgments and improvement measures still need professional review before being used for official awareness campaigns."
+        ],
+        "success_key": "",
+        "keywords": [
+          "Occupational Safety and Health",
+          "Training",
+          "Communications & Materials",
+          "GPT",
+          "Illustrated Materials",
+          "Hazard Identification",
+          "Defensive Driving",
+          "Awareness Posters"
+        ]
+      }
+    }
   }
 ]
