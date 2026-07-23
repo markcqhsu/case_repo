@@ -1293,7 +1293,16 @@
           }
         ],
         "ai_usage": [],
-        "tools": [],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "協助開發倒數計時器的功能與介面"
+          },
+          {
+            "name": "Vercel",
+            "desc": "部署與託管網站，提供正式網址"
+          }
+        ],
         "results": [],
         "value": [],
         "extensions": [],
@@ -1354,7 +1363,16 @@
           }
         ],
         "ai_usage": [],
-        "tools": [],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "Helped build the countdown timer's features and interface"
+          },
+          {
+            "name": "Vercel",
+            "desc": "Deploys and hosts the site at a live URL"
+          }
+        ],
         "results": [],
         "value": [],
         "extensions": [],
