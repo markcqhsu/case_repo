@@ -37,7 +37,9 @@
 
 
 ## 影片介紹
-（選填，YouTube 影片連結，例：https://www.youtube.com/watch?v=xxxxxxxxxxx，會自動嵌入播放器）
+（選填，YouTube 影片連結，會自動嵌入播放器；可放多個，一行一個並用「- 」開頭，例：
+- https://www.youtube.com/watch?v=xxxxxxxxxxx
+- https://youtu.be/yyyyyyyyyyy）
 
 ## 畫面截圖
 （截圖檔名，放在 assets/ 資料夾下，例：assets/my-case.jpg）

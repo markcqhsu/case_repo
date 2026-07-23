@@ -40,7 +40,7 @@ SECTION_MAP = {
     "案例關鍵字": "keywords",
 }
 
-LIST_FIELDS = {"process", "ai_usage", "results", "extensions", "limitations"}
+LIST_FIELDS = {"process", "ai_usage", "results", "extensions", "limitations", "video"}
 PAIR_LIST_FIELDS = {"features", "tools", "value"}
 DELIM_LIST_FIELDS = {"category", "keywords"}
 SHARED_FIELDS = {"screenshot", "url", "video"}

@@ -1606,5 +1606,190 @@
         ]
       }
     }
+  },
+  {
+    "id": "ai-video-production",
+    "screenshot": "",
+    "url": "",
+    "video": [
+      "https://youtu.be/KzLEbw9lvVE",
+      "https://youtu.be/TzqYtkT_En8"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "AI 影片製作：多國語言旁白與字幕自動化",
+        "summary": "將教育訓練／宣導影片的製作流程從人工錄製改為 AI 製作，以 AI 生成旁白與字幕，並可快速產出多國語言版本，原本需要真人錄製至少兩天以上的流程，大幅縮短影片產出時間。",
+        "category": [
+          "影片製作"
+        ],
+        "unit_request": "職安衛中心",
+        "unit_owner": "職安衛中心",
+        "author": "陳芝妮（無菌二廠）",
+        "status": "正式版本",
+        "region": "",
+        "problem_background": "職安衛中心過去製作教育訓練與宣導影片時，需要真人錄製旁白，再另外進行字幕聽打與校對，若需要多國語言版本，還要重新錄音、翻譯與後製，整支影片至少需要兩天以上的時間才能完成，遇到修改需求時也得重新走一次錄製流程。",
+        "core_problem": "如何縮短影片旁白錄製與多國語言字幕製作所需的時間與人力，同時維持一定的影片品質與正確性。",
+        "solution": "改以 AI 技術取代真人錄製，透過 AI 生成旁白語音、自動產生字幕，並將旁白與字幕轉換為多國語言版本，將原本至少兩天以上的錄製與後製流程，縮短為同一天內即可完成初版影片，且可同步輸出多國語言版本。",
+        "process": [
+          "準備影片腳本與畫面素材",
+          "以 AI 工具生成旁白語音",
+          "AI 自動產生對應字幕",
+          "將旁白與字幕轉換為多國語言版本",
+          "完成影片剪輯與輸出"
+        ],
+        "features": [
+          {
+            "name": "AI 旁白配音",
+            "desc": "以 AI 語音取代真人錄製旁白，免去協調錄音時間"
+          },
+          {
+            "name": "AI 字幕生成",
+            "desc": "自動產生影片字幕，減少人工聽打與校對時間"
+          },
+          {
+            "name": "多國語言版本",
+            "desc": "同一支影片可快速產出多國語言旁白與字幕版本"
+          },
+          {
+            "name": "製作時間大幅縮短",
+            "desc": "原本至少兩天以上的錄製流程縮短為當天完成初版"
+          }
+        ],
+        "ai_usage": [
+          "使用 AI 語音生成技術製作影片旁白",
+          "使用 AI 自動產生並校對影片字幕",
+          "使用 AI 進行多國語言翻譯與配音"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "生成與校對旁白逐字稿，並將內容翻譯成多國語言版本"
+          },
+          {
+            "name": "Codex",
+            "desc": "開發自動化腳本，串接旁白配音、字幕產生與多國語言轉換流程"
+          }
+        ],
+        "results": [
+          "影片製作時間從至少兩天以上縮短為當天可完成初版",
+          "可同步產出多國語言版本，不需為每種語言重新錄製",
+          "減少協調真人錄音與後製字幕所需的人力"
+        ],
+        "value": [
+          {
+            "name": "對職安衛中心",
+            "desc": "大幅縮短教育訓練與宣導影片的製作時間，加快內容產出與更新速度"
+          },
+          {
+            "name": "對公司",
+            "desc": "降低影片錄製與多語言版本製作的人力成本，提升跨廠區、跨語言宣導效率"
+          }
+        ],
+        "extensions": [
+          "各廠區教育訓練影片製作",
+          "公司內部宣導與政令宣導影片",
+          "需要多國語言版本的教育訓練教材"
+        ],
+        "limitations": [
+          "AI 生成的旁白與字幕仍需人工校對，確保用詞及專業術語正確",
+          "多國語言版本建議請熟悉當地語言的人員複核，避免翻譯失真"
+        ],
+        "success_key": "以 AI 技術取代人工錄製與翻譯流程，在縮短影片產出時間的同時，兼顧多國語言版本的品質與正確性。",
+        "keywords": [
+          "AI影片製作",
+          "旁白配音",
+          "字幕生成",
+          "多國語言",
+          "職安衛"
+        ]
+      },
+      "en": {
+        "title": "AI Video Production: Automated Multilingual Narration & Subtitles",
+        "summary": "Shifted training and awareness video production from manual recording to AI-driven production: AI generates narration and subtitles and can quickly produce multilingual versions, cutting production time from at least two days of manual recording down to a fraction of that.",
+        "category": [
+          "Video Production"
+        ],
+        "unit_request": "EHS Center",
+        "unit_owner": "EHS Center",
+        "author": "Chih-Ni Chen (Aseptic Plant 2)",
+        "status": "Production",
+        "region": "",
+        "problem_background": "The EHS Center previously needed a real person to record narration for training and awareness videos, followed by separate subtitle transcription and proofreading. Multilingual versions required re-recording, translation, and post-production all over again, so a single video took at least two days to complete, and any revision meant repeating the whole recording process.",
+        "core_problem": "How to cut the time and manpower needed for narration recording and multilingual subtitle production, while keeping video quality and accuracy intact.",
+        "solution": "Replaced manual recording with AI: AI generates the narration voice, automatically produces subtitles, and converts narration and subtitles into multiple languages. What used to take at least two days of recording and post-production can now produce a first-cut video within the same day, with multilingual versions available at the same time.",
+        "process": [
+          "Prepare the video script and footage",
+          "Generate narration audio with AI tools",
+          "AI automatically generates matching subtitles",
+          "Convert narration and subtitles into multiple languages",
+          "Finish editing and export the video"
+        ],
+        "features": [
+          {
+            "name": "AI Narration",
+            "desc": "AI-generated voice replaces manual recording, removing the need to schedule a recording session"
+          },
+          {
+            "name": "AI Subtitle Generation",
+            "desc": "Automatically generates video subtitles, cutting manual transcription and proofreading time"
+          },
+          {
+            "name": "Multilingual Versions",
+            "desc": "The same video can quickly produce narration and subtitles in multiple languages"
+          },
+          {
+            "name": "Much Faster Turnaround",
+            "desc": "Production that used to take at least two days now finishes a first cut the same day"
+          }
+        ],
+        "ai_usage": [
+          "Uses AI voice generation to produce video narration",
+          "Uses AI to automatically generate and proofread subtitles",
+          "Uses AI for multilingual translation and dubbing"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "Generates and proofreads the narration script, and translates it into multiple languages"
+          },
+          {
+            "name": "Codex",
+            "desc": "Builds automation scripts that connect narration, subtitle generation, and multilingual conversion into one pipeline"
+          }
+        ],
+        "results": [
+          "Video production time dropped from at least two days to a same-day first cut",
+          "Multilingual versions can be produced simultaneously, without re-recording for each language",
+          "Reduced manpower needed to coordinate live recording and post-production subtitling"
+        ],
+        "value": [
+          {
+            "name": "For the EHS Center",
+            "desc": "Greatly shortens the time to produce and update training and awareness videos"
+          },
+          {
+            "name": "For the company",
+            "desc": "Lowers the labor cost of recording and producing multilingual versions, improving cross-site, cross-language communication efficiency"
+          }
+        ],
+        "extensions": [
+          "Training video production across plant sites",
+          "Internal awareness and policy communication videos",
+          "Training materials that require multilingual versions"
+        ],
+        "limitations": [
+          "AI-generated narration and subtitles still need human proofreading to ensure correct wording and terminology",
+          "Multilingual versions should be reviewed by someone fluent in the target language to avoid translation errors"
+        ],
+        "success_key": "Replacing manual recording and translation with AI, cutting production time while maintaining the quality and accuracy of multilingual versions.",
+        "keywords": [
+          "AI Video Production",
+          "AI Narration",
+          "Subtitle Generation",
+          "Multilingual",
+          "EHS"
+        ]
+      }
+    }
   }
 ]
