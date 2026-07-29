@@ -2175,5 +2175,265 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-012",
+    "number": 12,
+    "screenshot": "assets/thc-ai-dashboard-demo.png",
+    "video": [],
+    "url": "https://thcai.vercel.app/",
+    "i18n": {
+      "zh": {
+        "title": "集團 AI 推廣管理 Dashboard（THC AI Enablement Platform）",
+        "summary": "建立集團層級的 AI 推廣管理平台，統一追蹤各單位 AI 導入的成熟度（L0～L5）、AI 專案與案例進度、AI 人才盤點、API 使用成本，讓推動 AI 的單位與管理層能在同一個地方掌握全集團的 AI 推動狀況，而不必分散在各單位的報表與口頭回報中，長期目標是發展成集團的 AI Operating System（AIOS）。",
+        "category": [
+          "內部管理工具",
+          "AI 治理",
+          "數據儀表板"
+        ],
+        "unit_request": "數位發展部",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "開發中",
+        "region": "集團（含台灣、大陸總部、東南亞總部及各分支據點）",
+        "problem_background": "集團各單位陸續推動 AI 應用，但這些進度分散在不同單位、不同格式的報表與會議紀錄中，管理層難以即時掌握全集團的 AI 推動全貌：哪些單位已經導入、導入到什麼程度、有哪些專案與案例正在進行、AI 相關人才配置狀況如何、API 使用成本花費多少，都需要額外彙整才能回答。",
+        "core_problem": "如何用一個統一的平台，讓集團管理層與各單位可以即時查看 AI 推動的成熟度、專案與案例進度、人才配置與 API 成本，取代分散、人工彙整的回報方式。",
+        "solution": "建立以 Next.js + Supabase 開發、部署於 Vercel 的 Dashboard 平台，將 AI 推動狀況拆成五個成熟度等級（L0 未啟動～L5 可複製），並整合以下管理模組：\n- AI 推動管理：Dashboard 總覽、單位管理、AI 專案管理、AI 案例管理、需求管理\n- AI 資源管理：AI 人才管理、API 成本管理\n- 系統管理：部門管理、使用者管理（採白名單機制，不開放公開註冊）\n\n首頁 Dashboard 提供 AI 成熟度平均、專案與案例總數、導入單位數、本月 API 花費等關鍵指標，並以圓餅圖與長條圖呈現整體與各地區的成熟度分布，讓使用者可依月份、地區篩選查看。",
+        "process": [
+          "盤點集團各單位 AI 推動現況，定義 L0～L5 的 AI 成熟度分級標準",
+          "設計資料庫 Schema 與 RBAC 權限模型（Admin／Viewer 角色搭配 Row Level Security）",
+          "開發 Dashboard 首頁與各功能模組（單位管理、AI 專案管理、AI 案例管理、AI 人才管理、API 成本管理）",
+          "部署至 Vercel，串接 Supabase 作為後端資料庫與身份驗證服務",
+          "後續依各單位回饋持續擴充功能模組（如 Prompt Library、AI Agent Marketplace）"
+        ],
+        "features": [
+          {
+            "name": "AI 推動 Dashboard",
+            "desc": "總覽 AI 成熟度平均、專案／案例總數、導入單位數、本月 API 花費，並可依月份與地區篩選"
+          },
+          {
+            "name": "AI 成熟度分布",
+            "desc": "以圓餅圖呈現全集團 L0～L5 各等級單位數與佔比"
+          },
+          {
+            "name": "各地區成熟度分布",
+            "desc": "以長條圖呈現台灣、大陸總部、東南亞總部及各據點的 AI 成熟度落差"
+          },
+          {
+            "name": "單位管理",
+            "desc": "維護集團各單位基本資料，作為 AI 推動追蹤的基礎單位"
+          },
+          {
+            "name": "AI 專案管理、AI 案例管理",
+            "desc": "追蹤集團 AI 專案與案例的進度與內容"
+          },
+          {
+            "name": "AI 人才管理",
+            "desc": "盤點集團 AI 相關人才配置"
+          },
+          {
+            "name": "API 成本管理",
+            "desc": "追蹤各單位 API 使用花費與趨勢"
+          },
+          {
+            "name": "使用者與部門管理",
+            "desc": "白名單登入機制，權限落地在資料庫層（RLS）"
+          }
+        ],
+        "ai_usage": [
+          "平台本身作為集團推動 AI（含本案例庫）的管理工具，用來追蹤各單位 AI 導入的成熟度與進度",
+          "透過標準化的成熟度分級（L0～L5），將原本質性、口頭回報的 AI 推動狀況量化、視覺化"
+        ],
+        "tools": [
+          {
+            "name": "Next.js（App Router）",
+            "desc": "前端框架，建構 Dashboard 各頁面"
+          },
+          {
+            "name": "TypeScript",
+            "desc": "前端與後端邏輯開發"
+          },
+          {
+            "name": "Tailwind CSS + shadcn/ui",
+            "desc": "UI 元件與樣式系統"
+          },
+          {
+            "name": "Supabase",
+            "desc": "PostgreSQL 資料庫、身份驗證（Email+Password）與 Row Level Security 權限控管"
+          },
+          {
+            "name": "Vercel",
+            "desc": "前端部署與 Route Handler 託管"
+          }
+        ],
+        "results": [
+          "平台已上線並可存取（https://thcai.vercel.app/），首頁 Dashboard 可查看集團 AI 成熟度、專案案例總數與導入單位數",
+          "建立集團 AI 推動的統一資料來源，取代原本分散於各單位的報表與口頭回報",
+          "完成資料庫 Schema、RBAC 權限設計與核心功能模組開發，持續依需求擴充"
+        ],
+        "value": [
+          {
+            "name": "對數位發展部",
+            "desc": "可即時掌握全集團 AI 推動進度，不需再逐一向各單位收集回報，提升治理效率"
+          },
+          {
+            "name": "對集團管理層",
+            "desc": "有統一的儀表板了解各地區、各單位的 AI 成熟度落差，作為資源投入與決策依據"
+          },
+          {
+            "name": "對各推動單位",
+            "desc": "AI 專案與案例被集中記錄與展示，更容易被看見、被複製到其他單位"
+          }
+        ],
+        "extensions": [
+          "擴充 Prompt Library、AI Agent Marketplace 等模組，讓平台從「追蹤管理」進一步成為「AI 能力共享」的入口",
+          "串接各單位既有系統（如本案例庫網站）自動匯入案例與專案資料，減少手動輸入",
+          "依集團 AIOS 長期目標，逐步整合更多 AI 治理與知識管理功能"
+        ],
+        "limitations": [
+          "目前仍在開發階段，部分模組（如 API 成本自動歸集）尚待與各單位實際使用資料串接",
+          "帳號採白名單機制建立，不開放公開註冊或社群登入，需管理者手動邀請",
+          "成熟度分級與各項數據需仰賴各單位確實填報，資料正確性仍須管理單位定期覆核"
+        ],
+        "success_key": "以資料庫層級的權限控管（RBAC + RLS）取代單純前端隱藏 UI，確保集團層級的敏感資料在多單位共用平台時仍具備適當的存取控制。",
+        "keywords": [
+          "AI Dashboard",
+          "AI 治理",
+          "AI 成熟度",
+          "集團管理",
+          "Next.js",
+          "Supabase",
+          "Vercel",
+          "AIOS",
+          "數位發展部"
+        ]
+      },
+      "en": {
+        "title": "Group AI Adoption Management Dashboard (THC AI Enablement Platform)",
+        "summary": "A group-wide AI adoption management platform that tracks each unit's AI maturity level (L0 through L5), AI project and case progress, AI talent inventory, and API usage cost in one place — so units driving AI adoption and management no longer need to rely on scattered reports and verbal updates. The long-term goal is to evolve it into the group's AI Operating System (AIOS).",
+        "category": [
+          "Internal Management Tool",
+          "AI Governance",
+          "Data Dashboard"
+        ],
+        "unit_request": "Digital Development Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "In Development",
+        "region": "Group-wide (Taiwan, Mainland HQ, Southeast Asia HQ, and other sites)",
+        "problem_background": "As different units across the group roll out their own AI initiatives, progress ends up scattered across different reports, formats, and meeting notes. Management has no easy way to see the full group-wide picture of AI adoption: which units have adopted AI, how far along they are, what projects and cases are underway, how AI-related talent is allocated, and how much is being spent on API usage all require manual aggregation to answer.",
+        "core_problem": "How to give group management and individual units a single, unified platform to see AI maturity, project and case progress, talent allocation, and API cost in real time — replacing scattered, manually compiled reporting.",
+        "solution": "Built a dashboard platform with Next.js + Supabase, deployed on Vercel, that breaks down AI adoption into five maturity levels (L0 Not Started through L5 Replicable) and integrates the following modules:\n- AI Adoption Management: Dashboard overview, Unit Management, AI Project Management, AI Case Management, Requirement Management\n- AI Resource Management: AI Talent Management, API Cost Management\n- System Management: Department Management, User Management (invite-only whitelist, no public sign-up)\n\nThe home Dashboard surfaces key metrics such as average AI maturity, total projects and cases, number of units onboarded, and this month's API spend, and visualizes overall and regional maturity distribution with pie and bar charts, filterable by month and region.",
+        "process": [
+          "Surveyed the current state of AI adoption across group units and defined the L0–L5 AI maturity grading standard",
+          "Designed the database schema and RBAC permission model (Admin/Viewer roles with Row Level Security)",
+          "Built the Dashboard home page and core feature modules (Unit Management, AI Project Management, AI Case Management, AI Talent Management, API Cost Management)",
+          "Deployed to Vercel, integrating Supabase as the backend database and authentication service",
+          "Continuing to expand feature modules (e.g. Prompt Library, AI Agent Marketplace) based on feedback from each unit"
+        ],
+        "features": [
+          {
+            "name": "AI Adoption Dashboard",
+            "desc": "Overview of average AI maturity, total projects/cases, number of units onboarded, and this month's API spend, filterable by month and region"
+          },
+          {
+            "name": "AI Maturity Distribution",
+            "desc": "Pie chart showing the number and share of units at each maturity level (L0–L5) group-wide"
+          },
+          {
+            "name": "Regional Maturity Distribution",
+            "desc": "Bar chart showing the AI maturity gap across Taiwan, Mainland HQ, Southeast Asia HQ, and other sites"
+          },
+          {
+            "name": "Unit Management",
+            "desc": "Maintains basic information for each group unit as the base entity for tracking AI adoption"
+          },
+          {
+            "name": "AI Project & Case Management",
+            "desc": "Tracks the progress and content of AI projects and cases across the group"
+          },
+          {
+            "name": "AI Talent Management",
+            "desc": "Inventories AI-related talent allocation across the group"
+          },
+          {
+            "name": "API Cost Management",
+            "desc": "Tracks API usage spend and trends by unit"
+          },
+          {
+            "name": "User & Department Management",
+            "desc": "Whitelist-based login with permissions enforced at the database layer (RLS)"
+          }
+        ],
+        "ai_usage": [
+          "The platform itself serves as the management tool for the group's AI adoption push (including this case library), tracking each unit's AI maturity and progress",
+          "Standardized maturity grading (L0–L5) turns what used to be qualitative, verbal status updates into quantified, visualized data"
+        ],
+        "tools": [
+          {
+            "name": "Next.js (App Router)",
+            "desc": "Frontend framework used to build the Dashboard pages"
+          },
+          {
+            "name": "TypeScript",
+            "desc": "Frontend and backend logic development"
+          },
+          {
+            "name": "Tailwind CSS + shadcn/ui",
+            "desc": "UI components and styling system"
+          },
+          {
+            "name": "Supabase",
+            "desc": "PostgreSQL database, authentication (Email+Password), and Row Level Security access control"
+          },
+          {
+            "name": "Vercel",
+            "desc": "Frontend hosting and Route Handler deployment"
+          }
+        ],
+        "results": [
+          "The platform is live and accessible (https://thcai.vercel.app/); the home Dashboard shows group-wide AI maturity, total projects/cases, and number of units onboarded",
+          "Established a single source of truth for group-wide AI adoption, replacing scattered reports and verbal updates from individual units",
+          "Completed the database schema, RBAC permission design, and core feature modules, with continued expansion based on demand"
+        ],
+        "value": [
+          {
+            "name": "For the Digital Development Department",
+            "desc": "Real-time visibility into group-wide AI adoption progress without having to collect status updates from each unit individually, improving governance efficiency"
+          },
+          {
+            "name": "For Group Management",
+            "desc": "A unified dashboard for understanding AI maturity gaps across regions and units, informing resource allocation and decision-making"
+          },
+          {
+            "name": "For Units Driving Adoption",
+            "desc": "AI projects and cases are centrally recorded and showcased, making them easier to discover and replicate across other units"
+          }
+        ],
+        "extensions": [
+          "Expand with modules like a Prompt Library or AI Agent Marketplace, evolving the platform from adoption tracking into a hub for sharing AI capabilities",
+          "Integrate with existing unit systems (such as this case library site) to auto-import case and project data, reducing manual entry",
+          "Progressively integrate more AI governance and knowledge management features toward the group's long-term AIOS goal"
+        ],
+        "limitations": [
+          "Still in development; some modules (such as automated API cost aggregation) still need to be connected to each unit's actual usage data",
+          "Accounts are created via an invite-only whitelist; public sign-up and social login are not supported and require manual invitation by an admin",
+          "Maturity grading and other data depend on units reporting accurately; data accuracy still needs periodic review by the managing unit"
+        ],
+        "success_key": "Enforcing role-based access control at the database layer (RBAC + RLS) instead of relying solely on hiding UI on the frontend, ensuring appropriate access control over group-level sensitive data on a platform shared across many units.",
+        "keywords": [
+          "AI Dashboard",
+          "AI Governance",
+          "AI Maturity",
+          "Group Management",
+          "Next.js",
+          "Supabase",
+          "Vercel",
+          "AIOS",
+          "Digital Development Department"
+        ]
+      }
+    },
+    "updated": "2026.07"
   }
 ]
