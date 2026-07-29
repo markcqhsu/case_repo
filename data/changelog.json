@@ -1,6 +1,10 @@
 {
-  "version": "v1.6.0",
+  "version": "v1.7.0",
   "entries": [
+    {
+      "date": "2026-07-30",
+      "notes": "新增第十二個案例：集團 AI 推廣管理 Dashboard（THC AI Enablement Platform，數位發展部，Next.js + Supabase 打造的 AI 成熟度／專案／人才／API 成本管理平台）。"
+    },
     {
       "date": "2026-07-23",
       "notes": "修正排行榜頁「返回案例庫」按鈕樣式，改為與案例詳情頁相同的膠囊按鈕設計。"
