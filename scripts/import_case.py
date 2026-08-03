@@ -8,6 +8,7 @@ import copy
 import json
 import re
 import sys
+from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -123,6 +124,7 @@ def build_case(sections, existing_count):
     return {
         "id": f"case-{existing_count + 1:03d}",
         "number": existing_count + 1,
+        "updated": date.today().strftime("%Y.%m"),
         **shared,
         # 網站是中英雙語，這裡先把中文內容原樣複製一份到 en，
         # 之後要記得請 Claude 或自己把 i18n.en 的內容翻成英文。
