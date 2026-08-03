@@ -2435,5 +2435,184 @@
       }
     },
     "updated": "2026.07"
+  },
+  {
+    "id": "case-013",
+    "number": 13,
+    "url": "https://order-pdf-splitter-969069401452.asia-east1.run.app/",
+    "screenshot": "assets/order-pdf-splitter-demo.png",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "訂單拆分工作台",
+        "summary": "針對混合多家公司訂單的 PDF，自動辨識每頁公司名稱並分組，經人工確認後一鍵拆分下載，取代逐頁人工比對整理的作業方式。",
+        "category": [
+          "業務流程優化",
+          "內部工具"
+        ],
+        "unit_request": "業務單位",
+        "unit_owner": "數位發展部",
+        "author": "徐馬克",
+        "status": "開發中",
+        "region": "台灣",
+        "problem_background": "公司訂單常以單一 PDF 混合多家客戶的訂單頁面，過去需人工逐頁翻閱、辨識公司名稱，再手動複製分割成各公司獨立檔案，耗時且容易出錯。",
+        "core_problem": "缺少一套能自動辨識頁面所屬公司並分組整理的工具，人工比對效率低，也難以確保拆分結果正確無誤。",
+        "solution": "建立訂單拆分工作台，只擷取每頁頁首的公司名稱區域送 OCR 辨識，系統自動彙整同公司頁面，使用者逐家確認無誤後才可匯出，確保正確性。",
+        "process": [
+          "上傳訂單 PDF（上限 50MB、100 頁）",
+          "系統擷取每頁頁首區域，呼叫 Google Vision OCR 辨識公司名稱",
+          "依辨識結果自動合併同公司頁面，顯示縮圖與信心狀態",
+          "使用者逐家公司確認或修正辨識結果",
+          "確認完成後，個別下載 PDF 或一次下載 ZIP"
+        ],
+        "features": [
+          {
+            "name": "頁首辨識",
+            "desc": "只送出頁面頁首的公司名稱區域做 OCR，不上傳完整 PDF"
+          },
+          {
+            "name": "公司自動分組",
+            "desc": "依辨識結果合併同公司頁面並顯示涵蓋頁碼"
+          },
+          {
+            "name": "人工確認機制",
+            "desc": "每家公司需人工核可才能匯出，避免誤拆"
+          },
+          {
+            "name": "彈性匯出",
+            "desc": "可個別下載單一公司 PDF，或一次下載全部 ZIP"
+          }
+        ],
+        "ai_usage": [
+          "使用 Google Cloud Vision OCR 辨識頁首圖片中的公司名稱文字"
+        ],
+        "tools": [
+          {
+            "name": "Google Cloud Vision",
+            "desc": "辨識頁首裁切圖片中的公司名稱"
+          },
+          {
+            "name": "Claude",
+            "desc": "協助開發程式碼、除錯與功能設計"
+          },
+          {
+            "name": "Google Cloud Run",
+            "desc": "部署前後端服務"
+          }
+        ],
+        "results": [
+          "完整 PDF 拆分流程可在瀏覽器內完成，敏感訂單資料不需完整上傳後端",
+          "訂單拆分作業從人工逐頁比對，改為系統輔助辨識加人工確認"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "大幅減少整理混合訂單 PDF 的人工時間，降低分類錯誤風險"
+          },
+          {
+            "name": "對客戶",
+            "desc": "訂單資料不會整份上傳雲端，降低敏感資料外流疑慮"
+          }
+        ],
+        "extensions": [],
+        "limitations": [
+          "需符合特定訂單 PDF 格式，才能提高自動辨識準確率",
+          "OCR 結果仍需人工確認後才可匯出，非全自動流程"
+        ],
+        "success_key": "只擷取頁首資訊送 OCR，兼顧辨識效率與資料隱私，並保留人工確認把關拆分正確性。",
+        "keywords": [
+          "OCR",
+          "PDF 拆分",
+          "訂單處理",
+          "Google Vision",
+          "內部工具"
+        ]
+      },
+      "en": {
+        "title": "Order PDF Splitter",
+        "summary": "Automatically identifies the company name on each page of a mixed-company order PDF, groups matching pages, and lets users confirm before a one-click split and download—replacing manual page-by-page sorting.",
+        "category": [
+          "Process Optimization",
+          "Internal Tool"
+        ],
+        "unit_request": "Sales Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "In Development",
+        "region": "Taiwan",
+        "problem_background": "Company order PDFs often mix order pages from multiple client companies into a single file. Staff previously had to manually flip through every page to identify the company name, then copy and split pages into separate files by hand—slow and error-prone.",
+        "core_problem": "There was no tool to automatically recognize which company each page belongs to and group pages accordingly, making manual sorting inefficient and hard to verify for accuracy.",
+        "solution": "Built an order-splitting workbench that sends only the company-name region at the top of each page for OCR recognition. The system automatically groups pages by company, and users confirm each group before exporting to ensure accuracy.",
+        "process": [
+          "Upload an order PDF (up to 50 MB, 100 pages)",
+          "The system crops the header region of each page and calls Google Vision OCR to recognize the company name",
+          "Pages are automatically grouped by company based on the recognition results, with thumbnails and confidence status shown",
+          "The user reviews and confirms or corrects each company's grouping",
+          "Once confirmed, download the PDF for a single company or a ZIP with all files"
+        ],
+        "features": [
+          {
+            "name": "Header-only recognition",
+            "desc": "Only the company-name region at the top of each page is sent for OCR—the full PDF is never uploaded"
+          },
+          {
+            "name": "Automatic company grouping",
+            "desc": "Pages from the same company are merged based on recognition results, showing the page range covered"
+          },
+          {
+            "name": "Manual confirmation step",
+            "desc": "Each company's grouping must be manually approved before export, preventing misgrouped files"
+          },
+          {
+            "name": "Flexible export",
+            "desc": "Download a single company's PDF individually, or all of them at once as a ZIP"
+          }
+        ],
+        "ai_usage": [
+          "Uses Google Cloud Vision OCR to recognize the company name text in the cropped header images"
+        ],
+        "tools": [
+          {
+            "name": "Google Cloud Vision",
+            "desc": "Recognizes the company name in the cropped header images"
+          },
+          {
+            "name": "Claude",
+            "desc": "Assisted with development, debugging, and feature design"
+          },
+          {
+            "name": "Google Cloud Run",
+            "desc": "Hosts the frontend and backend services"
+          }
+        ],
+        "results": [
+          "The entire PDF-splitting workflow runs in the browser, so sensitive order data never needs to be fully uploaded to the backend",
+          "Order splitting shifted from fully manual page-by-page comparison to system-assisted recognition plus human confirmation"
+        ],
+        "value": [
+          {
+            "name": "For the sales team",
+            "desc": "Greatly reduces the time spent sorting mixed-company order PDFs and lowers the risk of misclassification"
+          },
+          {
+            "name": "For clients",
+            "desc": "Full order documents are never uploaded to the cloud, reducing concerns about sensitive data exposure"
+          }
+        ],
+        "extensions": [],
+        "limitations": [
+          "Requires a reasonably consistent order PDF format for higher automatic recognition accuracy",
+          "OCR results still require manual confirmation before export—the process is not fully automated"
+        ],
+        "success_key": "Sending only the header region for OCR balances recognition efficiency with data privacy, while manual confirmation still guards the accuracy of the final split.",
+        "keywords": [
+          "OCR",
+          "PDF Splitting",
+          "Order Processing",
+          "Google Vision",
+          "Internal Tool"
+        ]
+      }
+    }
   }
 ]

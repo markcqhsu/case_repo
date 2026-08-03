@@ -1,6 +1,10 @@
 {
-  "version": "v1.7.0",
+  "version": "v1.8.0",
   "entries": [
+    {
+      "date": "2026-08-03",
+      "notes": "新增第十三個案例：訂單拆分工作台（數位發展部，OCR 自動辨識訂單 PDF 公司名稱並分組，人工確認後一鍵拆分下載）。"
+    },
     {
       "date": "2026-07-30",
       "notes": "新增第十二個案例：集團 AI 推廣管理 Dashboard（THC AI Enablement Platform，數位發展部，Next.js + Supabase 打造的 AI 成熟度／專案／人才／API 成本管理平台）。"
