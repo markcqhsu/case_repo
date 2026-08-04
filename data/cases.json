@@ -631,7 +631,7 @@
   {
     "id": "a700-regulations",
     "number": 4,
-    "updated": "2026.07",
+    "updated": "2026.08",
     "screenshot": "assets/a700-regulations-demo.png",
     "url": "https://markcqhsu.github.io/A700_regulations/",
     "i18n": {
@@ -654,11 +654,12 @@
           "GitHub",
           "GitHub Pages",
           "Excel 匯出功能",
-          "PDF 匯出功能"
+          "PDF 匯出功能",
+          "Chrome 擴充功能（Manifest V3）"
         ],
         "problem_background": "職安衛人員在進行法規鑑定時，需要將政府法規網站上的條文逐條複製到 Excel，再依公司格式整理成法規鑑定登錄表。當法規條文較多時，逐條複製、整理欄位及調整格式會花費大量時間，也容易發生條文遺漏、複製錯誤或格式不一致的情況。",
         "core_problem": "如何減少職安衛人員手動複製與整理法規條文的時間，並快速轉換成公司可直接使用的法規鑑定登錄表。",
-        "solution": "建立法規整理網站，讓使用者貼上政府法規頁面的網址。系統自動讀取法規名稱、條號及條文內容，並依照公司的法規鑑定登錄表格式完成整理，使用者可再填寫執行現況、符合性評估及相關說明，最後匯出為 Excel 或 PDF。",
+        "solution": "建立法規整理網站，讓使用者貼上政府法規頁面的網址。系統自動讀取法規名稱、條號及條文內容，並依照公司的法規鑑定登錄表格式完成整理，使用者可再填寫執行現況、符合性評估及相關說明，最後匯出為 Excel 或 PDF。由於部分公開 CORS 代理服務陸續收費化或不穩定，另外開發「HC Regulation」瀏覽器擴充功能，讓網站可直接繞過瀏覽器的跨網域限制讀取政府法規網站內容，公開代理服務則保留作為備援管道。",
         "process": [],
         "features": [
           "使用者貼上政府法規網址後，系統可自動擷取並整理法規條文，轉換為公司法規鑑定登錄表格式。",
@@ -666,6 +667,10 @@
           {
             "name": "支援多種政府法規查詢網站",
             "desc": "水利法規查詢系統、經濟部主管法規查詢系統、地方政府法規查詢系統、內政部主管法規共用系統、環境部主管法規共用系統。"
+          },
+          {
+            "name": "HC Regulation 瀏覽器擴充功能",
+            "desc": "讀取轉換的主要管道改為透過自行開發的 Chrome 擴充功能，直接繞過瀏覽器跨網域限制讀取政府法規網站內容；需先安裝擴充功能才能使用讀取轉換功能。"
           }
         ],
         "ai_usage": [
@@ -675,7 +680,8 @@
           "產生及修改網站程式碼",
           "整理法規資料欄位",
           "建立 Excel 與 PDF 匯出功能",
-          "協助測試與程式除錯"
+          "協助測試與程式除錯",
+          "開發「HC Regulation」瀏覽器擴充功能，透過背景 service worker 繞過跨網域限制讀取政府法規網站"
         ],
         "results": [
           "將政府法規條文自動轉換成公司使用的法規鑑定登錄表。",
@@ -715,7 +721,8 @@
           "匯出前仍應確認法規名稱是否正確。",
           "匯出前仍應確認條號及條文是否完整。",
           "匯出前仍應確認法規是否為最新版本，是否有修法、廢止或施行日期變更。",
-          "匯出前仍應確認是否適用於公司及相關廠區。"
+          "匯出前仍應確認是否適用於公司及相關廠區。",
+          "需另外安裝「HC Regulation」瀏覽器擴充功能，才能使用網站的法規讀取轉換功能。"
         ],
         "success_key": "",
         "keywords": [
@@ -750,11 +757,12 @@
           "GitHub",
           "GitHub Pages",
           "Excel Export",
-          "PDF Export"
+          "PDF Export",
+          "Chrome Extension (Manifest V3)"
         ],
         "problem_background": "When conducting regulation assessments, EHS staff had to manually copy each article of a regulation from a government website into Excel, then organize it into the company's regulation assessment register format. When there were many articles, copying, formatting, and organizing the fields took a lot of time and was prone to missed articles, copy errors, or inconsistent formatting.",
         "core_problem": "How to reduce the time EHS staff spend manually copying and organizing regulation text, and quickly convert it into a regulation assessment register the company can use directly.",
-        "solution": "Built a regulation organizer site where users paste the URL of a government regulation page. The system automatically reads the regulation name, article numbers, and article text, and organizes it into the company's regulation assessment register format. Users can then fill in the implementation status, compliance assessment, and related notes, and finally export the result as Excel or PDF.",
+        "solution": "Built a regulation organizer site where users paste the URL of a government regulation page. The system automatically reads the regulation name, article numbers, and article text, and organizes it into the company's regulation assessment register format. Users can then fill in the implementation status, compliance assessment, and related notes, and finally export the result as Excel or PDF. Since some public CORS proxy services became paid or unreliable over time, a companion \"HC Regulation\" browser extension was built so the site can bypass the browser's cross-origin restrictions and read government regulation sites directly, with the public proxy services kept only as a fallback.",
         "process": [],
         "features": [
           "After pasting a government regulation URL, the system automatically extracts and organizes the regulation text into the company's regulation assessment register format.",
@@ -762,6 +770,10 @@
           {
             "name": "Supports multiple government regulation lookup sites",
             "desc": "Including the Water Resources regulation lookup system, the Ministry of Economic Affairs regulation lookup system, local government regulation lookup systems, the Ministry of the Interior shared regulation system, and the Ministry of Environment shared regulation system."
+          },
+          {
+            "name": "HC Regulation Browser Extension",
+            "desc": "Reading and conversion now goes primarily through a self-built Chrome extension that bypasses the browser's cross-origin restrictions to read government regulation sites directly; the extension must be installed first to use the read/convert feature."
           }
         ],
         "ai_usage": [
@@ -771,7 +783,8 @@
           "Generating and editing the website code",
           "Organizing the regulation data fields",
           "Building the Excel and PDF export features",
-          "Helping with testing and debugging"
+          "Helping with testing and debugging",
+          "Built the \"HC Regulation\" browser extension, using a background service worker to bypass cross-origin restrictions when reading government regulation sites"
         ],
         "results": [
           "Automatically converts government regulation text into the company's regulation assessment register.",
@@ -811,7 +824,8 @@
           "Before exporting, users should still confirm the regulation name is correct.",
           "Before exporting, users should still confirm the article numbers and text are complete.",
           "Before exporting, users should still confirm the regulation is the latest version and check for any amendments, repeals, or changes to the effective date.",
-          "Before exporting, users should still confirm whether it applies to the company and relevant sites."
+          "Before exporting, users should still confirm whether it applies to the company and relevant sites.",
+          "The \"HC Regulation\" browser extension must be installed separately to use the site's regulation reading/conversion feature."
         ],
         "success_key": "",
         "keywords": [
@@ -827,7 +841,11 @@
           "Regulatory Management"
         ]
       }
-    }
+    },
+    "screenshots": [
+      "assets/a700-regulations-demo.png",
+      "assets/a700-regulations-extension-guide.png"
+    ]
   },
   {
     "id": "thc-products-list-app",
