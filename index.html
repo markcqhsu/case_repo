@@ -245,6 +245,25 @@
   .chip { background: var(--chip-bg); color: var(--chip-text); font-size: 13px; font-weight: 600; padding: 4px 11px; border-radius: 999px; }
   #empty { text-align: center; color: var(--text-muted); font-size: 16px; padding: 60px 0; display: none; }
 
+  /* ---------- pagination ---------- */
+  .pagination { display: flex; justify-content: center; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 32px; }
+  .pagination button {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--card-bg);
+    color: var(--text);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .pagination button:hover:not(:disabled) { border-color: var(--accent); }
+  .pagination button.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .pagination button:disabled { opacity: 0.4; cursor: default; }
+  .pagination .ellipsis { color: var(--text-muted); padding: 0 4px; }
+
   /* ---------- detail view (full page, no overlay) ---------- */
   #detailView { max-width: 760px; margin: 0 auto; padding: 0 20px 64px; }
   .detail-topbar { position: sticky; top: 0; background: var(--bg); padding: 16px 0; z-index: 5; }
@@ -494,6 +513,7 @@
   <main>
     <div id="grid"></div>
     <div id="empty">找不到符合的案例</div>
+    <div id="pagination" class="pagination"></div>
   </main>
 </section>
 
@@ -551,7 +571,9 @@ const UI_STRINGS = {
     leaderboardBtn: '🏆 排行榜',
     leaderboardTitle: '案例貢獻排行榜',
     leaderboardSubtitle: '依「負責單位」的案例數量排序',
-    caseCountLabel: (n) => `${n} 個案例`
+    caseCountLabel: (n) => `${n} 個案例`,
+    prevPage: '上一頁',
+    nextPage: '下一頁'
   },
   en: {
     pageTitle: 'Hon Chuan AI Application Case Library',
@@ -574,7 +596,9 @@ const UI_STRINGS = {
     leaderboardBtn: '🏆 Leaderboard',
     leaderboardTitle: 'Case Contribution Leaderboard',
     leaderboardSubtitle: 'Ranked by number of cases per owning unit',
-    caseCountLabel: (n) => `${n} case${n === 1 ? '' : 's'}`
+    caseCountLabel: (n) => `${n} case${n === 1 ? '' : 's'}`,
+    prevPage: 'Prev',
+    nextPage: 'Next'
   }
 };
 
@@ -645,6 +669,7 @@ function setLang(lang) {
   currentLang = lang;
   localStorage.setItem('caseLibLang', lang);
   activeCategory = null;
+  currentPage = 1;
   applyStaticText();
   renderVersion();
   renderCategoryFilters();
@@ -732,6 +757,7 @@ function renderCategoryFilters() {
   allBtn.textContent = ui().all;
   allBtn.onclick = () => {
     activeCategory = null;
+    currentPage = 1;
     renderCategoryFilters();
     render();
   };
@@ -744,6 +770,7 @@ function renderCategoryFilters() {
     btn.textContent = cat;
     btn.onclick = () => {
       activeCategory = activeCategory === cat ? null : cat;
+      currentPage = 1;
       renderCategoryFilters();
       render();
     };
@@ -776,6 +803,9 @@ function sortedByNewest(list) {
     .map(x => x.c);
 }
 
+const PAGE_SIZE = 12;
+let currentPage = 1;
+
 function render() {
   const q = document.getElementById('search').value.trim();
   const grid = document.getElementById('grid');
@@ -783,7 +813,58 @@ function render() {
   const filtered = sortedByNewest(cases.filter(c => matches(c, q)));
   grid.innerHTML = '';
   empty.style.display = filtered.length ? 'none' : 'block';
-  filtered.forEach(c => grid.appendChild(renderCard(c)));
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  if (currentPage > totalPages) currentPage = totalPages;
+  if (currentPage < 1) currentPage = 1;
+
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageItems = filtered.slice(start, start + PAGE_SIZE);
+  pageItems.forEach(c => grid.appendChild(renderCard(c)));
+
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages) {
+  const el = document.getElementById('pagination');
+  el.innerHTML = '';
+  if (totalPages <= 1) return;
+
+  const s = ui();
+  const goTo = (p) => {
+    currentPage = p;
+    render();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const prevBtn = document.createElement('button');
+  prevBtn.textContent = s.prevPage;
+  prevBtn.disabled = currentPage === 1;
+  prevBtn.onclick = () => goTo(currentPage - 1);
+  el.appendChild(prevBtn);
+
+  const pages = new Set([1, totalPages, currentPage, currentPage - 1, currentPage + 1]);
+  let lastPage = 0;
+  [...pages].filter(p => p >= 1 && p <= totalPages).sort((a, b) => a - b).forEach(p => {
+    if (lastPage && p - lastPage > 1) {
+      const dots = document.createElement('span');
+      dots.className = 'ellipsis';
+      dots.textContent = '…';
+      el.appendChild(dots);
+    }
+    const btn = document.createElement('button');
+    btn.textContent = p;
+    if (p === currentPage) btn.className = 'active';
+    btn.onclick = () => goTo(p);
+    el.appendChild(btn);
+    lastPage = p;
+  });
+
+  const nextBtn = document.createElement('button');
+  nextBtn.textContent = s.nextPage;
+  nextBtn.disabled = currentPage === totalPages;
+  nextBtn.onclick = () => goTo(currentPage + 1);
+  el.appendChild(nextBtn);
 }
 
 function renderCard(c) {
@@ -1018,6 +1099,7 @@ function renderLeaderboard() {
 
 function goToUnit(unit) {
   activeCategory = null;
+  currentPage = 1;
   document.getElementById('search').value = unit === ui().notProvided ? '' : unit;
   renderCategoryFilters();
   render();
@@ -1031,7 +1113,7 @@ function escapeHtml(str) {
     .replaceAll('>', '&gt;');
 }
 
-document.getElementById('search').addEventListener('input', render);
+document.getElementById('search').addEventListener('input', () => { currentPage = 1; render(); });
 document.getElementById('backBtn').addEventListener('click', () => { location.hash = ''; });
 document.getElementById('leaderboardBackBtn').addEventListener('click', () => { location.hash = ''; });
 document.getElementById('leaderboardBtn').addEventListener('click', () => { location.hash = 'leaderboard'; });
