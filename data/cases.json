@@ -3141,5 +3141,483 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-016",
+    "number": 16,
+    "updated": "2026.08",
+    "url": "https://n8n.honchuan.com.tw:5678/signin",
+    "video": [],
+    "screenshot": "assets/coa-automation-demo.png",
+    "i18n": {
+      "zh": {
+        "title": "COA 製作與寄送自動化流程",
+        "summary": "透過 Python 與 n8n 建立 COA 自動化流程，將原本需要人工整理出貨資料、製作 COA 及逐封寄送郵件的作業，整合成標準化流程。品保人員完成出貨資料確認後，系統可自動產生 COA，並依照客戶資料夾及收件人清單，自動判斷寄送對象、加入副本收件人及寄出對應的 COA，減少重複操作時間。",
+        "category": [
+          "品保工作流程",
+          "自動化"
+        ],
+        "unit_request": "台宏品保",
+        "unit_owner": "台宏品保處",
+        "author": "謝欣錫",
+        "status": "正式上架",
+        "region": "",
+        "problem_background": "COA 製作與寄送原本包含多項人工操作。品保人員需要先到倉儲確認出貨日期及數量，再將出貨資料輸入指定檔案，製作對應的 COA。完成後，還需要依不同客戶查找收件人、確認副本對象、建立郵件並逐一寄送。當出貨批次或客戶數量增加時，這些重複作業會占用較多時間，也容易因人工輸入、檔案分類或收件人設定錯誤，造成 COA 資料或寄送內容不正確。",
+        "core_problem": "如何將 COA 的資料整理、文件產生、客戶判斷及郵件寄送流程標準化，減少品保人員重複輸入與逐封寄送郵件的時間。",
+        "solution": "整體流程分為兩個部分：\n\nCOA 製作自動化：品保人員確認出貨日期及數量後，透過 Python 將出貨單轉換成系統可讀取的格式，並將出貨資訊整理至指定檔案中。系統再根據整理後的出貨資料，自動產生對應的 COA，減少人工逐份製作文件的作業。\n\nCOA 寄送自動化：先建立包含客戶關鍵字、主要收件人及副本收件人的清單，並依照客戶名稱分類待寄送的 COA。品保人員只需要將 COA 放入指定位置，設定本次出貨日期及寄件人後執行 n8n 工作流。系統便會自動讀取檔案、判斷對應客戶、查找收件人清單，並將 COA 寄送給正確的客戶及相關人員。",
+        "process": [
+          "人員確認出貨日期及出貨數量。",
+          "使用 Python 轉換出貨單格式。",
+          "將出貨資訊整理至指定資料檔案。",
+          "使用 Python 自動產生 COA。",
+          "將待寄送的 COA 依客戶分類。",
+          "系統讀取客戶與收件人對照清單。",
+          "執行前設定出貨日期及寄件人。",
+          "啟動 n8n 自動化工作流。",
+          "系統判斷客戶並配對收件人。",
+          "自動附加 COA 並寄送郵件。"
+        ],
+        "features": [
+          "將出貨資料自動轉換並產生 COA。",
+          "支援多個客戶與多份 COA 批次處理。",
+          "依客戶名稱自動判斷對應收件人。",
+          "支援主要收件人與多位副本收件人。",
+          "自動將正確的 COA 附加至對應郵件。",
+          "透過 n8n 工作流完成批次郵件寄送。",
+          "保留出貨日期與寄件人等執行參數，方便不同批次使用。"
+        ],
+        "ai_usage": [],
+        "tools": [
+          {
+            "name": "Python",
+            "desc": "將出貨單轉換格式並自動產生 COA"
+          },
+          {
+            "name": "n8n",
+            "desc": "自動化讀取檔案、判斷客戶、寄送郵件"
+          },
+          {
+            "name": "Excel",
+            "desc": "整理出貨資訊與收件人對照清單"
+          },
+          {
+            "name": "公司郵件系統",
+            "desc": "寄送 COA 給客戶及相關人員"
+          },
+          {
+            "name": "公司內部檔案儲存空間",
+            "desc": "存放待寄送的 COA 及收件人清單"
+          }
+        ],
+        "results": [
+          "自動產生符合出貨資料的 COA。",
+          "將 COA 製作與郵件寄送整合成標準化流程。",
+          "減少人工製作及逐封寄送郵件的時間。",
+          "降低收件人、附件與出貨資料配對錯誤的風險。",
+          "支援不同產品類別及不同寄件帳號。",
+          "收件人清單建立完成後，可持續重複使用。",
+          "讓批次 COA 寄送作業更有效率且容易交接。"
+        ],
+        "value": [
+          {
+            "name": "對品保人員",
+            "desc": "減少重複輸入資料、製作文件、查找收件人及逐封寄送郵件的時間，只需要完成出貨資訊確認及執行前參數設定，即可處理整批 COA。"
+          },
+          {
+            "name": "對業務與客戶",
+            "desc": "客戶可以更快速且穩定地收到正確的 COA，降低因附件錯誤、收件人錯誤或漏寄所造成的溝通問題。"
+          },
+          {
+            "name": "對公司",
+            "desc": "將原本依賴個人經驗的作業方式轉換成標準化自動流程，提升作業效率、降低人為錯誤，並讓後續教育訓練與工作交接更加容易。"
+          }
+        ],
+        "extensions": [
+          "檢驗報告自動產生與寄送",
+          "出貨文件批次寄送",
+          "規格書與產品文件寄送",
+          "客戶報表定期寄送",
+          "品質異常通知",
+          "稽核文件整理與寄送",
+          "其他依客戶名稱配對文件及收件人的工作流程"
+        ],
+        "limitations": [
+          "出貨日期與數量是否正確",
+          "COA 內容是否符合實際檢驗結果",
+          "客戶資料夾名稱是否與收件人清單一致",
+          "收件人及副本資料是否為最新資訊",
+          "待寄送的附件是否放置在正確位置",
+          "本次使用的寄件帳號與產品類別是否正確",
+          "此流程主要協助文件製作及寄送作業，不取代品保人員對產品檢驗結果及 COA 內容正確性的專業確認。",
+          "若新增客戶、更換聯絡人或調整郵件規則，需同步更新收件人清單，避免郵件寄送錯誤。"
+        ],
+        "success_key": "",
+        "keywords": [
+          "COA",
+          "品保",
+          "自動化",
+          "Python",
+          "n8n",
+          "Excel",
+          "文件產生",
+          "郵件自動寄送",
+          "批次處理",
+          "工作流程"
+        ]
+      },
+      "en": {
+        "title": "COA Creation and Dispatch Automation",
+        "summary": "Built with Python and n8n, this workflow automates COA creation and dispatch, turning what used to be manual compilation of shipment data, COA production, and one-by-one email sending into a standardized process. Once QA staff confirm the shipment data, the system automatically generates the COA, determines the correct recipients from customer folders and contact lists, adds CC recipients, and sends the matching COA, cutting down repetitive work.",
+        "category": [
+          "QA Workflow",
+          "Automation"
+        ],
+        "unit_request": "Taihong QA",
+        "unit_owner": "Taihong QA Department",
+        "author": "Hsin-Hsi Hsieh",
+        "status": "Live in production",
+        "region": "",
+        "problem_background": "COA creation and dispatch used to involve many manual steps. QA staff first had to check the warehouse for shipment dates and quantities, enter the shipment data into a designated file, and produce the corresponding COA. After that, they still had to look up recipients for each customer, confirm CC recipients, compose emails, and send them one by one. As shipment batches or the number of customers grew, this repetitive work took up more time and was prone to errors from manual entry, file misclassification, or incorrect recipient settings, leading to inaccurate COA data or dispatch content.",
+        "core_problem": "How to standardize COA data compilation, document generation, customer identification, and email dispatch, reducing the time QA staff spend on repetitive data entry and sending emails one by one.",
+        "solution": "The overall workflow has two parts:\n\nCOA creation automation: After QA staff confirm the shipment date and quantity, Python converts the shipment order into a system-readable format and compiles the shipment information into a designated file. The system then automatically generates the corresponding COA from the compiled shipment data, reducing manual document production.\n\nCOA dispatch automation: A list of customer keywords, primary recipients, and CC recipients is first established, and COAs to be sent are classified by customer name. QA staff only need to place the COA in the designated location, set the shipment date and sender for the run, and execute the n8n workflow. The system then automatically reads the file, identifies the matching customer, looks up the recipient list, and sends the COA to the correct customer and related contacts.",
+        "process": [
+          "Staff confirm the shipment date and quantity.",
+          "Use Python to convert the shipment order format.",
+          "Compile the shipment information into the designated data file.",
+          "Use Python to automatically generate the COA.",
+          "Classify COAs to be sent by customer.",
+          "The system reads the customer-to-recipient reference list.",
+          "Set the shipment date and sender before execution.",
+          "Trigger the n8n automation workflow.",
+          "The system identifies the customer and matches recipients.",
+          "Automatically attach the COA and send the email."
+        ],
+        "features": [
+          "Automatically converts shipment data and generates the COA.",
+          "Supports multiple customers and multiple COAs in a single batch.",
+          "Automatically determines recipients by customer name.",
+          "Supports a primary recipient plus multiple CC recipients.",
+          "Automatically attaches the correct COA to the corresponding email.",
+          "Completes batch email dispatch through the n8n workflow.",
+          "Retains run parameters such as shipment date and sender for reuse across batches."
+        ],
+        "ai_usage": [],
+        "tools": [
+          {
+            "name": "Python",
+            "desc": "Converts the shipment order format and automatically generates the COA"
+          },
+          {
+            "name": "n8n",
+            "desc": "Automates file reading, customer identification, and email dispatch"
+          },
+          {
+            "name": "Excel",
+            "desc": "Organizes shipment information and the recipient reference list"
+          },
+          {
+            "name": "Company email system",
+            "desc": "Sends COAs to customers and related contacts"
+          },
+          {
+            "name": "Company internal file storage",
+            "desc": "Stores COAs pending dispatch and the recipient list"
+          }
+        ],
+        "results": [
+          "Automatically produces COAs that match the shipment data.",
+          "Integrates COA creation and email dispatch into a standardized process.",
+          "Reduces time spent on manual document production and sending emails one by one.",
+          "Lowers the risk of mismatched recipients, attachments, or shipment data.",
+          "Supports different product categories and different sender accounts.",
+          "The recipient list can be reused continuously once established.",
+          "Makes batch COA dispatch more efficient and easier to hand over."
+        ],
+        "value": [
+          {
+            "name": "For QA staff",
+            "desc": "Reduces time spent on repeated data entry, document production, recipient lookup, and sending emails one by one — staff only need to confirm the shipment information and set run parameters to process an entire batch of COAs."
+          },
+          {
+            "name": "For sales and customers",
+            "desc": "Customers receive the correct COA faster and more reliably, reducing communication issues caused by wrong attachments, wrong recipients, or missed dispatches."
+          },
+          {
+            "name": "For the company",
+            "desc": "Converts a process that used to depend on individual experience into a standardized automated workflow, improving efficiency, reducing human error, and making future training and handover easier."
+          }
+        ],
+        "extensions": [
+          "Automatic generation and dispatch of inspection reports",
+          "Batch dispatch of shipment documents",
+          "Dispatch of specification sheets and product documents",
+          "Regular dispatch of customer reports",
+          "Quality anomaly notifications",
+          "Organizing and dispatching audit documents",
+          "Other workflows that match documents to recipients by customer name"
+        ],
+        "limitations": [
+          "Whether the shipment date and quantity are correct",
+          "Whether the COA content matches the actual inspection results",
+          "Whether the customer folder name matches the recipient list",
+          "Whether the recipient and CC information is up to date",
+          "Whether the attachments to be sent are placed in the correct location",
+          "Whether the sender account and product category used this run are correct",
+          "This workflow mainly assists with document production and dispatch — it does not replace QA staff's professional confirmation of inspection results and COA accuracy.",
+          "When customers or contacts change or email rules are adjusted, the recipient list must be updated accordingly to avoid dispatch errors."
+        ],
+        "success_key": "",
+        "keywords": [
+          "COA",
+          "QA",
+          "Automation",
+          "Python",
+          "n8n",
+          "Excel",
+          "Document Generation",
+          "Automated Email Dispatch",
+          "Batch Processing",
+          "Workflow"
+        ]
+      }
+    }
+  },
+  {
+    "id": "case-017",
+    "number": 17,
+    "updated": "2026.08",
+    "url": "https://n8n.honchuan.com.tw:5678/signin",
+    "video": [],
+    "screenshot": "assets/linebot-push-query-demo.png",
+    "i18n": {
+      "zh": {
+        "title": "LINEBOT 應用 : 推播功能與資料即時查詢",
+        "summary": "建立兩種 LINE Bot 應用架構：方案一為 LINE Bot 搭配 n8n，依排程或文字關鍵字觸發，主動推播工作待辦提醒、會議提醒、每日工作回報，並可查詢班表與電話分機表；方案二為 LINE Bot 搭配雲端資料庫，透過互動式選單並整合 LLM 語言模型，讓使用者即時查詢產品異常排除等資料，系統自動回覆可能原因、對策建議與參考圖片。",
+        "category": [
+          "品保工作流程",
+          "自動化",
+          "產品查詢"
+        ],
+        "unit_request": "台宏品保",
+        "unit_owner": "台宏品保處",
+        "author": "謝欣錫",
+        "status": "已完成雛型並於品保群組實際使用中",
+        "region": "",
+        "problem_background": "品保單位過去仰賴人工在 LINE 群組手動整理並發送工作提醒、會議通知、每日工作回報，也需要有人隨時待命回覆班表、電話分機及產品異常排除等查詢。隨著查詢量增加，人工發送與逐一回覆的方式耗費大量時間，也容易發生提醒漏發或回覆延遲的情況。",
+        "core_problem": "如何讓 LINE Bot 依排程或關鍵字自動推播提醒與回報，並讓使用者可透過文字或選單即時查詢班表、聯絡資訊及產品異常排除建議，減少人工整理與逐一回覆查詢的時間。",
+        "solution": "整體規劃為兩個互補的方案：\n\n方案一（LINE Bot 搭配 n8n，主動推播）：先在資料夾建立文字或圖片等原始資料（excel、word、jpg 等格式皆可），再透過 n8n 工作流設定判斷機制，依「定時」或「文字觸發」兩種方式運作。定時推播可用於工作待辦提醒、會議提醒及每日工作回報；文字觸發則用於查詢班表、電話分機表及表定工作事項，使用者只要在群組輸入指定格式的關鍵字（例如「問＋時間＋(課別/產品)＋(班別)」），機器人便會自動查詢並回覆結果。\n\n方案二（LINE Bot 搭配雲端資料庫，資料即時查詢）：先將文字與圖片資料建立至雲端資料庫，使用者透過互動式選單（依產品類別，例如塑蓋、鋁蓋、爪蓋、PET 瓶）點選欲查詢的項目，並整合 LLM 語言模型於雲端資料庫中搜尋，自動回覆可能原因、對策建議，並附上參考圖片。",
+        "process": [
+          "方案一：於資料夾建立文字／圖片等原始資料。",
+          "方案一：於 n8n 設定工作流的判斷機制（定時或文字觸發）。",
+          "方案一：時間到達時自動推播工作待辦提醒、會議提醒或每日工作回報。",
+          "方案一：使用者輸入指定關鍵字格式，觸發機器人查詢班表、電話分機表或表定工作事項並回覆。",
+          "方案二：於雲端資料庫建立文字／圖片資料。",
+          "方案二：使用者透過互動式選單依產品類別點選欲查詢的項目。",
+          "方案二：LINE Bot 整合 LLM 語言模型，於雲端資料庫中搜尋對應資料。",
+          "方案二：機器人自動回覆搜尋結果，包含可能原因、對策建議及參考圖片。"
+        ],
+        "features": [
+          {
+            "name": "定時推播",
+            "desc": "依排程自動推播工作待辦提醒、會議提醒與每日工作回報，無需人工手動發送。"
+          },
+          {
+            "name": "文字觸發查詢",
+            "desc": "使用者輸入指定格式關鍵字，即可查詢班表、電話分機表及表定工作事項。"
+          },
+          {
+            "name": "互動式選單查詢",
+            "desc": "依產品類別點選查詢異常排除資訊，不需要輸入文字。"
+          },
+          {
+            "name": "LLM 智慧回覆",
+            "desc": "整合語言模型於雲端資料庫中搜尋，自動回覆可能原因與對策建議，並附上參考圖片。"
+          },
+          {
+            "name": "雙軌架構彈性運用",
+            "desc": "依情境選擇 n8n 主動推播或雲端資料庫即時查詢，可單獨或搭配使用。"
+          }
+        ],
+        "ai_usage": [
+          "使用 LLM 語言模型理解使用者輸入的查詢文字並比對雲端資料庫內容",
+          "依據異常關鍵字自動歸納可能原因與對策建議",
+          "協助設計 n8n 工作流的判斷邏輯與訊息格式"
+        ],
+        "tools": [
+          {
+            "name": "LINE Bot",
+            "desc": "作為使用者互動介面，接收訊息並推播、回覆查詢結果"
+          },
+          {
+            "name": "n8n",
+            "desc": "設定自動化工作流，處理定時推播與文字觸發判斷"
+          },
+          {
+            "name": "雲端資料庫",
+            "desc": "儲存文字與圖片資料，供互動式選單與 LLM 搜尋使用"
+          },
+          {
+            "name": "LLM 語言模型",
+            "desc": "理解查詢內容並自動生成搜尋回覆"
+          }
+        ],
+        "results": [
+          "主動推播工作待辦提醒、會議提醒與每日工作回報，減少人工手動發送訊息的時間。",
+          "使用者可透過文字關鍵字即時查詢班表、電話分機表及表定工作事項。",
+          "透過互動式選單即可查詢產品異常排除建議，不需要另外翻閱文件或詢問其他同仁。",
+          "導入 LLM 語言模型後，查詢回覆可包含可能原因分析與具體對策建議，並附上參考圖片。"
+        ],
+        "value": [
+          {
+            "name": "對品保人員",
+            "desc": "減少手動整理與逐一回覆查詢的時間，同仁可直接透過 LINE 取得所需資訊。"
+          },
+          {
+            "name": "對現場人員",
+            "desc": "可隨時透過 LINE 查詢班表、聯絡資訊及異常排除建議，不需等待專人回覆。"
+          },
+          {
+            "name": "對公司",
+            "desc": "將原本分散於個人經驗與人工回覆的知識整合進雲端資料庫與自動化流程，方便後續維護與擴充應用。"
+          }
+        ],
+        "extensions": [
+          "其他部門的工作提醒與會議通知推播",
+          "各類表單、規範或作業指南的即時查詢",
+          "設備異常排除或維修知識庫查詢",
+          "客服或內部問答機器人"
+        ],
+        "limitations": [
+          "雲端資料庫內容需持續更新維護，才能確保 LLM 回覆的正確性",
+          "n8n 工作流的定時與觸發規則需依實際需求調整，避免誤觸發或漏發",
+          "屬輔助查詢與提醒工具，實際異常排除仍須由專業人員確認"
+        ],
+        "success_key": "將原本分散在各同仁記憶與人工整理中的排班、聯絡及異常排除知識，整合進雲端資料庫與自動化工作流，並透過 LINE Bot 提供即時、一致的推播與查詢管道。",
+        "keywords": [
+          "LINEBOT",
+          "n8n",
+          "雲端資料庫",
+          "推播",
+          "即時查詢",
+          "LLM",
+          "自動化",
+          "品保"
+        ]
+      },
+      "en": {
+        "title": "LINE Bot Applications: Push Notifications and Real-Time Data Lookup",
+        "summary": "Built two LINE Bot application architectures. Option 1 pairs a LINE Bot with n8n, triggered by schedule or text keywords, to proactively push task reminders, meeting reminders, and daily work reports, and to look up shift schedules and phone extension lists. Option 2 pairs a LINE Bot with a cloud database, using an interactive menu integrated with an LLM so users can look up product anomaly troubleshooting data in real time, with the system automatically replying with possible causes, recommended actions, and reference images.",
+        "category": [
+          "QA Workflow",
+          "Automation",
+          "Product Lookup"
+        ],
+        "unit_request": "Taihong QA",
+        "unit_owner": "Taihong QA Department",
+        "author": "Hsin-Hsi Hsieh",
+        "status": "Prototype complete and in actual use in the QA group",
+        "region": "",
+        "problem_background": "QA used to rely on staff manually organizing and sending task reminders, meeting notices, and daily work reports in a LINE group, and someone always had to be on standby to answer questions about shift schedules, phone extensions, and product anomaly troubleshooting. As the volume of questions grew, manually sending updates and replying one by one took up a lot of time and was prone to missed reminders or delayed replies.",
+        "core_problem": "How to have a LINE Bot automatically push reminders and reports on a schedule or by keyword, and let users look up shift schedules, contact information, and product anomaly troubleshooting suggestions in real time through text or a menu, reducing the time spent on manual organization and replying to queries one by one.",
+        "solution": "The overall design has two complementary approaches:\n\nOption 1 (LINE Bot paired with n8n, proactive push): Source data (Excel, Word, JPG, and other formats) is first placed in a folder, then an n8n workflow is configured with trigger logic that runs on either a \"schedule\" or a \"text trigger\" basis. Scheduled pushes handle task reminders, meeting reminders, and daily work reports; text triggers handle lookups of shift schedules, phone extension lists, and scheduled work items — users simply type a keyword in a specified format in the group (e.g. \"query + time + department/product + shift\") and the bot automatically looks up and replies with the result.\n\nOption 2 (LINE Bot paired with a cloud database, real-time lookup): Text and image data is first built into a cloud database. Users select the item they want to look up through an interactive menu organized by product category (e.g. plastic caps, aluminum caps, claw caps, PET bottles), and an LLM integrated with the cloud database searches the data and automatically replies with possible causes, recommended actions, and reference images.",
+        "process": [
+          "Option 1: Build text/image source data in a folder.",
+          "Option 1: Configure the n8n workflow's trigger logic (schedule or text trigger).",
+          "Option 1: At the scheduled time, automatically push task reminders, meeting reminders, or daily work reports.",
+          "Option 1: The user types a keyword in the specified format to trigger the bot to look up and reply with shift schedules, phone extensions, or scheduled work items.",
+          "Option 2: Build text/image data in the cloud database.",
+          "Option 2: The user selects the item to look up through an interactive menu organized by product category.",
+          "Option 2: The LINE Bot's LLM integration searches the cloud database for matching data.",
+          "Option 2: The bot automatically replies with the search results, including possible causes, recommended actions, and reference images."
+        ],
+        "features": [
+          {
+            "name": "Scheduled push",
+            "desc": "Automatically pushes task reminders, meeting reminders, and daily work reports on a schedule, with no manual sending required."
+          },
+          {
+            "name": "Text-triggered lookup",
+            "desc": "Users type a keyword in a specified format to look up shift schedules, phone extensions, and scheduled work items."
+          },
+          {
+            "name": "Interactive menu lookup",
+            "desc": "Look up anomaly troubleshooting information by selecting a product category, with no text input required."
+          },
+          {
+            "name": "LLM-powered replies",
+            "desc": "An integrated language model searches the cloud database and automatically replies with possible causes and recommended actions, along with reference images."
+          },
+          {
+            "name": "Flexible dual-track architecture",
+            "desc": "Choose n8n proactive push or cloud-database real-time lookup depending on the scenario, usable independently or together."
+          }
+        ],
+        "ai_usage": [
+          "Uses an LLM to understand the user's query text and match it against the cloud database content",
+          "Automatically summarizes possible causes and recommended actions based on anomaly keywords",
+          "Assists in designing the trigger logic and message format for the n8n workflow"
+        ],
+        "tools": [
+          {
+            "name": "LINE Bot",
+            "desc": "Serves as the user-facing interface, receiving messages and pushing or replying with query results"
+          },
+          {
+            "name": "n8n",
+            "desc": "Configures the automation workflow, handling scheduled pushes and text-trigger logic"
+          },
+          {
+            "name": "Cloud database",
+            "desc": "Stores text and image data for the interactive menu and LLM search"
+          },
+          {
+            "name": "LLM",
+            "desc": "Understands query content and automatically generates search replies"
+          }
+        ],
+        "results": [
+          "Proactively pushes task reminders, meeting reminders, and daily work reports, reducing time spent manually sending messages.",
+          "Users can look up shift schedules, phone extensions, and scheduled work items in real time via text keywords.",
+          "Product anomaly troubleshooting suggestions can be looked up through an interactive menu, with no need to check documents or ask colleagues.",
+          "After introducing the LLM, query replies can include analysis of possible causes and specific recommended actions, along with reference images."
+        ],
+        "value": [
+          {
+            "name": "For QA staff",
+            "desc": "Reduces time spent manually organizing and replying to queries one by one; colleagues can get the information they need directly through LINE."
+          },
+          {
+            "name": "For frontline staff",
+            "desc": "Can look up shift schedules, contact information, and troubleshooting suggestions through LINE at any time, without waiting for someone to reply."
+          },
+          {
+            "name": "For the company",
+            "desc": "Consolidates knowledge that used to be scattered across individual experience and manual replies into a cloud database and automated workflow, making it easier to maintain and extend going forward."
+          }
+        ],
+        "extensions": [
+          "Task reminder and meeting notification pushes for other departments",
+          "Real-time lookup of various forms, regulations, or operating guides",
+          "Equipment troubleshooting or repair knowledge-base lookup",
+          "Customer service or internal Q&A bots"
+        ],
+        "limitations": [
+          "The cloud database content needs continuous maintenance to ensure the accuracy of LLM replies",
+          "The n8n workflow's scheduling and trigger rules need to be adjusted to actual needs to avoid false triggers or missed sends",
+          "This is a supporting lookup and reminder tool — actual anomaly troubleshooting still requires confirmation by qualified staff"
+        ],
+        "success_key": "Consolidating scheduling, contact, and anomaly-troubleshooting knowledge that used to be scattered across individual memory and manual organization into a cloud database and automated workflow, and providing a real-time, consistent push and lookup channel through the LINE Bot.",
+        "keywords": [
+          "LINE Bot",
+          "n8n",
+          "Cloud Database",
+          "Push Notifications",
+          "Real-Time Lookup",
+          "LLM",
+          "Automation",
+          "QA"
+        ]
+      }
+    }
   }
 ]
