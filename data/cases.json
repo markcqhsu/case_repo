@@ -2633,5 +2633,233 @@
       }
     },
     "updated": "2026.08"
+  },
+  {
+    "id": "case-014",
+    "number": 14,
+    "updated": "2026.08",
+    "screenshot": "assets/indoor-acceptance-demo.png",
+    "url": "https://cias-indoor-acceptance.vercel.app",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "室內裝修驗收與缺失改善管理系統",
+        "summary": "以手機拍照新增缺失，集中追蹤改善、複驗、簽核與結案。",
+        "category": [
+          "工程管理",
+          "數位轉型"
+        ],
+        "unit_request": "數位發展部",
+        "unit_owner": "數位發展部",
+        "author": "陳姸惠",
+        "status": "正式上線",
+        "region": "",
+        "problem_background": "現場驗收缺失原本散落於 LINE 群組、照片與會議紀錄，各方持有的版本不同，後續改善與複驗進度不易集中追蹤。",
+        "core_problem": "缺失照片、說明、改善回報及簽核紀錄缺少單一管理來源，現場又需要能以手機快速拍照及填寫。",
+        "solution": "建立響應式網頁系統，集中管理驗收項目、缺失照片、改善回報、角色簽核與 Word 文件匯出，並以資料庫保存紀錄。",
+        "process": [
+          "盤點驗收流程、使用者角色與文件範本",
+          "建立手機驗收、拍照壓縮及缺失追蹤流程",
+          "完成改善回報、分階段複驗簽核與管理設定",
+          "導入 Supabase，部署至 Vercel 並執行權限及回歸測試"
+        ],
+        "features": [
+          {
+            "name": "驗收項目管理",
+            "desc": "支援 CSV 批次匯入及單筆新增、修改與刪除"
+          },
+          {
+            "name": "現場驗收",
+            "desc": "手機選擇拍照或相簿照片，自動壓縮後上傳"
+          },
+          {
+            "name": "缺失追蹤",
+            "desc": "集中顯示改善前後照片、說明與處理狀態"
+          },
+          {
+            "name": "角色簽核",
+            "desc": "重點監造確認後，再由業主驗收完成簽核"
+          },
+          {
+            "name": "資料匯出",
+            "desc": "產出驗收紀錄、缺失改善報告及最終驗收確認書"
+          },
+          {
+            "name": "管理設定",
+            "desc": "管理專案、工種、使用者及人員指派"
+          }
+        ],
+        "ai_usage": [
+          "需求梳理｜協助將口頭流程整理為角色、狀態、權限與驗收規格",
+          "程式開發｜依確認後的規格實作前端、API、資料庫與文件匯出",
+          "品質驗證｜建立權限、手機版、API、匯出及回歸自動化測試"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "協助規格整理、程式開發、除錯與測試"
+          },
+          {
+            "name": "Supabase",
+            "desc": "儲存帳號、專案、驗收紀錄及照片"
+          },
+          {
+            "name": "Vercel",
+            "desc": "建置及部署正式網頁與 API"
+          },
+          {
+            "name": "Git",
+            "desc": "保存版本檢查點，支援追蹤與回復"
+          }
+        ],
+        "results": [
+          "完成可由手機及電腦使用的室內裝修驗收系統",
+          "完成缺失新增、改善回報、複驗簽核、照片管理與 Word 匯出",
+          "完成正式環境部署、登入 Session、後端角色授權及安全檢查"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "以單一系統掌握驗收項目、缺失與改善進度，降低版本分散造成的溝通落差"
+          },
+          {
+            "name": "對協作單位",
+            "desc": "施工單位、重點監造與業主可依角色在同一筆紀錄上回報及確認"
+          },
+          {
+            "name": "對公司",
+            "desc": "保留結構化驗收與簽核紀錄，便於文件整理、查詢及後續專案沿用"
+          }
+        ],
+        "extensions": [
+          "可複製到其他室內裝修專案，並由管理者設定工種及驗收人員",
+          "架構可延伸至土建及機電驗收，但第一版尚未實作相關流程"
+        ],
+        "limitations": [
+          "第一版僅處理室內裝修及參觀走道驗收",
+          "現場拍照與上傳需要穩定網路，使用者仍應確認照片及送出結果",
+          "正式資料與測試資料應分開管理，清除專案資料時會一併刪除相關照片"
+        ],
+        "success_key": "先確認業務流程與角色權限，再以手機現場操作為核心逐步開發，並讓前後端共同執行登入、專案及角色授權檢查。",
+        "keywords": [
+          "室內裝修",
+          "工程驗收",
+          "缺失改善",
+          "手機拍照",
+          "角色簽核",
+          "文件匯出",
+          "數位轉型"
+        ]
+      },
+      "en": {
+        "title": "Indoor Renovation Acceptance & Defect Improvement Management System",
+        "summary": "Add defects with phone photos and centrally track improvement, re-inspection, sign-off, and case closure.",
+        "category": [
+          "Project Management",
+          "Digital Transformation"
+        ],
+        "unit_request": "Digital Development Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Yan-Hui Chen",
+        "status": "Officially Launched",
+        "region": "",
+        "problem_background": "On-site acceptance defects used to be scattered across LINE groups, photos, and meeting notes, with different parties holding different versions, making it hard to centrally track improvement and re-inspection progress.",
+        "core_problem": "Defect photos, descriptions, improvement reports, and sign-off records lacked a single source of management, while on-site staff needed to be able to take photos and fill in records quickly on their phones.",
+        "solution": "Built a responsive web system that centrally manages acceptance items, defect photos, improvement reports, role-based sign-off, and Word document export, with all records stored in a database.",
+        "process": [
+          "Surveyed the acceptance workflow, user roles, and document templates",
+          "Built the mobile acceptance flow, photo compression, and defect tracking process",
+          "Completed improvement reporting, staged re-inspection sign-off, and admin settings",
+          "Integrated Supabase, deployed to Vercel, and ran permission and regression tests"
+        ],
+        "features": [
+          {
+            "name": "Acceptance Item Management",
+            "desc": "Supports CSV batch import as well as single-item add, edit, and delete"
+          },
+          {
+            "name": "On-site Acceptance",
+            "desc": "Take a photo or choose one from the album on a phone, auto-compressed before upload"
+          },
+          {
+            "name": "Defect Tracking",
+            "desc": "Centrally displays before/after photos, descriptions, and handling status"
+          },
+          {
+            "name": "Role-based Sign-off",
+            "desc": "Signed off by the site supervisor first, then by the owner upon final acceptance"
+          },
+          {
+            "name": "Data Export",
+            "desc": "Generates acceptance records, defect improvement reports, and the final acceptance confirmation document"
+          },
+          {
+            "name": "Admin Settings",
+            "desc": "Manages projects, trades, users, and staff assignments"
+          }
+        ],
+        "ai_usage": [
+          "Requirements analysis | Helped organize verbal workflow descriptions into roles, statuses, permissions, and acceptance specifications",
+          "Development | Implemented the frontend, API, database, and document export based on confirmed specifications",
+          "Quality verification | Built automated tests for permissions, mobile UI, API, export, and regression"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "Assisted with spec organization, development, debugging, and testing"
+          },
+          {
+            "name": "Supabase",
+            "desc": "Stores accounts, projects, acceptance records, and photos"
+          },
+          {
+            "name": "Vercel",
+            "desc": "Builds and deploys the production website and API"
+          },
+          {
+            "name": "Git",
+            "desc": "Preserves version checkpoints to support tracking and rollback"
+          }
+        ],
+        "results": [
+          "Completed an indoor renovation acceptance system usable on both mobile and desktop",
+          "Completed defect creation, improvement reporting, re-inspection sign-off, photo management, and Word export",
+          "Completed production deployment, login sessions, backend role authorization, and security checks"
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "A single system to track acceptance items, defects, and improvement progress, reducing communication gaps caused by scattered versions"
+          },
+          {
+            "name": "For collaborating units",
+            "desc": "Construction teams, site supervisors, and owners can each report and confirm on the same record according to their role"
+          },
+          {
+            "name": "For the company",
+            "desc": "Retains structured acceptance and sign-off records for easier documentation, retrieval, and reuse in future projects"
+          }
+        ],
+        "extensions": [
+          "Can be replicated to other indoor renovation projects, with admins setting up trades and inspectors",
+          "The architecture can be extended to civil and MEP acceptance, though this is not yet implemented in the first version"
+        ],
+        "limitations": [
+          "The first version only handles indoor renovation and visitor corridor acceptance",
+          "On-site photo capture and upload require a stable network connection; users should still confirm photos and submission results",
+          "Production and test data should be managed separately, since clearing project data also deletes the related photos"
+        ],
+        "success_key": "Confirm the business workflow and role permissions first, then develop incrementally around mobile on-site operation as the core, with both frontend and backend enforcing login, project, and role authorization checks.",
+        "keywords": [
+          "Indoor Renovation",
+          "Construction Acceptance",
+          "Defect Improvement",
+          "Mobile Photo Capture",
+          "Role-based Sign-off",
+          "Document Export",
+          "Digital Transformation"
+        ]
+      }
+    }
   }
 ]
