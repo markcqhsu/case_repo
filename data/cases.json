@@ -3141,5 +3141,181 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-016",
+    "number": 16,
+    "updated": "2026.08",
+    "video": [],
+    "url": "https://markcqhsu.github.io/packaging-carbon-calculator/",
+    "screenshot": "assets/packaging-carbon-calculator-demo.jpg",
+    "i18n": {
+      "zh": {
+        "title": "包材減碳效益計算機",
+        "summary": "讓業務自行輸入包材改善數據，即可算出減碳效益（tCO₂e），取代過去手動查係數、換算的作業方式。",
+        "category": [
+          "永續發展",
+          "業務工具",
+          "內部工具"
+        ],
+        "unit_request": "永續發展部",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "正式上線",
+        "region": "台灣",
+        "problem_background": "業務常遇到客戶詢問包材改善（如瓶身輕量化）能減少多少碳排放，過去需手動查係數、套公式計算，耗時且容易算錯，也難以快速回覆客戶。",
+        "core_problem": "缺少一套讓業務自行輸入數據就能計算減碳效益的工具，且常用材料的碳排放係數分散在不同文件中，不易查找。",
+        "solution": "建立線上計算機，支援「輕量化」與「材料/工法替代」兩種計算情境，內建常用係數（PET、HDPE、rPET、標籤印刷）可直接選用，也可自訂輸入。",
+        "process": [
+          "依包材改善類型選擇「輕量化」或「材料/工法替代」模式",
+          "輸入重量、用量、出貨數量等數據，係數可選內建值或自訂",
+          "系統自動算出減碳量（tCO₂e）與計算明細"
+        ],
+        "features": [
+          {
+            "name": "雙模式計算",
+            "desc": "輕量化與材料/工法替代兩種公式可切換"
+          },
+          {
+            "name": "內建係數庫",
+            "desc": "PET、HDPE、rPET、標籤印刷等常用係數可直接選用"
+          },
+          {
+            "name": "自訂欄位",
+            "desc": "係數與單位皆可手動輸入，涵蓋更多情境"
+          },
+          {
+            "name": "換算箱數",
+            "desc": "可選填每箱支數，自動換算出貨箱數"
+          }
+        ],
+        "ai_usage": [
+          "解析內部減碳案例資料，歸納出「輕量化」與「材料替代」兩種通用計算公式",
+          "協助開發計算工具網頁並部署上線"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "需求釐清、公式歸納與網頁開發"
+          },
+          {
+            "name": "GitHub Pages",
+            "desc": "工具部署上線"
+          }
+        ],
+        "results": [
+          "業務可自行輸入數據即時算出減碳效益，不需再手動查係數或找人協助計算",
+          "計算結果與內部既有案例數據交叉驗證一致"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "可自行且快速回覆客戶ESG詢問，不需依賴其他單位協助試算"
+          },
+          {
+            "name": "對公司",
+            "desc": "統一減碳效益計算邏輯與係數來源，避免各自估算口徑不一致"
+          }
+        ],
+        "extensions": [
+          "可持續擴充內建係數庫，涵蓋更多包材類型與材質"
+        ],
+        "limitations": [
+          "僅估算原料生產階段碳排放，未包含成型製程、運輸等其他生命週期階段",
+          "內建係數如有更新，需自行調整程式或改用自訂欄位輸入"
+        ],
+        "success_key": "從實際客戶詢問與內部案例資料中歸納出可共用的兩種計算公式，讓工具同時適用不同包材改善情境。",
+        "keywords": [
+          "ESG",
+          "減碳計算",
+          "包材輕量化",
+          "rPET",
+          "永續發展"
+        ]
+      },
+      "en": {
+        "title": "Packaging Carbon Reduction Calculator",
+        "summary": "Lets sales reps enter packaging improvement data themselves to calculate carbon reduction (tCO2e), replacing manual coefficient lookups and conversions.",
+        "category": [
+          "Sustainability",
+          "Sales Tool",
+          "Internal Tool"
+        ],
+        "unit_request": "Sustainability Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Chiao-Kuei Hsu",
+        "status": "Live in Production",
+        "region": "Taiwan",
+        "problem_background": "Sales reps are often asked by customers how much carbon a packaging improvement (e.g. bottle lightweighting) would reduce. This used to require manually looking up coefficients and applying formulas, which was slow, error-prone, and made it hard to respond to customers quickly.",
+        "core_problem": "There was no tool letting sales reps calculate carbon reduction themselves, and the coefficients for common materials were scattered across different documents.",
+        "solution": "Built an online calculator supporting two scenarios, \"lightweighting\" and \"material/process substitution\", with built-in coefficients (PET, HDPE, rPET, label printing) that can be selected directly or overridden with custom values.",
+        "process": [
+          "Choose the \"lightweighting\" or \"material/process substitution\" mode based on the type of packaging improvement",
+          "Enter weight, usage amount, shipment quantity, etc.; coefficients can use built-in values or custom input",
+          "The system automatically calculates the carbon reduction (tCO2e) with a calculation breakdown"
+        ],
+        "features": [
+          {
+            "name": "Dual calculation modes",
+            "desc": "Switch between lightweighting and material/process substitution formulas"
+          },
+          {
+            "name": "Built-in coefficient library",
+            "desc": "Common coefficients for PET, HDPE, rPET, label printing, etc. can be selected directly"
+          },
+          {
+            "name": "Custom fields",
+            "desc": "Coefficients and units can be entered manually to cover more scenarios"
+          },
+          {
+            "name": "Box count conversion",
+            "desc": "Optionally enter units per box to auto-convert shipment quantity into box count"
+          }
+        ],
+        "ai_usage": [
+          "Parsed internal carbon-reduction case documents to generalize two reusable calculation formulas: lightweighting and material substitution",
+          "Assisted in developing and deploying the calculator web tool"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "Requirements clarification, formula generalization, and web development"
+          },
+          {
+            "name": "GitHub Pages",
+            "desc": "Tool deployment"
+          }
+        ],
+        "results": [
+          "Sales reps can now enter data themselves and get instant carbon reduction results, without manually looking up coefficients or asking other teams for help",
+          "Calculation results cross-validated against existing internal case data"
+        ],
+        "value": [
+          {
+            "name": "For sales teams",
+            "desc": "Can respond to customer ESG inquiries independently and quickly, without relying on other departments for estimates"
+          },
+          {
+            "name": "For the company",
+            "desc": "Standardizes the carbon reduction calculation logic and coefficient sources, avoiding inconsistent estimates across teams"
+          }
+        ],
+        "extensions": [
+          "The built-in coefficient library can keep expanding to cover more packaging types and materials"
+        ],
+        "limitations": [
+          "Only estimates carbon emissions from the raw material production stage; does not include molding, transportation, or other lifecycle stages",
+          "Built-in coefficients must be manually updated in the code, or the custom fields can be used instead"
+        ],
+        "success_key": "Generalizing two reusable calculation formulas from a real customer inquiry and internal case documents, so the tool applies to different packaging improvement scenarios.",
+        "keywords": [
+          "ESG",
+          "Carbon Calculation",
+          "Packaging Lightweighting",
+          "rPET",
+          "Sustainability"
+        ]
+      }
+    }
   }
 ]
