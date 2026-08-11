@@ -3317,5 +3317,207 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-017",
+    "number": 17,
+    "updated": "2026.08",
+    "url": "https://markcqhsu.github.io/spokesperson_toolkit/",
+    "screenshot": "assets/spokesperson-toolkit-demo.jpg",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "最美發言人小工具（每日市場報告自動彙整）",
+        "summary": "讓發言人不用手動開好幾個網站查詢，一鍵產生大盤指數、宏全股價、匯率、原油期貨、美股道瓊等固定格式的每日報告文字，複製貼給總裁。",
+        "category": [
+          "內部工具",
+          "小工具",
+          "自動化"
+        ],
+        "unit_request": "總管理處",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "正式上線",
+        "region": "台灣",
+        "problem_background": "發言人每天要準備一份固定格式的市場報告給總裁參考，內容包含大盤指數、宏全股價、匯率、原油期貨、美股道瓊等數字。過去要分別開好幾個網站查詢、手動抄寫並排版成固定格式文字，過程繁瑣且容易抄錯數字或漏抄。",
+        "core_problem": "缺少一套能自動彙整多個資料來源、按固定格式產生報告文字的工具，發言人每天要重複做同樣的查詢與排版工作。",
+        "solution": "建立一個網頁小工具，透過 GitHub Actions 排程在每個交易日固定時間自動抓取大盤指數、宏全股價、匯率、原油期貨、美股道瓊等資料並組成報告文字，發言人開啟頁面就能直接複製貼上；也提供「重新讀取」按鈕即時重新抓取所有來源的最新資料。",
+        "process": [
+          "GitHub Actions 於交易日台北時間 14:00 先存一次匯率快照",
+          "19:30 再抓取大盤指數、宏全股價、原油期貨、美股道瓊等其餘資料，組成報告文字並存檔",
+          "發言人開啟頁面看到當日預先產生好的報告文字，可直接複製或編輯後使用",
+          "需要更即時的資料時按「重新讀取」，透過 Cloudflare Worker 即時向各資料來源重新查詢"
+        ],
+        "features": [
+          {
+            "name": "固定格式報告文字",
+            "desc": "依固定版型自動組成可直接複製貼上的每日報告文字，含大盤、宏全股價、匯率、原油、美股道瓊"
+          },
+          {
+            "name": "雙原油來源並列",
+            "desc": "原油期貨同時顯示經濟部能源署與鉅亨網兩個來源的報價，符合發言人原本核對兩個來源的習慣"
+          },
+          {
+            "name": "即時重新讀取",
+            "desc": "可即時重新抓取所有資料來源的最新報價，不用等排程"
+          },
+          {
+            "name": "各資料源獨立容錯",
+            "desc": "即時抓取時六個資料源各自獨立，其中一個失敗不會讓其他資料一起消失，並在畫面上標明是哪一項、失敗原因"
+          }
+        ],
+        "ai_usage": [
+          "協助找出證交所、能源署、鉅亨網等公開資料來源的可用端點，並設計對應的抓取邏輯",
+          "排查即時資料抓取失敗的根因（例如 Cloudflare 邊緣暫時性錯誤、資料源回傳格式不一致），並設計對應的重試與錯誤處理機制",
+          "協助開發、部署與除錯 Cloudflare Worker 及 GitHub Actions 排程"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "需求釐清、資料來源探查、程式開發與除錯"
+          },
+          {
+            "name": "GitHub Actions",
+            "desc": "排程自動抓取每日資料並存檔"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "提供即時重新讀取功能的資料代理"
+          },
+          {
+            "name": "GitHub Pages",
+            "desc": "網站部署上線"
+          }
+        ],
+        "results": [
+          "發言人不用再手動開好幾個網站查詢、抄寫數字，開頁面就有當日現成的報告文字可用",
+          "原油報價改用官方與鉅亨網資料源後，不再出現舊版第三方 API 卡在過期快取的問題",
+          "即時資料來源各自獨立容錯後，單一來源暫時失敗不會讓整份報告無法使用"
+        ],
+        "value": [
+          {
+            "name": "對發言人",
+            "desc": "省下每天手動查詢、抄寫、排版的時間，降低數字抄錯的風險"
+          },
+          {
+            "name": "對公司",
+            "desc": "報告格式與資料來源固定化，減少因人工作業造成的資訊落差"
+          }
+        ],
+        "extensions": [
+          "可延伸抓取更多每日需要人工彙整的公開數據（例如其他匯率、原物料價格）",
+          "資料抓取與容錯處理的架構，可套用在其他需要固定排程彙整多方資料源的內部工具"
+        ],
+        "limitations": [
+          "成交量／成交值為證交所公開統計口徑，跟人工查詢數字可能有 2~4% 落差",
+          "原油報價（能源署、鉅亨網）皆為每日更新一次的參考價，非逐秒跳動的即時報價",
+          "部分資料源（如 TWSE 即時行情、鉅亨網）屬於網站內部使用的資料端點，非官方公開 API，若對方調整格式可能需要同步調整抓取邏輯"
+        ],
+        "success_key": "針對發言人實際核對報告數字的既有習慣（例如同時核對能源署與鉅亨網兩個原油來源），保留並列顯示兩個來源，而不是直接用單一來源取代，讓工具符合既有工作方式而不是強迫改變習慣。",
+        "keywords": [
+          "市場報告",
+          "自動化",
+          "原油期貨",
+          "GitHub Actions",
+          "Cloudflare Workers"
+        ]
+      },
+      "en": {
+        "title": "Spokesperson Daily Market Report Tool",
+        "summary": "Lets the company spokesperson generate a fixed-format daily report text (TAIEX, Hon Chuan stock price, forex, crude oil futures, Dow Jones) with one click, instead of manually checking multiple websites, to paste directly to the President.",
+        "category": [
+          "Internal Tool",
+          "Utility",
+          "Automation"
+        ],
+        "unit_request": "General Administration Office",
+        "unit_owner": "Digital Development Department",
+        "author": "Chiao-Kuei Hsu",
+        "status": "Live in Production",
+        "region": "Taiwan",
+        "problem_background": "Every day the spokesperson has to prepare a fixed-format market report for the President, covering the TAIEX index, Hon Chuan's (9939) stock price, exchange rates, crude oil futures, and the Dow Jones. This used to require opening several websites, manually copying numbers, and formatting them into a fixed text layout — tedious and prone to transcription errors or missed figures.",
+        "core_problem": "There was no tool to automatically aggregate multiple data sources into a fixed-format report text; the spokesperson had to repeat the same lookup-and-formatting work every day.",
+        "solution": "Built a web tool that uses a scheduled GitHub Actions job to automatically fetch the TAIEX, Hon Chuan stock price, exchange rates, crude oil futures, and Dow Jones data at fixed times on trading days, and assembles them into report text — the spokesperson can just open the page and copy it. A \"Reload\" button is also provided to re-fetch the latest data from all sources in real time.",
+        "process": [
+          "GitHub Actions saves a forex snapshot at 14:00 Taipei time on trading days",
+          "At 19:30, it fetches the TAIEX, Hon Chuan stock price, crude oil futures, Dow Jones, and other data, and assembles them into the report text",
+          "The spokesperson opens the page and sees that day's pre-generated report text, ready to copy or edit",
+          "For more up-to-date data, clicking \"Reload\" re-queries all data sources in real time via a Cloudflare Worker"
+        ],
+        "features": [
+          {
+            "name": "Fixed-format report text",
+            "desc": "Automatically assembles a ready-to-copy daily report text in a fixed layout, covering the TAIEX index, Hon Chuan stock price, forex, crude oil, and the Dow Jones"
+          },
+          {
+            "name": "Dual crude oil sources side by side",
+            "desc": "Crude oil futures show quotes from both Taiwan's Bureau of Energy and cnyes.com side by side, matching the spokesperson's existing habit of cross-checking both sources"
+          },
+          {
+            "name": "Real-time reload",
+            "desc": "Can re-fetch the latest quotes from all data sources on demand, without waiting for the schedule"
+          },
+          {
+            "name": "Independent fault tolerance per source",
+            "desc": "During real-time fetching, the six data sources are handled independently — one failing doesn't wipe out the rest, and the screen shows which source failed and why"
+          }
+        ],
+        "ai_usage": [
+          "Helped locate usable endpoints from public data sources such as TWSE, the Bureau of Energy, and cnyes.com, and designed the corresponding fetch logic",
+          "Diagnosed the root causes of real-time fetch failures (e.g. transient Cloudflare edge errors, inconsistent response formats across sources), and designed retry and error-handling logic accordingly",
+          "Assisted with developing, deploying, and debugging the Cloudflare Worker and the GitHub Actions schedule"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "Requirements clarification, data source discovery, development, and debugging"
+          },
+          {
+            "name": "GitHub Actions",
+            "desc": "Scheduled daily data fetching and archiving"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "Data proxy powering the real-time reload feature"
+          },
+          {
+            "name": "GitHub Pages",
+            "desc": "Site deployment"
+          }
+        ],
+        "results": [
+          "The spokesperson no longer has to manually open multiple websites and copy numbers — the page already has that day's report text ready",
+          "After switching crude oil quotes to the official and cnyes.com sources, the earlier issue of a third-party API being stuck on a stale cache no longer occurs",
+          "With independent fault tolerance per data source, one source temporarily failing no longer makes the whole report unusable"
+        ],
+        "value": [
+          {
+            "name": "For the spokesperson",
+            "desc": "Saves the daily time spent looking up, copying, and formatting numbers, and reduces the risk of transcription errors"
+          },
+          {
+            "name": "For the company",
+            "desc": "Standardizes the report format and data sources, reducing information gaps caused by manual work"
+          }
+        ],
+        "extensions": [
+          "Can be extended to fetch more public data that currently needs manual daily aggregation (e.g. other exchange rates, commodity prices)",
+          "The data-fetching and fault-tolerance architecture can be reused for other internal tools that need to aggregate multiple data sources on a fixed schedule"
+        ],
+        "limitations": [
+          "Trading volume/value figures follow TWSE's public statistical basis, which can differ from manually looked-up numbers by 2-4%",
+          "Both crude oil quotes (Bureau of Energy, cnyes.com) are daily reference prices updated once a day, not tick-by-tick real-time quotes",
+          "Some data sources (e.g. TWSE's realtime quote system, cnyes.com) are internal endpoints used by those sites rather than official public APIs, so format changes on their end may require the fetch logic to be updated accordingly"
+        ],
+        "success_key": "Instead of replacing the spokesperson's existing habit of cross-checking both the Bureau of Energy and cnyes.com crude oil quotes with a single source, the tool kept both sources displayed side by side — fitting the existing way of working rather than forcing a change of habit.",
+        "keywords": [
+          "Market Report",
+          "Automation",
+          "Crude Oil Futures",
+          "GitHub Actions",
+          "Cloudflare Workers"
+        ]
+      }
+    }
   }
 ]
