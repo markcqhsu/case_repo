@@ -895,7 +895,7 @@ function renderCard(c) {
   body.className = 'body';
   body.innerHTML = `
     <h3>${escapeHtml(lc.title)}</h3>
-    <div class="type-badge">${(lc.category || []).map(escapeHtml).join(s.listSep)}</div>
+    <div class="chips">${(lc.category || []).map(t => `<span class="type-badge">${escapeHtml(t)}</span>`).join('')}</div>
     <div class="summary">${escapeHtml(lc.summary || '')}</div>
     <div class="chips">${(lc.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
     <div class="meta">
