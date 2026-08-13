@@ -10,7 +10,8 @@
         "title": "QR Code 瓶蓋互動展示系統",
         "summary": "建立一套可實際展示「一瓶一碼」功能的 QR Code 測試系統，讓業務人員在向客戶推廣 QR Code 瓶蓋時，不再只依賴簡報或口頭說明，而是可以直接使用實體樣品進行掃碼展示。",
         "category": [
-          "業務推廣"
+          "業務推廣",
+          "業務支援"
         ],
         "unit_request": "業務單位",
         "unit_owner": "數位發展部",
@@ -137,7 +138,8 @@
         "title": "QR Code Bottle Cap Interactive Demo System",
         "summary": "Built a QR code bottle cap demo system that lets sales staff show the real \"one bottle, one code\" experience to customers in person, using an actual sample cap instead of relying only on slides or verbal explanation.",
         "category": [
-          "Business Promotion"
+          "Business Promotion",
+          "Business Support"
         ],
         "unit_request": "Sales Department",
         "unit_owner": "Digital Development Department",
@@ -273,7 +275,8 @@
         "title": "飲料代工產線智慧查詢網站",
         "summary": "利用 AI 協助整理集團現有的飲料代工產線資料，並製作成互動式查詢網站。業務人員或客戶可以根據飲料類型、產品規格、設備及認證需求，快速查詢較合適的生產線，作為後續業務洽談與產線評估的參考。",
         "category": [
-          "業務支援"
+          "業務支援",
+          "資料整合與分析"
         ],
         "unit_request": "業務單位",
         "unit_owner": "數位發展部",
@@ -351,7 +354,8 @@
         "title": "Beverage Contract Manufacturing Line Finder",
         "summary": "Used AI to help organize the group's existing beverage contract manufacturing line data into an interactive lookup website. Sales staff and customers can search by beverage type, product spec, equipment, and certification needs to quickly find a suitable production line for follow-up business discussions and line evaluation.",
         "category": [
-          "Business Support"
+          "Business Support",
+          "Data Integration & Analysis"
         ],
         "unit_request": "Sales Department",
         "unit_owner": "Digital Development Department",
@@ -438,7 +442,8 @@
         "title": "調撥單辨識與 Excel 自動產生系統",
         "summary": "利用 Claude OCR 辨識調撥單中的文字與欄位資料，並自動整理及產生 Excel 檔案。現場人員只需要上傳調撥單的圖片或 PDF，系統即可協助完成資料辨識、批次彙整及 Excel 匯出，減少人工輸入與整理時間。",
         "category": [
-          "流程自動化"
+          "流程自動化",
+          "資料整合與分析"
         ],
         "unit_request": "宏全三廠",
         "unit_owner": "數位發展部",
@@ -528,7 +533,8 @@
         "title": "Transfer Order Recognition & Excel Auto-Generation System",
         "summary": "Uses Claude OCR to recognize the text and fields on transfer orders and automatically compiles them into an Excel file. Frontline staff simply upload a photo or PDF of the transfer order, and the system handles recognition, batch consolidation, and Excel export — cutting down manual data entry and organizing time.",
         "category": [
-          "Process Automation"
+          "Process Automation",
+          "Data Integration & Analysis"
         ],
         "unit_request": "Hon Chuan Plant 3",
         "unit_owner": "Digital Development Department",
@@ -628,7 +634,8 @@
         "summary": "建立職安衛法規整理網站，讓職安衛人員只要貼上政府法規網址，即可將法規條文自動轉換成公司使用的法規鑑定登錄表格式，並匯出為 Excel 或 PDF。使用者可直接在整理後的表格中填寫執行現況、符合性評估及相關說明，減少人工逐條複製法規內容的時間。",
         "category": [
           "法規管理",
-          "職安環保"
+          "職安環保",
+          "流程自動化"
         ],
         "unit_request": "職安衛單位",
         "unit_owner": "數位發展部",
@@ -729,7 +736,8 @@
         "summary": "Built a regulation organizer site so EHS staff only need to paste a government regulation URL to automatically convert the legal text into the company's regulation assessment register format, exportable as Excel or PDF. Users can then fill in the implementation status, compliance assessment, and related notes directly in the organized table, cutting down the time spent manually copying regulation text.",
         "category": [
           "Regulatory Management",
-          "EHS & Environment"
+          "EHS & Environment",
+          "Process Automation"
         ],
         "unit_request": "EHS Department",
         "unit_owner": "Digital Development Department",
@@ -842,7 +850,8 @@
         "title": "產品型錄 APP（iOS 版本）",
         "summary": "將集團產品規格整理成 iOS 產品型錄 APP，讓業務人員可透過手機或平板快速查詢瓶蓋、瓶胚及相關產品資訊。使用者可依產品條件進行搜尋與篩選，減少查找型錄、規格表或詢問不同單位的時間，方便業務拜訪客戶及日常產品查詢。",
         "category": [
-          "業務支援"
+          "業務支援",
+          "小工具"
         ],
         "unit_request": "業務",
         "unit_owner": "數位發展部",
@@ -925,7 +934,8 @@
         "title": "Product Catalog App (iOS)",
         "summary": "Organized the group's product specifications into an iOS product catalog app, letting sales staff quickly look up bottle caps, preforms, and related product information from a phone or tablet. Users can search and filter by product criteria, cutting down the time spent digging through catalogs, spec sheets, or asking other departments — handy for customer visits and everyday product lookups.",
         "category": [
-          "Business Support"
+          "Business Support",
+          "Utility Tools"
         ],
         "unit_request": "Sales",
         "unit_owner": "Digital Development Department",
@@ -1256,7 +1266,8 @@
         "title": "宏全半年報提醒系統",
         "summary": "宏全半年報提醒系統：會議報告倒數計時器。內建議程表，點選自動帶入時間，翻頁鐘倒數，提前3分鐘與時間到各提醒一次（音效＋通知），超時正計時。支援全螢幕、自選提示音、議程可自行編輯。",
         "category": [
-          "小工具"
+          "小工具",
+          "內部管理工具"
         ],
         "unit_request": "",
         "unit_owner": "數位發展部",
@@ -1326,7 +1337,8 @@
         "title": "THC Semi-Annual Report Reminder System",
         "summary": "THC Semi-Annual Report Reminder System: a countdown timer for meeting presentations. Includes a built-in agenda list — clicking an item auto-fills its time slot — with a flip-clock style countdown. Sends a reminder (sound + notification) 3 minutes before time is up and again when time is up, then switches to a count-up timer if the speaker runs over. Supports full-screen display, a choice of alert sounds, and an editable agenda.",
         "category": [
-          "Utility Tools"
+          "Utility Tools",
+          "Internal Management Tools"
         ],
         "unit_request": "",
         "unit_owner": "Digital Development Dept.",
@@ -1406,7 +1418,8 @@
         "summary": "建立兩種 LINE Bot 應用架構：方案一為 LINE Bot 搭配 n8n，依排程或文字關鍵字觸發，主動推播工作待辦提醒、會議提醒、每日工作回報，並可查詢班表與電話分機表；方案二為 LINE Bot 搭配雲端資料庫，透過互動式選單並整合 LLM 語言模型，讓使用者即時查詢產品異常排除等資料，系統自動回覆可能原因、對策建議與參考圖片。",
         "category": [
           "流程自動化",
-          "業務支援"
+          "業務支援",
+          "品保工作流程"
         ],
         "unit_request": "台宏品保",
         "unit_owner": "台宏品保處",
@@ -1519,7 +1532,8 @@
         "summary": "Two complementary LINE Bot architectures were built. Scheme 1 pairs LINE Bot with n8n: triggered by a schedule or a text keyword, it proactively pushes to-do reminders, meeting reminders, and daily work reports, and can also look up shift schedules and phone extension lists. Scheme 2 pairs LINE Bot with a cloud database: through an interactive menu integrated with an LLM, users can look up information such as product defect troubleshooting in real time, and the system automatically replies with likely causes, recommended countermeasures, and reference photos.",
         "category": [
           "Process Automation",
-          "Business Support"
+          "Business Support",
+          "QA Workflow"
         ],
         "unit_request": "Thai Hong Quality Assurance",
         "unit_owner": "Thai Hong QA Department",
@@ -1643,7 +1657,8 @@
         "title": "AI 影片製作：多國語言旁白與字幕自動化",
         "summary": "將教育訓練／宣導影片的製作流程從人工錄製改為 AI 製作，以 AI 生成旁白與字幕，並可快速產出多國語言版本，原本需要真人錄製至少兩天以上的流程，大幅縮短影片產出時間。",
         "category": [
-          "教育訓練與文宣"
+          "教育訓練與文宣",
+          "流程自動化"
         ],
         "unit_request": "職安衛中心",
         "unit_owner": "職安衛中心",
@@ -1732,7 +1747,8 @@
         "title": "AI Video Production: Automated Multilingual Narration & Subtitles",
         "summary": "Shifted training and awareness video production from manual recording to AI-driven production: AI generates narration and subtitles and can quickly produce multilingual versions, cutting production time from at least two days of manual recording down to a fraction of that.",
         "category": [
-          "Training & Communications"
+          "Training & Communications",
+          "Process Automation"
         ],
         "unit_request": "EHS Center",
         "unit_owner": "EHS Center",
@@ -3133,7 +3149,7 @@
         "summary": "讓業務自行輸入包材改善數據，即可算出減碳效益（tCO₂e），取代過去手動查係數、換算的作業方式。",
         "category": [
           "永續發展",
-          "內部管理工具"
+          "業務支援"
         ],
         "unit_request": "永續發展部",
         "unit_owner": "數位發展部",
@@ -3215,7 +3231,7 @@
         "summary": "Lets sales reps enter packaging improvement data themselves to calculate carbon reduction (tCO2e), replacing manual coefficient lookups and conversions.",
         "category": [
           "Sustainability",
-          "Internal Management Tools"
+          "Business Support"
         ],
         "unit_request": "Sustainability Department",
         "unit_owner": "Digital Development Department",
