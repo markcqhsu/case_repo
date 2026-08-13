@@ -3519,5 +3519,226 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-018",
+    "number": 18,
+    "updated": "2026.08",
+    "screenshots": [
+      "assets/sds-declaration-usage-demo.png",
+      "assets/sds-declaration-summary-demo.png"
+    ],
+    "url": "",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "SDS 化學品申報總表一鍵更新系統",
+        "summary": "自動讀取 SDS 與年度採購資料，一鍵產生成分換算、申報判斷及既有化學物質比對表，降低人工整理時間與計算錯誤。",
+        "category": [
+          "流程自動化",
+          "資料整合",
+          "職安環保",
+          "法規申報"
+        ],
+        "unit_request": "職安衛中心",
+        "unit_owner": "職安衛中心",
+        "author": "陳煜勳",
+        "status": "已完成並通過測試",
+        "region": "台灣",
+        "problem_background": "新增或更新 SDS 時，需人工查找成分、CAS 號碼與濃度，再搭配年度採購重量計算申報量；資料分散且步驟繁複。",
+        "core_problem": "人工抄錄與計算耗時、容易出錯，且不同料號、登錄號碼與 CAS 的彙整規則複雜，難以快速追溯公式與確認申報門檻。",
+        "solution": "建立本機一鍵更新工具，讀取 sds 資料夾及年度申報檔，依料號擷取最高成分比例、計算換算重量，再產出申報與既有物質比對結果。",
+        "process": [
+          "將 PDF 或 Excel 格式的 SDS 放入 sds 資料夾。",
+          "雙擊「一鍵更新總表.cmd」，重新讀取全部資料。",
+          "系統比對料號、擷取 SDS 成分及最高濃度。",
+          "依年度採購重量產生三張結果工作表，供人員複核。"
+        ],
+        "features": [
+          {
+            "name": "多格式擷取",
+            "desc": "支援文字型 PDF、XLSX 與 XLSM SDS。"
+          },
+          {
+            "name": "自動換算",
+            "desc": "以採購重量乘最高成分比例計算化學品重量。"
+          },
+          {
+            "name": "申報判斷",
+            "desc": "跨料號彙總後，以大於 100 kg 判定需申報。"
+          },
+          {
+            "name": "既有物質比對",
+            "desc": "依 CAS 與人工核對清單標示比對狀態。"
+          }
+        ],
+        "ai_usage": [
+          "協助拆解需求、建立規格與釐清料號、登錄號碼、CAS 的彙整邏輯。",
+          "協助產生程式與測試案例，檢查公式、邊界值及異常資料處理。"
+        ],
+        "tools": [
+          {
+            "name": "Python",
+            "desc": "解析 SDS、整合年度資料並執行計算流程。"
+          },
+          {
+            "name": "openpyxl",
+            "desc": "讀寫 Excel、保留可追溯公式與工作表格式。"
+          },
+          {
+            "name": "pypdf",
+            "desc": "擷取文字型 PDF 的產品與成分資訊。"
+          },
+          {
+            "name": "Windows 批次檔",
+            "desc": "提供使用者雙擊即可執行的一鍵入口。"
+          }
+        ],
+        "results": [
+          "實際處理 9 份 SDS，產出 42 筆料號成分資料與 21 筆申報判斷資料。",
+          "產生「總表」「申報判斷」「既有化學物質比對」三張工作表。",
+          "既有物質比對結果為 12 筆「是」、7 筆「待人工查詢」、2 筆「無法以 CAS 比對」。",
+          "9 項自動化測試全數通過，公式錯誤掃描為 0。"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "將重複抄錄與計算改為一鍵更新，縮短資料整理時間。"
+          },
+          {
+            "name": "對使用者",
+            "desc": "公式可直接追溯，申報與待查項目更容易複核。"
+          },
+          {
+            "name": "對公司",
+            "desc": "降低申報遺漏及計算錯誤風險，建立可重複使用的標準流程。"
+          }
+        ],
+        "extensions": [
+          "可延伸至其他年度、廠區或化學品清冊的批次彙整與門檻判斷。",
+          "可增加掃描型 PDF 的 OCR、異常通知或申報系統匯入格式。"
+        ],
+        "limitations": [
+          "掃描型、加密或版面特殊的 PDF 可能無法正確擷取，需人工確認。",
+          "SDS 料號須能與年度採購資料正確對應；無效或保密 CAS 需人工處理。",
+          "產出結果仍應由熟悉法規的人員確認後再用於正式申報。"
+        ],
+        "success_key": "先明確定義料號、登錄號碼及 CAS 的彙整優先順序，保留 Excel 公式供追溯，並以實際 SDS、邊界值與異常資料持續驗證。",
+        "keywords": [
+          "SDS",
+          "化學品管理",
+          "申報自動化",
+          "CAS",
+          "Excel",
+          "Python",
+          "資料整合",
+          "既有化學物質"
+        ]
+      },
+      "en": {
+        "title": "SDS Chemical Declaration Summary One-Click Update System",
+        "summary": "Automatically reads SDS and annual procurement data to generate composition conversion, declaration determination, and existing-chemical-substance comparison tables in one click, reducing manual data organizing time and calculation errors.",
+        "category": [
+          "Process Automation",
+          "Data Integration",
+          "EHS & Environment",
+          "Regulatory Reporting"
+        ],
+        "unit_request": "EHS Center",
+        "unit_owner": "EHS Center",
+        "author": "Yu-Hsun Chen",
+        "status": "Completed and tested",
+        "region": "Taiwan",
+        "problem_background": "When adding or updating an SDS, staff had to manually look up composition, CAS numbers, and concentrations, then combine them with annual procurement weights to calculate declaration quantities; the data was scattered and the steps were tedious.",
+        "core_problem": "Manual transcription and calculation were time-consuming and error-prone, and the aggregation rules across material codes, registration numbers, and CAS numbers were complex, making it hard to quickly trace formulas or confirm declaration thresholds.",
+        "solution": "Built a local one-click update tool that reads the SDS folder and the annual declaration file, extracts the highest composition ratio by material code, calculates the converted weight, and produces declaration and existing-substance comparison results.",
+        "process": [
+          "Place SDS files in PDF or Excel format into the sds folder.",
+          "Double-click \"一鍵更新總表.cmd\" (One-Click Update Summary) to reload all data.",
+          "The system matches material codes and extracts SDS composition and the highest concentration.",
+          "Three result worksheets are generated based on annual procurement weight for staff to review."
+        ],
+        "features": [
+          {
+            "name": "Multi-format extraction",
+            "desc": "Supports text-based PDF, XLSX, and XLSM SDS files."
+          },
+          {
+            "name": "Automatic conversion",
+            "desc": "Calculates chemical weight by multiplying procurement weight by the highest composition ratio."
+          },
+          {
+            "name": "Declaration determination",
+            "desc": "Aggregates across material codes and flags declarations required above 100 kg."
+          },
+          {
+            "name": "Existing substance comparison",
+            "desc": "Marks comparison status against a manually verified list using CAS numbers."
+          }
+        ],
+        "ai_usage": [
+          "Helped break down requirements, define specifications, and clarify the aggregation logic across material codes, registration numbers, and CAS numbers.",
+          "Helped generate code and test cases to check formulas, boundary values, and handling of abnormal data."
+        ],
+        "tools": [
+          {
+            "name": "Python",
+            "desc": "Parses SDS files, integrates annual data, and runs the calculation workflow."
+          },
+          {
+            "name": "openpyxl",
+            "desc": "Reads and writes Excel files while preserving traceable formulas and sheet formatting."
+          },
+          {
+            "name": "pypdf",
+            "desc": "Extracts product and composition information from text-based PDFs."
+          },
+          {
+            "name": "Windows batch file",
+            "desc": "Provides a one-click entry point users can run by double-clicking."
+          }
+        ],
+        "results": [
+          "Processed 9 SDS files in practice, producing 42 material-composition records and 21 declaration-determination records.",
+          "Generated three worksheets: \"Summary,\" \"Declaration Determination,\" and \"Existing Chemical Substance Comparison.\"",
+          "Existing substance comparison results: 12 \"Yes,\" 7 \"Pending manual lookup,\" and 2 \"Cannot be matched by CAS.\"",
+          "All 9 automated tests passed, with zero formula errors found in the scan."
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "Turns repetitive transcription and calculation into a one-click update, shortening data organizing time."
+          },
+          {
+            "name": "For users",
+            "desc": "Formulas remain directly traceable, making declaration and pending items easier to review."
+          },
+          {
+            "name": "For the company",
+            "desc": "Reduces the risk of missed declarations and calculation errors, and establishes a reusable standard process."
+          }
+        ],
+        "extensions": [
+          "Can be extended to batch aggregation and threshold determination for other years, plants, or chemical inventories.",
+          "Can add OCR for scanned PDFs, anomaly notifications, or import formats for declaration systems."
+        ],
+        "limitations": [
+          "Scanned, encrypted, or unusually formatted PDFs may not be extracted correctly and require manual verification.",
+          "SDS material codes must correctly correspond to annual procurement data; invalid or trade-secret CAS numbers require manual handling.",
+          "Output results should still be confirmed by staff familiar with the regulations before being used for official declarations."
+        ],
+        "success_key": "Clearly defining the aggregation priority of material codes, registration numbers, and CAS numbers up front, keeping Excel formulas traceable, and continuously validating with real SDS data, boundary values, and abnormal cases.",
+        "keywords": [
+          "SDS",
+          "Chemical Management",
+          "Declaration Automation",
+          "CAS",
+          "Excel",
+          "Python",
+          "Data Integration",
+          "Existing Chemical Substances"
+        ]
+      }
+    }
   }
 ]
