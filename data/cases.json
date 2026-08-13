@@ -10,9 +10,7 @@
         "title": "QR Code 瓶蓋互動展示系統",
         "summary": "建立一套可實際展示「一瓶一碼」功能的 QR Code 測試系統，讓業務人員在向客戶推廣 QR Code 瓶蓋時，不再只依賴簡報或口頭說明，而是可以直接使用實體樣品進行掃碼展示。",
         "category": [
-          "業務推廣",
-          "數位行銷",
-          "產品展示"
+          "業務推廣"
         ],
         "unit_request": "業務單位",
         "unit_owner": "數位發展部",
@@ -139,9 +137,7 @@
         "title": "QR Code Bottle Cap Interactive Demo System",
         "summary": "Built a QR code bottle cap demo system that lets sales staff show the real \"one bottle, one code\" experience to customers in person, using an actual sample cap instead of relying only on slides or verbal explanation.",
         "category": [
-          "Business Promotion",
-          "Digital Marketing",
-          "Product Demonstration"
+          "Business Promotion"
         ],
         "unit_request": "Sales Department",
         "unit_owner": "Digital Development Department",
@@ -277,9 +273,7 @@
         "title": "飲料代工產線智慧查詢網站",
         "summary": "利用 AI 協助整理集團現有的飲料代工產線資料，並製作成互動式查詢網站。業務人員或客戶可以根據飲料類型、產品規格、設備及認證需求，快速查詢較合適的生產線，作為後續業務洽談與產線評估的參考。",
         "category": [
-          "業務支援",
-          "產線查詢",
-          "知識整理"
+          "業務支援"
         ],
         "unit_request": "業務單位",
         "unit_owner": "數位發展部",
@@ -357,9 +351,7 @@
         "title": "Beverage Contract Manufacturing Line Finder",
         "summary": "Used AI to help organize the group's existing beverage contract manufacturing line data into an interactive lookup website. Sales staff and customers can search by beverage type, product spec, equipment, and certification needs to quickly find a suitable production line for follow-up business discussions and line evaluation.",
         "category": [
-          "Sales Support",
-          "Production Line Lookup",
-          "Knowledge Organization"
+          "Business Support"
         ],
         "unit_request": "Sales Department",
         "unit_owner": "Digital Development Department",
@@ -446,9 +438,7 @@
         "title": "調撥單辨識與 Excel 自動產生系統",
         "summary": "利用 Claude OCR 辨識調撥單中的文字與欄位資料，並自動整理及產生 Excel 檔案。現場人員只需要上傳調撥單的圖片或 PDF，系統即可協助完成資料辨識、批次彙整及 Excel 匯出，減少人工輸入與整理時間。",
         "category": [
-          "現場作業",
-          "文件辨識",
-          "資料整理"
+          "流程自動化"
         ],
         "unit_request": "宏全三廠",
         "unit_owner": "數位發展部",
@@ -538,9 +528,7 @@
         "title": "Transfer Order Recognition & Excel Auto-Generation System",
         "summary": "Uses Claude OCR to recognize the text and fields on transfer orders and automatically compiles them into an Excel file. Frontline staff simply upload a photo or PDF of the transfer order, and the system handles recognition, batch consolidation, and Excel export — cutting down manual data entry and organizing time.",
         "category": [
-          "Frontline Operations",
-          "Document Recognition",
-          "Data Organization"
+          "Process Automation"
         ],
         "unit_request": "Hon Chuan Plant 3",
         "unit_owner": "Digital Development Department",
@@ -640,9 +628,7 @@
         "summary": "建立職安衛法規整理網站，讓職安衛人員只要貼上政府法規網址，即可將法規條文自動轉換成公司使用的法規鑑定登錄表格式，並匯出為 Excel 或 PDF。使用者可直接在整理後的表格中填寫執行現況、符合性評估及相關說明，減少人工逐條複製法規內容的時間。",
         "category": [
           "法規管理",
-          "文件整理",
-          "行政效率",
-          "資料整理"
+          "職安環保"
         ],
         "unit_request": "職安衛單位",
         "unit_owner": "數位發展部",
@@ -743,9 +729,7 @@
         "summary": "Built a regulation organizer site so EHS staff only need to paste a government regulation URL to automatically convert the legal text into the company's regulation assessment register format, exportable as Excel or PDF. Users can then fill in the implementation status, compliance assessment, and related notes directly in the organized table, cutting down the time spent manually copying regulation text.",
         "category": [
           "Regulatory Management",
-          "Document Organization",
-          "Administrative Efficiency",
-          "Data Organization"
+          "EHS & Environment"
         ],
         "unit_request": "EHS Department",
         "unit_owner": "Digital Development Department",
@@ -858,9 +842,7 @@
         "title": "產品型錄 APP（iOS 版本）",
         "summary": "將集團產品規格整理成 iOS 產品型錄 APP，讓業務人員可透過手機或平板快速查詢瓶蓋、瓶胚及相關產品資訊。使用者可依產品條件進行搜尋與篩選，減少查找型錄、規格表或詢問不同單位的時間，方便業務拜訪客戶及日常產品查詢。",
         "category": [
-          "業務支援",
-          "產品查詢",
-          "行動應用"
+          "業務支援"
         ],
         "unit_request": "業務",
         "unit_owner": "數位發展部",
@@ -943,9 +925,7 @@
         "title": "Product Catalog App (iOS)",
         "summary": "Organized the group's product specifications into an iOS product catalog app, letting sales staff quickly look up bottle caps, preforms, and related product information from a phone or tablet. Users can search and filter by product criteria, cutting down the time spent digging through catalogs, spec sheets, or asking other departments — handy for customer visits and everyday product lookups.",
         "category": [
-          "Sales Support",
-          "Product Lookup",
-          "Mobile App"
+          "Business Support"
         ],
         "unit_request": "Sales",
         "unit_owner": "Digital Development Department",
@@ -1038,7 +1018,7 @@
         "summary": "透過 Python 與 n8n 建立 COA 自動化流程，將原本需要人工整理出貨資料、製作 COA 及逐封寄送郵件的作業，整合成標準化流程。品保人員完成出貨資料確認後，系統可自動產生 COA，並依照客戶資料夾及收件人清單，自動判斷寄送對象、加入副本收件人及寄出對應的 COA，減少重複操作時間。",
         "category": [
           "品保工作流程",
-          "自動化"
+          "流程自動化"
         ],
         "unit_request": "台宏品保",
         "unit_owner": "台宏品保處",
@@ -1153,7 +1133,7 @@
         "summary": "Using Python and n8n, an automated COA workflow was built to replace what used to be manual work: compiling shipment data, generating Certificates of Analysis (COA), and sending emails one by one. Once QA staff confirm the shipment data, the system automatically generates the COA, determines the correct recipients from the customer folder and contact list, adds the right CC recipients, and sends each COA to the right customer — cutting down repetitive manual work.",
         "category": [
           "QA Workflow",
-          "Automation"
+          "Process Automation"
         ],
         "unit_request": "Thai Hong Quality Assurance",
         "unit_owner": "Thai Hong QA Department",
@@ -1346,7 +1326,7 @@
         "title": "THC Semi-Annual Report Reminder System",
         "summary": "THC Semi-Annual Report Reminder System: a countdown timer for meeting presentations. Includes a built-in agenda list — clicking an item auto-fills its time slot — with a flip-clock style countdown. Sends a reminder (sound + notification) 3 minutes before time is up and again when time is up, then switches to a count-up timer if the speaker runs over. Supports full-screen display, a choice of alert sounds, and an editable agenda.",
         "category": [
-          "Utility"
+          "Utility Tools"
         ],
         "unit_request": "",
         "unit_owner": "Digital Development Dept.",
@@ -1425,9 +1405,8 @@
         "title": "LINEBOT 應用 : 推播功能與資料即時查詢",
         "summary": "建立兩種 LINE Bot 應用架構：方案一為 LINE Bot 搭配 n8n，依排程或文字關鍵字觸發，主動推播工作待辦提醒、會議提醒、每日工作回報，並可查詢班表與電話分機表；方案二為 LINE Bot 搭配雲端資料庫，透過互動式選單並整合 LLM 語言模型，讓使用者即時查詢產品異常排除等資料，系統自動回覆可能原因、對策建議與參考圖片。",
         "category": [
-          "品保工作流程",
-          "自動化",
-          "產品查詢"
+          "流程自動化",
+          "業務支援"
         ],
         "unit_request": "台宏品保",
         "unit_owner": "台宏品保處",
@@ -1539,9 +1518,8 @@
         "title": "LINE Bot Application: Push Notifications & Real-Time Data Lookup",
         "summary": "Two complementary LINE Bot architectures were built. Scheme 1 pairs LINE Bot with n8n: triggered by a schedule or a text keyword, it proactively pushes to-do reminders, meeting reminders, and daily work reports, and can also look up shift schedules and phone extension lists. Scheme 2 pairs LINE Bot with a cloud database: through an interactive menu integrated with an LLM, users can look up information such as product defect troubleshooting in real time, and the system automatically replies with likely causes, recommended countermeasures, and reference photos.",
         "category": [
-          "QA Workflow",
-          "Automation",
-          "Product Lookup"
+          "Process Automation",
+          "Business Support"
         ],
         "unit_request": "Thai Hong Quality Assurance",
         "unit_owner": "Thai Hong QA Department",
@@ -1665,7 +1643,7 @@
         "title": "AI 影片製作：多國語言旁白與字幕自動化",
         "summary": "將教育訓練／宣導影片的製作流程從人工錄製改為 AI 製作，以 AI 生成旁白與字幕，並可快速產出多國語言版本，原本需要真人錄製至少兩天以上的流程，大幅縮短影片產出時間。",
         "category": [
-          "影片製作"
+          "教育訓練與文宣"
         ],
         "unit_request": "職安衛中心",
         "unit_owner": "職安衛中心",
@@ -1754,7 +1732,7 @@
         "title": "AI Video Production: Automated Multilingual Narration & Subtitles",
         "summary": "Shifted training and awareness video production from manual recording to AI-driven production: AI generates narration and subtitles and can quickly produce multilingual versions, cutting production time from at least two days of manual recording down to a fraction of that.",
         "category": [
-          "Video Production"
+          "Training & Communications"
         ],
         "unit_request": "EHS Center",
         "unit_owner": "EHS Center",
@@ -1853,7 +1831,8 @@
         "title": "異常工作負荷風險資料整合與分析",
         "summary": "因應《職業安全衛生法》四大計畫之一「異常工作負荷促發疾病預防計畫」，需整合員工健康、過勞狀況及加班時數等資料，進行員工危害風險等級分析。本次共需處理約 683 筆資料，並針對三項不同來源的資料進行整併與交叉分析。原本若以人工方式逐筆整理、比對及判斷，預估需花費近一個月；透過 Claude 協助處理後，約 15 分鐘即可完成，大幅提升資料整理與分析效率。",
         "category": [
-          "資料整理"
+          "職安環保",
+          "資料整合與分析"
         ],
         "unit_request": "無菌二廠",
         "unit_owner": "職安衛中心",
@@ -1946,7 +1925,8 @@
         "title": "Abnormal Workload Risk Data Integration & Analysis",
         "summary": "In response to the \"Abnormal Workload-Induced Disease Prevention Plan\" — one of the four core plans under the Occupational Safety and Health Act — employee health, burnout, and overtime data needed to be integrated to analyze each employee's hazard risk level. This round covered about 683 records, merging and cross-analyzing three separate data sources. Manually organizing, matching, and judging the data record by record was estimated to take nearly a month; with Claude's help, it was completed in about 15 minutes, greatly improving data organization and analysis efficiency.",
         "category": [
-          "Data Organization"
+          "EHS & Environment",
+          "Data Integration & Analysis"
         ],
         "unit_request": "Aseptic Plant 2",
         "unit_owner": "EHS Center",
@@ -2060,7 +2040,8 @@
         "title": "AI 職安衛教育訓練教材製作",
         "summary": "原本較為枯燥、文字量大的職安衛教育訓練內容，透過 GPT 協助重新整理重點、轉換表達方式，並產生圖文並茂的教材。將複雜的法規與安全知識轉化為更直觀、容易理解的圖像與說明，不僅提升教材的可讀性，也有助於增加同仁的學習意願與記憶效果，讓職安衛教育訓練更生動、更有效率。",
         "category": [
-          "文宣製作"
+          "教育訓練與文宣",
+          "職安環保"
         ],
         "unit_owner": "職安衛中心",
         "author": "林玟臻（無菌二廠）",
@@ -2128,7 +2109,8 @@
         "title": "AI-Assisted EHS Training Material Production",
         "summary": "EHS training content used to be dense, text-heavy, and dry. With GPT's help, the key points were reorganized, the way ideas were expressed was reworked, and the content was turned into visual, easy-to-follow materials. Turning complex regulations and safety knowledge into more intuitive images and explanations not only makes the materials more readable, it also boosts employees' willingness to learn and helps them remember the content, making EHS training more engaging and efficient.",
         "category": [
-          "Communications & Materials"
+          "Training & Communications",
+          "EHS & Environment"
         ],
         "unit_owner": "EHS Center",
         "author": "Wen-Chen Lin (Aseptic Plant 2)",
@@ -2206,8 +2188,7 @@
         "summary": "建立集團層級的 AI 推廣管理平台，統一追蹤各單位 AI 導入的成熟度（L0～L5）、AI 專案與案例進度、AI 人才盤點、API 使用成本，讓推動 AI 的單位與管理層能在同一個地方掌握全集團的 AI 推動狀況，而不必分散在各單位的報表與口頭回報中，長期目標是發展成集團的 AI Operating System（AIOS）。",
         "category": [
           "內部管理工具",
-          "AI 治理",
-          "數據儀表板"
+          "資料整合與分析"
         ],
         "unit_request": "數位發展部",
         "unit_owner": "數位發展部",
@@ -2330,9 +2311,8 @@
         "title": "Group AI Adoption Management Dashboard (THC AI Enablement Platform)",
         "summary": "A group-wide AI adoption management platform that tracks each unit's AI maturity level (L0 through L5), AI project and case progress, AI talent inventory, and API usage cost in one place — so units driving AI adoption and management no longer need to rely on scattered reports and verbal updates. The long-term goal is to evolve it into the group's AI Operating System (AIOS).",
         "category": [
-          "Internal Management Tool",
-          "AI Governance",
-          "Data Dashboard"
+          "Internal Management Tools",
+          "Data Integration & Analysis"
         ],
         "unit_request": "Digital Development Department",
         "unit_owner": "Digital Development Department",
@@ -2465,8 +2445,8 @@
         "title": "訂單拆分工作台",
         "summary": "針對混合多家公司訂單的 PDF，自動辨識每頁公司名稱並分組，經人工確認後一鍵拆分下載，取代逐頁人工比對整理的作業方式。",
         "category": [
-          "業務流程優化",
-          "內部工具"
+          "流程自動化",
+          "內部管理工具"
         ],
         "unit_request": "業務單位",
         "unit_owner": "數位發展部",
@@ -2550,8 +2530,8 @@
         "title": "Order PDF Splitter",
         "summary": "Automatically identifies the company name on each page of a mixed-company order PDF, groups matching pages, and lets users confirm before a one-click split and download—replacing manual page-by-page sorting.",
         "category": [
-          "Process Optimization",
-          "Internal Tool"
+          "Process Automation",
+          "Internal Management Tools"
         ],
         "unit_request": "Sales Department",
         "unit_owner": "Digital Development Department",
@@ -2647,7 +2627,7 @@
         "summary": "以手機拍照新增缺失，集中追蹤改善、複驗、簽核與結案。",
         "category": [
           "工程管理",
-          "數位轉型"
+          "內部管理工具"
         ],
         "unit_request": "數位發展部",
         "unit_owner": "數位發展部",
@@ -2755,8 +2735,8 @@
         "title": "Indoor Renovation Acceptance & Defect Improvement Management System",
         "summary": "Add defects with phone photos and centrally track improvement, re-inspection, sign-off, and case closure.",
         "category": [
-          "Project Management",
-          "Digital Transformation"
+          "Engineering Management",
+          "Internal Management Tools"
         ],
         "unit_request": "Digital Development Department",
         "unit_owner": "Digital Development Department",
@@ -2875,8 +2855,7 @@
         "summary": "整合集團訂單資料（OCR 辨識的紙本／PDF 訂單、SAP 直接匯出的訂單 Excel）與財務資料（月度損益、季度合併財務報表），建立一個管理層可以直接查看銷售、毛利、客戶與產品結構的儀表板平台，取代原本分散在各業務單位 Excel、紙本與口頭回報的彙整方式。",
         "category": [
           "內部管理工具",
-          "數據儀表板",
-          "業務與財務分析"
+          "資料整合與分析"
         ],
         "unit_request": "總管理處",
         "unit_owner": "數位發展部",
@@ -3009,9 +2988,8 @@
         "title": "Order & Financial Intelligence Platform (THC Report)",
         "summary": "Integrates group-wide order data (paper/PDF orders recognized via OCR, order Excel files exported directly from SAP) with financial data (monthly P&L, quarterly consolidated financial reports) into a single dashboard where management can directly view sales, margin, customer and product structure — replacing the previous approach of gathering scattered Excel files, paper reports and verbal updates from each business unit.",
         "category": [
-          "Internal Management Tool",
-          "Data Dashboard",
-          "Sales & Financial Analysis"
+          "Internal Management Tools",
+          "Data Integration & Analysis"
         ],
         "unit_request": "General Administration Office",
         "unit_owner": "Digital Development Department",
@@ -3155,8 +3133,7 @@
         "summary": "讓業務自行輸入包材改善數據，即可算出減碳效益（tCO₂e），取代過去手動查係數、換算的作業方式。",
         "category": [
           "永續發展",
-          "業務工具",
-          "內部工具"
+          "內部管理工具"
         ],
         "unit_request": "永續發展部",
         "unit_owner": "數位發展部",
@@ -3238,8 +3215,7 @@
         "summary": "Lets sales reps enter packaging improvement data themselves to calculate carbon reduction (tCO2e), replacing manual coefficient lookups and conversions.",
         "category": [
           "Sustainability",
-          "Sales Tool",
-          "Internal Tool"
+          "Internal Management Tools"
         ],
         "unit_request": "Sustainability Department",
         "unit_owner": "Digital Development Department",
@@ -3330,9 +3306,8 @@
         "title": "最美發言人小工具（每日市場報告自動彙整）",
         "summary": "讓發言人不用手動開好幾個網站查詢，一鍵產生大盤指數、宏全股價、匯率、原油期貨、美股道瓊等固定格式的每日報告文字，複製貼給總裁。",
         "category": [
-          "內部工具",
           "小工具",
-          "自動化"
+          "內部管理工具"
         ],
         "unit_request": "總管理處",
         "unit_owner": "數位發展部",
@@ -3426,9 +3401,8 @@
         "title": "Spokesperson Daily Market Report Tool",
         "summary": "Lets the company spokesperson generate a fixed-format daily report text (TAIEX, Hon Chuan stock price, forex, crude oil futures, Dow Jones) with one click, instead of manually checking multiple websites, to paste directly to the President.",
         "category": [
-          "Internal Tool",
-          "Utility",
-          "Automation"
+          "Utility Tools",
+          "Internal Management Tools"
         ],
         "unit_request": "General Administration Office",
         "unit_owner": "Digital Development Department",
@@ -3536,9 +3510,8 @@
         "summary": "自動讀取 SDS 與年度採購資料，一鍵產生成分換算、申報判斷及既有化學物質比對表，降低人工整理時間與計算錯誤。",
         "category": [
           "流程自動化",
-          "資料整合",
-          "職安環保",
-          "法規申報"
+          "法規管理",
+          "職安環保"
         ],
         "unit_request": "職安衛中心",
         "unit_owner": "職安衛中心",
@@ -3640,9 +3613,8 @@
         "summary": "Automatically reads SDS and annual procurement data to generate composition conversion, declaration determination, and existing-chemical-substance comparison tables in one click, reducing manual data organizing time and calculation errors.",
         "category": [
           "Process Automation",
-          "Data Integration",
-          "EHS & Environment",
-          "Regulatory Reporting"
+          "Regulatory Management",
+          "EHS & Environment"
         ],
         "unit_request": "EHS Center",
         "unit_owner": "EHS Center",
