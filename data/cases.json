@@ -3728,5 +3728,213 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-019",
+    "number": 19,
+    "updated": "2026.08",
+    "screenshots": [
+      "assets/ai-license-calculator-overview.png",
+      "assets/ai-license-calculator-result.png",
+      "assets/ai-license-calculator-rules.png"
+    ],
+    "video": [],
+    "url": "https://ai-license-calculator-tw.workspace-784870.chatgpt.site/",
+    "i18n": {
+      "zh": {
+        "title": "宏全集團 AI 授權需求評估計算機",
+        "summary": "透過簡單問答評估單位 AI 需求，自動建議適合的使用人數與授權組數，協助主管與管理單位合理配置資源。",
+        "category": [
+          "內部管理工具",
+          "小工具"
+        ],
+        "unit_request": "集團各事業單位",
+        "unit_owner": "數位發展部",
+        "author": "",
+        "status": "正式上線",
+        "region": "宏全集團",
+        "problem_background": "AI 授權常依部門人數或主觀需求配置，缺少一致標準，容易高估、低估或無法向管理單位清楚說明申請依據。",
+        "core_problem": "如何讓各單位快速量化 AI 使用需求，並將工作頻率、節省時間、適用程度與工具模式轉成可說明的授權建議。",
+        "solution": "建立公開線上計算機，以四項工作需求加權計分，再依需求級距推算使用人數，並用多 AI 倍率估算授權組數。",
+        "process": [
+          "填寫單位人數與 AI 潛在使用人數",
+          "回答工作需求、共享效益與使用模式",
+          "即時取得需求指數、人數與授權建議"
+        ],
+        "features": [
+          {
+            "name": "即時計算",
+            "desc": "選項變更後立即更新結果"
+          },
+          {
+            "name": "人數驗證",
+            "desc": "避免潛在使用人數超過單位總人數"
+          },
+          {
+            "name": "計算規則",
+            "desc": "公開權重、覆蓋率、倍率與範例"
+          },
+          {
+            "name": "摘要複製",
+            "desc": "快速分享評估結論"
+          }
+        ],
+        "ai_usage": [
+          "使用 Codex 協助需求拆解、介面設計與前端開發",
+          "依規格建立純函式並驗證計算結果",
+          "生成 PET 包材品牌線稿作為畫面裝飾"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "需求分析、程式開發與測試"
+          },
+          {
+            "name": "React、TypeScript、Vite",
+            "desc": "建立互動式計算機"
+          },
+          {
+            "name": "ChatGPT Sites",
+            "desc": "公開網站託管"
+          },
+          {
+            "name": "GitHub",
+            "desc": "版本管理與備份"
+          }
+        ],
+        "results": [
+          "完成可公開使用的響應式計算機",
+          "2～3 分鐘即可取得授權配置建議",
+          "計算規則透明，結果可複製分享"
+        ],
+        "value": [
+          {
+            "name": "對申請單位",
+            "desc": "快速整理需求並取得一致的申請依據"
+          },
+          {
+            "name": "對管理單位",
+            "desc": "以共同標準比較各單位需求與優先級"
+          },
+          {
+            "name": "對公司",
+            "desc": "降低授權閒置風險並提升資源配置透明度"
+          }
+        ],
+        "extensions": [
+          "可套用於其他軟體、設備或數位工具的授權評估",
+          "可延伸加入預算試算、申請表匯出與歷史比較"
+        ],
+        "limitations": [
+          "結果為資源配置參考，仍須配合預算、政策與資安規範",
+          "填答應以多數實際使用者的工作情境為準"
+        ],
+        "success_key": "將複雜權重轉成自然語言選項，並公開計算原理，讓使用者容易填答、管理者能理解建議依據。",
+        "keywords": [
+          "AI 授權",
+          "需求評估",
+          "資源配置",
+          "AI 治理",
+          "內部工具"
+        ]
+      },
+      "en": {
+        "title": "THC Group AI License Requirement Calculator",
+        "summary": "A quick Q&A tool that assesses a unit's AI needs and automatically recommends the appropriate number of users and license seats, helping managers allocate resources fairly.",
+        "category": [
+          "Internal Management Tools",
+          "Utilities"
+        ],
+        "unit_request": "Group business units",
+        "unit_owner": "Digital Development Department",
+        "author": "",
+        "status": "Live",
+        "region": "THC Group",
+        "problem_background": "AI licenses are often allocated based on headcount or subjective judgment, with no consistent standard — leading to over- or under-provisioning and requests that are hard to justify to management.",
+        "core_problem": "How can each unit quickly quantify its AI usage needs and translate usage frequency, time saved, applicability, and tool patterns into a defensible license recommendation?",
+        "solution": "Built a public online calculator that scores four weighted work-need dimensions, maps the score to a recommended user count by tier, and estimates license seats using a multi-AI usage multiplier.",
+        "process": [
+          "Enter the unit's total headcount and potential AI users",
+          "Answer questions on work needs, sharing benefits, and usage patterns",
+          "Instantly get the demand index, recommended headcount, and license suggestion"
+        ],
+        "features": [
+          {
+            "name": "Real-time calculation",
+            "desc": "Results update instantly as options change"
+          },
+          {
+            "name": "Headcount validation",
+            "desc": "Prevents potential users from exceeding total unit headcount"
+          },
+          {
+            "name": "Transparent rules",
+            "desc": "Publishes the weights, coverage ratios, multipliers, and examples"
+          },
+          {
+            "name": "Copy summary",
+            "desc": "Quickly share the assessment conclusion"
+          }
+        ],
+        "ai_usage": [
+          "Used Codex to help break down requirements, design the interface, and build the frontend",
+          "Built pure functions from the spec and verified the calculation results",
+          "Generated PET packaging brand line art as screen decoration"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "Requirements analysis, development, and testing"
+          },
+          {
+            "name": "React, TypeScript, Vite",
+            "desc": "Built the interactive calculator"
+          },
+          {
+            "name": "ChatGPT Sites",
+            "desc": "Public website hosting"
+          },
+          {
+            "name": "GitHub",
+            "desc": "Version control and backup"
+          }
+        ],
+        "results": [
+          "Delivered a publicly usable, responsive calculator",
+          "Provides a license allocation recommendation in 2-3 minutes",
+          "Calculation rules are transparent and results can be copied and shared"
+        ],
+        "value": [
+          {
+            "name": "For requesting units",
+            "desc": "Quickly organize needs and get a consistent basis for requests"
+          },
+          {
+            "name": "For management",
+            "desc": "Compare needs and priorities across units using a common standard"
+          },
+          {
+            "name": "For the company",
+            "desc": "Reduces idle license risk and improves transparency in resource allocation"
+          }
+        ],
+        "extensions": [
+          "Can be applied to license assessments for other software, equipment, or digital tools",
+          "Can be extended with budget estimation, application form export, and historical comparison"
+        ],
+        "limitations": [
+          "Results are a resource-allocation reference and must still be aligned with budget, policy, and security requirements",
+          "Answers should reflect the actual working context of the majority of users"
+        ],
+        "success_key": "Turning complex weighting logic into natural-language options while publishing the calculation methodology, so users can answer easily and managers can understand the basis for the recommendation.",
+        "keywords": [
+          "AI Licensing",
+          "Needs Assessment",
+          "Resource Allocation",
+          "AI Governance",
+          "Internal Tool"
+        ]
+      }
+    }
   }
 ]
