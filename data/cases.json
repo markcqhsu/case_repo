@@ -3936,5 +3936,413 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-020",
+    "number": 20,
+    "updated": "2026.08",
+    "screenshot": "assets/beverage-intelligence-demo.png",
+    "url": "https://ais-pre-6fj346jevlwnlvgnp5qdhe-286983073987.asia-northeast1.run.app",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "現代化飲料產品型錄與權限管理系統",
+        "summary": "建立一個具備高速全文檢索、多國語系支援、Google OAuth 權限管理與即時資料庫更新的現代化飲料產品型錄展示與管理平台。",
+        "category": [
+          "內部管理工具",
+          "資料整合與分析"
+        ],
+        "unit_request": "總部企劃室",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "已完成測試版本",
+        "region": "",
+        "problem_background": "過去缺乏有效率的飲料產品管理平台，且傳統搜尋功能效能低落，難以快速查找目標商品；同時也缺乏針對不同使用者（如訪客與管理員）的完善存取與安全控管機制。",
+        "core_problem": "需要一個能支援毫秒級搜尋、多國語系無縫切換，並能嚴格區分一般使用者與管理員權限的雲端整合系統，且必須確保在第三方搜尋引擎失效時有備援方案。",
+        "solution": "採用 React + Vite 構建前端，整合 Firebase 處理 SSO 身分驗證與 Firestore 資料儲存，並導入 Algolia 達成極速全文混合式搜尋。同時設計了白名單與自動防閃屏的安全授權機制。",
+        "process": [
+          "使用者透過 Google OAuth 進行單一登入 (SSO)。",
+          "系統在背景驗證信箱是否具備白名單或管理員 (admin) 權限。",
+          "驗證成功後無縫導向首頁，自動載入 Firestore 產品資料或透過 Algolia 進行關鍵字搜尋。"
+        ],
+        "features": [
+          {
+            "name": "混合式搜尋引擎",
+            "desc": "整合 Firestore 原生查詢與 Algolia 全文檢索，具備優雅降級(Fallback)保護。"
+          },
+          {
+            "name": "角色權限控管",
+            "desc": "攔截並驗證 Google 登入者的權限，阻擋非白名單用戶。"
+          },
+          {
+            "name": "產品管理與展示",
+            "desc": "支援產品的新增、編輯、批次刪除，包含品牌、價格與容量網格化展示。"
+          },
+          {
+            "name": "多國語系支援",
+            "desc": "整合 i18n，讓前端介面與飲料分類可即時切換語言。"
+          }
+        ],
+        "ai_usage": [],
+        "tools": [
+          {
+            "name": "React & Vite",
+            "desc": "作為前端核心框架與極速建置工具。"
+          },
+          {
+            "name": "Firebase (Auth & Firestore)",
+            "desc": "處理 Google 登入、權限控管與雲端資料庫儲存。"
+          },
+          {
+            "name": "Algolia",
+            "desc": "提供企業級的毫秒全文檢索與容錯搜尋能力。"
+          },
+          {
+            "name": "Tailwind CSS",
+            "desc": "建構具備現代感與響應式(RWD)的 UI 介面設計。"
+          }
+        ],
+        "results": [
+          "成功建置具備毫秒級回應的全文檢索產品型錄。",
+          "解決了授權跳轉的閃屏問題，提供流暢的白名單登入體驗。",
+          "實作了友善的防抖(Debounce)搜尋、自動置頂與流暢的分頁機制。"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "能快速查找與展示飲料產品，大幅提升行銷與展演效率。"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立了一套前端架構乾淨、高安全性（API 金鑰抽離）的內部產品管理平台標準。"
+          }
+        ],
+        "extensions": [
+          "可直接延伸作為公司內部其他產品線（如食品、周邊）的標準化型錄模板。",
+          "白名單授權機制與 Algolia 混合搜尋架構，可輕易複製到其他需要高效檢索的專案。"
+        ],
+        "limitations": [
+          "Algolia 具有搜尋額度限制，系統已內建 Firestore 本地搜尋作為備援機制以節省流量。",
+          "目前僅針對特定的管理員信箱提供完整的後台修改與刪除權限。"
+        ],
+        "success_key": "- 前端架構乾淨，確實將第三方 API Key 安全抽離至環境變數管理。\n- 妥善處理了非同步權限檢查的順序，以及 Firebase 與 Algolia 之間的容錯與備援機制。",
+        "keywords": [
+          "飲料型錄",
+          "Firebase",
+          "Algolia 搜尋",
+          "白名單權限管理",
+          "React 前端開發"
+        ]
+      },
+      "en": {
+        "title": "Modern Beverage Product Catalog & Access Management System",
+        "summary": "A modern beverage product catalog platform with high-speed full-text search, multi-language support, Google OAuth-based access control, and real-time database updates.",
+        "category": [
+          "Internal Management Tools",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Headquarters Planning Office",
+        "unit_owner": "Digital Development Department",
+        "author": "徐喬奎",
+        "status": "Test Version Completed",
+        "region": "",
+        "problem_background": "There was no efficient platform for managing beverage product data, and traditional search performed poorly, making it hard to find target products quickly. There was also no proper access control mechanism to distinguish between guest and admin users.",
+        "core_problem": "The team needed a cloud-integrated system that supports millisecond-level search, seamless multi-language switching, and strict separation of regular user and admin permissions, with a fallback in case the third-party search engine fails.",
+        "solution": "Built the frontend with React + Vite, integrated Firebase for SSO authentication and Firestore data storage, and adopted Algolia for ultra-fast hybrid full-text search. Also designed a whitelist mechanism and flicker-free authorization flow.",
+        "process": [
+          "Users sign in via Google OAuth single sign-on (SSO).",
+          "The system verifies in the background whether the email is on the whitelist or has admin permissions.",
+          "Once verified, users are seamlessly redirected to the homepage, which automatically loads Firestore product data or searches via Algolia."
+        ],
+        "features": [
+          {
+            "name": "Hybrid Search Engine",
+            "desc": "Combines native Firestore queries with Algolia full-text search, with graceful fallback protection."
+          },
+          {
+            "name": "Role-Based Access Control",
+            "desc": "Intercepts and verifies Google sign-in permissions, blocking non-whitelisted users."
+          },
+          {
+            "name": "Product Management & Display",
+            "desc": "Supports adding, editing, and batch deleting products, with a grid view of brand, price, and volume."
+          },
+          {
+            "name": "Multi-Language Support",
+            "desc": "Integrated i18n lets the frontend UI and beverage categories switch languages instantly."
+          }
+        ],
+        "ai_usage": [],
+        "tools": [
+          {
+            "name": "React & Vite",
+            "desc": "Core frontend framework and ultra-fast build tool."
+          },
+          {
+            "name": "Firebase (Auth & Firestore)",
+            "desc": "Handles Google sign-in, access control, and cloud database storage."
+          },
+          {
+            "name": "Algolia",
+            "desc": "Provides enterprise-grade millisecond full-text search with fault tolerance."
+          },
+          {
+            "name": "Tailwind CSS",
+            "desc": "Builds a modern, responsive (RWD) UI design."
+          }
+        ],
+        "results": [
+          "Successfully built a full-text search product catalog with millisecond response times.",
+          "Resolved the flicker issue during authorization redirects, delivering a smooth whitelist sign-in experience.",
+          "Implemented debounced search, auto-scroll-to-top, and smooth pagination."
+        ],
+        "value": [
+          {
+            "name": "For Business Units",
+            "desc": "Enables fast lookup and display of beverage products, greatly improving marketing and presentation efficiency."
+          },
+          {
+            "name": "For the Company",
+            "desc": "Established a clean, high-security (API keys isolated) standard for internal product management platforms."
+          }
+        ],
+        "extensions": [
+          "Can be directly extended as a standardized catalog template for other internal product lines (e.g., food, merchandise).",
+          "The whitelist authorization mechanism and Algolia hybrid search architecture can easily be replicated in other projects that need efficient search."
+        ],
+        "limitations": [
+          "Algolia has search quota limits; the system includes a local Firestore search fallback to conserve quota.",
+          "Currently only specific admin emails are granted full backend edit and delete permissions."
+        ],
+        "success_key": "- The frontend architecture is clean, with third-party API keys properly isolated into environment variables.\n- Carefully handled the order of asynchronous permission checks, as well as fault tolerance and fallback between Firebase and Algolia.",
+        "keywords": [
+          "Beverage Catalog",
+          "Firebase",
+          "Algolia Search",
+          "Whitelist Access Management",
+          "React Frontend Development"
+        ]
+      }
+    }
+  },
+  {
+    "id": "case-021",
+    "number": 21,
+    "updated": "2026.08",
+    "video": [],
+    "url": "https://kiicguide-lkhromyd.manus.space",
+    "screenshot": "assets/kiic-guide-demo.png",
+    "i18n": {
+      "zh": {
+        "title": "宏全國際集團建廠專案資料庫",
+        "summary": "整合 KIIC 廠追加減、設計優化與宏信廠驗收資料，讓團隊能以廠區、工程分類、金額、照片及影片快速查閱與追蹤。",
+        "category": [
+          "工程管理",
+          "資料整合與分析",
+          "內部管理工具"
+        ],
+        "unit_request": "宏全國際集團建廠／廠務團隊",
+        "unit_owner": "東南亞技術處",
+        "author": "馬崇耀",
+        "status": "正式上線",
+        "region": "印尼、泰國、台灣",
+        "problem_background": "建廠追加減報告、設計檢討、驗收文字與現場照片分散，跨廠區資料容易混用，新進同仁也不易理解工程變更原因。",
+        "core_problem": "如何保留原始佐證並把複雜工程資料轉為可搜尋、可分流、可理解的團隊知識庫，同時避免未登入者直接瀏覽內容。",
+        "solution": "建置具帳密保護的全端網站，將 KIIC 與宏信資料分流；以工程總帳、驗收卡、照片／影片瀏覽器及設計方針整理資訊。",
+        "process": [
+          "彙整七份 KIIC 追加減報告、設計優化結論與宏信驗收文字、照片及影片。",
+          "建立統一資料結構，依廠區、工程類別、主題、金額與報告次序整理。",
+          "建置登入、廠區選擇、查詢篩選、媒體瀏覽與留言等網站功能。",
+          "以桌面、手機及正式站反覆驗證後發布，持續依現場回饋調整介面。"
+        ],
+        "features": [
+          {
+            "name": "KIIC 工程總帳",
+            "desc": "依工程分類、金額與報告次序查詢追加減項目及原因。"
+          },
+          {
+            "name": "設計優化方針",
+            "desc": "收錄 33 條建廠經驗與白話說明，供新案設計核對。"
+          },
+          {
+            "name": "宏信驗收紀錄",
+            "desc": "整合 283 項文字、392 張照片與對應驗收影片。"
+          },
+          {
+            "name": "媒體瀏覽器",
+            "desc": "照片與影片可在同一視窗用箭頭、縮圖及鍵盤切換。"
+          },
+          {
+            "name": "權限與廠區分流",
+            "desc": "登入後先選廠區，避免 KIIC 與宏信資料混算。"
+          }
+        ],
+        "ai_usage": [
+          "以 AI 協助閱讀追加減報告，萃取項目、金額、原因與新手可理解的重點。",
+          "以 AI 協助將驗收文字分類、整理改善建議，並依使用者回饋調整網站文案與介面。"
+        ],
+        "tools": [
+          {
+            "name": "React、TypeScript、Tailwind CSS",
+            "desc": "建置繁體中文響應式前端與工地監造手帳風格。"
+          },
+          {
+            "name": "tRPC、Express、MySQL／Drizzle",
+            "desc": "處理帳密登入、留言、資料查詢與跨執行個體工作階段。"
+          },
+          {
+            "name": "Manus S3 Storage",
+            "desc": "提供驗收照片、影片、Logo 與模型檔案的網站資產儲存。"
+          },
+          {
+            "name": "Three.js",
+            "desc": "預留廠區 STL、OBJ、GLB 模型瀏覽能力，目前前台暫時隱藏。"
+          }
+        ],
+        "results": [
+          "完成 KIIC 七份追加減報告整合，總覽可查詢 68 個工程變更項目。",
+          "完成宏信驗收專區，支援分類、關鍵字、照片燈箱、影片縮圖與跨媒體切換。",
+          "建立帳密登入、廠區分流與管理員留言管理，正式站已上線使用。"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "可快速取得建廠變更與驗收佐證，提升跨部門說明與追蹤效率。"
+          },
+          {
+            "name": "對客戶",
+            "desc": "可用結構化資料理解工程決策、缺失改善與現場佐證脈絡。"
+          },
+          {
+            "name": "對公司",
+            "desc": "累積跨國建廠知識，降低新案重複踩雷與資料散落風險。"
+          }
+        ],
+        "extensions": [
+          "可複製至其他廠區，沿用廠區選擇、工程分類、驗收紀錄與媒體佐證結構。",
+          "可擴充改善進度、責任單位、結案日期、帳號管理及更多工程文件來源。"
+        ],
+        "limitations": [
+          "金額、工程狀態與驗收結果須以核准報告及現場最新紀錄為準，網站需定期更新。",
+          "照片、影片與模型檔案應遵守公司資訊安全及授權規範，避免上傳不宜公開內容。"
+        ],
+        "success_key": "將原始工程佐證、白話說明與現場媒體放在同一查詢脈絡，並持續依使用者操作回饋調整資料結構與介面。",
+        "keywords": [
+          "建廠管理",
+          "工程總帳",
+          "追加減",
+          "驗收",
+          "知識管理",
+          "跨國工廠",
+          "照片影片佐證",
+          "AI 協作"
+        ]
+      },
+      "en": {
+        "title": "THC Group Plant Construction Project Database",
+        "summary": "Integrates KIIC plant change orders, design optimization, and Hong Xin plant acceptance data, letting the team quickly search and track by plant, engineering category, amount, photos, and video.",
+        "category": [
+          "Engineering Management",
+          "Data Integration & Analysis",
+          "Internal Management Tools"
+        ],
+        "unit_request": "THC Group Plant Construction / Facilities Team",
+        "unit_owner": "Southeast Asia Technical Division",
+        "author": "馬崇耀",
+        "status": "Live in Production",
+        "region": "Indonesia, Thailand, Taiwan",
+        "problem_background": "Plant change-order reports, design reviews, acceptance records, and on-site photos were scattered across sources, making cross-plant data easy to mix up. New team members also had difficulty understanding the reasons behind engineering changes.",
+        "core_problem": "How to preserve original supporting evidence while turning complex engineering data into a searchable, segmented, and understandable team knowledge base, while preventing non-logged-in users from browsing the content directly.",
+        "solution": "Built a full-stack website with account/password protection that separates KIIC and Hong Xin data, organizing information via an engineering ledger, acceptance cards, a photo/video browser, and design guidelines.",
+        "process": [
+          "Compiled seven KIIC change-order reports, design optimization conclusions, and Hong Xin acceptance records, photos, and videos.",
+          "Established a unified data structure organized by plant, engineering category, topic, amount, and report sequence.",
+          "Built site features including login, plant selection, search/filtering, media browsing, and comments.",
+          "Repeatedly validated on desktop, mobile, and the production site before launch, and continues to refine the interface based on field feedback."
+        ],
+        "features": [
+          {
+            "name": "KIIC Engineering Ledger",
+            "desc": "Search change-order items and reasons by engineering category, amount, and report sequence."
+          },
+          {
+            "name": "Design Optimization Guidelines",
+            "desc": "Contains 33 plant-construction lessons with plain-language explanations for reference in new projects."
+          },
+          {
+            "name": "Hong Xin Acceptance Records",
+            "desc": "Integrates 283 text records, 392 photos, and corresponding acceptance videos."
+          },
+          {
+            "name": "Media Browser",
+            "desc": "Photos and videos can be browsed in the same window using arrows, thumbnails, and keyboard navigation."
+          },
+          {
+            "name": "Access Control & Plant Segmentation",
+            "desc": "Users select a plant after login to prevent KIIC and Hong Xin data from being mixed together."
+          }
+        ],
+        "ai_usage": [
+          "Used AI to help read change-order reports and extract items, amounts, reasons, and beginner-friendly summaries.",
+          "Used AI to help categorize acceptance records, organize improvement suggestions, and refine site copy and UI based on user feedback."
+        ],
+        "tools": [
+          {
+            "name": "React, TypeScript, Tailwind CSS",
+            "desc": "Built a responsive Traditional Chinese frontend with a construction-site field-notebook style."
+          },
+          {
+            "name": "tRPC, Express, MySQL/Drizzle",
+            "desc": "Handles account/password login, comments, data queries, and cross-instance sessions."
+          },
+          {
+            "name": "Manus S3 Storage",
+            "desc": "Provides asset storage for acceptance photos, videos, logos, and model files."
+          },
+          {
+            "name": "Three.js",
+            "desc": "Reserved for browsing plant STL, OBJ, and GLB models; currently hidden on the frontend."
+          }
+        ],
+        "results": [
+          "Completed integration of seven KIIC change-order reports; the overview covers 68 searchable engineering change items.",
+          "Completed the Hong Xin acceptance section, supporting categorization, keyword search, photo lightbox, video thumbnails, and cross-media switching.",
+          "Established account/password login, plant segmentation, and admin comment management; the production site is now live."
+        ],
+        "value": [
+          {
+            "name": "For Business Units",
+            "desc": "Quickly access plant-construction changes and acceptance evidence, improving cross-department communication and tracking efficiency."
+          },
+          {
+            "name": "For Clients",
+            "desc": "Structured data helps clients understand engineering decisions, defect remediation, and on-site supporting context."
+          },
+          {
+            "name": "For the Company",
+            "desc": "Accumulates cross-border plant-construction knowledge, reducing repeated mistakes and scattered data in new projects."
+          }
+        ],
+        "extensions": [
+          "Can be replicated for other plants, reusing the plant selection, engineering categorization, acceptance record, and media evidence structure.",
+          "Can be extended with improvement progress, responsible units, closure dates, account management, and additional engineering document sources."
+        ],
+        "limitations": [
+          "Amounts, engineering status, and acceptance results must follow approved reports and the latest on-site records; the site requires regular updates.",
+          "Photos, videos, and model files must comply with company information security and licensing rules, avoiding inappropriate public content."
+        ],
+        "success_key": "Keeps original engineering evidence, plain-language explanations, and on-site media within the same search context, and continuously refines the data structure and interface based on user feedback.",
+        "keywords": [
+          "Plant Construction Management",
+          "Engineering Ledger",
+          "Change Orders",
+          "Acceptance",
+          "Knowledge Management",
+          "Cross-Border Plants",
+          "Photo/Video Evidence",
+          "AI Collaboration"
+        ]
+      }
+    }
   }
 ]
