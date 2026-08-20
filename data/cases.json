@@ -4344,5 +4344,179 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-022",
+    "number": 22,
+    "updated": "2026.08",
+    "screenshot": "assets/scaffolding-safety-video-demo.jpg",
+    "video": [
+      "https://youtu.be/FR_EJJytq4k"
+    ],
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "AI 影片製作：鷹架使用安全說明",
+        "summary": "以 AI 生成動畫與旁白配音，製作鷹架使用安全教育訓練影片，將原本需要真人演出、拍攝與剪輯的宣導影片，改為用 AI 工具產出卡通角色動畫搭配旁白說明，快速完成職安衛安全教材。",
+        "category": [
+          "教育訓練與文宣",
+          "職安環保",
+          "影片製作"
+        ],
+        "unit_request": "無菌三廠",
+        "unit_owner": "無菌三廠",
+        "author": "紀裕慶（無菌三廠）",
+        "status": "正式版本",
+        "region": "",
+        "problem_background": "鷹架使用安全規範（如人員、工具與材料總重量限制、架設與拆卸注意事項等）過去多以文字公告或真人拍攝影片宣導，製作真人影片需要協調人員演出、場地拍攝與後製剪輯，耗時且不易重複修改。",
+        "core_problem": "如何以更快速、更低成本的方式，製作生動易懂的鷹架使用安全宣導影片，讓同仁容易理解並記住安全規範。",
+        "solution": "改以 AI 生成動畫角色搭配旁白配音，將鷹架使用安全規範轉換為卡通動畫影片，用情境示範（如秤重限制、正確使用方式）取代真人演出，快速產出教育訓練與宣導用影片。",
+        "process": [
+          "整理鷹架使用安全規範重點與腳本內容",
+          "以 AI 工具生成動畫角色與場景畫面",
+          "以 AI 生成旁白語音並搭配字幕",
+          "完成影片剪輯與輸出"
+        ],
+        "features": [
+          {
+            "name": "AI 動畫生成",
+            "desc": "以 AI 產生卡通角色與工廠場景動畫，取代真人拍攝"
+          },
+          {
+            "name": "AI 旁白配音",
+            "desc": "以 AI 語音搭配動畫畫面，說明安全規範重點"
+          },
+          {
+            "name": "情境化演示",
+            "desc": "以動畫呈現重量限制、正確操作方式等安全情境，加深印象"
+          }
+        ],
+        "ai_usage": [
+          "使用 AI 動畫生成技術製作角色與場景畫面",
+          "使用 AI 語音生成技術製作影片旁白"
+        ],
+        "tools": [
+          {
+            "name": "AI 動畫生成工具",
+            "desc": "產生卡通角色與工廠場景動畫畫面"
+          },
+          {
+            "name": "AI 語音生成工具",
+            "desc": "產生影片旁白配音"
+          }
+        ],
+        "results": [
+          "完成鷹架使用安全說明教育訓練影片",
+          "以動畫情境化方式呈現安全規範，較純文字公告更容易理解"
+        ],
+        "value": [
+          {
+            "name": "對無菌三廠",
+            "desc": "提升鷹架使用安全宣導的效率與教材品質，不需協調真人拍攝"
+          },
+          {
+            "name": "對公司",
+            "desc": "可複製此模式製作其他廠區職安衛教育訓練影片，降低影片製作成本"
+          }
+        ],
+        "extensions": [
+          "各廠區其他職安衛教育訓練影片製作",
+          "各類作業安全規範宣導動畫"
+        ],
+        "limitations": [
+          "AI 生成的動畫內容與旁白仍需由職安衛專業人員確認規範內容正確性"
+        ],
+        "success_key": "以 AI 動畫與旁白取代真人拍攝，快速產出生動易懂的安全教育訓練影片。",
+        "keywords": [
+          "AI影片製作",
+          "鷹架安全",
+          "職安衛",
+          "教育訓練",
+          "動畫",
+          "無菌三廠"
+        ]
+      },
+      "en": {
+        "title": "AI Video Production: Scaffolding Safety Guidelines",
+        "summary": "Used AI-generated animation and voiceover to produce a scaffolding safety training video, replacing live-action filming and editing with AI-generated cartoon character animation and narration to quickly complete occupational safety training materials.",
+        "category": [
+          "Training & Communications",
+          "EHS & Sustainability",
+          "Video Production"
+        ],
+        "unit_request": "Aseptic Factory 3",
+        "unit_owner": "Aseptic Factory 3",
+        "author": "Chi Yu-Ching (Aseptic Factory 3)",
+        "status": "Live",
+        "region": "",
+        "problem_background": "Scaffolding safety rules (such as total weight limits for personnel, tools and materials, and setup/dismantling precautions) were previously communicated through text notices or live-action videos. Producing live-action videos required coordinating actors, on-site filming, and post-production editing, which was time-consuming and hard to revise.",
+        "core_problem": "How to produce engaging, easy-to-understand scaffolding safety videos faster and at lower cost, so employees can better understand and remember the safety rules.",
+        "solution": "Replaced live-action filming with AI-generated animated characters and voiceover, converting scaffolding safety rules into animated video with scenario demonstrations (such as weight limits and correct usage) to quickly produce training and awareness videos.",
+        "process": [
+          "Organize key scaffolding safety rules and script content",
+          "Generate animated characters and scenes with AI tools",
+          "Generate voiceover narration with AI along with subtitles",
+          "Complete video editing and export"
+        ],
+        "features": [
+          {
+            "name": "AI Animation Generation",
+            "desc": "Uses AI to generate cartoon characters and factory scene animation, replacing live-action filming"
+          },
+          {
+            "name": "AI Voiceover",
+            "desc": "Uses AI-generated voice paired with animation to explain key safety rules"
+          },
+          {
+            "name": "Scenario-Based Demonstration",
+            "desc": "Uses animation to depict weight limits and correct operating procedures, reinforcing memory"
+          }
+        ],
+        "ai_usage": [
+          "Uses AI animation generation technology to produce character and scene visuals",
+          "Uses AI voice generation technology to produce video narration"
+        ],
+        "tools": [
+          {
+            "name": "AI Animation Generation Tool",
+            "desc": "Generates cartoon character and factory scene animation"
+          },
+          {
+            "name": "AI Voice Generation Tool",
+            "desc": "Generates video voiceover narration"
+          }
+        ],
+        "results": [
+          "Completed a scaffolding safety training video",
+          "Presents safety rules through animated scenarios, making them easier to understand than text-only notices"
+        ],
+        "value": [
+          {
+            "name": "For Aseptic Factory 3",
+            "desc": "Improves the efficiency and quality of scaffolding safety training materials without needing to coordinate live-action filming"
+          },
+          {
+            "name": "For the Company",
+            "desc": "This approach can be replicated to produce EHS training videos for other plants, reducing video production costs"
+          }
+        ],
+        "extensions": [
+          "EHS training videos for other plants",
+          "Animated awareness videos for other types of operational safety rules"
+        ],
+        "limitations": [
+          "AI-generated animation content and narration still need to be verified for accuracy by EHS professionals"
+        ],
+        "success_key": "Replaced live-action filming with AI animation and narration to quickly produce an engaging, easy-to-understand safety training video.",
+        "keywords": [
+          "AI Video Production",
+          "Scaffolding Safety",
+          "EHS",
+          "Training",
+          "Animation",
+          "Aseptic Factory 3"
+        ]
+      }
+    }
   }
 ]
