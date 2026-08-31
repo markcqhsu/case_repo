@@ -4537,7 +4537,7 @@
           "資料追溯"
         ],
         "unit_request": "創新平台使用團隊",
-        "unit_owner": "創新平台開發團隊",
+        "unit_owner": "研發技術處",
         "author": "吳承運",
         "status": "已完成測試版本，待建立 Git checkpoint",
         "region": "內部 Pilot 環境",
@@ -4647,7 +4647,7 @@
           "Data Traceability"
         ],
         "unit_request": "Innovation Platform User Team",
-        "unit_owner": "Innovation Platform Development Team",
+        "unit_owner": "R&D Technology Division",
         "author": "Cheng-Yun Wu",
         "status": "Test version complete, pending Git checkpoint",
         "region": "Internal Pilot Environment",
