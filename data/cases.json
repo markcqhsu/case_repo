@@ -4518,5 +4518,235 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-023",
+    "number": 23,
+    "updated": "2026.08",
+    "screenshot": "assets/exploration-lifecycle-demo.jpg",
+    "video": [],
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "Exploration 生命週期與歷程管理",
+        "summary": "為探索案件建立暫停、恢復、完成與停止機制，保留原因、操作者與不可竄改的歷程，讓團隊能清楚追溯每次狀態變化。",
+        "category": [
+          "創新管理",
+          "流程治理",
+          "內部系統",
+          "資料追溯"
+        ],
+        "unit_request": "創新平台使用團隊",
+        "unit_owner": "創新平台開發團隊",
+        "author": "吳承運",
+        "status": "已完成測試版本，待建立 Git checkpoint",
+        "region": "內部 Pilot 環境",
+        "problem_background": "探索案件缺乏一致的生命週期與歷程紀錄，團隊難以辨識案件是暫停、完成或停止，也不易追溯決定原因。",
+        "core_problem": "如何在不改變來源 Idea、不中斷既有 Critical Unknown 規則下，提供安全、可追溯且不可重開的 Exploration 狀態管理？",
+        "solution": "新增 ACTIVE、PAUSED、COMPLETED、STOPPED 狀態；由建立者以原因完成合法轉換，並在同一交易中寫入不可變更事件。",
+        "process": [
+          "從共享 Idea 建立獨立 Exploration",
+          "建立者選擇可用狀態操作",
+          "填寫原因並送至伺服器驗證",
+          "原子更新狀態、時間與歷程事件",
+          "終態案件保留唯讀歷程，不可重開"
+        ],
+        "features": [
+          {
+            "name": "狀態轉換",
+            "desc": "支援暫停、恢復、完成與停止六種合法路徑"
+          },
+          {
+            "name": "原因紀錄",
+            "desc": "每次轉換必填原因，最長 2,000 字元"
+          },
+          {
+            "name": "歷程追溯",
+            "desc": "保存前後狀態、操作者、時間與原因"
+          },
+          {
+            "name": "終態保護",
+            "desc": "完成或停止後不可再次變更"
+          },
+          {
+            "name": "唯讀控制",
+            "desc": "非 ACTIVE 狀態不可修改 Critical Unknown"
+          }
+        ],
+        "ai_usage": [
+          "本案例未使用 AI 自動判斷或自動轉換",
+          "後續可由 AI 建議暫停原因，但不得自行寫入正式狀態"
+        ],
+        "tools": [
+          {
+            "name": "Node.js",
+            "desc": "提供本機 API 與 SQLite 操作"
+          },
+          {
+            "name": "SQLite",
+            "desc": "保存 Exploration、關聯與事件歷程"
+          },
+          {
+            "name": "JavaScript",
+            "desc": "實作前端狀態操作與隔離測試"
+          },
+          {
+            "name": "Git",
+            "desc": "建立可追溯的程式碼 checkpoint"
+          }
+        ],
+        "results": [
+          "完成 Migration 012，保留既有 Exploration 資料與關聯",
+          "六種合法轉換與終態禁止重開均通過測試",
+          "完成授權、IDOR、事件回滾與資料保留驗證",
+          "未改變來源 Idea、Question 或 Idea-level Critical Unknown"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "快速辨識探索案件目前狀態與停滯原因"
+          },
+          {
+            "name": "對客戶",
+            "desc": "間接提升團隊對需求與未知事項的回應透明度"
+          },
+          {
+            "name": "對公司",
+            "desc": "保留決策脈絡與責任歸屬，降低探索流程失憶風險"
+          }
+        ],
+        "extensions": [
+          "可套用至其他需要暫停、恢復與終態保護的內部案件",
+          "可延伸串接 Question Working Set，但不應自動推進案件",
+          "可作為後續實驗、決策與學習物件的歷程基礎"
+        ],
+        "limitations": [
+          "僅 Exploration 建立者可進行狀態轉換",
+          "終態案件不可重開；重新探索必須建立新 Exploration",
+          "原因屬於歷程內容，應避免輸入敏感個資",
+          "Pilot 權限與來源 Idea 可見性採 fail-closed 保護"
+        ],
+        "success_key": "以伺服器端狀態機、交易一致性與不可變更事件維持資料完整性，同時用漸進揭露方式避免增加首次建立 Exploration 的操作負擔。",
+        "keywords": [
+          "Exploration",
+          "生命週期",
+          "歷程追溯",
+          "Critical Unknown",
+          "SQLite",
+          "權限控管",
+          "創新管理"
+        ]
+      },
+      "en": {
+        "title": "Exploration Lifecycle & History Management",
+        "summary": "Introduced pause, resume, complete, and stop mechanisms for exploration cases, preserving the reason, actor, and an immutable history so teams can clearly trace every state change.",
+        "category": [
+          "Innovation Management",
+          "Process Governance",
+          "Internal Systems",
+          "Data Traceability"
+        ],
+        "unit_request": "Innovation Platform User Team",
+        "unit_owner": "Innovation Platform Development Team",
+        "author": "Cheng-Yun Wu",
+        "status": "Test version complete, pending Git checkpoint",
+        "region": "Internal Pilot Environment",
+        "problem_background": "Exploration cases lacked a consistent lifecycle and history record, making it hard for teams to tell whether a case was paused, completed, or stopped, and difficult to trace the reasoning behind decisions.",
+        "core_problem": "How to provide safe, traceable, non-reopenable Exploration state management without changing the source Idea or interrupting existing Critical Unknown rules?",
+        "solution": "Added ACTIVE, PAUSED, COMPLETED, and STOPPED states. The creator completes legal transitions with a reason, and an immutable event is written in the same transaction.",
+        "process": [
+          "Create an independent Exploration from a shared Idea",
+          "Creator selects an available state action",
+          "Fill in a reason and submit for server-side validation",
+          "Atomically update the state, timestamp, and history event",
+          "Cases in a final state keep a read-only history and cannot be reopened"
+        ],
+        "features": [
+          {
+            "name": "State Transitions",
+            "desc": "Supports six legal paths for pause, resume, complete, and stop"
+          },
+          {
+            "name": "Reason Logging",
+            "desc": "A reason is required for every transition, up to 2,000 characters"
+          },
+          {
+            "name": "History Trail",
+            "desc": "Preserves the before/after state, actor, timestamp, and reason"
+          },
+          {
+            "name": "Final-State Protection",
+            "desc": "Cannot be changed again once completed or stopped"
+          },
+          {
+            "name": "Read-Only Control",
+            "desc": "Critical Unknowns cannot be edited outside the ACTIVE state"
+          }
+        ],
+        "ai_usage": [
+          "This case does not use AI for automatic decisions or automatic transitions",
+          "AI could later suggest pause reasons, but must not write formal state changes itself"
+        ],
+        "tools": [
+          {
+            "name": "Node.js",
+            "desc": "Provides the local API and SQLite operations"
+          },
+          {
+            "name": "SQLite",
+            "desc": "Stores Exploration records, relations, and event history"
+          },
+          {
+            "name": "JavaScript",
+            "desc": "Implements frontend state actions and isolated testing"
+          },
+          {
+            "name": "Git",
+            "desc": "Creates traceable code checkpoints"
+          }
+        ],
+        "results": [
+          "Completed Migration 012, preserving existing Exploration data and relations",
+          "All six legal transitions and the ban on reopening final-state cases passed testing",
+          "Completed authorization, IDOR, event rollback, and data retention validation",
+          "Did not change the source Idea, Question, or Idea-level Critical Unknown"
+        ],
+        "value": [
+          {
+            "name": "For Business Units",
+            "desc": "Quickly identify an exploration case's current state and reason for being stalled"
+          },
+          {
+            "name": "For Customers",
+            "desc": "Indirectly improves the team's transparency in responding to requirements and unknowns"
+          },
+          {
+            "name": "For the Company",
+            "desc": "Preserves decision context and accountability, reducing the risk of losing track of the exploration process"
+          }
+        ],
+        "extensions": [
+          "Can be applied to other internal cases that need pause, resume, and final-state protection",
+          "Can be extended to connect with the Question Working Set, but should not auto-advance cases",
+          "Can serve as the history foundation for future experiments, decisions, and learning objects"
+        ],
+        "limitations": [
+          "Only the Exploration creator can perform state transitions",
+          "Cases in a final state cannot be reopened; re-exploration requires creating a new Exploration",
+          "Reasons are part of the history record and should avoid sensitive personal data",
+          "Pilot permissions and source Idea visibility use fail-closed protection"
+        ],
+        "success_key": "Maintains data integrity through a server-side state machine, transactional consistency, and immutable events, while using progressive disclosure to avoid adding friction when first creating an Exploration.",
+        "keywords": [
+          "Exploration",
+          "Lifecycle",
+          "History Traceability",
+          "Critical Unknown",
+          "SQLite",
+          "Access Control",
+          "Innovation Management"
+        ]
+      }
+    }
   }
 ]
