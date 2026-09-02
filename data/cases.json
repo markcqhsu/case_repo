@@ -4766,7 +4766,7 @@
           "資料彙整",
           "內部管理"
         ],
-        "unit_request": "[總管理處-稽核](https://thcai.vercel.app/admin/departments/1befdb1d-59f6-4130-a1da-e3921dc611dd/edit)",
+        "unit_request": "總管理處-稽核",
         "unit_owner": "數位發展部",
         "author": "徐喬奎",
         "status": "正式上線",
@@ -4878,7 +4878,7 @@
           "Data Consolidation",
           "Internal Management"
         ],
-        "unit_request": "[Corporate Administration Office - Audit](https://thcai.vercel.app/admin/departments/1befdb1d-59f6-4130-a1da-e3921dc611dd/edit)",
+        "unit_request": "Corporate Administration Office - Audit",
         "unit_owner": "Digital Development Department",
         "author": "Chiao-Kuei Hsu",
         "status": "Live in Production",

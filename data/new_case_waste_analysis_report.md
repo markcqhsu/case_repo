@@ -8,7 +8,7 @@
 稽核作業、Excel 自動化、資料彙整、內部管理
 
 ## 需求單位
-[總管理處-稽核](https://thcai.vercel.app/admin/departments/1befdb1d-59f6-4130-a1da-e3921dc611dd/edit)
+總管理處-稽核
 
 ## 負責單位
 數位發展部
