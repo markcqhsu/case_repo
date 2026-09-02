@@ -4748,5 +4748,239 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-024",
+    "number": 24,
+    "updated": "2026.09",
+    "url": "https://waste-analysis-report.vercel.app",
+    "screenshot": "assets/waste-analysis-report-demo.jpg",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "集團不良品重量與廢料出售自動彙整系統",
+        "summary": "將各廠不同格式的 Excel 廢料分析表一次上傳，自動辨識廠別、產品及合計數據，套入集團彙總範本並產生可下載報表，減少人工複製與核對時間。",
+        "category": [
+          "稽核作業",
+          "Excel 自動化",
+          "資料彙整",
+          "內部管理"
+        ],
+        "unit_request": "[總管理處-稽核](https://thcai.vercel.app/admin/departments/1befdb1d-59f6-4130-a1da-e3921dc611dd/edit)",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "正式上線",
+        "region": "集團各廠區，包含臺灣、大陸及東南亞",
+        "problem_background": "各廠每月提供的廢料分析表包含舊版與新版 Excel，廠名、產品分頁及欄位寫法不完全一致。稽核人員需逐檔確認並手動填入集團彙總表，耗時且容易填錯列位。",
+        "core_problem": "如何在整批上傳時正確辨識每個廠別與產品，處理重複檔案、名稱差異及未編號廠區，並將數據寫入正確的原始彙總範本位置。",
+        "solution": "建立網頁式批次彙整工具，自動讀取 .xls 與 .xlsx、辨識廠別及產品、尋找合計列並預覽結果，再依目標表的廠別區塊與產品名稱動態寫入，保留原表格式與公式。",
+        "process": [
+          "一次選取各廠 Excel 報表並上傳。",
+          "系統辨識廠別、產品、合計列與重量欄位。",
+          "使用者檢查預覽及重複檔案警示。",
+          "確認後下載套用集團範本的彙總報表。"
+        ],
+        "features": [
+          {
+            "name": "批次上傳",
+            "desc": "支援最多 50 份 .xls、.xlsx 混合上傳。"
+          },
+          {
+            "name": "智慧辨識",
+            "desc": "自動取得廠別編號、產品分頁及合計數據。"
+          },
+          {
+            "name": "動態對照",
+            "desc": "依目標表名稱尋找寫入列，降低範本變動影響。"
+          },
+          {
+            "name": "異常提示",
+            "desc": "列出重複來源檔案與尚未設定項目。"
+          },
+          {
+            "name": "Excel 匯出",
+            "desc": "保留四張集團表單及公式連動。"
+          }
+        ],
+        "ai_usage": [
+          "協助盤點不同廠區 Excel 格式與名稱差異。",
+          "建立解析、動態對照、異常檢查及匯出規則。",
+          "協助程式開發、測試案例、除錯與部署驗證。"
+        ],
+        "tools": [
+          {
+            "name": "OpenAI Codex",
+            "desc": "需求整理、程式開發、測試與除錯。"
+          },
+          {
+            "name": "Next.js",
+            "desc": "批次上傳、預覽及下載操作介面。"
+          },
+          {
+            "name": "FastAPI、Python",
+            "desc": "解析 Excel 並產生彙總檔。"
+          },
+          {
+            "name": "Vercel",
+            "desc": "部署網頁與後端 API。"
+          }
+        ],
+        "results": [
+          "已支援 14 個廠區檔案整批處理，測試批次共辨識 28 筆資料且無警告。",
+          "建立廠別編號、分頁名稱及產品名稱的統一對照方式。",
+          "完成線上分析、預覽、錯誤提示與 Excel 下載流程。"
+        ],
+        "value": [
+          {
+            "name": "對稽核單位",
+            "desc": "縮短逐檔整理與人工核對時間，降低漏填及錯列風險。"
+          },
+          {
+            "name": "對各廠",
+            "desc": "可沿用既有月報格式，減少重複改表與溝通成本。"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立一致、可追查的彙整規則，提高集團資料品質與作業效率。"
+          }
+        ],
+        "extensions": [
+          "延伸至其他跨廠月報、稽核表及營運數據彙整。",
+          "增加新廠或產品時，可沿用動態名稱對照機制。",
+          "後續可加入登入、批次紀錄、權限及檔案保存功能。"
+        ],
+        "limitations": [
+          "來源檔仍需保留可辨識的廠名、產品名稱及合計列。",
+          "新格式或新產品若無目標列，需先在彙總範本建立對應位置。",
+          "差異調整欄位目前不自動計算，下載後仍需依稽核需求確認。"
+        ],
+        "success_key": "先以真實的 14 份跨廠報表驗證名稱差異、舊新版格式及彙總列位，再將固定列號改為依廠別與產品名稱動態尋找，並以自動測試及正式環境整批上傳確認結果。",
+        "keywords": [
+          "稽核",
+          "廢料分析",
+          "不良品重量",
+          "Excel 自動化",
+          "批次上傳",
+          "資料彙整",
+          "跨廠報表",
+          "AI 程式開發",
+          "Next.js",
+          "FastAPI",
+          "Vercel"
+        ]
+      },
+      "en": {
+        "title": "Group Defective Weight & Waste Sales Auto-Consolidation System",
+        "summary": "Upload waste analysis spreadsheets from multiple plants in different Excel formats at once; the system automatically recognizes plant, product, and subtotal data, fills them into the group consolidation template, and produces a downloadable report, cutting manual copying and cross-checking time.",
+        "category": [
+          "Audit Operations",
+          "Excel Automation",
+          "Data Consolidation",
+          "Internal Management"
+        ],
+        "unit_request": "[Corporate Administration Office - Audit](https://thcai.vercel.app/admin/departments/1befdb1d-59f6-4130-a1da-e3921dc611dd/edit)",
+        "unit_owner": "Digital Development Department",
+        "author": "Chiao-Kuei Hsu",
+        "status": "Live in Production",
+        "region": "Group plants across Taiwan, Mainland China, and Southeast Asia",
+        "problem_background": "Each plant's monthly waste analysis spreadsheets mix old and new Excel formats, with inconsistent plant names, product sheets, and column layouts. Auditors had to check each file one by one and manually fill in the group consolidation sheet, which was slow and error-prone.",
+        "core_problem": "How to correctly identify each plant and product during a batch upload, handle duplicate files, naming variations, and unnumbered plants, and write the data into the correct location in the original consolidation template.",
+        "solution": "Built a web-based batch consolidation tool that automatically reads .xls and .xlsx files, identifies plants and products, locates subtotal rows and previews the results, then dynamically writes data based on the target sheet's plant sections and product names, preserving the original formatting and formulas.",
+        "process": [
+          "Select and upload each plant's Excel report at once.",
+          "The system identifies plants, products, subtotal rows, and weight columns.",
+          "The user reviews the preview and duplicate-file warnings.",
+          "After confirmation, download the consolidated report based on the group template."
+        ],
+        "features": [
+          {
+            "name": "Batch Upload",
+            "desc": "Supports up to 50 mixed .xls/.xlsx files at once."
+          },
+          {
+            "name": "Smart Recognition",
+            "desc": "Automatically extracts plant codes, product sheets, and subtotal data."
+          },
+          {
+            "name": "Dynamic Matching",
+            "desc": "Finds the target row by sheet name, reducing impact from template changes."
+          },
+          {
+            "name": "Anomaly Alerts",
+            "desc": "Lists duplicate source files and unconfigured items."
+          },
+          {
+            "name": "Excel Export",
+            "desc": "Preserves all four group forms and their linked formulas."
+          }
+        ],
+        "ai_usage": [
+          "Helped survey Excel format and naming differences across plants.",
+          "Built the parsing, dynamic matching, anomaly-check, and export rules.",
+          "Assisted with development, test cases, debugging, and deployment verification."
+        ],
+        "tools": [
+          {
+            "name": "OpenAI Codex",
+            "desc": "Requirements organization, development, testing, and debugging."
+          },
+          {
+            "name": "Next.js",
+            "desc": "Batch upload, preview, and download interface."
+          },
+          {
+            "name": "FastAPI, Python",
+            "desc": "Parses Excel files and generates the consolidated file."
+          },
+          {
+            "name": "Vercel",
+            "desc": "Deploys the web app and backend API."
+          }
+        ],
+        "results": [
+          "Supports batch processing of files from 14 plants; a test batch identified 28 records with no warnings.",
+          "Established a unified mapping of plant codes, sheet names, and product names.",
+          "Completed the online analysis, preview, error-alert, and Excel download workflow."
+        ],
+        "value": [
+          {
+            "name": "For the Audit Unit",
+            "desc": "Shortens file-by-file organizing and manual cross-checking time, reducing the risk of missed or misplaced entries."
+          },
+          {
+            "name": "For Each Plant",
+            "desc": "Lets plants keep their existing monthly report format, reducing repeated reformatting and communication costs."
+          },
+          {
+            "name": "For the Company",
+            "desc": "Establishes a consistent, traceable consolidation process, improving group data quality and operational efficiency."
+          }
+        ],
+        "extensions": [
+          "Can extend to other cross-plant monthly reports, audit forms, and operational data consolidation.",
+          "New plants or products can reuse the dynamic name-matching mechanism.",
+          "Future additions could include login, batch history, permissions, and file retention."
+        ],
+        "limitations": [
+          "Source files must still retain recognizable plant names, product names, and subtotal rows.",
+          "New formats or products without a target row must first have a corresponding position set up in the consolidation template.",
+          "Adjustment/discrepancy columns are not auto-calculated yet and still need audit confirmation after download."
+        ],
+        "success_key": "First validated naming differences, old/new formats, and consolidation row positions against 14 real cross-plant reports, then replaced fixed row numbers with dynamic lookup by plant and product name, confirming results through automated tests and full batch uploads in production.",
+        "keywords": [
+          "Audit",
+          "Waste Analysis",
+          "Defective Weight",
+          "Excel Automation",
+          "Batch Upload",
+          "Data Consolidation",
+          "Cross-Plant Reports",
+          "AI Development",
+          "Next.js",
+          "FastAPI",
+          "Vercel"
+        ]
+      }
+    }
   }
 ]
