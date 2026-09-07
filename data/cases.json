@@ -4982,5 +4982,229 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-025",
+    "number": 25,
+    "updated": "2026.09",
+    "url": "",
+    "screenshot": "assets/quarterly-history-lookup-demo.jpg",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "季度總表歷史處理方式自動彙整工具",
+        "summary": "透過 Excel VBA 自動整理季度追蹤總表，依物料號碼比對歷史資料並帶入前期處理方式，同時檢查並補齊追蹤及發信欄位，降低人工查找與複製貼上的時間。",
+        "category": [
+          "流程自動化",
+          "資料整理",
+          "Excel工具",
+          "行政效率"
+        ],
+        "unit_request": "總管理處-稽核",
+        "unit_owner": "數位發展部",
+        "author": "陳姸惠",
+        "status": "測試使用中",
+        "region": "台灣",
+        "problem_background": "季度追蹤總表需參考前期資料，人工逐筆搜尋物料號碼、查找歷史處理方式並複製到新一期總表，資料量增加後容易耗時，也可能發生漏查或貼錯資料。",
+        "core_problem": "每季皆需重複進行相同的歷史資料查找與欄位整理工作，且不同部門資料分散於多個工作表，人工比對效率低，也增加資料錯置風險。",
+        "solution": "以 Excel VBA 建立自動彙整功能，讓使用者選擇最新總表及歷史來源檔後，自動辨識期間、逐工作表比對物料號碼，並將歷史處理方式帶回最新總表。",
+        "process": [
+          "選擇最新一期總表，系統先檢查各工作表必要追蹤欄位。",
+          "若缺少「處理方式追蹤確認」或「是否發信」，自動於「廠別」右側補上。",
+          "選擇欲參考的歷史來源檔案，系統由檔名自動辨識年月。",
+          "依研發、製蓋、製瓶、業務等部門尋找對應工作表。",
+          "以物料號碼比對歷史資料，將前期處理方式帶入最新總表。",
+          "完成後自動儲存，並顯示成功、未找到及重複物料筆數。"
+        ],
+        "features": [
+          {
+            "name": "歷史資料比對",
+            "desc": "以物料號碼自動尋找前期相同資料並帶入處理方式。"
+          },
+          {
+            "name": "期間自動辨識",
+            "desc": "從來源檔名辨識年月，自動建立對應的歷史處理方式欄位。"
+          },
+          {
+            "name": "工作表自動對應",
+            "desc": "依研發、製蓋、製瓶、業務等部門自動尋找來源資料。"
+          },
+          {
+            "name": "追蹤欄位檢查",
+            "desc": "自動檢查「處理方式追蹤確認」及「是否發信」欄位，缺少時自動補齊。"
+          },
+          {
+            "name": "重複資料處理",
+            "desc": "同一物料號碼重複出現時，比照 VLOOKUP 邏輯取第一筆資料。"
+          },
+          {
+            "name": "執行結果回報",
+            "desc": "完成後統計成功對應、找不到物料、重複物料及未處理工作表。"
+          }
+        ],
+        "ai_usage": [
+          "協助將人工季度彙整流程拆解為可自動化的資料處理邏輯。",
+          "協助產生及反覆調整 VBA 程式，處理欄位辨識、跨工作表比對及例外狀況。",
+          "依實際測試結果協助除錯，逐步調整成符合使用者既有 Excel 作業方式的工具。"
+        ],
+        "tools": [
+          {
+            "name": "Microsoft Excel",
+            "desc": "作為原始總表、歷史資料及最終整理結果的主要作業環境。"
+          },
+          {
+            "name": "VBA",
+            "desc": "執行選檔、欄位檢查、跨工作表資料比對、資料回填及結果統計。"
+          },
+          {
+            "name": "ChatGPT",
+            "desc": "協助需求拆解、VBA 程式撰寫、測試問題分析與功能調整。"
+          }
+        ],
+        "results": [
+          "將原本逐工作表、逐筆查找歷史資料的作業改為一次自動處理。",
+          "自動完成物料號碼比對及歷史處理方式回填，降低人工複製貼上的錯誤風險。",
+          "統一檢查總表必要追蹤欄位，減少不同工作表欄位缺漏問題。"
+        ],
+        "value": [
+          {
+            "name": "對使用單位",
+            "desc": "減少每季重複查找與複製資料的時間，將人力集中在資料確認與後續處理。"
+          },
+          {
+            "name": "對公司",
+            "desc": "將固定且重複的 Excel 作業標準化，降低人工作業錯誤並提高資料整理效率。"
+          }
+        ],
+        "extensions": [
+          "可延伸至其他定期需引用前期資料的追蹤表、稽核表或專案管理表。",
+          "可依不同欄位名稱調整比對條件，應用於跨月份、跨季度或跨年度資料彙整。",
+          "後續可串接發信名單整理功能，將需通知的資料依單位自動分類。"
+        ],
+        "limitations": [
+          "來源檔名需包含可辨識的年月資訊；若無法辨識，需由使用者手動輸入年月。",
+          "各工作表需具備「物料號碼」等必要欄位，才能進行自動比對。",
+          "目前部門工作表以研發、製蓋、製瓶、業務等既定名稱關鍵字進行辨識。",
+          "執行前仍建議確認來源檔案及目標總表版本，避免選錯期間資料。"
+        ],
+        "success_key": "先釐清既有 Excel 人工作業規則，再以不改變使用習慣為原則進行自動化，讓工具直接嵌入原本的季度總表流程，降低使用門檻。",
+        "keywords": [
+          "Excel VBA",
+          "流程自動化",
+          "資料彙整",
+          "歷史資料比對",
+          "物料號碼",
+          "季度追蹤",
+          "AI協作"
+        ]
+      },
+      "en": {
+        "title": "Automated Quarterly History Lookup Tool",
+        "summary": "An Excel VBA tool that automatically organizes the quarterly tracking master sheet, matching material numbers against historical records to pull in prior handling methods, while checking and filling required tracking and notification columns to cut down manual lookup and copy-pasting.",
+        "category": [
+          "Process Automation",
+          "Data Organization",
+          "Excel Tools",
+          "Administrative Efficiency"
+        ],
+        "unit_request": "Corporate Administration Office - Audit",
+        "unit_owner": "Digital Development Department",
+        "author": "Yen-Hui Chen",
+        "status": "In Testing",
+        "region": "Taiwan",
+        "problem_background": "The quarterly tracking master sheet needs to reference prior-period data. Staff manually search for each material number, look up its historical handling method, and copy it into the new sheet — as data volume grows this becomes time-consuming and prone to missed lookups or misplaced entries.",
+        "core_problem": "The same historical lookup and column formatting work must be repeated every quarter, with data for different departments scattered across multiple worksheets — manual comparison is inefficient and increases the risk of misplaced data.",
+        "solution": "Built an Excel VBA tool that lets users select the latest master sheet and a historical source file; the tool automatically detects the period, matches material numbers sheet by sheet, and brings the prior handling method back into the latest master sheet.",
+        "process": [
+          "Select the latest master sheet; the tool first checks each worksheet for the required tracking columns.",
+          "If \"Handling Method Tracking Confirmation\" or \"Notification Sent\" is missing, it is automatically added to the right of the \"Factory\" column.",
+          "Select the historical source file to reference; the tool auto-detects the year/month from the file name.",
+          "Locates the corresponding worksheet by department (R&D, Cap Manufacturing, Bottle Manufacturing, Sales, etc.).",
+          "Matches material numbers against historical data and pulls the prior handling method into the latest master sheet.",
+          "Saves automatically when done and displays counts of successful matches, not-found items, and duplicate materials."
+        ],
+        "features": [
+          {
+            "name": "Historical Data Matching",
+            "desc": "Automatically finds matching prior-period records by material number and pulls in the handling method."
+          },
+          {
+            "name": "Automatic Period Detection",
+            "desc": "Detects the year/month from the source file name and creates the corresponding historical handling method column."
+          },
+          {
+            "name": "Automatic Worksheet Mapping",
+            "desc": "Automatically locates source data by department, such as R&D, Cap Manufacturing, Bottle Manufacturing, and Sales."
+          },
+          {
+            "name": "Tracking Column Check",
+            "desc": "Automatically checks the \"Handling Method Tracking Confirmation\" and \"Notification Sent\" columns and fills them in when missing."
+          },
+          {
+            "name": "Duplicate Handling",
+            "desc": "When the same material number appears more than once, takes the first match, following VLOOKUP-style logic."
+          },
+          {
+            "name": "Execution Reporting",
+            "desc": "After completion, reports counts of successful matches, not-found materials, duplicate materials, and unprocessed worksheets."
+          }
+        ],
+        "ai_usage": [
+          "Helped break down the manual quarterly consolidation process into automatable data-processing logic.",
+          "Helped generate and iteratively refine the VBA code to handle column detection, cross-sheet matching, and exceptions.",
+          "Helped debug based on real test results, gradually tuning the tool to fit the user's existing Excel workflow."
+        ],
+        "tools": [
+          {
+            "name": "Microsoft Excel",
+            "desc": "The main working environment for the source master sheet, historical data, and final consolidated results."
+          },
+          {
+            "name": "VBA",
+            "desc": "Handles file selection, column checks, cross-sheet data matching, data backfill, and result reporting."
+          },
+          {
+            "name": "ChatGPT",
+            "desc": "Helped break down requirements, write the VBA code, and analyze and adjust functionality based on testing."
+          }
+        ],
+        "results": [
+          "Replaced the sheet-by-sheet, entry-by-entry historical lookup process with a single automated run.",
+          "Automated material number matching and historical handling method backfill, reducing the risk of manual copy-paste errors.",
+          "Standardized checks on the master sheet's required tracking columns, reducing missing columns across worksheets."
+        ],
+        "value": [
+          {
+            "name": "For the Requesting Unit",
+            "desc": "Reduces time spent on repeated quarterly lookups and data copying, freeing staff to focus on data verification and follow-up."
+          },
+          {
+            "name": "For the Company",
+            "desc": "Standardizes a fixed, repetitive Excel task, reducing manual errors and improving data organization efficiency."
+          }
+        ],
+        "extensions": [
+          "Can be extended to other tracking sheets, audit sheets, or project management sheets that regularly reference prior-period data.",
+          "Matching criteria can be adjusted for different column names, applying it across months, quarters, or years.",
+          "Can later be connected to a notification list feature to automatically categorize records that need notification by unit."
+        ],
+        "limitations": [
+          "The source file name must contain a recognizable year/month; otherwise the user must enter it manually.",
+          "Each worksheet must have required fields such as \"Material Number\" for automatic matching to work.",
+          "Department worksheets are currently identified using fixed name keywords: R&D, Cap Manufacturing, Bottle Manufacturing, Sales, etc.",
+          "Users should still confirm the source file and target master sheet version before running, to avoid selecting the wrong period."
+        ],
+        "success_key": "Clarified the existing manual Excel workflow rules first, then automated without changing user habits, embedding the tool directly into the existing quarterly master sheet process to lower the barrier to adoption.",
+        "keywords": [
+          "Excel VBA",
+          "Process Automation",
+          "Data Consolidation",
+          "Historical Data Matching",
+          "Material Number",
+          "Quarterly Tracking",
+          "AI Collaboration"
+        ]
+      }
+    }
   }
 ]
