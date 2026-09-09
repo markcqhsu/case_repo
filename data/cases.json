@@ -5206,5 +5206,252 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-026",
+    "number": 26,
+    "updated": "2026.09",
+    "video": [],
+    "screenshots": [
+      "assets/quotation-checker-overview.png",
+      "assets/quotation-checker-price-settings.png"
+    ],
+    "url": "https://quotation-checker.vercel.app/",
+    "i18n": {
+      "zh": {
+        "title": "報價底價檢查系統",
+        "summary": "透過瀏覽器上傳訂單成本登記表 PDF，自動辨識品名、規格、銷售單價與備註價格，依主管核准底價找出低價報價及待確認品項。",
+        "category": [
+          "營運管理",
+          "風險控管",
+          "流程自動化",
+          "數位工具"
+        ],
+        "unit_request": "東南亞總部",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "已完成測試版本 v0.2.0",
+        "region": "東南亞／印尼",
+        "problem_background": "訂單成本表含多種產品、料號與備註價格，主管需人工逐筆核對業務報價，耗時且容易遺漏低於底價或成本關係不合理的品項。",
+        "core_problem": "料號持續增加，若逐一設定上下限，維護量會快速膨脹；備註又可能同時出現原價、調整價、客供料及不同計價方式。",
+        "solution": "以品名與規格建立共用價格群組，每組只維護最低銷售單價；PDF 在瀏覽器內解析，自動檢查報價底價及備註價格關係，只列出異常。",
+        "process": [
+          "主管依產品群組設定最低銷售單價",
+          "使用者上傳一份或多份訂單成本表 PDF",
+          "系統辨識品名、規格、料號、報價及備註",
+          "依價格群組與備註規則自動比對",
+          "集中顯示低於底價或無法歸類的品項"
+        ],
+        "features": [
+          {
+            "name": "PDF 批次檢查",
+            "desc": "一次上傳多份訂單成本表並在瀏覽器內完成解析"
+          },
+          {
+            "name": "品名規格群組",
+            "desc": "同類產品共用底價，新增料號不需重複設定"
+          },
+          {
+            "name": "報價底價檢查",
+            "desc": "找出業務報價低於主管核准底價的品項"
+          },
+          {
+            "name": "備註規則檢查",
+            "desc": "自動比對買入平均價格、庫存均價、OEM fee 成本、進口塑蓋申購與客供料五種備註關係，不需逐項輸入價格"
+          },
+          {
+            "name": "異常清單",
+            "desc": "顯示訂單、頁次、料號、實際報價、底價與問題原因"
+          }
+        ],
+        "ai_usage": [
+          "協助分析不同版本的訂單 PDF，整理產品分類、價格欄位及備註規則",
+          "根據歷史資料歸納品名與規格群組，降低主管維護底價的工作量",
+          "協助設計解析邏輯、異常判定流程與操作介面"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "需求分析、PDF 樣本整理、程式開發與驗證"
+          },
+          {
+            "name": "React、TypeScript、Vite",
+            "desc": "建立互動式報價檢查網頁"
+          },
+          {
+            "name": "PDF.js",
+            "desc": "在瀏覽器內擷取 PDF 文字，不將機密文件上傳伺服器"
+          },
+          {
+            "name": "GitHub",
+            "desc": "保存程式版本與協作紀錄"
+          },
+          {
+            "name": "Vercel",
+            "desc": "部署可供測試使用的網頁版本"
+          }
+        ],
+        "results": [
+          "已完成 v0.2.0 測試版並部署至 Vercel",
+          "以 5 份實際 PDF、共 46 筆品項驗證，皆可依品名與規格歸入價格群組",
+          "將逐料號雙向價格區間簡化為 21 個共用群組的單一底價（標籤 4、蓋子 4、空瓶 9、充填代工 4）",
+          "支援標籤、蓋子、空瓶與充填代工四類產品",
+          "備註價格關係新增「進口塑蓋申購」判定，因不跨幣別比較，保留供人工查核而非自動比對"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "在送審前快速發現低於底價的報價，減少來回確認"
+          },
+          {
+            "name": "對管理單位",
+            "desc": "集中查看異常原因，降低人工逐筆檢查及維護價格規則的負擔"
+          },
+          {
+            "name": "對公司",
+            "desc": "降低低價接單與毛利流失風險，建立可持續擴充的報價檢查流程"
+          }
+        ],
+        "extensions": [
+          "可延伸至其他海外廠區、客戶及不同格式的訂單成本表",
+          "可加入共用後台、主管登入、價格版本、生效日期與修改紀錄",
+          "可延伸至 Excel 報價單、採購單及成本異常檢查"
+        ],
+        "limitations": [
+          "目前底價設定保存在單一瀏覽器，尚未提供跨裝置共用",
+          "PDF 格式若大幅改版或為掃描影像，可能需要新增解析規則或 OCR",
+          "未歸類的新產品會標示待確認，不會自行判定為通過",
+          "幣別與單位沿用 PDF 原值，不進行匯率或單位換算"
+        ],
+        "success_key": "以品名與規格取代逐料號設定，並將 PDF 留在瀏覽器內處理，在降低維護量的同時兼顧判定準確度與文件機密性。",
+        "keywords": [
+          "報價檢查",
+          "底價管理",
+          "PDF 解析",
+          "風險控管",
+          "流程自動化",
+          "東南亞",
+          "印尼",
+          "Vercel"
+        ]
+      },
+      "en": {
+        "title": "Quotation Floor Price Checker",
+        "summary": "Upload order cost sheets (PDF) in the browser to automatically identify product names, specs, sale prices, and remark-based pricing, then flag any quote below the manager-approved floor price or any item that still needs review.",
+        "category": [
+          "Operations Management",
+          "Risk Control",
+          "Process Automation",
+          "Digital Tools"
+        ],
+        "unit_request": "Southeast Asia Headquarters",
+        "unit_owner": "Digital Development Department",
+        "author": "Chiao-Kuei Hsu",
+        "status": "Test version v0.2.0 completed",
+        "region": "Southeast Asia / Indonesia",
+        "problem_background": "Order cost sheets contain many products, material codes, and remark-based prices. Managers had to manually check every sales quote line by line, which was time-consuming and prone to missing quotes below the floor price or with inconsistent cost relationships.",
+        "core_problem": "As material codes keep growing, setting a price range for each one individually causes maintenance effort to balloon. Remarks can also mix original price, adjusted price, customer-supplied material, and different pricing methods at the same time.",
+        "solution": "Group products by product name and spec into shared price groups, each maintaining only a single minimum sale price. PDFs are parsed entirely in the browser, automatically checking the quoted price against the floor price and the remark-based price relationships, and surfacing only the exceptions.",
+        "process": [
+          "Manager sets the minimum sale price for each product group",
+          "User uploads one or more order cost sheet PDFs",
+          "System identifies product name, spec, material code, quoted price, and remarks",
+          "Automatic comparison against price groups and remark rules",
+          "Items below the floor price or that cannot be classified are shown together"
+        ],
+        "features": [
+          {
+            "name": "Batch PDF checking",
+            "desc": "Upload multiple order cost sheets at once and parse them entirely in the browser"
+          },
+          {
+            "name": "Product name/spec grouping",
+            "desc": "Products of the same type share one floor price; new material codes require no extra setup"
+          },
+          {
+            "name": "Floor price checking",
+            "desc": "Finds sales quotes that fall below the manager-approved floor price"
+          },
+          {
+            "name": "Remark rule checking",
+            "desc": "Automatically compares five remark-based relationships — average purchase price, average inventory cost, OEM fee cost, imported cap purchase requests, and customer-supplied material — with no manual price entry needed"
+          },
+          {
+            "name": "Exception list",
+            "desc": "Shows the order, page, material code, actual quote, floor price, and reason for each flagged item"
+          }
+        ],
+        "ai_usage": [
+          "Helped analyze order PDFs across different versions to organize product categories, price fields, and remark rules",
+          "Helped group products by name and spec based on historical data, reducing the manager's workload in maintaining floor prices",
+          "Helped design the parsing logic, exception-detection flow, and user interface"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "Requirements analysis, organizing PDF samples, development, and verification"
+          },
+          {
+            "name": "React, TypeScript, Vite",
+            "desc": "Built the interactive quotation-checking web app"
+          },
+          {
+            "name": "PDF.js",
+            "desc": "Extracts text from PDFs in the browser so confidential documents are never uploaded to a server"
+          },
+          {
+            "name": "GitHub",
+            "desc": "Version control and collaboration history"
+          },
+          {
+            "name": "Vercel",
+            "desc": "Deployed the testable web version"
+          }
+        ],
+        "results": [
+          "Completed v0.2.0 test version and deployed it to Vercel",
+          "Validated against 5 real PDFs covering 46 line items, all of which could be classified into price groups by name and spec",
+          "Simplified per-material-code price ranges into a single floor price across 21 shared groups (Labels 4, Caps 4, Empty Bottles 9, Filling OEM 4)",
+          "Supports four product categories: labels, caps, empty bottles, and filling OEM",
+          "Added an \"imported cap purchase request\" check among the remark-based price relationships — since it isn't compared cross-currency, it's flagged for manual review rather than auto-matched"
+        ],
+        "value": [
+          {
+            "name": "For sales teams",
+            "desc": "Quickly catches quotes below the floor price before submission for approval, reducing back-and-forth confirmation"
+          },
+          {
+            "name": "For management",
+            "desc": "Reviews exception reasons in one place, reducing the burden of manually checking every line and maintaining pricing rules"
+          },
+          {
+            "name": "For the company",
+            "desc": "Reduces the risk of underpriced orders and margin loss, and establishes a quotation-checking process that can keep scaling"
+          }
+        ],
+        "extensions": [
+          "Can be extended to other overseas plants, customers, and different order cost sheet formats",
+          "Can add a shared backend, manager login, price versioning, effective dates, and change history",
+          "Can be extended to Excel quotations, purchase orders, and cost anomaly checks"
+        ],
+        "limitations": [
+          "Floor price settings are currently stored in a single browser and not yet shared across devices",
+          "Major PDF format changes or scanned-image PDFs may require new parsing rules or OCR",
+          "Unclassified new products are flagged as pending review rather than automatically approved",
+          "Currency and units follow the PDF's original values; no exchange-rate or unit conversion is performed"
+        ],
+        "success_key": "Replaced per-material-code setup with product name/spec grouping, and kept PDF processing entirely in the browser — reducing maintenance effort while preserving accuracy and document confidentiality.",
+        "keywords": [
+          "Quotation Checking",
+          "Floor Price Management",
+          "PDF Parsing",
+          "Risk Control",
+          "Process Automation",
+          "Southeast Asia",
+          "Indonesia",
+          "Vercel"
+        ]
+      }
+    }
   }
 ]
