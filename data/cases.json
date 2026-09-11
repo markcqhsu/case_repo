@@ -10,8 +10,8 @@
         "title": "QR Code 瓶蓋互動展示系統",
         "summary": "建立一套可實際展示「一瓶一碼」功能的 QR Code 測試系統，讓業務人員在向客戶推廣 QR Code 瓶蓋時，不再只依賴簡報或口頭說明，而是可以直接使用實體樣品進行掃碼展示。",
         "category": [
-          "業務推廣",
-          "業務支援"
+          "業務支援",
+          "小工具"
         ],
         "unit_request": "業務單位",
         "unit_owner": "數位發展部",
@@ -138,8 +138,8 @@
         "title": "QR Code Bottle Cap Interactive Demo System",
         "summary": "Built a QR code bottle cap demo system that lets sales staff show the real \"one bottle, one code\" experience to customers in person, using an actual sample cap instead of relying only on slides or verbal explanation.",
         "category": [
-          "Business Promotion",
-          "Business Support"
+          "Business Support",
+          "Utility Tools"
         ],
         "unit_request": "Sales Department",
         "unit_owner": "Digital Development Department",
@@ -633,7 +633,6 @@
         "title": "宏全職安衛法規整理網站",
         "summary": "建立職安衛法規整理網站，讓職安衛人員只要貼上政府法規網址，即可將法規條文自動轉換成公司使用的法規鑑定登錄表格式，並匯出為 Excel 或 PDF。使用者可直接在整理後的表格中填寫執行現況、符合性評估及相關說明，減少人工逐條複製法規內容的時間。",
         "category": [
-          "法規管理",
           "職安環保",
           "流程自動化"
         ],
@@ -735,7 +734,6 @@
         "title": "Hon Chuan EHS Regulation Organizer",
         "summary": "Built a regulation organizer site so EHS staff only need to paste a government regulation URL to automatically convert the legal text into the company's regulation assessment register format, exportable as Excel or PDF. Users can then fill in the implementation status, compliance assessment, and related notes directly in the organized table, cutting down the time spent manually copying regulation text.",
         "category": [
-          "Regulatory Management",
           "EHS & Environment",
           "Process Automation"
         ],
@@ -3148,8 +3146,8 @@
         "title": "包材減碳效益計算機",
         "summary": "讓業務自行輸入包材改善數據，即可算出減碳效益（tCO₂e），取代過去手動查係數、換算的作業方式。",
         "category": [
-          "永續發展",
-          "業務支援"
+          "業務支援",
+          "小工具"
         ],
         "unit_request": "永續發展部",
         "unit_owner": "數位發展部",
@@ -3230,8 +3228,8 @@
         "title": "Packaging Carbon Reduction Calculator",
         "summary": "Lets sales reps enter packaging improvement data themselves to calculate carbon reduction (tCO2e), replacing manual coefficient lookups and conversions.",
         "category": [
-          "Sustainability",
-          "Business Support"
+          "Business Support",
+          "Utility Tools"
         ],
         "unit_request": "Sustainability Department",
         "unit_owner": "Digital Development Department",
@@ -3526,7 +3524,6 @@
         "summary": "自動讀取 SDS 與年度採購資料，一鍵產生成分換算、申報判斷及既有化學物質比對表，降低人工整理時間與計算錯誤。",
         "category": [
           "流程自動化",
-          "法規管理",
           "職安環保"
         ],
         "unit_request": "職安衛中心",
@@ -3629,7 +3626,6 @@
         "summary": "Automatically reads SDS and annual procurement data to generate composition conversion, declaration determination, and existing-chemical-substance comparison tables in one click, reducing manual data organizing time and calculation errors.",
         "category": [
           "Process Automation",
-          "Regulatory Management",
           "EHS & Environment"
         ],
         "unit_request": "EHS Center",
@@ -3843,7 +3839,7 @@
         "summary": "A quick Q&A tool that assesses a unit's AI needs and automatically recommends the appropriate number of users and license seats, helping managers allocate resources fairly.",
         "category": [
           "Internal Management Tools",
-          "Utilities"
+          "Utility Tools"
         ],
         "unit_request": "Group business units",
         "unit_owner": "Digital Development Department",
@@ -4360,8 +4356,7 @@
         "summary": "以 AI 生成動畫與旁白配音，製作鷹架使用安全教育訓練影片，將原本需要真人演出、拍攝與剪輯的宣導影片，改為用 AI 工具產出卡通角色動畫搭配旁白說明，快速完成職安衛安全教材。",
         "category": [
           "教育訓練與文宣",
-          "職安環保",
-          "影片製作"
+          "職安環保"
         ],
         "unit_request": "無菌三廠 - 四線充填組",
         "unit_owner": "無菌三廠 - 四線充填組",
@@ -4441,8 +4436,7 @@
         "summary": "Used AI-generated animation and voiceover to produce a scaffolding safety training video, replacing live-action filming and editing with AI-generated cartoon character animation and narration to quickly complete occupational safety training materials.",
         "category": [
           "Training & Communications",
-          "EHS & Sustainability",
-          "Video Production"
+          "EHS & Environment"
         ],
         "unit_request": "Aseptic Factory 3 - Line 4 Filling Team",
         "unit_owner": "Aseptic Factory 3 - Line 4 Filling Team",
@@ -4531,10 +4525,8 @@
         "title": "Exploration 生命週期與歷程管理",
         "summary": "為探索案件建立暫停、恢復、完成與停止機制，保留原因、操作者與不可竄改的歷程，讓團隊能清楚追溯每次狀態變化。",
         "category": [
-          "創新管理",
-          "流程治理",
-          "內部系統",
-          "資料追溯"
+          "內部管理工具",
+          "流程自動化"
         ],
         "unit_request": "創新平台使用團隊",
         "unit_owner": "研發技術處",
@@ -4641,10 +4633,8 @@
         "title": "Exploration Lifecycle & History Management",
         "summary": "Introduced pause, resume, complete, and stop mechanisms for exploration cases, preserving the reason, actor, and an immutable history so teams can clearly trace every state change.",
         "category": [
-          "Innovation Management",
-          "Process Governance",
-          "Internal Systems",
-          "Data Traceability"
+          "Internal Management Tools",
+          "Process Automation"
         ],
         "unit_request": "Innovation Platform User Team",
         "unit_owner": "R&D Technology Division",
@@ -4761,10 +4751,8 @@
         "title": "集團不良品重量與廢料出售自動彙整系統",
         "summary": "將各廠不同格式的 Excel 廢料分析表一次上傳，自動辨識廠別、產品及合計數據，套入集團彙總範本並產生可下載報表，減少人工複製與核對時間。",
         "category": [
-          "稽核作業",
-          "Excel 自動化",
-          "資料彙整",
-          "內部管理"
+          "流程自動化",
+          "資料整合與分析"
         ],
         "unit_request": "總管理處-稽核",
         "unit_owner": "數位發展部",
@@ -4873,10 +4861,8 @@
         "title": "Group Defective Weight & Waste Sales Auto-Consolidation System",
         "summary": "Upload waste analysis spreadsheets from multiple plants in different Excel formats at once; the system automatically recognizes plant, product, and subtotal data, fills them into the group consolidation template, and produces a downloadable report, cutting manual copying and cross-checking time.",
         "category": [
-          "Audit Operations",
-          "Excel Automation",
-          "Data Consolidation",
-          "Internal Management"
+          "Process Automation",
+          "Data Integration & Analysis"
         ],
         "unit_request": "Corporate Administration Office - Audit",
         "unit_owner": "Digital Development Department",
@@ -4996,9 +4982,7 @@
         "summary": "透過 Excel VBA 自動整理季度追蹤總表，依物料號碼比對歷史資料並帶入前期處理方式，同時檢查並補齊追蹤及發信欄位，降低人工查找與複製貼上的時間。",
         "category": [
           "流程自動化",
-          "資料整理",
-          "Excel工具",
-          "行政效率"
+          "資料整合與分析"
         ],
         "unit_request": "總管理處-稽核",
         "unit_owner": "數位發展部",
@@ -5103,9 +5087,7 @@
         "summary": "An Excel VBA tool that automatically organizes the quarterly tracking master sheet, matching material numbers against historical records to pull in prior handling methods, while checking and filling required tracking and notification columns to cut down manual lookup and copy-pasting.",
         "category": [
           "Process Automation",
-          "Data Organization",
-          "Excel Tools",
-          "Administrative Efficiency"
+          "Data Integration & Analysis"
         ],
         "unit_request": "Corporate Administration Office - Audit",
         "unit_owner": "Digital Development Department",
@@ -5222,10 +5204,8 @@
         "title": "報價底價檢查系統",
         "summary": "透過瀏覽器上傳訂單成本登記表 PDF，自動辨識品名、規格、銷售單價與備註價格，依主管核准底價找出低價報價及待確認品項。",
         "category": [
-          "營運管理",
-          "風險控管",
-          "流程自動化",
-          "數位工具"
+          "業務支援",
+          "流程自動化"
         ],
         "unit_request": "東南亞總部",
         "unit_owner": "數位發展部",
@@ -5339,10 +5319,8 @@
         "title": "Quotation Floor Price Checker",
         "summary": "Upload order cost sheets (PDF) in the browser to automatically identify product names, specs, sale prices, and remark-based pricing, then flag any quote below the manager-approved floor price or any item that still needs review.",
         "category": [
-          "Operations Management",
-          "Risk Control",
-          "Process Automation",
-          "Digital Tools"
+          "Business Support",
+          "Process Automation"
         ],
         "unit_request": "Southeast Asia Headquarters",
         "unit_owner": "Digital Development Department",
@@ -5471,11 +5449,8 @@
         "title": "宏全國際集團 THC 尾牙抽獎系統前台美化與流程優化",
         "summary": "本次協助資訊單位針對宏全國際集團尾牙抽獎網站進行前台畫面美化與部分現場流程調整。原系統已具備人員匯入、獎項設定、資格限制、抽獎與結果匯出等功能，本次不重寫既有抽獎邏輯，而是聚焦於抽獎主畫面、獎項選擇流程、抽獎動畫、得獎結果彈窗與舞台主題切換，讓系統更適合正式活動現場投影與觀眾觀看。",
         "category": [
-          "內部活動",
-          "網站美化",
-          "流程優化",
-          "現場展示",
-          "數位工具"
+          "內部管理工具",
+          "小工具"
         ],
         "unit_request": "資訊",
         "unit_owner": "數位發展部",
@@ -5639,11 +5614,8 @@
         "title": "Taiwan Hon Chuan (THC) Year-End Lottery System: Front-of-House Redesign and Flow Optimization",
         "summary": "Helped the IT unit redesign the front-of-house screens and adjust part of the on-site flow for Taiwan Hon Chuan Group's year-end party lottery site. The existing system already handled participant import, prize setup, eligibility rules, drawing, and result export; this effort did not rewrite the drawing logic, but focused on the main draw screen, prize-selection flow, draw animation, winner result popup, and stage theme switching, making the system better suited for on-site projection and audience viewing at a formal event.",
         "category": [
-          "Internal Event",
-          "Website Redesign",
-          "Process Optimization",
-          "On-site Display",
-          "Digital Tools"
+          "Internal Management Tools",
+          "Utility Tools"
         ],
         "unit_request": "IT",
         "unit_owner": "Digital Development Department",
@@ -5820,9 +5792,8 @@
         "summary": "運用 AI（Claude）將印刷（BK04-06）與組裝（BL06-08）機台的每週品質與廢料原始 Excel 資料，自動彙整成雙語（泰文/英文）互動式儀表板，同時涵蓋「品質面」（依人員/機台/缺陷類型比較）與「廢料面」（依機台/班別/膜材/操作員比較），協助現場與管理層快速定位問題來源、聚焦改善重點。",
         "category": [
           "生產管理",
-          "品質管理",
-          "成本控管",
-          "數位轉型"
+          "資料整合與分析",
+          "品保工作流程"
         ],
         "unit_request": "泰國宏福廠",
         "unit_owner": "泰國宏福廠",
@@ -5925,9 +5896,8 @@
         "summary": "Used AI (Claude) to automatically turn the weekly raw Excel quality and waste data from the printing (BK04-06) and assembly (BL06-08) machines into a bilingual (Thai/English) interactive dashboard, covering both the \"quality\" side (compared by operator/machine/defect type) and the \"waste\" side (compared by machine/shift/film material/operator), helping the floor and management quickly locate the source of problems and focus improvement efforts.",
         "category": [
           "Production Management",
-          "Quality Management",
-          "Cost Control",
-          "Digital Transformation"
+          "Data Integration & Analysis",
+          "QA Workflow"
         ],
         "unit_request": "Hon Chuan FD Packaging (Thailand)",
         "unit_owner": "Hon Chuan FD Packaging (Thailand)",
