@@ -6258,5 +6258,215 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-030",
+    "number": 30,
+    "updated": "2026.09",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/label-printing-job-info.jpg",
+      "assets/label-printing-print-step.jpg",
+      "assets/label-printing-history.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "自動化標籤列印系統（Standalone Label Printing — 取代手寫紙芯標籤）",
+        "summary": "以瀏覽器為基礎的自動化標籤列印系統，取代現場人工手寫紙芯（roll-core）標籤的作業方式，透過 Windows 平板連接 Zebra 印表機直接列印標籤，減少人工抄寫錯誤與時間，同時為未來串接 MES 系統預先建立資料基礎。",
+        "category": [
+          "生產管理",
+          "流程自動化",
+          "內部管理工具",
+          "教育訓練與文宣"
+        ],
+        "unit_request": "泰國宏福廠",
+        "unit_owner": "泰國宏福廠",
+        "author": "Pongwish Kampetch",
+        "status": "已完成開發與現場導入（含教育訓練與管理層提案）",
+        "region": "泰國廠區（Hon Chuan FD Packaging）",
+        "problem_background": "BF 製程現場過去以人工手寫方式填寫紙芯（roll-core）標籤資訊，容易因字跡不清、抄寫錯誤或資訊不完整造成後續追蹤困難，且無法直接累積為數位資料供後續系統（如 MES）使用。",
+        "core_problem": "如何在不增加現場人員負擔的前提下，將手寫標籤流程數位化，並讓產生的資料具備結構化格式，方便未來串接生產系統。",
+        "solution": "開發以瀏覽器為基礎的standalone 標籤列印工具，現場人員以 Windows 平板操作，依步驟輸入捲號、道次（L/M/R/S/H）、接頭數量等資訊後，直接透過 Zebra 印表機列印標籤；同時保留每次列印的歷史紀錄，作為未來 MES 系統的資料基礎，並提供操作教育訓練與管理層導入提案。",
+        "process": [
+          "現場人員以平板開啟標籤列印系統，選擇/新增工作",
+          "依畫面步驟輸入捲號、道次、接頭數量等資訊",
+          "系統透過 Zebra 印表機直接列印標籤",
+          "系統保留列印歷史紀錄可供查詢",
+          "搭配教育訓練與管理層提案，正式導入現場使用"
+        ],
+        "features": [
+          {
+            "name": "步驟式輸入介面",
+            "desc": "依「資料輸入 → 列印標籤 → 歷史紀錄」三步驟引導操作，降低現場人員學習門檻"
+          },
+          {
+            "name": "捲號與道次管理",
+            "desc": "可選擇道次（L/M/R/S/H）並支援合併捲的接頭數量設定"
+          },
+          {
+            "name": "直接連接印表機",
+            "desc": "透過 Windows 平板連接 Zebra 印表機即時列印"
+          },
+          {
+            "name": "列印歷史查詢",
+            "desc": "可回溯查看該筆工作的列印紀錄"
+          },
+          {
+            "name": "教育訓練與導入提案",
+            "desc": "提供操作教材與管理層提案簡報，支援正式現場導入"
+          }
+        ],
+        "ai_usage": [
+          "協助設計現場操作介面與流程，降低人工手寫錯誤",
+          "產出教育訓練教材與管理層導入提案內容",
+          "規劃資料結構，作為未來 MES 系統資料串接的基礎"
+        ],
+        "tools": [
+          {
+            "name": "Claude（Anthropic AI 助理）",
+            "desc": "系統設計、教育訓練教材、管理層提案內容產出"
+          },
+          {
+            "name": "Windows 平板 + Zebra 印表機",
+            "desc": "現場列印硬體"
+          }
+        ],
+        "results": [
+          "現場標籤作業由手寫改為系統化輸入與列印，減少抄寫錯誤",
+          "已完成現場部署與人員教育訓練",
+          "累積結構化列印紀錄，為後續 MES 串接預作準備"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "現場作業更標準化，減少因手寫錯誤造成的追溯困難"
+          },
+          {
+            "name": "對客戶",
+            "desc": "標籤資訊更準確，降低因標示錯誤造成的客訴風險"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立可延伸串接 MES 的結構化資料基礎，同時提升現場作業效率"
+          }
+        ],
+        "extensions": [
+          "同一模式可複製到其他仍以手寫方式記錄資訊的現場站點",
+          "已累積的列印歷史資料可直接作為 MES 系統的初期資料來源",
+          "可進一步整合掃碼（Barcode/QR）功能，加速資料輸入"
+        ],
+        "limitations": [
+          "目前仍需現場人員手動輸入資訊，尚未完全自動化擷取",
+          "需搭配平板與 Zebra 印表機等現場硬體設備才能運作"
+        ],
+        "success_key": "從現場真實痛點（手寫標籤易出錯）出發，設計簡單易用的步驟式介面，並搭配教育訓練順利完成現場導入，同時預先為 MES 串接打好資料基礎",
+        "keywords": [
+          "AI應用",
+          "自動化標籤列印",
+          "現場數位化",
+          "MES準備",
+          "Claude"
+        ]
+      },
+      "en": {
+        "title": "Automated Label Printing System (Standalone Label Printing — Replacing Handwritten Roll-Core Labels)",
+        "summary": "A browser-based automated label printing system that replaces the manual, handwritten roll-core labeling process on the shop floor. Operators use a Windows tablet connected to a Zebra printer to print labels directly, cutting down transcription errors and time, while also laying the data groundwork for a future MES integration.",
+        "category": [
+          "Production Management",
+          "Process Automation",
+          "Internal Management Tools",
+          "Training & Communications"
+        ],
+        "unit_request": "Hon Chuan FD Packaging (Thailand)",
+        "unit_owner": "Hon Chuan FD Packaging (Thailand)",
+        "author": "Pongwish Kampetch",
+        "status": "Development and on-site rollout completed (including training materials and a management proposal)",
+        "region": "Thailand plant (Hon Chuan FD Packaging)",
+        "problem_background": "On the BF process floor, roll-core label information used to be filled in by hand, which was prone to illegible handwriting, transcription errors, or incomplete information — making later traceability difficult, and the data could not be directly accumulated in digital form for downstream systems such as MES.",
+        "core_problem": "How to digitize the handwritten labeling process without adding to floor staff's workload, while making the resulting data structured enough to be connected to production systems in the future.",
+        "solution": "Developed a browser-based standalone label printing tool. Floor staff operate it on a Windows tablet, entering the roll number, pass (L/M/R/S/H), splice count, and other information step by step, then print the label directly via a Zebra printer. Every print is kept as a history record to serve as the data foundation for a future MES system, along with operator training materials and a management rollout proposal.",
+        "process": [
+          "Floor staff open the label printing system on a tablet and select or create a job.",
+          "They enter the roll number, pass, splice count, and other information following the on-screen steps.",
+          "The system prints the label directly via a Zebra printer.",
+          "The system keeps a searchable print history.",
+          "Combined with training and a management proposal, the tool was formally rolled out for floor use."
+        ],
+        "features": [
+          {
+            "name": "Step-by-step input interface",
+            "desc": "Guides operators through three steps — data entry, print label, history — lowering the learning curve for floor staff."
+          },
+          {
+            "name": "Roll and pass management",
+            "desc": "Lets users select a pass (L/M/R/S/H) and supports setting the splice count for combined rolls."
+          },
+          {
+            "name": "Direct printer connection",
+            "desc": "Prints instantly via a Zebra printer connected to a Windows tablet."
+          },
+          {
+            "name": "Print history lookup",
+            "desc": "Lets users look back at the print records for a given job."
+          },
+          {
+            "name": "Training and rollout proposal",
+            "desc": "Provides operator training materials and a management proposal deck to support formal on-site adoption."
+          }
+        ],
+        "ai_usage": [
+          "Helped design the on-site operator interface and workflow to reduce manual handwriting errors.",
+          "Produced the training materials and the content for the management rollout proposal.",
+          "Planned the data structure as the foundation for a future MES system integration."
+        ],
+        "tools": [
+          {
+            "name": "Claude (Anthropic AI assistant)",
+            "desc": "System design, training materials, and management proposal content."
+          },
+          {
+            "name": "Windows tablet + Zebra printer",
+            "desc": "On-site printing hardware."
+          }
+        ],
+        "results": [
+          "Shop-floor labeling shifted from handwriting to systematic entry and printing, reducing transcription errors.",
+          "Completed on-site deployment and staff training.",
+          "Accumulated structured print records in preparation for a future MES integration."
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "Floor operations are more standardized, reducing traceability difficulties caused by handwriting errors."
+          },
+          {
+            "name": "For customers",
+            "desc": "More accurate label information lowers the risk of complaints caused by labeling mistakes."
+          },
+          {
+            "name": "For the company",
+            "desc": "Establishes a structured data foundation that can be extended into MES while also improving on-site operating efficiency."
+          }
+        ],
+        "extensions": [
+          "The same model can be replicated at other stations that still record information by hand.",
+          "The accumulated print history can serve directly as an early data source for an MES system.",
+          "Barcode/QR scanning could be integrated further to speed up data entry."
+        ],
+        "limitations": [
+          "Floor staff still need to enter information manually; it is not yet a fully automated capture process.",
+          "Requires on-site hardware such as a tablet and a Zebra printer to operate."
+        ],
+        "success_key": "Starting from a real shop-floor pain point (error-prone handwritten labels), designing a simple, easy-to-use step-by-step interface, and pairing it with training to complete a smooth on-site rollout — while laying the data groundwork for a future MES integration in advance.",
+        "keywords": [
+          "AI application",
+          "Automated label printing",
+          "Shop-floor digitization",
+          "MES readiness",
+          "Claude"
+        ]
+      }
+    }
   }
 ]
