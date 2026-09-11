@@ -5453,5 +5453,356 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-027",
+    "number": 27,
+    "updated": "2026.09",
+    "screenshots": [
+      "assets/thc-lottery-prize-wall.jpg",
+      "assets/thc-lottery-draw-machine.jpg",
+      "assets/thc-lottery-draw-animation.jpg",
+      "assets/thc-lottery-winner-reveal.jpg"
+    ],
+    "video": [],
+    "url": "http://179server.pages.honchuan.com.tw/thclottery/",
+    "i18n": {
+      "zh": {
+        "title": "宏全國際集團 THC 尾牙抽獎系統前台美化與流程優化",
+        "summary": "本次協助資訊單位針對宏全國際集團尾牙抽獎網站進行前台畫面美化與部分現場流程調整。原系統已具備人員匯入、獎項設定、資格限制、抽獎與結果匯出等功能，本次不重寫既有抽獎邏輯，而是聚焦於抽獎主畫面、獎項選擇流程、抽獎動畫、得獎結果彈窗與舞台主題切換，讓系統更適合正式活動現場投影與觀眾觀看。",
+        "category": [
+          "內部活動",
+          "網站美化",
+          "流程優化",
+          "現場展示",
+          "數位工具"
+        ],
+        "unit_request": "資訊",
+        "unit_owner": "數位發展部",
+        "author": "陳姸惠",
+        "status": "已完成測試版本",
+        "region": "宏全國際集團尾牙活動現場",
+        "problem_background": "資訊單位原本已完成尾牙抽獎系統的主要功能，但抽獎頁面仍較接近後台操作介面，現場使用時不容易讓操作者快速判斷下一步，也不夠適合直接投影給觀眾觀看。\n\n原本的抽獎畫面將獎項、控制項與結果資訊集中在同一頁，當獎項數量增加時畫面容易擁擠；設定完成後的抽獎入口也不夠醒目。抽獎動畫與得獎彈窗的視覺呈現較簡化，缺少正式活動的舞台感與中獎氛圍。此外，原先背景圖與 LOGO 上傳等設定容易增加操作干擾，因此本次協助資訊單位改善網站前台視覺與部分現場流程。",
+        "core_problem": "本次需求的核心不是重做抽獎系統，而是在不影響既有抽獎規則的前提下，讓網站更適合正式活動現場使用。需要改善操作者從設定到開始抽獎的動線，讓獎項選擇、抽獎動畫與得獎結果更清楚；同時提供不同風格的視覺主題，讓抽獎畫面不只侷限於傳統金紅紫企業晚會風格。",
+        "solution": "本次修正將抽獎主畫面重新整理為獎項牆流程，操作者在設定完成後可直接進入獎項卡片選擇畫面，選定獎項後進入全畫面抽獎機動畫，動畫結束後直接跳出得獎結果彈窗。已抽出的獎項會顯示完成狀態，並提供中獎名單與重新抽籤操作。\n\n視覺上移除不必要的背景圖與 LOGO 設定，改以系統內建舞台主題控制整體風格。抽獎機動畫加入玻璃罩、底座、正圓球體、舞台光束與金幣效果，並新增多套主題色系，套用範圍涵蓋抽獎主畫面、獎項牆、抽獎機、得獎彈窗與展示畫面。",
+        "process": [
+          "釐清資訊單位需求，確認本次重點為網站美化與抽獎流程優化，不更動原有抽獎設定與資格限制邏輯。",
+          "盤點現有 Draw 頁、設定頁、得獎彈窗與展示畫面的使用痛點。",
+          "將抽獎主畫面改為獎項牆，讓操作者先選擇本輪要抽出的獎項。",
+          "調整抽獎流程為一次抽出該獎項所有剩餘名額，降低現場等待時間。",
+          "為已抽出獎項新增完成狀態，並保留中獎名單與重新抽籤操作。",
+          "將「設定完成，開始抽獎」移至更醒目的位置，改善設定後的操作動線。",
+          "移除右上角容易混淆的抽獎導覽按鈕，讓正式入口更清楚。",
+          "升級抽獎機動畫，加入玻璃罩、球體、底座、光束與金幣效果。",
+          "新增舞台主題選擇，並讓主題套用到抽獎端主要畫面。",
+          "移除 LOGO 與背景圖上傳設定，降低非必要操作。",
+          "依測試截圖回饋調整球體大小、球體形狀、金幣效果、導覽層級與亮色主題可讀性。"
+        ],
+        "features": [
+          {
+            "name": "獎項牆主畫面",
+            "desc": "將抽獎頁改為獎項卡片牆，方便現場選擇要抽出的獎項。"
+          },
+          {
+            "name": "獎項完成狀態",
+            "desc": "已抽出的獎項會顯示完成標示，降低重複誤抽風險。"
+          },
+          {
+            "name": "中獎名單查看",
+            "desc": "已完成獎項可直接查看該獎項得獎紀錄。"
+          },
+          {
+            "name": "重新抽籤",
+            "desc": "可針對單一獎項重新抽出，並沿用原本資格規則。"
+          },
+          {
+            "name": "一次抽出名額",
+            "desc": "一次抽出該獎項所有剩餘名額，提升現場效率。"
+          },
+          {
+            "name": "抽獎機動畫",
+            "desc": "加入玻璃罩、正圓球體、舞台光束、底座與金幣噴灑效果。"
+          },
+          {
+            "name": "得獎結果彈窗",
+            "desc": "抽獎結束後直接顯示得獎結果，多位得獎者可一次呈現。"
+          },
+          {
+            "name": "舞台主題切換",
+            "desc": "提供典雅黑金、霓虹星河、冰晶藍銀、繽紛糖果與薄荷白日祭等主題。"
+          },
+          {
+            "name": "前台主題套用",
+            "desc": "主題套用至獎項牆、抽獎機、結果彈窗與展示畫面，而不只影響後台設定頁。"
+          },
+          {
+            "name": "可讀性優化",
+            "desc": "修正亮色主題中展示名單、按鈕與卡片文字對比不足問題。"
+          },
+          {
+            "name": "設定精簡",
+            "desc": "移除 LOGO 與背景圖上傳選項，讓設定頁更聚焦於活動必要操作。"
+          }
+        ],
+        "ai_usage": [
+          "需求整理｜協助將「美化抽獎網站」拆解為獎項牆、抽獎動畫、結果彈窗、主題切換與操作動線等具體改善項目。",
+          "規格規劃｜透過 Spectra / OpenSpec 整理提案、設計、規格與任務，明確界定不修改抽獎核心邏輯。",
+          "程式協作｜協助調整單一 HTML 抽獎系統中的 HTML、CSS 與 JavaScript，完成前台視覺與流程優化。",
+          "視覺迭代｜依使用者截圖與回饋，持續修正配色、球體、金幣、遮罩、按鈕與展示可讀性。",
+          "文件整理｜將本次協助資訊美化網站與更新流程的內容整理為案例說明，方便後續交付與內部紀錄。"
+        ],
+        "tools": [
+          {
+            "name": "HTML/CSS/JavaScript",
+            "desc": "調整抽獎網站的前台畫面、互動流程、舞台主題與抽獎動畫。"
+          },
+          {
+            "name": "localStorage",
+            "desc": "沿用既有單機資料保存方式，保存人員名單、獎項設定、得獎紀錄與主題設定。"
+          },
+          {
+            "name": "SheetJS",
+            "desc": "沿用既有 Excel 匯入與匯出能力，支援人員名單與得獎名冊資料處理。"
+          },
+          {
+            "name": "Spectra / OpenSpec",
+            "desc": "整理需求提案、設計決策、規格與任務，協助控管改善範圍。"
+          },
+          {
+            "name": "Codex",
+            "desc": "協助程式修改、畫面迭代、測試回饋整理與案例文件撰寫。"
+          }
+        ],
+        "results": [
+          "完成抽獎主畫面改版，從操作控制台調整為獎項牆流程。",
+          "完成獎項卡片選擇、已抽出狀態、中獎名單與重新抽籤操作。",
+          "完成一次抽出該獎項所有剩餘名額的現場流程調整。",
+          "完成抽獎機動畫美化，包含玻璃罩、底座、正圓球體、舞台光束與金幣效果。",
+          "完成得獎結果彈窗優化，支援一次顯示多位得獎者。",
+          "完成設定完成後開始抽獎入口優化。",
+          "移除右上角抽獎導覽按鈕，避免流程混淆。",
+          "修正上方導覽列被遮罩影響的問題。",
+          "新增多套舞台主題，提供不同活動視覺風格。",
+          "將主題套用範圍擴大至抽獎主畫面、抽獎機、結果彈窗與展示畫面。",
+          "移除 LOGO 與背景圖上傳設定。",
+          "修正亮色主題文字與按鈕可讀性不足問題。",
+          "保留原本人員匯入、獎項限制、年資條件、隨機抽選、缺席釋出、重新抽籤與匯出資料流程。"
+        ],
+        "value": [
+          {
+            "name": "對資訊單位",
+            "desc": "在不重寫抽獎核心邏輯的前提下，快速提升網站前台質感與現場可用性。"
+          },
+          {
+            "name": "對活動承辦人",
+            "desc": "設定完成後的操作動線更清楚，抽獎過程更容易掌控。"
+          },
+          {
+            "name": "對現場觀眾",
+            "desc": "獎項、動畫與得獎結果更清楚，整體活動感更完整。"
+          },
+          {
+            "name": "對公司",
+            "desc": "讓既有尾牙抽獎工具從功能型系統提升為可正式上場展示的活動介面。"
+          }
+        ],
+        "extensions": [
+          "可套用於其他廠區、子公司或大型內部活動抽獎。",
+          "獎項牆流程可延伸至頒獎、抽籤、分組或名單公布。",
+          "舞台主題可依家庭日、春酒、周年慶、運動會或品牌活動持續擴充。",
+          "抽獎機動畫與結果彈窗可依不同活動素材進一步客製化。"
+        ],
+        "limitations": [
+          "系統為單一 HTML、純前端單機執行，資料保存在同一瀏覽器的 localStorage；換電腦、換瀏覽器或清除瀏覽器資料後不會自動同步。",
+          "舞台主題與抽獎動畫皆為前台視覺效果，不代表真實抽選順序，也不影響抽獎公平性。",
+          "本次不更動原有抽獎資格、年資限制、隨機抽選、缺席釋出、重新抽籤與匯出資料邏輯。",
+          "Excel 匯入仍需讀取既有外部函式庫；若離線使用，建議改用 CSV 匯入。",
+          "展示模式內容是進入展示當下的得獎紀錄快照；若之後又抽出新得獎人，需退出後重新進入展示模式才會更新。"
+        ],
+        "success_key": "成功關鍵在於清楚劃分「資訊單位已完成的抽獎邏輯」與「本次協助改善的現場前台體驗」。本次美化不修改抽獎設定、資格限制與資料流程，而是集中處理操作者入口、獎項牆流程、抽獎動畫、得獎彈窗、主題配色與可讀性，讓系統在低風險下提升正式活動呈現品質。",
+        "keywords": [
+          "尾牙抽獎",
+          "網站美化",
+          "抽獎流程優化",
+          "獎項牆",
+          "抽獎動畫",
+          "得獎彈窗",
+          "舞台主題",
+          "投影展示",
+          "現場活動",
+          "前台介面",
+          "localStorage",
+          "SheetJS"
+        ]
+      },
+      "en": {
+        "title": "Taiwan Hon Chuan (THC) Year-End Lottery System: Front-of-House Redesign and Flow Optimization",
+        "summary": "Helped the IT unit redesign the front-of-house screens and adjust part of the on-site flow for Taiwan Hon Chuan Group's year-end party lottery site. The existing system already handled participant import, prize setup, eligibility rules, drawing, and result export; this effort did not rewrite the drawing logic, but focused on the main draw screen, prize-selection flow, draw animation, winner result popup, and stage theme switching, making the system better suited for on-site projection and audience viewing at a formal event.",
+        "category": [
+          "Internal Event",
+          "Website Redesign",
+          "Process Optimization",
+          "On-site Display",
+          "Digital Tools"
+        ],
+        "unit_request": "IT",
+        "unit_owner": "Digital Development Department",
+        "author": "Chen Yen-Hui",
+        "status": "Test version completed",
+        "region": "Taiwan Hon Chuan Group year-end party venue",
+        "problem_background": "The IT unit had already built the core functions of the lottery system, but the draw page still resembled a back-office control panel — on site, operators could not quickly judge the next step, and the screen was not well suited for direct projection to the audience.\n\nThe original draw screen packed prizes, controls, and result information onto a single page, so the layout became crowded as the number of prizes grew, and the entry point to start a draw after setup was not prominent enough. The draw animation and winner popup were visually simplified, lacking the stage presence and celebratory feel of a formal event. In addition, the original background-image and logo upload settings added unnecessary operational friction, so this effort helped the IT unit improve the front-of-house visuals and part of the on-site flow.",
+        "core_problem": "The core of this request was not to rebuild the lottery system, but to make the site better suited for a formal on-site event without affecting the existing drawing rules. The flow from setup to starting a draw needed to be clearer for operators, with prize selection, draw animation, and winner results all easier to follow — while also offering different visual themes so the draw screen would not be limited to the traditional gold-red-purple corporate banquet look.",
+        "solution": "The main draw screen was reorganized into a prize-wall flow: once setup is complete, the operator goes straight to a prize-card selection screen, and after picking a prize, a full-screen draw-machine animation plays before the winner result popup appears automatically. Prizes that have already been drawn show a completed status, with a winner list and re-draw action available.\n\nVisually, the unnecessary background-image and logo settings were removed in favor of built-in stage themes controlling the overall look. The draw-machine animation now includes a glass dome, base, perfectly round balls, stage light beams, and coin effects, with several new theme color sets applied consistently across the main draw screen, prize wall, draw machine, winner popup, and display screen.",
+        "process": [
+          "Clarified the IT unit's requirements and confirmed this round would focus on visual redesign and draw-flow optimization, without changing the existing draw settings or eligibility logic.",
+          "Reviewed the pain points of the existing draw page, settings page, winner popup, and display screen.",
+          "Changed the main draw screen into a prize wall so operators first choose which prize to draw for the round.",
+          "Adjusted the draw flow to draw all remaining slots for a prize in one pass, reducing on-site waiting time.",
+          "Added a completed status for prizes already drawn, while keeping the winner list and re-draw actions.",
+          "Moved \"Setup complete, start draw\" to a more prominent position to improve the post-setup flow.",
+          "Removed the confusing draw navigation button in the top-right corner to make the formal entry point clearer.",
+          "Upgraded the draw-machine animation with a glass dome, balls, base, light beams, and coin effects.",
+          "Added stage theme selection and applied themes to the main draw-side screens.",
+          "Removed the logo and background-image upload settings to reduce unnecessary steps.",
+          "Adjusted ball size, ball shape, coin effects, navigation hierarchy, and light-theme readability based on feedback from test screenshots."
+        ],
+        "features": [
+          {
+            "name": "Prize wall main screen",
+            "desc": "Turned the draw page into a card wall of prizes, making it easy to pick which prize to draw on site."
+          },
+          {
+            "name": "Prize completed status",
+            "desc": "Prizes already drawn show a completed marker, reducing the risk of accidentally redrawing them."
+          },
+          {
+            "name": "Winner list view",
+            "desc": "Completed prizes can be checked directly for their winner records."
+          },
+          {
+            "name": "Re-draw",
+            "desc": "A single prize can be redrawn while reusing the original eligibility rules."
+          },
+          {
+            "name": "Draw all remaining slots at once",
+            "desc": "Draws all remaining slots for a prize in one pass, improving on-site efficiency."
+          },
+          {
+            "name": "Draw-machine animation",
+            "desc": "Adds a glass dome, perfectly round balls, stage light beams, base, and coin-shower effects."
+          },
+          {
+            "name": "Winner result popup",
+            "desc": "Shows the winner results immediately after the draw ends, presenting multiple winners at once."
+          },
+          {
+            "name": "Stage theme switching",
+            "desc": "Offers themes such as Elegant Black & Gold, Neon Galaxy, Ice Blue & Silver, Candy Pop, and Mint Daylight Festival."
+          },
+          {
+            "name": "Front-of-house theme application",
+            "desc": "Themes apply to the prize wall, draw machine, result popup, and display screen — not just the back-office settings page."
+          },
+          {
+            "name": "Readability improvements",
+            "desc": "Fixed low text contrast for lists, buttons, and cards under light themes."
+          },
+          {
+            "name": "Simplified settings",
+            "desc": "Removed the logo and background-image upload options so the settings page focuses on essential event operations."
+          }
+        ],
+        "ai_usage": [
+          "Requirements breakdown | Helped break \"beautify the lottery site\" down into concrete improvement items: prize wall, draw animation, result popup, theme switching, and operator flow.",
+          "Spec planning | Used Spectra / OpenSpec to organize the proposal, design, specs, and tasks, clearly scoping out changes to the core drawing logic.",
+          "Coding collaboration | Helped adjust the HTML, CSS, and JavaScript of the single-file HTML lottery system to complete the front-of-house visual and flow optimization.",
+          "Visual iteration | Continuously refined colors, balls, coins, overlays, buttons, and display readability based on user screenshots and feedback.",
+          "Documentation | Organized this effort of helping IT beautify the site and update the flow into a case write-up for delivery and internal records."
+        ],
+        "tools": [
+          {
+            "name": "HTML/CSS/JavaScript",
+            "desc": "Adjusted the lottery site's front-of-house screens, interaction flow, stage themes, and draw animation."
+          },
+          {
+            "name": "localStorage",
+            "desc": "Kept the existing standalone data storage approach for participant lists, prize settings, winner records, and theme settings."
+          },
+          {
+            "name": "SheetJS",
+            "desc": "Kept the existing Excel import/export capability for handling participant lists and winner rosters."
+          },
+          {
+            "name": "Spectra / OpenSpec",
+            "desc": "Organized the requirements proposal, design decisions, specs, and tasks to help control the scope of changes."
+          },
+          {
+            "name": "Codex",
+            "desc": "Assisted with code changes, screen iteration, organizing test feedback, and writing up the case documentation."
+          }
+        ],
+        "results": [
+          "Completed the redesign of the main draw screen, from an operator control console to a prize-wall flow.",
+          "Completed prize-card selection, drawn status, winner list, and re-draw actions.",
+          "Completed the on-site flow adjustment to draw all remaining slots for a prize in one pass.",
+          "Completed the draw-machine animation redesign, including glass dome, base, perfectly round balls, stage light beams, and coin effects.",
+          "Completed the winner result popup optimization, supporting multiple winners shown at once.",
+          "Optimized the entry point to start a draw after setup is complete.",
+          "Removed the top-right draw navigation button to avoid flow confusion.",
+          "Fixed the issue where the top navigation bar was affected by an overlay.",
+          "Added several stage themes offering different visual styles for events.",
+          "Expanded theme application to the main draw screen, draw machine, result popup, and display screen.",
+          "Removed the logo and background-image upload settings.",
+          "Fixed insufficient text and button readability under light themes.",
+          "Preserved the original participant import, prize limits, tenure conditions, random selection, absence release, re-draw, and data export flows."
+        ],
+        "value": [
+          {
+            "name": "For the IT unit",
+            "desc": "Quickly improved the site's front-of-house polish and on-site usability without rewriting the core drawing logic."
+          },
+          {
+            "name": "For event organizers",
+            "desc": "A clearer post-setup operating flow makes the draw process easier to control."
+          },
+          {
+            "name": "For the on-site audience",
+            "desc": "Clearer prizes, animation, and winner results make the overall event feel more complete."
+          },
+          {
+            "name": "For the company",
+            "desc": "Upgrades the existing year-end lottery tool from a purely functional system into an event-ready presentation interface."
+          }
+        ],
+        "extensions": [
+          "Can be applied to lottery draws at other plants, subsidiaries, or large internal events.",
+          "The prize-wall flow can extend to award ceremonies, drawings, grouping, or list announcements.",
+          "Stage themes can keep expanding for family days, spring banquets, anniversaries, sports days, or brand events.",
+          "The draw-machine animation and result popup can be further customized with different event assets."
+        ],
+        "limitations": [
+          "The system is a single standalone HTML front-end app, with data stored in the browser's localStorage; it does not sync automatically across a different computer, browser, or after browser data is cleared.",
+          "Stage themes and draw animations are purely front-of-house visual effects; they do not represent the actual draw order and do not affect draw fairness.",
+          "This effort did not change the existing draw eligibility, tenure limits, random selection, absence release, re-draw, or data export logic.",
+          "Excel import still relies on existing external libraries; for offline use, CSV import is recommended instead.",
+          "The display mode shows a snapshot of winner records at the moment it was entered; if new winners are drawn afterward, you need to exit and re-enter display mode to refresh it."
+        ],
+        "success_key": "The key to success was clearly separating the drawing logic already completed by the IT unit from the on-site front-of-house experience improved in this effort. This redesign did not change the draw settings, eligibility rules, or data flow, but focused on the operator entry point, prize-wall flow, draw animation, winner popup, theme colors, and readability — raising the presentation quality for formal events at low risk.",
+        "keywords": [
+          "Year-end lottery",
+          "Website redesign",
+          "Draw flow optimization",
+          "Prize wall",
+          "Draw animation",
+          "Winner popup",
+          "Stage theme",
+          "Projection display",
+          "On-site event",
+          "Front-of-house interface",
+          "localStorage",
+          "SheetJS"
+        ]
+      }
+    }
   }
 ]
