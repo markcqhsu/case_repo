@@ -6026,5 +6026,237 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-029",
+    "number": 29,
+    "updated": "2026.09",
+    "url": "",
+    "screenshots": [
+      "assets/hcfd-planning-tightness-demo.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "生產計畫密度檢核工具（HCFD Planning — เช็คความแน่นแพลน）",
+        "summary": "以訂單交期回推每日應開始生產日期，並自動計算每日產能佔用率（正常/加班兩種模式），以顏色（綠/橘/紅）呈現產線「鬆／緊／爆單」狀況的排程檢核工具，協助生產計畫在新單進來時快速判斷能否如期交貨，並提前找出撞期風險日。",
+        "category": [
+          "生產管理",
+          "流程自動化",
+          "資料整合與分析",
+          "業務支援"
+        ],
+        "unit_request": "泰國宏福廠",
+        "unit_owner": "泰國宏福廠",
+        "author": "Pongwish Kampetch",
+        "status": "已完成，工具與 Excel 資料庫持續使用中",
+        "region": "泰國廠區（Hon Chuan FD Packaging）",
+        "problem_background": "過去業務或計畫人員在接新單時，僅憑經驗判斷產線是否有空檔可接單，缺乏系統化的每日產能佔用檢核，容易發生多筆訂單交期集中在同一天、造成單日產能暴衝、進而導致延遲交貨或被迫緊急加班的情況。",
+        "core_problem": "如何在訂單交期資訊分散、且訂單量大（百筆以上）的情況下，快速且視覺化地看出哪些日期產能已經吃緊或超載，並在新單洽談階段就能預估可行的交貨日期。",
+        "solution": "建立一套「訂單 → 依交期與產能回推應開始生產日期 → 每日產能佔用率視覺化日曆」的 Excel 工具，並搭配獨立的 HCFD Planning 網頁工具（HCFD_Planning.html），支援上傳訂單 Excel 後自動依交期排序、計算正常/加班兩種產能模式下的可行性，並標示逾期風險與可用日期建議。",
+        "process": [
+          "業務/計畫人員將新訂單資料（交期、客戶、數量、生產工時）輸入「ออเดอร์」訂單清單",
+          "系統依交期、Buffer 天數（QC/出貨準備）自動回推「應開始生產日期」",
+          "「ปฏิทิน」日曆分頁依應開始生產日期，加總每日所需生產工時，並依占用率（<85% 綠、85–100% 橘、>100% 紅）自動上色",
+          "「คำนวณวันส่ง」分頁可讓使用者輸入新單所需工時，直接試算最快可交付日期",
+          "「ตั้งค่า」「วันหยุด」分頁可調整產能參數（正常/OT 每日工時、Buffer 天數、判斷門檻）與公司假日曆",
+          "另有獨立 HCFD_Planning.html 網頁版，支援上傳訂單 Excel 並提供逾期標示、搜尋、語言切換等互動功能"
+        ],
+        "features": [
+          {
+            "name": "訂單交期回推排程",
+            "desc": "依交期與 Buffer 自動計算每筆訂單應開始生產的日期"
+          },
+          {
+            "name": "每日產能占用日曆",
+            "desc": "以顏色（綠/橘/紅）直觀呈現每日產能鬆緊狀況"
+          },
+          {
+            "name": "正常／加班雙模式試算",
+            "desc": "可同時比較正常產能與開 OT 後的可行交期"
+          },
+          {
+            "name": "新單快速試算",
+            "desc": "輸入新單工時即可查詢最快可交付日期"
+          },
+          {
+            "name": "可調整參數",
+            "desc": "產能、Buffer 天數、緊/爆單門檻、公司假日曆皆可自行設定"
+          },
+          {
+            "name": "獨立網頁版（HCFD_Planning.html）",
+            "desc": "支援上傳 Excel、逾期標示、搜尋訂單/客戶、泰/英語言切換"
+          }
+        ],
+        "ai_usage": [
+          "讀取訂單原始資料，依交期與產能參數自動計算每日產能占用率與撞期風險日",
+          "找出造成單日產能暴衝的根本原因（例如多筆訂單集中同一交期），並具體列出相關訂單與客戶",
+          "產出視覺化圖表協助快速判讀產能吃緊的時間點與程度",
+          "開發獨立的網頁互動工具（HCFD_Planning.html），供不需開 Excel 的情境下快速查詢"
+        ],
+        "tools": [
+          {
+            "name": "Claude（Anthropic AI 助理）",
+            "desc": "排程邏輯設計、資料分析、網頁工具開發"
+          },
+          {
+            "name": "Excel",
+            "desc": "訂單資料庫、產能日曆、參數設定"
+          },
+          {
+            "name": "HTML/JavaScript（含 XLSX.js）",
+            "desc": "獨立網頁版排程檢核工具"
+          }
+        ],
+        "results": [
+          "可在數秒內找出上百筆訂單中產能占用最高的關鍵日期與造成原因（例如單日需求達正常產能 246%）",
+          "計畫人員可在新單洽談階段快速預估可行交期，減少事後才發現撞期的情況",
+          "建立可重複使用、可自行調整參數的標準化排程檢核工具"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "業務人員接單前可快速確認產能是否吃緊，避免承諾無法達成的交期"
+          },
+          {
+            "name": "對客戶",
+            "desc": "降低因產能誤判造成的延遲交貨風險，提升交期承諾的可信度"
+          },
+          {
+            "name": "對公司",
+            "desc": "提早發現撞單風險並預先調整排程或安排 OT，減少緊急加班與趕工成本"
+          }
+        ],
+        "extensions": [
+          "同一排程邏輯可延伸應用到其他有明確產能上限的製程或產線",
+          "可與 MES／生產監控儀表板整合，將實際產出資料回饋更新產能占用計算",
+          "未來可加入自動預警通知，當新單輸入後偵測到撞期風險時主動提醒計畫人員"
+        ],
+        "limitations": [
+          "目前仍需人工將訂單資料輸入或上傳至 Excel／網頁工具，尚未串接 ERP／訂單系統自動同步",
+          "產能參數（正常/OT 工時、Buffer 天數）需人工設定並保持更新，若實際產線狀況改變需同步調整",
+          "資料需定期更新，過舊的訂單資料庫無法反映當下真實產能狀況"
+        ],
+        "success_key": "把「交期 → 產能」的排程判斷邏輯標準化並視覺化，讓非技術背景的業務與計畫人員也能一眼看出風險日期，同時保留 Excel 與網頁版雙重使用情境，兼顧彈性與便利性",
+        "keywords": [
+          "AI應用",
+          "產能規劃",
+          "排程管理",
+          "產能日曆",
+          "接單判斷",
+          "Claude"
+        ]
+      },
+      "en": {
+        "title": "Planning Tightness Check Tool (HCFD Planning — เช็คความแน่นแพลน)",
+        "summary": "A scheduling check tool that works backward from order due dates to determine each day's required production start date, automatically calculates daily capacity utilization under two modes (normal / overtime), and shows the production line's \"loose / tight / overloaded\" status with color coding (green/orange/red) — helping production planning quickly judge whether a new order can be delivered on time and flagging at-risk dates in advance.",
+        "category": [
+          "Production Management",
+          "Process Automation",
+          "Data Integration & Analysis",
+          "Business Support"
+        ],
+        "unit_request": "Hon Chuan FD Packaging (Thailand)",
+        "unit_owner": "Hon Chuan FD Packaging (Thailand)",
+        "author": "Pongwish Kampetch",
+        "status": "Completed, tool and Excel database in continuous use",
+        "region": "Thailand plant (Hon Chuan FD Packaging)",
+        "problem_background": "In the past, when sales or planning staff took on a new order, they judged whether the production line had open capacity purely by experience, with no systematic daily capacity check. This often led to multiple orders' due dates clustering on the same day, causing a spike in that day's required capacity, which in turn caused late deliveries or forced emergency overtime.",
+        "core_problem": "With order due-date information scattered across records and a large order volume (100+ orders), how can tight or overloaded capacity dates be identified quickly and visually, and a feasible delivery date be estimated as early as the new-order negotiation stage?",
+        "solution": "Built an Excel tool that works through \"order → work backward from due date and capacity to the required production start date → a visualized daily-capacity-utilization calendar,\" paired with a standalone HCFD Planning web tool (HCFD_Planning.html) that lets users upload an order Excel file and automatically sorts by due date, calculates feasibility under both normal and overtime capacity modes, and flags overdue risk with suggested available dates.",
+        "process": [
+          "Sales/planning staff enter new order data (due date, customer, quantity, production hours) into the \"ออเดอร์\" order list.",
+          "The system automatically works backward from the due date and buffer days (QC/shipping prep) to determine the \"required production start date.\"",
+          "The \"ปฏิทิน\" calendar tab sums the required production hours per day by production start date and auto-colors each day by utilization (<85% green, 85–100% orange, >100% red).",
+          "The \"คำนวณวันส่ง\" tab lets users enter the hours needed for a new order and instantly estimate the earliest feasible delivery date.",
+          "The \"ตั้งค่า\" and \"วันหยุด\" tabs let users adjust capacity parameters (normal/OT daily hours, buffer days, thresholds) and the company holiday calendar.",
+          "A standalone HCFD_Planning.html web version is also available, supporting order Excel upload with overdue flagging, search, and language switching."
+        ],
+        "features": [
+          {
+            "name": "Due-date-driven schedule backtracking",
+            "desc": "Automatically calculates each order's required production start date from its due date and buffer."
+          },
+          {
+            "name": "Daily capacity utilization calendar",
+            "desc": "Shows daily capacity tightness at a glance with color coding (green/orange/red)."
+          },
+          {
+            "name": "Normal / overtime dual-mode simulation",
+            "desc": "Compares feasible delivery dates under normal capacity versus with overtime enabled."
+          },
+          {
+            "name": "Quick new-order simulation",
+            "desc": "Enter a new order's required hours to instantly check the earliest feasible delivery date."
+          },
+          {
+            "name": "Adjustable parameters",
+            "desc": "Capacity, buffer days, tight/overload thresholds, and the company holiday calendar can all be configured."
+          },
+          {
+            "name": "Standalone web version (HCFD_Planning.html)",
+            "desc": "Supports Excel upload, overdue flagging, order/customer search, and Thai/English language switching."
+          }
+        ],
+        "ai_usage": [
+          "Read raw order data and automatically calculated daily capacity utilization and at-risk conflict dates based on due dates and capacity parameters.",
+          "Identified the root cause of single-day capacity spikes (e.g. multiple orders sharing the same due date) and listed the specific orders and customers involved.",
+          "Produced visual charts to help quickly read when and how severely capacity becomes tight.",
+          "Developed a standalone interactive web tool (HCFD_Planning.html) for quick lookups without needing to open Excel."
+        ],
+        "tools": [
+          {
+            "name": "Claude (Anthropic AI assistant)",
+            "desc": "Scheduling logic design, data analysis, and web tool development."
+          },
+          {
+            "name": "Excel",
+            "desc": "Order database, capacity calendar, and parameter settings."
+          },
+          {
+            "name": "HTML/JavaScript (incl. XLSX.js)",
+            "desc": "Standalone web-based scheduling check tool."
+          }
+        ],
+        "results": [
+          "Can pinpoint the key dates with the highest capacity utilization among hundreds of orders — and the cause — within seconds (e.g. a single day reaching 246% of normal capacity).",
+          "Planning staff can quickly estimate a feasible delivery date at the new-order negotiation stage, reducing cases where a scheduling conflict is only discovered afterward.",
+          "Established a reusable, self-configurable standardized scheduling check tool."
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "Sales staff can quickly confirm whether capacity is tight before taking an order, avoiding commitments to delivery dates that can't be met."
+          },
+          {
+            "name": "For customers",
+            "desc": "Lowers the risk of late delivery caused by capacity misjudgment, improving the reliability of delivery-date commitments."
+          },
+          {
+            "name": "For the company",
+            "desc": "Detects order-conflict risk early and allows schedules or overtime to be adjusted in advance, reducing emergency overtime and rush costs."
+          }
+        ],
+        "extensions": [
+          "The same scheduling logic can be extended to other processes or lines with a clear capacity ceiling.",
+          "Can be integrated with MES/production monitoring dashboards, feeding actual output data back into the capacity utilization calculation.",
+          "Automatic early-warning notifications could be added in the future to proactively alert planning staff when a new order is entered and a scheduling conflict risk is detected."
+        ],
+        "limitations": [
+          "Order data still needs to be entered or uploaded manually into Excel/the web tool; it is not yet connected to an ERP/order system for automatic sync.",
+          "Capacity parameters (normal/OT hours, buffer days) must be set manually and kept up to date — if actual line conditions change, they need to be adjusted in sync.",
+          "Data needs to be updated regularly; an outdated order database cannot reflect the true current capacity situation."
+        ],
+        "success_key": "Standardizing and visualizing the \"due date → capacity\" scheduling judgment logic so that non-technical sales and planning staff can spot at-risk dates at a glance, while keeping both the Excel and web versions available to balance flexibility and convenience.",
+        "keywords": [
+          "AI application",
+          "Capacity planning",
+          "Schedule management",
+          "Capacity calendar",
+          "Order feasibility check",
+          "Claude"
+        ]
+      }
+    }
   }
 ]
