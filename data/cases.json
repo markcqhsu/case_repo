@@ -5804,5 +5804,227 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-028",
+    "number": 28,
+    "updated": "2026.09",
+    "screenshots": [
+      "assets/quality-waste-dashboard-demo.jpg"
+    ],
+    "url": "",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "品質與廢料追蹤儀表板（Quality & Waste Dashboard — Printing BK04-06 & Assembly BL06-08）",
+        "summary": "運用 AI（Claude）將印刷（BK04-06）與組裝（BL06-08）機台的每週品質與廢料原始 Excel 資料，自動彙整成雙語（泰文/英文）互動式儀表板，同時涵蓋「品質面」（依人員/機台/缺陷類型比較）與「廢料面」（依機台/班別/膜材/操作員比較），協助現場與管理層快速定位問題來源、聚焦改善重點。",
+        "category": [
+          "生產管理",
+          "品質管理",
+          "成本控管",
+          "數位轉型"
+        ],
+        "unit_request": "泰國宏福廠",
+        "unit_owner": "泰國宏福廠",
+        "author": "Pongwish Kampetch",
+        "status": "已完成，持續每週更新使用中（組裝製程已封裝為可重複使用的 Claude skill）",
+        "region": "泰國廠區（Hon Chuan FD Packaging）",
+        "problem_background": "印刷機台（BK04-06）與組裝機台（BL06-08）每週都會產生大量品質與廢料資料，過去僅以 Excel 原始表格記錄，管理層與現場主管難以快速看出「哪個人」「哪台機台」「哪種缺陷/膜材」「哪個班別」是問題重點，也無法有效追蹤週別趨勢與特定客戶的異常狀況。",
+        "core_problem": "資料量大且分散在多份每週 Excel 中，印刷與組裝兩製程的資料結構不同，人工整理費時，且需同時支援泰/英雙語使用者（現場人員與外籍主管）。",
+        "solution": "請 AI（Claude）分別讀取印刷與組裝各自的週別品質/廢料原始 Excel 資料，自動彙整成 KPI 卡片、人員/機台/班別/膜材別圖表、缺陷 Pareto 分析與可篩選的明細表，產出雙語 HTML 儀表板；組裝部分並封裝成可重複使用的 Claude skill，往後只需上傳新的週資料即可自動產出。",
+        "process": [
+          "匯出印刷（BK04-06）或組裝（BL06-08）每週品質/廢料原始 Excel 資料",
+          "交由 AI 依機台、班別、操作員、膜材/缺陷類型進行彙整",
+          "AI 產出雙語 HTML 互動儀表板（KPI 卡片、圖表、Pareto 分析、可篩選明細表）",
+          "組裝製程另封裝為 Claude skill，供每週重複使用",
+          "視需要產出月對月（Month-over-Month）比較的 PPTX 摘要"
+        ],
+        "features": [
+          {
+            "name": "泰/英雙語切換",
+            "desc": "介面文字可即時切換語言"
+          },
+          {
+            "name": "品質面比較",
+            "desc": "依人員、機台比較品質表現與主要缺陷排行"
+          },
+          {
+            "name": "廢料面比較",
+            "desc": "依機台、班別、操作員、膜材類型檢視廢料狀況"
+          },
+          {
+            "name": "週趨勢與 Pareto 分析",
+            "desc": "找出主要缺陷/廢料項目與週別變化"
+          },
+          {
+            "name": "客戶別分析",
+            "desc": "可依特定客戶（如印刷部門的 Oatside 案例）拆解缺陷與廢料"
+          },
+          {
+            "name": "可重複使用的 Skill",
+            "desc": "組裝部分已封裝，往後上傳新資料即可自動產出儀表板"
+          }
+        ],
+        "ai_usage": [
+          "讀取結構不同的印刷與組裝原始週報 Excel，分別建立對應彙整邏輯",
+          "自動計算品質/廢料指標、Pareto 排序與跨月比較",
+          "將重複性高的流程封裝為可重複呼叫的 Claude skill，減少每次重新說明需求的時間"
+        ],
+        "tools": [
+          {
+            "name": "Claude（Anthropic AI 助理）",
+            "desc": "資料彙整、統計分析、雙語儀表板生成、Claude Skill 封裝"
+          },
+          {
+            "name": "Excel",
+            "desc": "每週品質/廢料原始資料來源與月對月比較的 PPTX 素材"
+          }
+        ],
+        "results": [
+          "印刷與組裝兩製程的每週品質/廢料報表整理時間大幅縮短",
+          "可快速定位特定人員/班別/操作員/膜材造成的品質與廢料異常",
+          "組裝製程已可用固定 skill 每週重複產出，不需重新溝通需求"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "生產與品管人員可更快找出品質與廢料改善重點，縮短檢討會議準備時間"
+          },
+          {
+            "name": "對客戶",
+            "desc": "降低特定客戶訂單的品質與廢料異常風險，提升交期與品質穩定度"
+          },
+          {
+            "name": "對公司",
+            "desc": "減少原料浪費、降低生產成本，並建立可持續、可複製到其他製程的品質/廢料追蹤模式"
+          }
+        ],
+        "extensions": [
+          "同一模式可延伸到其他製程（如切割、Perforation）的品質與廢料追蹤",
+          "已建立的 Claude skill 模式可作為其他部門建立自有分析 skill 的範例",
+          "未來可與 OEE／生產監控儀表板整合，形成單一週會綜合報表"
+        ],
+        "limitations": [
+          "目前仍需每週手動匯出 Excel 並上傳，尚未串接即時資料",
+          "印刷與組裝兩套邏輯目前分開維護，資料結構若變動需同步調整"
+        ],
+        "success_key": "針對印刷與組裝兩種不同資料結構分別客製化彙整邏輯，將品質與廢料兩個面向整合在同一套追蹤模式下呈現，並將重複性高的組裝流程封裝為可重複使用的 Claude skill",
+        "keywords": [
+          "AI應用",
+          "品質管理",
+          "廢料管理",
+          "生產儀表板",
+          "雙語介面",
+          "印刷製程",
+          "組裝製程",
+          "Claude Skill"
+        ]
+      },
+      "en": {
+        "title": "Quality & Waste Tracking Dashboard (Printing BK04-06 & Assembly BL06-08)",
+        "summary": "Used AI (Claude) to automatically turn the weekly raw Excel quality and waste data from the printing (BK04-06) and assembly (BL06-08) machines into a bilingual (Thai/English) interactive dashboard, covering both the \"quality\" side (compared by operator/machine/defect type) and the \"waste\" side (compared by machine/shift/film material/operator), helping the floor and management quickly locate the source of problems and focus improvement efforts.",
+        "category": [
+          "Production Management",
+          "Quality Management",
+          "Cost Control",
+          "Digital Transformation"
+        ],
+        "unit_request": "Hon Chuan FD Packaging (Thailand)",
+        "unit_owner": "Hon Chuan FD Packaging (Thailand)",
+        "author": "Pongwish Kampetch",
+        "status": "Completed, in continuous weekly use (the assembly process has been packaged as a reusable Claude skill)",
+        "region": "Thailand plant (Hon Chuan FD Packaging)",
+        "problem_background": "The printing machines (BK04-06) and assembly machines (BL06-08) generate a large amount of quality and waste data every week. In the past this was recorded only in raw Excel sheets, making it hard for management and floor supervisors to quickly see which operator, which machine, which defect/film type, or which shift was the main issue — and there was no effective way to track weekly trends or anomalies for specific customers.",
+        "core_problem": "The data volume was large and scattered across multiple weekly Excel files, and the printing and assembly processes had different data structures, making manual organization time-consuming — while also needing to support both Thai- and English-speaking users (floor staff and expatriate supervisors) at the same time.",
+        "solution": "Had AI (Claude) read the printing and assembly processes' separate weekly quality/waste raw Excel data, automatically compiling it into KPI cards, charts by operator/machine/shift/film material, defect Pareto analysis, and filterable detail tables, producing a bilingual HTML dashboard. The assembly portion was further packaged into a reusable Claude skill, so future updates only require uploading the new week's data for the dashboard to be generated automatically.",
+        "process": [
+          "Export the weekly quality/waste raw Excel data for printing (BK04-06) or assembly (BL06-08).",
+          "Have AI compile it by machine, shift, operator, and film material/defect type.",
+          "AI produces a bilingual interactive HTML dashboard (KPI cards, charts, Pareto analysis, filterable detail tables).",
+          "The assembly process is additionally packaged as a Claude skill for repeated weekly use.",
+          "Produce a month-over-month comparison PPTX summary as needed."
+        ],
+        "features": [
+          {
+            "name": "Thai/English language switch",
+            "desc": "Interface text can be switched instantly between languages."
+          },
+          {
+            "name": "Quality comparison",
+            "desc": "Compares quality performance and top defect rankings by operator and machine."
+          },
+          {
+            "name": "Waste comparison",
+            "desc": "Reviews waste status by machine, shift, operator, and film material type."
+          },
+          {
+            "name": "Weekly trend and Pareto analysis",
+            "desc": "Identifies the main defect/waste items and how they change week to week."
+          },
+          {
+            "name": "Customer-level analysis",
+            "desc": "Can break down defects and waste by a specific customer (e.g. the Oatside case in the printing department)."
+          },
+          {
+            "name": "Reusable skill",
+            "desc": "The assembly portion has been packaged so future data uploads automatically generate the dashboard."
+          }
+        ],
+        "ai_usage": [
+          "Read the differently structured printing and assembly raw weekly report Excel files and built matching compilation logic for each.",
+          "Automatically calculated quality/waste metrics, Pareto ranking, and cross-month comparisons.",
+          "Packaged the highly repetitive workflow into a reusable Claude skill, cutting down the time spent re-explaining requirements each time."
+        ],
+        "tools": [
+          {
+            "name": "Claude (Anthropic AI assistant)",
+            "desc": "Data compilation, statistical analysis, bilingual dashboard generation, and Claude Skill packaging."
+          },
+          {
+            "name": "Excel",
+            "desc": "Source of the weekly quality/waste raw data and the material for the month-over-month comparison PPTX."
+          }
+        ],
+        "results": [
+          "Greatly reduced the time needed to compile weekly quality/waste reports for both the printing and assembly processes.",
+          "Can quickly pinpoint quality and waste anomalies caused by a specific operator, shift, or film material.",
+          "The assembly process can now be regenerated weekly with a fixed skill, without needing to re-communicate requirements."
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "Production and quality staff can find quality and waste improvement priorities faster, shortening review-meeting preparation time."
+          },
+          {
+            "name": "For customers",
+            "desc": "Lowers the risk of quality and waste anomalies on specific customer orders, improving delivery and quality stability."
+          },
+          {
+            "name": "For the company",
+            "desc": "Reduces material waste and production costs, and establishes a sustainable quality/waste tracking model that can be replicated in other processes."
+          }
+        ],
+        "extensions": [
+          "The same model can be extended to quality and waste tracking in other processes (such as cutting or perforation).",
+          "The established Claude skill pattern can serve as an example for other departments building their own analysis skills.",
+          "Could be integrated with an OEE/production monitoring dashboard in the future to form a single combined weekly meeting report."
+        ],
+        "limitations": [
+          "Excel data still needs to be exported and uploaded manually each week; it is not yet connected to real-time data.",
+          "The printing and assembly logic is currently maintained as two separate sets — if the data structure changes, both need to be updated in sync."
+        ],
+        "success_key": "Custom-building the compilation logic separately for the printing and assembly processes' different data structures, presenting both the quality and waste dimensions under one unified tracking model, and packaging the highly repetitive assembly workflow into a reusable Claude skill.",
+        "keywords": [
+          "AI application",
+          "Quality management",
+          "Waste management",
+          "Production dashboard",
+          "Bilingual interface",
+          "Printing process",
+          "Assembly process",
+          "Claude Skill"
+        ]
+      }
+    }
   }
 ]
