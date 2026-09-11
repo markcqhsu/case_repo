@@ -6679,5 +6679,201 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-032",
+    "number": 32,
+    "updated": "2026.09",
+    "url": "",
+    "screenshots": [
+      "assets/hcfd-mes-production-overview.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "製造執行系統整體規劃草案（HCFD MES — Full System Draft）",
+        "summary": "針對 Shrink Sleeve／Label／Convert 產線規劃的完整 MES（Manufacturing Execution System）系統草案，涵蓋從資料輸入、生產排程、機台佇列、工單路徑、現場操作、品質與缺陷、稼動與停機監控到報表的完整模組，目前已完成介面草案設計，其中「生產總覽（Production Overview）」模組已可呈現 Plan/Actual/Waste/OEE 即時看板與依站別的在製品（WIP）看板。",
+        "category": [
+          "生產管理",
+          "資料整合與分析",
+          "內部管理工具"
+        ],
+        "unit_request": "泰國宏福廠",
+        "unit_owner": "泰國宏福廠",
+        "author": "Pongwish Kampetch",
+        "status": "系統草案設計完成（UI/流程 Draft），尚未串接即時生產資料",
+        "region": "泰國廠區（Hon Chuan FD Packaging）",
+        "problem_background": "工廠目前缺乏一套完整的 MES 系統，各機台的排程、標準工時、實際工時、在製品狀態、品質缺陷、稼動與停機資訊，多依賴人工填報或事後整理 Excel，資料即時性不足，跨部門（印刷、組裝、檢驗等）也缺乏統一的資訊平台，難以支撐即時決策與長期產能規劃。",
+        "core_problem": "如何在不一次投入大型系統開發的前提下，先完成完整系統的架構與介面規劃，確立各模組（排程、佇列、現場操作、品質、監控、報表）的資料需求與呈現方式，再分階段實作與串接真實資料。",
+        "solution": "先以完整系統範疇規劃 MES 草案，涵蓋 11 大模組：Brief & Answers（需求訪談）、Dashboard×3（三種看板呈現方式）、Login、MPS（主生產排程）、Planning、Machine Queue（機台佇列）、Job Detail & Route（工單與路徑）、Operator Run（現場操作）、Quality & Defects（品質與缺陷）、Monitor & Downtime（稼動與停機）、Reports（報表）；其中「生產總覽」模組已完成三種看板框架（Station board／Machine wall／Bottleneck first），並以草稿資料呈現 Plan/Actual/Waste/OEE 等關鍵指標與依站別（Print/Slice/Glue/Inspect/Perf/Slitting）的在製品（WIP）看板，做為後續與真實生產資料串接的介面基礎。",
+        "process": [
+          "進行需求訪談與問題釐清（Brief & Answers）",
+          "規劃系統整體架構與模組範疇（MPS、Planning、Machine Queue、Job Detail & Route、Operator Run、Quality & Defects、Monitor & Downtime、Reports）",
+          "設計「生產總覽」看板的三種呈現框架（Station board／Machine wall／Bottleneck first）",
+          "以草稿資料驗證看板呈現邏輯（Plan/Actual/Waste/OEE、站別 WIP 看板）",
+          "（後續）依模組優先順序分階段串接真實生產資料與機台連網"
+        ],
+        "features": [
+          {
+            "name": "生產總覽看板",
+            "desc": "即時呈現 Plan・Shift、Actual、Waste %（含目標比較）、OEE（拆解為 A/P/Q）、開機機台數等關鍵指標"
+          },
+          {
+            "name": "三種看板框架",
+            "desc": "Station board（依站別 WIP）、Machine wall（依機台牆）、Bottleneck first（瓶頸優先），可依現場使用情境切換"
+          },
+          {
+            "name": "站別 WIP 看板",
+            "desc": "依 Print/Slice/Glue/Inspect/Perf/Slitting 等站別列出工單、機台、進度與異常狀態（如缺料等待、停機、web break）"
+          },
+          {
+            "name": "完整模組規劃",
+            "desc": "涵蓋排程（MPS/Planning）、機台佇列、工單路徑、現場操作、品質缺陷、稼動停機、報表等全系統範疇"
+          }
+        ],
+        "ai_usage": [
+          "協助進行系統需求訪談與問題釐清，整理成結構化的模組規劃",
+          "協助設計系統介面草案與資訊架構（IA），涵蓋全部 11 個模組",
+          "協助設計生產總覽看板的多種呈現框架，並以草稿資料驗證呈現邏輯"
+        ],
+        "tools": [
+          {
+            "name": "Claude（Anthropic AI 助理）",
+            "desc": "系統架構規劃、介面草案設計、看板邏輯設計"
+          }
+        ],
+        "results": [
+          "完成 MES 全系統範疇的模組規劃與介面草案（11 大模組）",
+          "完成「生產總覽」看板三種框架設計，並以草稿資料驗證可行性",
+          "建立後續分階段實作與資料串接的參考藍圖"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "提前釐清完整系統範疇與各模組需求，避免後續開發過程中反覆調整方向"
+          },
+          {
+            "name": "對客戶",
+            "desc": "長期有助於提升產能透明度、品質追溯與交期準確度"
+          },
+          {
+            "name": "對公司",
+            "desc": "以低成本的介面草案先行驗證系統設計，降低正式開發與導入 MES 系統的風險"
+          }
+        ],
+        "extensions": [
+          "生產總覽看板的三種框架設計，可作為其他工廠或產線導入 MES 看板的參考範本",
+          "各模組（機台佇列、工單路徑、品質缺陷等）可分階段獨立開發，逐步串接為完整系統",
+          "未來可與現有的 OEE、生產監控、品質/廢料、瓶頸分析等儀表板整合為單一 MES 平台的資料來源"
+        ],
+        "limitations": [
+          "目前僅為介面草案與草稿資料展示，尚未串接真實生產資料",
+          "機台連網（如 Samkoon HMI 透過 MQTT）與各模組資料庫仍待分階段建置",
+          "部分機台使用非 Samkoon 品牌的 HMI（如 PanelMaster），需額外規劃相容方案"
+        ],
+        "success_key": "先以完整系統範疇規劃介面草案並驗證看板呈現邏輯，讓後續分階段開發有明確藍圖依循，避免邊做邊改造成的重工與範疇失控",
+        "keywords": [
+          "AI應用",
+          "MES",
+          "製造執行系統",
+          "生產總覽看板",
+          "OEE",
+          "機台連網",
+          "Claude"
+        ]
+      },
+      "en": {
+        "title": "Manufacturing Execution System Master Plan Draft (HCFD MES — Full System Draft)",
+        "summary": "A full-scope Manufacturing Execution System (MES) draft planned for the Shrink Sleeve/Label/Convert production lines, covering the complete set of modules from data entry, production scheduling, machine queueing, job routing, floor operations, and quality/defects through to uptime/downtime monitoring and reporting. The interface draft has been completed, and the \"Production Overview\" module already shows a real-time Plan/Actual/Waste/OEE dashboard and a station-level work-in-progress (WIP) board.",
+        "category": [
+          "Production Management",
+          "Data Integration & Analysis",
+          "Internal Management Tools"
+        ],
+        "unit_request": "Hon Chuan FD Packaging (Thailand)",
+        "unit_owner": "Hon Chuan FD Packaging (Thailand)",
+        "author": "Pongwish Kampetch",
+        "status": "System draft design completed (UI/process draft); not yet connected to live production data",
+        "region": "Thailand plant (Hon Chuan FD Packaging)",
+        "problem_background": "The plant currently lacks a complete MES system. Scheduling, standard and actual working hours, WIP status, quality defects, and uptime/downtime information for each machine mostly rely on manual reporting or after-the-fact Excel compilation, leaving data far from real-time. There is also no unified information platform across departments (printing, assembly, inspection, etc.), making it hard to support real-time decisions and long-term capacity planning.",
+        "core_problem": "How to first complete the architecture and interface plan for a full system — establishing the data requirements and presentation approach for each module (scheduling, queueing, floor operations, quality, monitoring, reporting) — without committing to a large system build all at once, then implement and connect real data in stages.",
+        "solution": "Planned a full-scope MES draft first, covering 11 major modules: Brief & Answers (requirements interview), Dashboard×3 (three dashboard presentation styles), Login, MPS (Master Production Schedule), Planning, Machine Queue, Job Detail & Route, Operator Run, Quality & Defects, Monitor & Downtime, and Reports. The \"Production Overview\" module has completed three dashboard frameworks (Station board / Machine wall / Bottleneck first) and uses draft data to present key metrics such as Plan/Actual/Waste/OEE and a station-level (Print/Slice/Glue/Inspect/Perf/Slitting) WIP board, serving as the interface foundation for connecting real production data later.",
+        "process": [
+          "Conducted requirements interviews and problem clarification (Brief & Answers).",
+          "Planned the overall system architecture and module scope (MPS, Planning, Machine Queue, Job Detail & Route, Operator Run, Quality & Defects, Monitor & Downtime, Reports).",
+          "Designed three presentation frameworks for the \"Production Overview\" dashboard (Station board / Machine wall / Bottleneck first).",
+          "Verified the dashboard presentation logic with draft data (Plan/Actual/Waste/OEE, station-level WIP board).",
+          "(Next) Connect real production data and network the machines in stages, by module priority."
+        ],
+        "features": [
+          {
+            "name": "Production Overview dashboard",
+            "desc": "Shows key metrics in real time: Plan·Shift, Actual, Waste % (with target comparison), OEE (broken down into A/P/Q), and the number of running machines."
+          },
+          {
+            "name": "Three dashboard frameworks",
+            "desc": "Station board (WIP by station), Machine wall (by machine), and Bottleneck first — switchable based on the on-site use case."
+          },
+          {
+            "name": "Station-level WIP board",
+            "desc": "Lists jobs, machines, progress, and exception status (e.g. waiting on material, downtime, web break) by station — Print/Slice/Glue/Inspect/Perf/Slitting."
+          },
+          {
+            "name": "Full module planning",
+            "desc": "Covers the entire system scope: scheduling (MPS/Planning), machine queueing, job routing, floor operations, quality defects, uptime/downtime, and reporting."
+          }
+        ],
+        "ai_usage": [
+          "Helped conduct the system requirements interviews and problem clarification, organizing them into a structured module plan.",
+          "Helped design the system's interface draft and information architecture (IA), covering all 11 modules.",
+          "Helped design multiple presentation frameworks for the Production Overview dashboard and verified the presentation logic with draft data."
+        ],
+        "tools": [
+          {
+            "name": "Claude (Anthropic AI assistant)",
+            "desc": "System architecture planning, interface draft design, and dashboard logic design."
+          }
+        ],
+        "results": [
+          "Completed the module plan and interface draft for the full MES system scope (11 major modules).",
+          "Completed three framework designs for the \"Production Overview\" dashboard and verified feasibility with draft data.",
+          "Established a reference blueprint for staged implementation and data integration going forward."
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "Clarifies the full system scope and each module's requirements up front, avoiding repeated direction changes during later development."
+          },
+          {
+            "name": "For customers",
+            "desc": "Helps improve capacity transparency, quality traceability, and delivery accuracy over the long term."
+          },
+          {
+            "name": "For the company",
+            "desc": "Validates the system design with a low-cost interface draft first, reducing the risk of formal MES development and rollout."
+          }
+        ],
+        "extensions": [
+          "The three Production Overview dashboard frameworks can serve as a reference template for MES dashboards at other plants or lines.",
+          "Each module (machine queue, job routing, quality defects, etc.) can be developed independently in stages and gradually connected into a full system.",
+          "Could be integrated in the future with existing OEE, production monitoring, quality/waste, and bottleneck-analysis dashboards as data sources feeding a single MES platform."
+        ],
+        "limitations": [
+          "Currently only an interface draft with sample data; not yet connected to real production data.",
+          "Machine networking (e.g. Samkoon HMI via MQTT) and each module's database still need to be built in stages.",
+          "Some machines use non-Samkoon HMIs (such as PanelMaster) and will need additional compatibility planning."
+        ],
+        "success_key": "Planning the interface draft against the full system scope first and validating the dashboard presentation logic, giving later staged development a clear blueprint to follow and avoiding rework and scope creep from building and redesigning at the same time.",
+        "keywords": [
+          "AI application",
+          "MES",
+          "Manufacturing Execution System",
+          "Production Overview dashboard",
+          "OEE",
+          "Machine networking",
+          "Claude"
+        ]
+      }
+    }
   }
 ]
