@@ -6468,5 +6468,216 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-031",
+    "number": 31,
+    "updated": "2026.09",
+    "url": "",
+    "screenshots": [
+      "assets/production-dashboard-multideck.jpg",
+      "assets/production-dashboard-daily.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "生產監控儀表板與週會 KPI（Production Dashboard + Weekly Printing/Assembly KPI Meeting, incl. OEE）",
+        "summary": "運用 AI（Claude）將印刷（Printing）與組裝（Assembly）部門每日/每週生產原始 Excel 資料，自動彙整成標準化的 OEE 指標（Availability、Performance、Quality）與生產監控儀表板，做為每週 Printing/Assembly KPI 週會的核心報表依據。",
+        "category": [
+          "生產管理",
+          "資料整合與分析",
+          "流程自動化"
+        ],
+        "unit_request": "泰國宏福廠",
+        "unit_owner": "泰國宏福廠",
+        "author": "Pongwish Kampetch",
+        "status": "已完成，持續每週／每日更新使用中（目前版本 v10）",
+        "region": "泰國廠區（Hon Chuan FD Packaging）",
+        "problem_background": "每日各機台（印刷 BK 系列、組裝 BL 系列）都會產生大量生產與品質原始資料，過去需人工彙整成 OEE（Availability、Performance、Quality）指標，才能在每週 Printing/Assembly KPI 週會上呈現，過程耗時且容易出錯，也難以快速比較不同時間區間的趨勢。",
+        "core_problem": "資料分散在多份每日 Excel 報表中，需依機台、人員彙整並換算成標準 OEE 公式（A 25%、P 15%、Q 60% 加權），人工整理難以支撐每週固定週期的 KPI 檢討會議。",
+        "solution": "請 AI（Claude）讀取每日生產 Excel 原始資料，自動依機台/人員彙整產量、時間、速度、缺陷率，計算出 Availability、Performance、Quality 與加權 OEE，並產出可跨月比較趨勢的生產監控儀表板；同時將彙整結果作為每週 Printing/Assembly KPI 週會的標準報表輸出。",
+        "process": [
+          "匯出印刷（BK）與組裝（BL）機台每日生產與品質原始 Excel 資料",
+          "交由 AI 依機台/人員彙整 Good/Bad 產量、工時、速度、缺陷率",
+          "AI 依公式（A 25% + P 15% + Q 60% 加權）計算 OEE",
+          "產出生產監控儀表板（含多月趨勢、門檻/標準檢核）",
+          "於每週 Printing/Assembly KPI 週會中作為主要報告資料"
+        ],
+        "features": [
+          {
+            "name": "OEE 自動計算",
+            "desc": "依 Availability、Performance、Quality 加權公式自動算出各機台/人員 OEE"
+          },
+          {
+            "name": "生產監控儀表板",
+            "desc": "依機台顯示產量、速度與是否達標"
+          },
+          {
+            "name": "多月趨勢比較",
+            "desc": "可跨月份查看 OEE 與產量變化趨勢"
+          },
+          {
+            "name": "獨立化版本",
+            "desc": "使用者可自行上傳當週 Excel，不需內嵌固定資料"
+          },
+          {
+            "name": "週會報表輸出",
+            "desc": "作為每週 Printing/Assembly KPI 檢討會議的標準資料來源"
+          }
+        ],
+        "ai_usage": [
+          "自動讀取非固定格式的每日生產 Excel 並理解欄位意義",
+          "依公司既有 OEE 加權公式重新計算並驗證各機台/人員指標",
+          "產出前端網頁儀表板，並修正資料處理上的技術問題（例如日期時區偏移）"
+        ],
+        "tools": [
+          {
+            "name": "Claude（Anthropic AI 助理）",
+            "desc": "資料彙整、OEE 計算、儀表板網頁生成"
+          },
+          {
+            "name": "Excel",
+            "desc": "每日生產原始資料來源"
+          }
+        ],
+        "results": [
+          "每週 KPI 週會前的資料整理時間大幅縮短",
+          "印刷與組裝部門可依機台/人員快速比較 OEE 表現，聚焦改善重點",
+          "累積多月資料後可直接看出長期趨勢，不需每次重新整理"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "生產計畫與製程主管能更快掌握每週 KPI 現況，會議討論更聚焦於改善行動而非資料整理"
+          },
+          {
+            "name": "對客戶",
+            "desc": "產能與品質穩定度提升，間接支持準時交貨"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立可持續使用、可跨部門複製的標準化 OEE／KPI 追蹤工具，降低報表製作的人力成本"
+          }
+        ],
+        "extensions": [
+          "同一套邏輯可延伸至其他製程（如切割、包裝）的 OEE 追蹤",
+          "可與瓶頸分析（Bottleneck Analysis）儀表板整合，讓 KPI 週會同時檢視效率與瓶頸",
+          "未來可考慮串接即時機台資料，將週會報表從每週更新提升為即時監控"
+        ],
+        "limitations": [
+          "目前仍需每週／每日手動匯出 Excel 並交由 AI 處理，尚未全自動化串接",
+          "儀表板為獨立 HTML 檔案，使用者需自行上傳當期資料才能更新畫面"
+        ],
+        "success_key": "以公司既有 OEE 加權公式為基礎，透過 AI 快速將分散的日資料轉換為標準化週報，並緊密對接既有的 Printing/Assembly KPI 週會流程，讓工具直接融入既有管理節奏",
+        "keywords": [
+          "AI應用",
+          "OEE",
+          "生產儀表板",
+          "KPI週會",
+          "印刷製程",
+          "組裝製程",
+          "Claude"
+        ]
+      },
+      "en": {
+        "title": "Production Monitoring Dashboard & Weekly KPI Meeting (Production Dashboard + Weekly Printing/Assembly KPI Meeting, incl. OEE)",
+        "summary": "Used AI (Claude) to automatically turn the printing and assembly departments' daily/weekly raw production Excel data into standardized OEE metrics (Availability, Performance, Quality) and a production monitoring dashboard, serving as the core report for the weekly Printing/Assembly KPI meeting.",
+        "category": [
+          "Production Management",
+          "Data Integration & Analysis",
+          "Process Automation"
+        ],
+        "unit_request": "Hon Chuan FD Packaging (Thailand)",
+        "unit_owner": "Hon Chuan FD Packaging (Thailand)",
+        "author": "Pongwish Kampetch",
+        "status": "Completed, in continuous weekly/daily use (currently version v10)",
+        "region": "Thailand plant (Hon Chuan FD Packaging)",
+        "problem_background": "Every day, each machine (printing BK series, assembly BL series) generates a large amount of raw production and quality data. In the past this had to be manually compiled into OEE metrics (Availability, Performance, Quality) for presentation at the weekly Printing/Assembly KPI meeting — a process that was time-consuming, error-prone, and made it hard to quickly compare trends across different time periods.",
+        "core_problem": "Data was scattered across multiple daily Excel reports and needed to be compiled by machine and operator, then converted using the standard OEE formula (A 25%, P 15%, Q 60% weighting) — manual compilation could not keep up with the fixed weekly cadence of the KPI review meeting.",
+        "solution": "Had AI (Claude) read the raw daily production Excel data, automatically compiling output, time, speed, and defect rate by machine/operator, and calculating Availability, Performance, Quality, and the weighted OEE, producing a production monitoring dashboard with cross-month trend comparison. The compiled results became the standard report output for the weekly Printing/Assembly KPI meeting.",
+        "process": [
+          "Export the daily production and quality raw Excel data for the printing (BK) and assembly (BL) machines.",
+          "Have AI compile Good/Bad output, hours, speed, and defect rate by machine/operator.",
+          "AI calculates OEE using the formula (A 25% + P 15% + Q 60% weighting).",
+          "Produces a production monitoring dashboard (including multi-month trends and threshold/standard checks).",
+          "Used as the main reporting material at the weekly Printing/Assembly KPI meeting."
+        ],
+        "features": [
+          {
+            "name": "Automatic OEE calculation",
+            "desc": "Automatically calculates each machine's/operator's OEE using the Availability, Performance, and Quality weighted formula."
+          },
+          {
+            "name": "Production monitoring dashboard",
+            "desc": "Shows output, speed, and whether targets are met, by machine."
+          },
+          {
+            "name": "Multi-month trend comparison",
+            "desc": "Lets users view OEE and output trends across months."
+          },
+          {
+            "name": "Standalone version",
+            "desc": "Users can upload the current week's Excel themselves; no fixed data needs to be embedded."
+          },
+          {
+            "name": "Weekly meeting report output",
+            "desc": "Serves as the standard data source for the weekly Printing/Assembly KPI review meeting."
+          }
+        ],
+        "ai_usage": [
+          "Automatically read daily production Excel files with no fixed format and understood the meaning of each column.",
+          "Recalculated and verified each machine's/operator's metrics based on the company's existing OEE weighting formula.",
+          "Produced the front-end web dashboard and fixed technical data-processing issues (e.g. date/timezone offsets)."
+        ],
+        "tools": [
+          {
+            "name": "Claude (Anthropic AI assistant)",
+            "desc": "Data compilation, OEE calculation, and dashboard web page generation."
+          },
+          {
+            "name": "Excel",
+            "desc": "Source of the daily raw production data."
+          }
+        ],
+        "results": [
+          "Greatly reduced the data-preparation time before the weekly KPI meeting.",
+          "The printing and assembly departments can quickly compare OEE performance by machine/operator and focus on improvement priorities.",
+          "After accumulating several months of data, long-term trends are visible directly without re-compiling each time."
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "Production planning and process supervisors can grasp the weekly KPI status faster, letting meetings focus on improvement actions rather than data preparation."
+          },
+          {
+            "name": "For customers",
+            "desc": "Improved capacity and quality stability indirectly supports on-time delivery."
+          },
+          {
+            "name": "For the company",
+            "desc": "Establishes a sustainable, cross-department-replicable standardized OEE/KPI tracking tool, reducing the labor cost of report production."
+          }
+        ],
+        "extensions": [
+          "The same logic can be extended to OEE tracking in other processes (such as cutting or packaging).",
+          "Can be integrated with a bottleneck analysis dashboard, letting the KPI meeting review both efficiency and bottlenecks at once.",
+          "Real-time machine data integration could be considered in the future, upgrading the weekly report to real-time monitoring."
+        ],
+        "limitations": [
+          "Excel still needs to be exported manually each week/day and processed by AI; it is not yet fully automated end-to-end.",
+          "The dashboard is a standalone HTML file; users need to upload the current period's data themselves to refresh the view."
+        ],
+        "success_key": "Building on the company's existing OEE weighting formula, using AI to quickly convert scattered daily data into a standardized weekly report, and tightly integrating it with the existing Printing/Assembly KPI meeting process so the tool fits directly into the existing management rhythm.",
+        "keywords": [
+          "AI application",
+          "OEE",
+          "Production dashboard",
+          "KPI meeting",
+          "Printing process",
+          "Assembly process",
+          "Claude"
+        ]
+      }
+    }
   }
 ]
