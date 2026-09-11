@@ -1122,6 +1122,13 @@ document.querySelectorAll('.lang-btn').forEach(btn => {
 });
 window.addEventListener('hashchange', routeFromHash);
 
+document.addEventListener('click', (e) => {
+  const details = document.getElementById('changelogDetails');
+  if (details.open && !details.contains(e.target)) {
+    details.open = false;
+  }
+});
+
 load();
 </script>
 
