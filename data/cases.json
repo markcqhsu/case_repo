@@ -7039,5 +7039,196 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-034",
+    "number": 34,
+    "updated": "2026.09",
+    "screenshots": [
+      "assets/asepticone-schedule-editor-demo.png"
+    ],
+    "url": "https://asepticone.netlify.app/",
+    "i18n": {
+      "zh": {
+        "title": "無菌飲料一廠(PET1線) 生產排程編輯器",
+        "summary": "一套線上生產排程編輯工具，可新增/修改批次與充填時段，於明細中選取棧板紙料號並鍵入需求箱數，並以甘特圖呈現整體排程，完成後可一鍵產出 PDF，方便現場與相關單位查閱、留存排程結果。",
+        "category": [
+          "生產管理",
+          "流程自動化",
+          "內部管理工具"
+        ],
+        "unit_request": "飲料代工部",
+        "unit_owner": "飲料代工部",
+        "author": "陳聖如",
+        "status": "開發完成，供現場排程調整與查閱使用",
+        "region": "台灣",
+        "problem_background": "PET1 線的月排程過去多以 Excel 或紙本方式製作與調整，遇到批次異動時，產量（噸）、箱數、板面數等數據需要人工重新試算，過程繁瑣且容易出錯，相關單位也不易即時查看最新排程結果。",
+        "core_problem": "如何讓排程調整更直覺、資料自動運算，並方便將排程結果輸出留存與分享給相關單位查閱。",
+        "solution": "以網頁形式打造可視化的生產排程編輯器，透過甘特圖呈現批次與充填時段，並自動依輸入的箱數換算產量（噸）、板面數等數據，讓排程調整與查閱更即時、直覺。",
+        "process": [
+          "盤點原有 7 月排程資料與排程邏輯（批次、產品、充填時段、棧板紙料號等欄位）",
+          "使用 Claude Code 協助開發網頁應用，建立排程資料結構與甘特圖介面",
+          "實作批次新增/編輯、產量與板面數自動計算、PDF 匯出等功能",
+          "部署至 Netlify 供內部使用與測試"
+        ],
+        "features": [
+          {
+            "name": "排程甘特圖",
+            "desc": "以時間軸方式呈現各批次的充填起訖時間，可全部展開/收合查看"
+          },
+          {
+            "name": "批次新增與編輯",
+            "desc": "可新增批次、修改充填時段，並在明細中選取棧板紙料號、輸入需求箱數"
+          },
+          {
+            "name": "自動統計",
+            "desc": "即時計算總批次數、總產量（箱／噸）、產品品項數"
+          },
+          {
+            "name": "重置原始排程",
+            "desc": "可一鍵重置回原始 7 月排程，方便比對調整前後差異"
+          },
+          {
+            "name": "PDF 匯出",
+            "desc": "將目前排程產出成 PDF 文件"
+          }
+        ],
+        "ai_usage": [
+          "使用 Claude Code 協助規劃網頁架構、撰寫排程邏輯與甘特圖呈現的前端程式碼",
+          "由 AI 協助將排程規則（產量、箱數、板面數換算）轉換為可自動運算的網頁功能"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "協助設計並開發整個排程編輯器網頁應用"
+          },
+          {
+            "name": "Netlify",
+            "desc": "網站部署與託管"
+          }
+        ],
+        "results": [
+          "排程異動時甘特圖與統計數字可即時同步更新，不需再手動重算產量、箱數與板面數",
+          "排程結果可一鍵匯出 PDF，方便現場與相關單位留存、查閱與溝通"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "排程人員可更快速調整批次與充填時段，並即時掌握總產量、板面數等統計資訊"
+          },
+          {
+            "name": "對公司",
+            "desc": "減少排程試算的人工作業與錯誤風險，提升生產排程資訊的透明度與流通效率"
+          }
+        ],
+        "extensions": [
+          "同樣的排程編輯器架構可延伸套用至其他產線或廠區的生產排程管理",
+          "未來可考慮串接實際生產資料庫，取代目前手動輸入的方式"
+        ],
+        "limitations": [
+          "資料目前是自動儲存於本機瀏覽器，若清除瀏覽器快取或更換裝置，排程資料可能會遺失，建議定期匯出 PDF 留存",
+          "尚未串接正式生產或 ERP 系統，排程資料仍需人工輸入與維護"
+        ],
+        "success_key": "以現場實際使用的 7 月排程資料為基礎進行開發，並以甘特圖與自動運算貼近排程人員原本的作業邏輯，降低導入門檻",
+        "keywords": [
+          "生產排程",
+          "Claude Code",
+          "PET1線",
+          "無菌飲料",
+          "甘特圖",
+          "內部工具"
+        ]
+      },
+      "en": {
+        "title": "Aseptic Beverage Plant 1 (PET1 Line) Production Schedule Editor",
+        "summary": "An online production schedule editor for adding and editing batches and filling time slots, selecting the correct pallet paper spec and entering required case counts in the detail view, and visualizing the whole schedule as a Gantt chart. The finished schedule can be exported to PDF with one click for the plant floor and related teams to review and keep on record.",
+        "category": [
+          "Production Management",
+          "Process Automation",
+          "Internal Management Tools"
+        ],
+        "unit_request": "Beverage OEM Department",
+        "unit_owner": "Beverage OEM Department",
+        "author": "Chen Sheng-Ju",
+        "status": "Development complete, in use on the floor for schedule adjustment and lookup",
+        "region": "Taiwan",
+        "problem_background": "The monthly schedule for the PET1 line was previously built and adjusted mostly in Excel or on paper. Whenever a batch changed, figures such as output (tons), case counts, and pallet-face counts had to be recalculated by hand — a tedious, error-prone process — and related teams could not easily see the latest schedule.",
+        "core_problem": "How to make schedule adjustments more intuitive, have the numbers recalculate automatically, and make it easy to export and share the resulting schedule with related teams.",
+        "solution": "Built a web-based, visual production schedule editor that displays batches and filling time slots as a Gantt chart, and automatically derives output (tons), pallet-face counts, and other figures from the entered case counts — making schedule adjustments and lookups more immediate and intuitive.",
+        "process": [
+          "Reviewed the existing July schedule data and scheduling logic (batch, product, filling time slot, pallet paper spec, and other fields).",
+          "Used Claude Code to help build the web app, establishing the schedule data structure and the Gantt chart interface.",
+          "Implemented batch creation/editing, automatic output and pallet-face calculation, and PDF export.",
+          "Deployed to Netlify for internal use and testing."
+        ],
+        "features": [
+          {
+            "name": "Schedule Gantt chart",
+            "desc": "Shows each batch's filling start/end time on a timeline, with expand-all/collapse-all views."
+          },
+          {
+            "name": "Batch creation and editing",
+            "desc": "Add batches, edit filling time slots, and in the detail view select the pallet paper spec and enter the required case count."
+          },
+          {
+            "name": "Automatic statistics",
+            "desc": "Instantly calculates total batch count, total output (cases/tons), and number of product SKUs."
+          },
+          {
+            "name": "Reset to original schedule",
+            "desc": "One click restores the original July schedule, making it easy to compare before/after adjustments."
+          },
+          {
+            "name": "PDF export",
+            "desc": "Exports the current schedule as a PDF document."
+          }
+        ],
+        "ai_usage": [
+          "Used Claude Code to help plan the web app architecture and write the scheduling logic and Gantt chart front-end code.",
+          "AI helped turn the scheduling rules (output, case count, and pallet-face conversions) into automatically calculated web app functionality."
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "Helped design and build the entire schedule editor web app."
+          },
+          {
+            "name": "Netlify",
+            "desc": "Website deployment and hosting."
+          }
+        ],
+        "results": [
+          "When the schedule changes, the Gantt chart and statistics update in sync instantly, removing the need to manually recalculate output, case counts, and pallet-face counts.",
+          "The schedule can be exported to PDF with one click, making it easy for the floor and related teams to keep records, review, and communicate."
+        ],
+        "value": [
+          {
+            "name": "For the business unit",
+            "desc": "Schedulers can adjust batches and filling time slots faster, with total output and pallet-face statistics available at a glance."
+          },
+          {
+            "name": "For the company",
+            "desc": "Reduces manual recalculation work and the risk of errors, improving the transparency and flow of production schedule information."
+          }
+        ],
+        "extensions": [
+          "The same schedule editor architecture can be extended to production schedule management for other lines or plants.",
+          "Could later be connected to the actual production database, replacing the current manual data entry."
+        ],
+        "limitations": [
+          "Data is currently auto-saved only in the local browser; clearing the browser cache or switching devices may lose the schedule data, so exporting PDFs periodically is recommended.",
+          "Not yet connected to a formal production or ERP system — schedule data still needs to be entered and maintained manually."
+        ],
+        "success_key": "Built on the actual July schedule data used on the floor, with the Gantt chart and automatic calculations mirroring schedulers' existing workflow, which lowered the adoption barrier.",
+        "keywords": [
+          "Production Scheduling",
+          "Claude Code",
+          "PET1 Line",
+          "Aseptic Beverage",
+          "Gantt Chart",
+          "Internal Tool"
+        ]
+      }
+    }
   }
 ]
