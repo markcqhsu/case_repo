@@ -7230,5 +7230,377 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-035",
+    "number": 35,
+    "updated": "2026.09",
+    "video": [],
+    "screenshot": "assets/sea-hr-kpi-self-evaluation-demo.jpg",
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "跨國員工績效自評與多階主管評核 Web App",
+        "summary": "運用 Google Sheets、Google Apps Script 與網頁前端技術，建立一套適用於東南亞多國據點的員工績效考核系統。系統支援員工個人化 KPI、自評、Leadership／Individual 差異化評分、多階 Reviewer 依序評核、主管平均給分及多語言介面；員工不需具備公司 Google 帳號，即可透過工號與 PIN 登入完成考核。",
+        "category": [
+          "人力資源管理",
+          "績效管理",
+          "流程數位化",
+          "跨國管理",
+          "內部系統開發"
+        ],
+        "unit_request": "東南亞總部人力資源單位",
+        "unit_owner": "東南亞總部人力資源單位",
+        "author": "禤珮宜",
+        "status": "已完成可操作測試版本，持續進行多語言配對、權限規則與正式上線驗證",
+        "region": "東南亞六國據點：柬埔寨、緬甸、越南、泰國、印尼、馬來西亞，以及總部管理端",
+        "problem_background": "公司各國廠區人數差異大，單一據點約 13 至 400 人，且並非所有員工都有公司 Google 帳號。考核 KPI 採逐人設定，每位員工的 KPI 項目、權重與 Reviewer 路徑皆可能不同；Reviewer 1 至 Reviewer 3 必須依序評核，且 Reviewer 與 Reviewee 不一定隸屬相同廠區。原先以 Google Form 規劃時，難以同時處理個人化 KPI、自動帶入員工資料、差異化評分、多階簽核及跨國語言需求，而付費 AppSheet 亦不符合專案的成本條件。",
+        "core_problem": "如何在不增加軟體授權成本、員工沒有公司 Google 帳號的條件下，建立一套能支援個人化 KPI、跨廠區多階主管依序評核、不同職務定位評分公式、多語言操作、資料追蹤及重複送出控管的績效考核工具。",
+        "solution": "以 Google Sheets 作為資料庫，搭配 Google Apps Script Web App 建立員工自評與 Reviewer 評核兩套網頁介面。資料結構拆分為員工主檔、KPI 指派、登入權限、自評主檔、自評明細、Reviewer 主檔、評核指派、主管評核主檔及 KPI 評核明細等工作表；員工與 Reviewer 以 ID、PIN 及啟用狀態登入。系統依 Employee Type 自動套用評分架構，並以 Submission ID、Reviewer Level、狀態欄位與伺服器端驗證維持流程順序和資料完整性。",
+        "process": [
+          "釐清制度規則：確認 KPI 採逐人設定、評分範圍為 0 至 100 的整數，以及 Leadership／Individual 的評分組成。",
+          "建立 Google Sheets 資料架構：完成 01_Employee_Master 至 09_KPI_Review_Response 等主檔、指派表與結果表。",
+          "建立員工登入與自評頁面：透過 Emp ID 與 Access PIN 登入，自動顯示基本資料與個人 KPI。",
+          "建立兩頁式自評流程：第一頁填寫 KPI，第二頁填寫 Teamwork 及依 Employee Type 決定是否顯示 Leadership。",
+          "建立送出前檢核：驗證必填欄位、整數分數、KPI 權重及加權後的自評總分。",
+          "建立 Reviewer 管理與評核流程：設定 Reviewer 1 至 3，依序開放待評案件，並顯示員工自評與前階 Reviewer 紀錄。",
+          "建立最終評分邏輯：各階 Reviewer 獨立留存分數與評語，完成後以所有 Reviewer 分數平均作為主管評核平均給分。",
+          "建立多語言介面：支援 English、Thai、Vietnamese、Malay、Nepali、Indonesian、Burmese、Khmer，並依各國需求搭配中文或英文。",
+          "進行錯誤排除與測試：處理 Spreadsheet ID、欄位名稱、百分比格式、送出按鈕、重複送出、員工類型及工作表同步等問題。",
+          "建立手動同步功能：由 01_Employee_Master 將新增的 Active 員工安全地補入 03_Access_Control 與 07_Review_Assignment，不重排或覆蓋既有資料。",
+          "儲存程式、執行 testConfiguration、更新 Web App deployment，並以不同員工類型與 Reviewer 層級進行端到端測試。"
+        ],
+        "features": [
+          {
+            "name": "無 Google 帳號登入",
+            "desc": "員工及 Reviewer 可使用 ID 與 PIN 登入，不必具備公司 Google 帳號。"
+          },
+          {
+            "name": "個人化 KPI",
+            "desc": "依 Emp ID 載入每位員工專屬的 KPI Item、Weight、Score 與 Comment。"
+          },
+          {
+            "name": "員工資料確認",
+            "desc": "自動顯示廠區、工號、姓名、部門、單位、職稱及員工定位，讓員工確認或填寫更正說明。"
+          },
+          {
+            "name": "兩頁式自評",
+            "desc": "第一頁為 KPI，第二頁為 Teamwork、Leadership 及其他建議，降低單頁資訊量。"
+          },
+          {
+            "name": "差異化評分",
+            "desc": "Individual 為 KPI 80%＋Teamwork 20%；Leadership 為 KPI 60%＋Teamwork 20%＋Leadership 20%。"
+          },
+          {
+            "name": "分數驗證",
+            "desc": "所有評分限填 0 至 100 的整數，並檢查 KPI 權重合計是否為 100%。"
+          },
+          {
+            "name": "送出前確認",
+            "desc": "在正式送出前顯示各構面分數、占比及自評總分，供員工再次核對。"
+          },
+          {
+            "name": "重複送出控管",
+            "desc": "Self-Evaluation Status 為 Submitted 時阻止再次進入自評，後端送出時亦再次檢查狀態。"
+          },
+          {
+            "name": "多階 Reviewer 流程",
+            "desc": "Reviewer 1 至 3 依序評核，後階 Reviewer 可查看員工自評及前階 Reviewer 的分數與評語。"
+          },
+          {
+            "name": "Reviewer 待辦清單",
+            "desc": "在 Reviewer 頁首顯示待評核總筆數，並僅開放目前應由該 Reviewer 處理的案件。"
+          },
+          {
+            "name": "主管評分彙整",
+            "desc": "保留各階 Reviewer 獨立紀錄，全部完成後計算主管評核平均給分。"
+          },
+          {
+            "name": "多語言介面",
+            "desc": "支援八種主要語言，並依語言群組顯示「當地語言＋中文」或「當地語言＋英文」。"
+          },
+          {
+            "name": "安全同步",
+            "desc": "以手動函式補入新進員工，避免使用動態公式造成 Emp ID 與 PIN／Reviewer 指派錯位。"
+          }
+        ],
+        "ai_usage": [
+          "將跨國績效制度需求轉換為可執行的資料表結構、欄位規格與系統流程。",
+          "協助產出及迭代 Google Apps Script、HTML、CSS 與 JavaScript 程式碼。",
+          "依錯誤畫面與 Execution log 判讀 Spreadsheet ID、欄位缺漏、百分比格式及前後端事件問題。",
+          "將 Leadership／Individual、KPI 權重、多階 Reviewer 等制度規則轉換為驗證與計分邏輯。",
+          "設計多語言介面、雙語搭配方式、欄位文字、提示語、錯誤訊息及送出提醒。",
+          "協助進行程式語法檢查、重複函式檢查、流程測試與部署步驟整理。",
+          "在開發過程中即時提供操作教學，使非資訊背景的人資人員可自行維護與測試系統。"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "desc": "作為員工、KPI、登入權限、Reviewer 指派及評核結果的資料庫。"
+          },
+          {
+            "name": "Google Apps Script",
+            "desc": "執行登入驗證、資料讀寫、計分、狀態控管、流程管理與 Web App 部署。"
+          },
+          {
+            "name": "HTML／CSS／JavaScript",
+            "desc": "建立員工自評與 Reviewer 評核網頁、互動式檢核及多語言介面。"
+          },
+          {
+            "name": "Google Apps Script Execution log",
+            "desc": "追蹤伺服器端錯誤並驗證程式執行結果。"
+          },
+          {
+            "name": "生成式 AI",
+            "desc": "協助需求分析、系統設計、程式產出、除錯、翻譯及文件化。"
+          }
+        ],
+        "results": [
+          "完成可登入、可讀取個人 KPI、可計分並可送出的員工自評 Web App 測試版本。",
+          "完成 Leadership 與 Individual 兩種評分架構及條件式 Leadership 區段。",
+          "完成 Reviewer 1 至 3 依序評核、前階結果查閱、獨立紀錄及平均給分流程。",
+          "完成 9 張核心 Google Sheets 工作表的資料架構與欄位驗證機制。",
+          "完成送出前分數檢核、必填驗證、0 至 100 整數限制及重複送出阻擋。",
+          "完成 Reviewer 待評核總筆數顯示及員工／Reviewer 專用登入權限管理。",
+          "完成八種語言的介面架構，並建立不同語言搭配中文或英文的呈現規則。",
+          "完成新增員工手動同步至 Access Control 與 Review Assignment 的安全機制。",
+          "在不採購 AppSheet 或其他付費 HR 系統的情況下，驗證 Google Workspace 工具可支援此績效流程。"
+        ],
+        "value": [
+          {
+            "name": "對人資單位",
+            "desc": "將分散的員工、KPI、Reviewer 與評核結果集中管理，降低人工製表、追蹤及彙整負擔。"
+          },
+          {
+            "name": "對員工",
+            "desc": "不需公司 Google 帳號即可操作，並可在送出前清楚確認個人資料、KPI、各構面分數及總分。"
+          },
+          {
+            "name": "對主管",
+            "desc": "提供明確的待辦清單、前階評核資訊及一致的評分介面，支援跨廠區依序評核。"
+          },
+          {
+            "name": "對公司",
+            "desc": "以低成本方式建立可追溯、可複製、可跨國使用的績效考核流程，提升制度一致性及資料透明度。"
+          }
+        ],
+        "extensions": [
+          "複製整份 Google Sheet 與綁定的 Apps Script，即可建立下一個半年考核週期的獨立版本。",
+          "可調整 Employee Master、KPI Assignment 及 Review Assignment，快速套用至不同國家、廠區或人數規模。",
+          "可擴充正式的退回修改、HR 重新開放、Email 通知、逾期提醒及進度儀表板功能。",
+          "可增加考勤、核心職能、價值觀、人才盤點或校準會議等績效構面。",
+          "相同的 ID／PIN、個人化題目及多階審核架構，可延伸至訓練需求調查、試用期考核、晉升評核及內部申請流程。",
+          "多語言字典可獨立維護，未來可增加其他國家語言或調整第二顯示語言。"
+        ],
+        "limitations": [
+          "Google Apps Script 仍受每日配額、單次執行時間與大量同時存取影響，正式上線前應依最高人數進行情境測試。",
+          "PIN 為輕量型登入機制，不等同企業級 SSO；Google Sheet、Apps Script 與部署權限必須限制於必要管理者。",
+          "Emp ID、Reviewer ID、欄位名稱及工作表名稱必須保持唯一且一致，否則可能造成登入、指派或資料寫入錯誤。",
+          "每位員工的 Active KPI 權重合計必須為 100%，Weight 儲存格式需統一，避免 35 與 35% 被重複換算。",
+          "新增員工目前採手動執行 syncEmployeeRecords，不使用自動 trigger；同步後仍需由 HR 設定 PIN、啟用狀態及 Reviewer。",
+          "Submitted 後若需修改，不應只把狀態改回 Not Submitted，否則可能產生新的 Submission ID 及重複明細；應建立正式的 Reopen 流程。",
+          "修改 Code.gs、Index.html、Reviewer.html 或 Translations.html 後，必須建立 New version 並重新 Deploy，正式網址才會載入新版。",
+          "多語言文字應由各國 HR 或母語使用者複核，以確保制度用語與當地語意正確。",
+          "複製 Google Sheet 後，仍須檢查 Spreadsheet ID、deployment、授權、網址及資料清除範圍，避免沿用前一期敏感資料。"
+        ],
+        "success_key": "先將績效制度規則、員工定位、計分公式、Reviewer 順序與資料責任定義清楚，再進行程式設計；同時維持工作表欄位標準化、以伺服器端進行關鍵驗證，並使用不同國家、員工類型及 Reviewer 層級進行完整端到端測試。人資需保有主檔、權限、Reviewer 指派與版本部署的治理責任，才能讓低成本工具長期穩定運作。",
+        "keywords": [
+          "績效考核",
+          "員工自評",
+          "KPI",
+          "Google Apps Script",
+          "Google Sheets",
+          "Web App",
+          "多階主管評核",
+          "跨國人資",
+          "多語言",
+          "流程數位化",
+          "Reviewer",
+          "Leadership",
+          "Individual"
+        ]
+      },
+      "en": {
+        "title": "Cross-Border Employee Performance Self-Evaluation & Multi-Level Manager Review Web App",
+        "summary": "Built with Google Sheets, Google Apps Script, and web front-end technology, this is an employee performance evaluation system for multiple sites across Southeast Asia. It supports per-employee personalized KPIs, self-evaluation, differentiated scoring for Leadership vs. Individual roles, sequential multi-level reviewer evaluation, averaged manager scoring, and a multi-language interface. Employees can complete the evaluation by logging in with their employee ID and PIN, without needing a company Google account.",
+        "category": [
+          "Human Resource Management",
+          "Performance Management",
+          "Process Digitalization",
+          "Cross-Border Management",
+          "Internal System Development"
+        ],
+        "unit_request": "Southeast Asia Headquarters HR Unit",
+        "unit_owner": "Southeast Asia Headquarters HR Unit",
+        "author": "Xuan Pei-Yi",
+        "status": "Working test version complete; ongoing work on multi-language pairing, permission rules, and go-live validation",
+        "region": "Six Southeast Asia sites (Cambodia, Myanmar, Vietnam, Thailand, Indonesia, Malaysia) plus HQ administration",
+        "problem_background": "Plant headcount varies widely across countries, from about 13 to 400 people per site, and not every employee has a company Google account. KPIs are configured per individual employee, so each employee's KPI items, weights, and reviewer path can differ; Reviewer 1 through Reviewer 3 must evaluate in sequence, and a reviewer and reviewee are not necessarily at the same plant. A Google Forms-based design struggled to handle personalized KPIs, auto-populated employee data, differentiated scoring, multi-level sign-off, and cross-border language needs at the same time, while paid AppSheet did not fit the project's cost constraints.",
+        "core_problem": "How to build a performance evaluation tool that supports personalized KPIs, sequential multi-level manager review across plants, different scoring formulas by employee type, multi-language operation, data tracking, and duplicate-submission control — without adding software licensing cost and without employees having a company Google account.",
+        "solution": "Google Sheets serves as the database, paired with a Google Apps Script Web App that provides two web interfaces: employee self-evaluation and reviewer evaluation. The data model is split across sheets including the employee master, KPI assignment, login access control, self-evaluation master and detail, reviewer master, review assignment, manager review master, and KPI review detail; employees and reviewers log in with an ID, PIN, and active status. The system automatically applies the right scoring structure based on Employee Type, and uses a Submission ID, Reviewer Level, and status fields together with server-side validation to keep the workflow order and data integrity intact.",
+        "process": [
+          "Clarified the policy rules: confirmed KPIs are set per employee, scores are whole numbers from 0 to 100, and defined the Leadership vs. Individual scoring composition.",
+          "Built the Google Sheets data architecture: completed master sheets, assignment sheets, and result sheets from 01_Employee_Master through 09_KPI_Review_Response.",
+          "Built the employee login and self-evaluation page: employees log in with Emp ID and Access PIN, which auto-displays their basic info and personal KPIs.",
+          "Built a two-page self-evaluation flow: page one for KPIs, page two for Teamwork and, depending on Employee Type, Leadership.",
+          "Built pre-submission checks: validation of required fields, whole-number scores, KPI weights, and the weighted self-evaluation total score.",
+          "Built reviewer management and review flow: configured Reviewer 1 through 3, opened pending cases in sequence, and displayed the employee's self-evaluation plus prior reviewers' records.",
+          "Built the final scoring logic: each reviewer level keeps its own score and comments independently, and once all reviewers are done, their scores are averaged into the manager review score.",
+          "Built the multi-language interface: supports English, Thai, Vietnamese, Malay, Nepali, Indonesian, Burmese, and Khmer, paired with Chinese or English depending on the country's needs.",
+          "Debugged and tested: resolved issues with Spreadsheet ID, field names, percentage formatting, submit button behavior, duplicate submissions, employee type handling, and sheet synchronization.",
+          "Built a manual sync function: safely adds newly Active employees from 01_Employee_Master into 03_Access_Control and 07_Review_Assignment without reordering or overwriting existing data.",
+          "Saved the code, ran testConfiguration, updated the Web App deployment, and ran end-to-end tests across different employee types and reviewer levels."
+        ],
+        "features": [
+          {
+            "name": "No Google account login",
+            "desc": "Employees and reviewers can log in with an ID and PIN, without needing a company Google account."
+          },
+          {
+            "name": "Personalized KPIs",
+            "desc": "Loads each employee's own KPI items, weights, scores, and comments based on their Emp ID."
+          },
+          {
+            "name": "Employee data confirmation",
+            "desc": "Automatically displays plant, employee ID, name, department, section, job title, and employee type, letting the employee confirm or note corrections."
+          },
+          {
+            "name": "Two-page self-evaluation",
+            "desc": "Page one covers KPIs; page two covers Teamwork, Leadership, and other suggestions, reducing information density per page."
+          },
+          {
+            "name": "Differentiated scoring",
+            "desc": "Individual = KPI 80% + Teamwork 20%; Leadership = KPI 60% + Teamwork 20% + Leadership 20%."
+          },
+          {
+            "name": "Score validation",
+            "desc": "All scores must be whole numbers from 0 to 100, and the system checks that KPI weights total 100%."
+          },
+          {
+            "name": "Pre-submission confirmation",
+            "desc": "Shows each score component, its weighting, and the total self-evaluation score for the employee to double-check before final submission."
+          },
+          {
+            "name": "Duplicate-submission control",
+            "desc": "Blocks re-entry into the self-evaluation once Self-Evaluation Status is Submitted, with the same check re-verified on the back end at submit time."
+          },
+          {
+            "name": "Multi-level reviewer flow",
+            "desc": "Reviewer 1 through 3 evaluate in sequence; later reviewers can see the employee's self-evaluation and earlier reviewers' scores and comments."
+          },
+          {
+            "name": "Reviewer to-do list",
+            "desc": "Shows the total pending review count at the top of the reviewer page, and only opens cases that are currently that reviewer's turn to handle."
+          },
+          {
+            "name": "Manager scoring rollup",
+            "desc": "Keeps each reviewer level's record independent, then computes the averaged manager review score once all reviewers are done."
+          },
+          {
+            "name": "Multi-language interface",
+            "desc": "Supports eight major languages, displaying either 'local language + Chinese' or 'local language + English' depending on the language group."
+          },
+          {
+            "name": "Safe sync",
+            "desc": "Uses a manual function to add new employees, avoiding dynamic formulas that could misalign Emp ID with PIN or reviewer assignment."
+          }
+        ],
+        "ai_usage": [
+          "Translated cross-border performance policy requirements into an executable data table structure, field specifications, and system flow.",
+          "Helped produce and iterate on Google Apps Script, HTML, CSS, and JavaScript code.",
+          "Diagnosed Spreadsheet ID issues, missing fields, percentage formatting, and front-end/back-end event problems from error screens and the Execution log.",
+          "Converted policy rules — Leadership vs. Individual, KPI weighting, multi-level reviewers — into validation and scoring logic.",
+          "Designed the multi-language interface, bilingual pairing approach, field labels, prompts, error messages, and submission reminders.",
+          "Helped with code syntax checks, duplicate-function checks, workflow testing, and organizing deployment steps.",
+          "Provided real-time how-to guidance during development so HR staff without an IT background could maintain and test the system themselves."
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "desc": "Serves as the database for employees, KPIs, login access, reviewer assignment, and review results."
+          },
+          {
+            "name": "Google Apps Script",
+            "desc": "Handles login verification, data read/write, scoring, status control, workflow management, and Web App deployment."
+          },
+          {
+            "name": "HTML/CSS/JavaScript",
+            "desc": "Builds the employee self-evaluation and reviewer evaluation web pages, interactive validation, and multi-language interface."
+          },
+          {
+            "name": "Google Apps Script Execution log",
+            "desc": "Tracks server-side errors and verifies program execution results."
+          },
+          {
+            "name": "Generative AI",
+            "desc": "Helped with requirements analysis, system design, code generation, debugging, translation, and documentation."
+          }
+        ],
+        "results": [
+          "Completed a working test version of the employee self-evaluation Web App: login, reading personal KPIs, scoring, and submission all function.",
+          "Completed both the Leadership and Individual scoring structures, including the conditional Leadership section.",
+          "Completed the Reviewer 1 through 3 sequential review flow, with visibility into prior results, independent records, and averaged scoring.",
+          "Completed the data architecture and field validation across 9 core Google Sheets.",
+          "Completed pre-submission score checks, required-field validation, the 0-100 whole-number limit, and duplicate-submission blocking.",
+          "Completed the reviewer pending-count display and separate login access management for employees and reviewers.",
+          "Completed the interface framework for eight languages, and established the pairing rules for each language with Chinese or English.",
+          "Completed the safe mechanism for manually syncing new employees into Access Control and Review Assignment.",
+          "Validated that Google Workspace tools can support this performance process without purchasing AppSheet or another paid HR system."
+        ],
+        "value": [
+          {
+            "name": "For HR",
+            "desc": "Centralizes previously scattered employee, KPI, reviewer, and review-result data, reducing the manual effort of compiling, tracking, and consolidating spreadsheets."
+          },
+          {
+            "name": "For employees",
+            "desc": "No company Google account needed to use the system, and personal data, KPIs, component scores, and the total score can all be clearly confirmed before submission."
+          },
+          {
+            "name": "For managers",
+            "desc": "Provides a clear to-do list, visibility into prior review stages, and a consistent scoring interface that supports sequential review across plants."
+          },
+          {
+            "name": "For the company",
+            "desc": "Establishes a low-cost, traceable, replicable, cross-border performance evaluation process that improves policy consistency and data transparency."
+          }
+        ],
+        "extensions": [
+          "Duplicating the whole Google Sheet along with its bound Apps Script creates an independent version for the next half-year review cycle.",
+          "Employee Master, KPI Assignment, and Review Assignment can be adjusted to quickly apply the system to different countries, plants, or headcounts.",
+          "Can be extended with a formal return-for-revision flow, HR reopening, email notifications, overdue reminders, and a progress dashboard.",
+          "Can add attendance, core competencies, values, talent review, or calibration-meeting dimensions to the evaluation.",
+          "The same ID/PIN login, personalized questions, and multi-level review architecture can extend to training needs surveys, probation reviews, promotion evaluations, and internal application processes.",
+          "The multi-language dictionary can be maintained independently, and other country languages or a different secondary display language can be added later."
+        ],
+        "limitations": [
+          "Google Apps Script is still subject to daily quotas, per-execution time limits, and high concurrent access; scenario testing at peak headcount should be done before go-live.",
+          "PIN is a lightweight login mechanism, not enterprise-grade SSO; access to the Google Sheet, Apps Script, and deployment must be restricted to necessary administrators.",
+          "Emp ID, Reviewer ID, field names, and sheet names must stay unique and consistent, or login, assignment, or data-write errors can occur.",
+          "Each employee's Active KPI weights must total 100%, and the Weight cell format must be consistent to avoid double-converting values like 35 and 35%.",
+          "Adding new employees currently requires manually running syncEmployeeRecords rather than an automatic trigger; HR still needs to set PIN, active status, and reviewers afterward.",
+          "If a submitted evaluation needs changes, simply resetting the status to Not Submitted is not enough — it can create a new Submission ID and duplicate detail rows; a formal Reopen flow should be built instead.",
+          "After editing Code.gs, Index.html, Reviewer.html, or Translations.html, a New version must be created and redeployed, or the live URL won't load the new version.",
+          "Multi-language text should be reviewed by HR or native speakers in each country to ensure the policy terminology and local meaning are correct.",
+          "After duplicating the Google Sheet, still check the Spreadsheet ID, deployment, authorization, URL, and data-clearing scope to avoid carrying over sensitive data from the previous cycle."
+        ],
+        "success_key": "Define the performance policy rules, employee positioning, scoring formulas, reviewer order, and data ownership clearly before starting development; keep sheet fields standardized, enforce key validation on the server side, and run full end-to-end tests across different countries, employee types, and reviewer levels. HR needs to retain governance responsibility for the master data, access control, reviewer assignment, and version deployment for this low-cost tool to keep running reliably over the long term.",
+        "keywords": [
+          "Performance Review",
+          "Employee Self-Evaluation",
+          "KPI",
+          "Google Apps Script",
+          "Google Sheets",
+          "Web App",
+          "Multi-Level Manager Review",
+          "Cross-Border HR",
+          "Multi-Language",
+          "Process Digitalization",
+          "Reviewer",
+          "Leadership",
+          "Individual"
+        ]
+      }
+    }
   }
 ]
