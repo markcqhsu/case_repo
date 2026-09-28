@@ -901,7 +901,6 @@ function renderCard(c) {
     <h3>${escapeHtml(lc.title)}</h3>
     <div class="chips">${(lc.category || []).map(t => `<span class="type-badge">${escapeHtml(t)}</span>`).join('')}</div>
     <div class="summary">${escapeHtml(lc.summary || '')}</div>
-    <div class="chips">${(lc.tools||[]).map(itemLabel).map(t => `<span class="chip">${escapeHtml(t)}</span>`).join('')}</div>
     <div class="meta">
       <div>${escapeHtml(s.authorLabel)}${s.colon}${escapeHtml(lc.author || s.notProvided)}</div>
       ${lc.unit_owner ? `<div>${escapeHtml(s.ownerLabel)}${s.colon}${escapeHtml(lc.unit_owner)}</div>` : ''}
