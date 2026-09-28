@@ -7243,11 +7243,8 @@
         "title": "跨國員工績效自評與多階主管評核 Web App",
         "summary": "運用 Google Sheets、Google Apps Script 與網頁前端技術，建立一套適用於東南亞多國據點的員工績效考核系統。系統支援員工個人化 KPI、自評、Leadership／Individual 差異化評分、多階 Reviewer 依序評核、主管平均給分及多語言介面；員工不需具備公司 Google 帳號，即可透過工號與 PIN 登入完成考核。",
         "category": [
-          "人力資源管理",
-          "績效管理",
-          "流程數位化",
-          "跨國管理",
-          "內部系統開發"
+          "內部管理工具",
+          "流程自動化"
         ],
         "unit_request": "東南亞總部人力資源單位",
         "unit_owner": "東南亞總部人力資源單位",
@@ -7424,11 +7421,8 @@
         "title": "Cross-Border Employee Performance Self-Evaluation & Multi-Level Manager Review Web App",
         "summary": "Built with Google Sheets, Google Apps Script, and web front-end technology, this is an employee performance evaluation system for multiple sites across Southeast Asia. It supports per-employee personalized KPIs, self-evaluation, differentiated scoring for Leadership vs. Individual roles, sequential multi-level reviewer evaluation, averaged manager scoring, and a multi-language interface. Employees can complete the evaluation by logging in with their employee ID and PIN, without needing a company Google account.",
         "category": [
-          "Human Resource Management",
-          "Performance Management",
-          "Process Digitalization",
-          "Cross-Border Management",
-          "Internal System Development"
+          "Internal Management Tools",
+          "Process Automation"
         ],
         "unit_request": "Southeast Asia Headquarters HR Unit",
         "unit_owner": "Southeast Asia Headquarters HR Unit",
@@ -7599,6 +7593,294 @@
           "Reviewer",
           "Leadership",
           "Individual"
+        ]
+      }
+    }
+  },
+  {
+    "id": "case-036",
+    "number": 36,
+    "updated": "2026.09",
+    "screenshot": "assets/qingxin-attendance-automation-demo.jpg",
+    "url": "",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "清新廠倉儲部出勤自動統計範本",
+        "summary": "將清新廠倉儲部叉車組原本逐人、逐日人工判讀的出勤整理工作，製作成可每月重複使用的 Excel 公式範本。使用者設定月份並貼入系統匯出資料後，即可依已提供的每日紀錄彙總出勤天數、無出勤天數與日期備註，並另外查看缺卡提醒及需人工確認的例外。已交付含資料的測試版本、空白範本與操作說明。",
+        "category": [
+          "流程自動化",
+          "資料整合與分析",
+          "內部管理工具"
+        ],
+        "unit_request": "清新廠 - 倉儲部",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "已完成測試版本",
+        "region": "",
+        "problem_background": "倉儲部取得出勤系統匯出的 Excel 檔後，原本需要人工逐日查看每位員工的打卡時間與請假註記，再整理成工號、姓名、出勤天數、無出勤天數及日期備註的月度表格。來源資料除了早班、常日班，也包含夜班、跨日打卡及多次打卡紀錄，無法單靠是否有兩筆打卡判斷全日出勤。",
+        "core_problem": "同樣有上下班打卡，仍可能因請假而只計半天出勤；只有一筆打卡，也不能直接認定為未出勤。新進人員可能只有部分月份的紀錄，未提供資料的日期不應自動補算為無出勤。每月更新資料時，還需要避免舊資料、人工調整或重複紀錄影響結果，並讓彙總數字能回查到每日原始紀錄。",
+        "solution": "建立不使用 VBA 的 .xlsx 公式範本，分為「月度彙總」與「出勤明細」兩張工作表。明細保留系統匯出的 A～S 欄，在右側計算每日出勤、無出勤、日期備註及異常提示，並提供獨立的人工調整欄與調整原因。月度彙總依工號加總當月已提供的紀錄，將缺卡提醒與無出勤分開呈現。另提供已清除人員資料、統計月份與人工調整的空白範本，讓使用者可直接貼入新的月份資料。",
+        "process": [
+          "讀取系統匯出的 .xls 檔，確認工作表、19 個來源欄位、日期範圍及每人每日紀錄的結構。",
+          "與需求方確認統計規則，包括單筆打卡且無請假計出勤 1 天，缺卡提醒另外保留。",
+          "依請假時數、打卡資料與班別建立每日判斷公式，將資料矛盾或無法辨識的情況列為需人工確認。",
+          "建立「出勤明細」與「月度彙總」，以八月人工提供的統計結果逐人核對天數與日期備註。",
+          "使用七月資料測試新進人員情境，將原本要求完整月份紀錄的檢查，改為只加總已提供紀錄，不補算未提供日期。",
+          "測試人工調整、零值調整、缺少調整原因、重複紀錄、部分月份與未知請假情況，並以 LibreOffice 重算核對輸出。",
+          "交付空白範本與操作說明，驗證貼入資料後可重新計算，並確認空白檔未殘留員工資料。"
+        ],
+        "features": [
+          {
+            "name": "月度自動彙總",
+            "desc": "依工號整理姓名、出勤天數、無出勤天數、日期備註及核對狀態。"
+          },
+          {
+            "name": "半天出勤判斷",
+            "desc": "依 4 小時請假紀錄配合打卡計算 0.5 天出勤，並在支援的日班情境辨識上午或下午請假。"
+          },
+          {
+            "name": "缺卡提醒",
+            "desc": "檢查第一卡至第四卡及來源異常註記；單筆打卡且無請假仍計出勤 1 天，提醒另外保留。"
+          },
+          {
+            "name": "部分月份統計",
+            "desc": "新進人員只計算實際提供的紀錄，不將沒有資料的日期補算為無出勤。"
+          },
+          {
+            "name": "人工調整留痕",
+            "desc": "提供人工出勤、人工時段與調整原因欄位，保留原始資料及自動判斷結果。"
+          },
+          {
+            "name": "匯入與例外檢查",
+            "desc": "檢查重複工號日期、缺少工號、無效日期、其他月份資料與殘留人工調整。"
+          },
+          {
+            "name": "空白範本重複使用",
+            "desc": "預設支援 1,000 筆每日紀錄與 40 位員工，保留公式、下拉選單、格式及操作說明。"
+          }
+        ],
+        "ai_usage": [
+          "使用 Codex 讀取來源表格，辨識欄位結構與打卡、請假及跨日紀錄的差異。",
+          "將需求方確認的判斷方式轉換成 Excel 公式與人工確認流程。",
+          "協助產生試算表、核對人工參考結果，並測試公式在不同輸入條件下的反應。",
+          "指出來源資料與人工預期不一致的案例，保留待確認事項，避免為符合總數而推定未提供的請假日期或規則。",
+          "AI 用於範本設計與驗證；日常統計由 Excel 公式執行，不需要每月將資料重新交由 AI 判讀。"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "需求釐清、來源資料檢查、公式設計、程式產製與測試協作。"
+          },
+          {
+            "name": "Microsoft Excel",
+            "desc": "作為使用者設定月份、貼入資料、查看彙總及填寫人工調整的操作介面。"
+          },
+          {
+            "name": "@oai/artifact-tool",
+            "desc": "產生 .xlsx 檔案、設定公式與格式，並渲染工作表供畫面檢查。"
+          },
+          {
+            "name": "Python",
+            "desc": "讀取舊版 .xls 來源、核對原始資料、檢查輸出檔與資料保留情況。"
+          },
+          {
+            "name": "LibreOffice",
+            "desc": "對輸出的 .xlsx 進行獨立重算與結果核對。"
+          }
+        ],
+        "results": [
+          "已交付含資料的出勤統計測試版本、依已提供紀錄計算的修正版，以及可直接貼入資料的空白範本。",
+          "八月來源包含 10 位員工、310 筆紀錄；出勤、無出勤天數及日期備註與需求方提供的八月參考表一致。",
+          "七月來源包含 10 位員工、282 筆紀錄；新進人員的 3 筆紀錄可正常彙總為出勤 3 天、無出勤 0 天。",
+          "修改部分月份計算方式後，八月回歸核對結果維持一致；未提供日期不再阻擋彙總或自動補算無出勤。",
+          "已測試空白範本的月份提示、貼入資料後計算及清除後回復空白狀態，並檢查輸出檔沒有殘留員工資料。",
+          "已完成公式與 LibreOffice 重算核對；七月仍有兩筆與人工預期不同的結果，已列出差異及所需確認資訊。"
+        ],
+        "value": [
+          {
+            "name": "對需求單位",
+            "desc": "可將逐人、逐日的重複計算改為貼入資料後核對彙總，集中處理例外與需人工確認的紀錄。"
+          },
+          {
+            "name": "對負責單位",
+            "desc": "將出勤判斷方式落實為可查看的公式與操作說明，方便後續維護及討論規則調整。"
+          },
+          {
+            "name": "對公司",
+            "desc": "保留來源、判斷與人工調整原因，讓統計結果可追溯，並提供其他相同格式作業可參考的範本。"
+          }
+        ],
+        "extensions": [
+          "相同匯出欄位與統計規則的其他月份，可直接使用空白範本更新資料。",
+          "其他班組若採用相同來源格式，可先確認班別與出勤規則，再套用此整理方式。",
+          "後續可依需求擴充支援筆數、人數及班別判斷，但須同步調整公式範圍並重新驗證。",
+          "若希望減少複製貼上的操作，可再評估 Power Query 或選檔匯入功能；目前交付版本仍採手動貼入資料。"
+        ],
+        "limitations": [
+          "首次使用先在「月度彙總」B4 輸入當月日期，再將來源 Table1 的 A～S 欄資料，不含標題，以「只貼值」貼至「出勤明細」A10。",
+          "重複使用已填資料的檔案時，先清除篩選，再清除 A10:S1009 與 V10:X1009 的內容；不要刪除整列、整欄或使用全部清除，也不要覆蓋公式欄。",
+          "統計僅反映當月已提供紀錄；沒有某日紀錄不代表該日無出勤，也不代表來源一定完整。",
+          "單筆打卡且無請假計出勤 1 天，是本次需求已確認的規則；若涉及前一日夜班下班卡重複帶入隔日，仍須另行確認。",
+          "4 小時假配合打卡計 0.5 天，8 小時假且無打卡計 0 天；其他時數或互相矛盾的紀錄需人工確認。",
+          "半天時段自動判斷目前限支援的早班與常日班情境；夜班、跨日或無法辨識的情況，須補上人工時段與原因。",
+          "七月仍有兩筆差異待需求方確認：一筆額外半天無出勤的日期與依據，以及一筆隔日單卡是否僅為前一日夜班下班卡。這兩項尚未納入新的自動扣減規則。",
+          "範本支援 1,000 筆紀錄、40 位員工；超出範圍前應先擴充，並保留系統原始日期順序。",
+          "目前未建立自動匯入、VBA 按鈕或線上服務；也尚未量測實際節省工時，或完成需求單位使用環境的正式驗收。"
+        ],
+        "success_key": "先以實際匯出資料與需求方提供的參考結果確認規則，再將每日判斷、月度加總與人工例外處理分開。特別區分「有紀錄但無打卡」與「沒有提供紀錄」，以及「缺卡提醒」與「無出勤」，讓新進人員及不完整打卡不會被同一套簡化判斷誤算。對尚未確認的差異保留原因與追查方向，不用推測補足結果。",
+        "keywords": [
+          "清新廠",
+          "倉儲部",
+          "叉車組",
+          "出勤統計",
+          "Excel 公式",
+          "空白範本",
+          "打卡紀錄",
+          "半天請假",
+          "缺卡提醒",
+          "新進人員",
+          "人工調整",
+          "Codex"
+        ]
+      },
+      "en": {
+        "title": "Automated Attendance Statistics Template for Qingxin Plant Warehouse",
+        "summary": "Turned the Qingxin Plant warehouse forklift team's manual, person-by-person and day-by-day attendance review into a reusable monthly Excel formula template. After setting the month and pasting in the system export, users get attendance days, non-attendance days, and date notes summarized from the daily records provided, with missing-punch reminders and exceptions needing manual review shown separately. A test version with data, a blank template, and operating instructions have been delivered.",
+        "category": [
+          "Process Automation",
+          "Data Integration & Analysis",
+          "Internal Management Tools"
+        ],
+        "unit_request": "Qingxin Plant – Warehouse Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Hsu Chiao-Kuei",
+        "status": "Test version completed",
+        "region": "",
+        "problem_background": "After receiving the Excel file exported from the attendance system, the warehouse department had to manually review each employee's punch times and leave notes day by day, then compile a monthly table of employee ID, name, attendance days, non-attendance days, and date notes. Besides morning and regular day shifts, the source data also includes night shifts, cross-day punches, and multiple punches, so full-day attendance cannot be judged simply by whether there are two punches.",
+        "core_problem": "An employee with both clock-in and clock-out may still count as only half a day due to leave; a single punch cannot be treated as absence. New hires may have records for only part of the month, and dates with no records should not be counted as non-attendance automatically. Each monthly update also needs to prevent old data, manual adjustments, or duplicate records from skewing results, while keeping every summary figure traceable to the original daily records.",
+        "solution": "Built a VBA-free .xlsx formula template with two sheets: Monthly Summary and Attendance Detail. The detail sheet keeps the system export's columns A–S and calculates daily attendance, non-attendance, date notes, and anomaly hints to the right, with separate manual-adjustment and reason columns. The monthly summary totals the month's provided records by employee ID and shows missing-punch reminders separately from non-attendance. A blank template with personnel data, statistics month, and manual adjustments cleared is also provided so users can paste in a new month's data directly.",
+        "process": [
+          "Read the system-exported .xls file and confirmed the worksheet, 19 source columns, date range, and per-person daily record structure.",
+          "Confirmed statistics rules with the requesting unit, including that a single punch with no leave counts as 1 attendance day, with a missing-punch reminder kept separately.",
+          "Built daily judgment formulas based on leave hours, punch data, and shift, flagging contradictory or unrecognizable cases for manual review.",
+          "Built the Attendance Detail and Monthly Summary sheets and verified days and date notes person by person against the manually prepared August results.",
+          "Tested the new-hire scenario with July data, changing the check that required full-month records to one that only totals provided records without filling in missing dates.",
+          "Tested manual adjustments, zero-value adjustments, missing adjustment reasons, duplicate records, partial months, and unknown leave cases, and cross-checked output by recalculating in LibreOffice.",
+          "Delivered the blank template and instructions, verified recalculation after pasting data, and confirmed no employee data remained in the blank file."
+        ],
+        "features": [
+          {
+            "name": "Automatic monthly summary",
+            "desc": "Compiles name, attendance days, non-attendance days, date notes, and check status by employee ID."
+          },
+          {
+            "name": "Half-day attendance",
+            "desc": "Counts 0.5 day when a 4-hour leave record coincides with punches, and identifies morning or afternoon leave for supported day shifts."
+          },
+          {
+            "name": "Missing-punch reminders",
+            "desc": "Checks punches 1–4 and source anomaly flags; a single punch with no leave still counts as 1 day, with the reminder kept separately."
+          },
+          {
+            "name": "Partial-month statistics",
+            "desc": "New hires are counted only on records actually provided; dates without data are not counted as non-attendance."
+          },
+          {
+            "name": "Audit trail for manual adjustments",
+            "desc": "Provides manual attendance, manual time-slot, and reason columns while preserving the original data and automatic results."
+          },
+          {
+            "name": "Import and exception checks",
+            "desc": "Detects duplicate ID-date pairs, missing IDs, invalid dates, other-month data, and leftover manual adjustments."
+          },
+          {
+            "name": "Reusable blank template",
+            "desc": "Supports 1,000 daily records and 40 employees by default, keeping formulas, dropdowns, formatting, and instructions."
+          }
+        ],
+        "ai_usage": [
+          "Used Codex to read the source table and identify the column structure and differences between punch, leave, and cross-day records.",
+          "Converted the judgment rules confirmed by the requesting unit into Excel formulas and a manual review process.",
+          "Helped generate the spreadsheet, check against manual reference results, and test formula behavior under different inputs.",
+          "Pointed out cases where source data and manual expectations disagreed, keeping open questions instead of inferring unprovided leave dates or rules just to match totals.",
+          "AI was used for template design and validation; routine statistics run on Excel formulas, with no need to send data to AI each month."
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "Requirements clarification, source data inspection, formula design, file generation, and test collaboration."
+          },
+          {
+            "name": "Microsoft Excel",
+            "desc": "Interface for setting the month, pasting data, viewing summaries, and entering manual adjustments."
+          },
+          {
+            "name": "@oai/artifact-tool",
+            "desc": "Generates the .xlsx file, sets formulas and formatting, and renders sheets for visual checks."
+          },
+          {
+            "name": "Python",
+            "desc": "Reads legacy .xls sources, checks raw data, and inspects output files and data retention."
+          },
+          {
+            "name": "LibreOffice",
+            "desc": "Independently recalculates the output .xlsx to cross-check results."
+          }
+        ],
+        "results": [
+          "Delivered a test version with data, a revised version that calculates only on provided records, and a blank template ready for pasting data.",
+          "The August source covers 10 employees and 310 records; attendance days, non-attendance days, and date notes match the August reference table provided by the requesting unit.",
+          "The July source covers 10 employees and 282 records; a new hire's 3 records correctly summarize to 3 attendance days and 0 non-attendance days.",
+          "After changing the partial-month logic, August regression results remained consistent; missing dates no longer block the summary or get counted as non-attendance.",
+          "Tested the blank template's month prompt, calculation after pasting data, and return to a blank state after clearing, and confirmed no employee data remained in the output file.",
+          "Completed formula and LibreOffice recalculation checks; two July results still differ from manual expectations, with the differences and needed information listed."
+        ],
+        "value": [
+          {
+            "name": "For the requesting unit",
+            "desc": "Replaces repetitive per-person, per-day counting with pasting data and reviewing the summary, focusing effort on exceptions and records needing manual confirmation."
+          },
+          {
+            "name": "For the owning unit",
+            "desc": "Captures the attendance rules as viewable formulas and instructions, making later maintenance and rule discussions easier."
+          },
+          {
+            "name": "For the company",
+            "desc": "Keeps sources, judgments, and manual adjustment reasons so results are traceable, and offers a reference template for other tasks using the same format."
+          }
+        ],
+        "extensions": [
+          "Other months with the same export columns and rules can be updated directly with the blank template.",
+          "Other teams using the same source format can apply this approach after confirming their shift and attendance rules.",
+          "Record counts, headcount, and shift logic can be expanded as needed, but formula ranges must be adjusted and re-verified.",
+          "To reduce copy-and-paste, Power Query or file-picker import could be evaluated later; the delivered version still uses manual pasting."
+        ],
+        "limitations": [
+          "On first use, enter the month's date in Monthly Summary B4, then paste columns A–S of source Table1 (without headers) as values only into Attendance Detail A10.",
+          "When reusing a filled file, clear filters first, then clear the contents of A10:S1009 and V10:X1009; do not delete whole rows or columns, use Clear All, or overwrite formula columns.",
+          "Statistics reflect only the records provided for the month; a missing record for a date does not mean absence, nor that the source is complete.",
+          "Counting a single punch with no leave as 1 day is a rule confirmed for this request; cases where a previous night shift's clock-out carries into the next day still need separate confirmation.",
+          "A 4-hour leave with punches counts as 0.5 day, and an 8-hour leave with no punches counts as 0 days; other hours or contradictory records require manual review.",
+          "Automatic half-day time-slot detection currently supports only morning and regular day shifts; night shifts, cross-day, or unrecognizable cases need a manual time slot and reason.",
+          "Two July differences await confirmation from the requesting unit: the date and basis of one extra half-day of non-attendance, and whether one next-day single punch is only the previous night shift's clock-out. Neither has been added as a new automatic deduction rule.",
+          "The template supports 1,000 records and 40 employees; expand it before exceeding these limits, and keep the system's original date order.",
+          "No automatic import, VBA button, or online service has been built; actual time savings have not been measured, and formal acceptance in the requesting unit's environment is not yet complete."
+        ],
+        "success_key": "Rules were first confirmed against actual export data and the reference results provided by the requesting unit, then daily judgment, monthly totals, and manual exception handling were kept separate. The template explicitly distinguishes \"a record with no punch\" from \"no record provided,\" and \"missing-punch reminder\" from \"non-attendance,\" so new hires and incomplete punches are not miscounted by one oversimplified rule. Unconfirmed differences are kept with their reasons and follow-up direction rather than filled in by guesswork.",
+        "keywords": [
+          "Qingxin Plant",
+          "Warehouse",
+          "Forklift team",
+          "Attendance statistics",
+          "Excel formulas",
+          "Blank template",
+          "Punch records",
+          "Half-day leave",
+          "Missing-punch reminder",
+          "New hires",
+          "Manual adjustment",
+          "Codex"
         ]
       }
     }
