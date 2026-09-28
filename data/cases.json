@@ -7886,6 +7886,334 @@
     }
   },
   {
+    "id": "case-037",
+    "number": 37,
+    "updated": "2026.09",
+    "screenshot": "assets/sea-sodnwo-demo.png",
+    "url": "https://sea-sodnwo.kkboytest.workers.dev",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "東南亞 SO/DN/WO 營運資料分析平台（SEA SODNWO）",
+        "summary": "把東南亞各子公司從 ERP 匯出的 SO（銷售訂單）、DN（送貨單）、WO（工單報工）Excel 報表，集中上傳到同一個網站平台，經過驗證後自動彙整成接單、出貨、生產的分析儀表板，讓東南亞總部與管理層可依國家、公司、據點逐層查看營運狀況；平台上每一個數字都能追溯回原始 Excel 的那一列，不使用任何假資料或估計值。",
+        "category": [
+          "資料整合與分析",
+          "內部管理工具"
+        ],
+        "unit_request": "東南亞總部",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "正式上線（持續擴充中）",
+        "region": "東南亞（泰國、越南、馬來西亞、印尼、緬甸、柬埔寨，共 35 個據點）",
+        "problem_background": "東南亞各國子公司的接單、出貨與生產報工資料都存在 ERP 中，要看整體營運狀況時，只能由各單位各自匯出 Excel，再人工彙整成報表。各國幣別不同（THB、VND、MYR、IDR、MMK、USD），同一張單重新匯出後也容易重複計算，管理層很難即時、一致地掌握全區、各國、各公司、各據點的接單金額、出貨進度與生產良率，更難回頭查證某個數字是從哪一份檔案、哪一列來的。",
+        "core_problem": "如何把分散在各國、格式一致但分次匯出的 SO/DN/WO Excel 報表，安全地匯入同一個平台，自動去重、換算幣別，並依使用者權限提供從集團到單一據點的營運分析，同時確保每個數字都真實、可追溯。",
+        "solution": "以 React Router（SSR）+ Cloudflare Workers + D1 + R2 建立一個網站平台：\n- 管理者上傳 SO/DN/WO Excel 後，系統先「預覽驗證」（必填欄位、Loc ID 是否已登記、是否重複檔案、新增/修訂/未變更筆數），完全不寫入資料；全部通過後才「確認匯入」，任何一份檔案有問題整批都不寫入。\n- 以 ERP 的 Line Rec Key 作為每筆明細的唯一識別，同一張單重新匯出時只會產生新版本，不會重複計算；原始 Excel 永久保存在 R2，每一筆明細都可以追溯回原始檔案的工作表與列號。\n- 各國 SO 金額依該國本位幣，再以全站共用匯率換算成報表幣別，缺匯率時誠實標示「未計入」而不是補 0。\n- 儀表板依「集團 → 國家 → 公司 → 據點」四層範圍切換，並依使用者被授權的國家／公司／據點過濾可見資料。",
+        "process": [
+          "與東南亞總部確認 SO/DN/WO 來源 Excel 的欄位格式與分析需求，建立 35 個據點的 Loc ID 登記表與國家／公司歸屬",
+          "設計資料模型：匯入批次、原始列快照、明細身分與修訂版本、共用匯率、帳號與三層權限",
+          "開發 Excel 解析與兩段式匯入流程（上傳預覽 → 確認匯入），含真實進度條與整批作廢功能",
+          "開發總覽、接單與出貨、工單生產、同期比較、區域／公司／據點分析與單據詳情等頁面",
+          "部署至 Cloudflare Workers，並以 GitHub Action 每日自動備份資料庫",
+          "依東南亞總部使用回饋持續調整圖表、幣別換算與公司組織歸屬"
+        ],
+        "features": [
+          {
+            "name": "高層總覽",
+            "desc": "六張 KPI 卡（SO/DN 金額、單據數、良品量、不良率）附「較上期」成長徽章、接單／出貨趨勢圖、產品組合與各範圍比較、規則產生的本期重點"
+          },
+          {
+            "name": "接單與出貨",
+            "desc": "SO/DN 依產品分類拆分的數量與金額、客戶與產品排行、DN 幣別分佈、明細表格搜尋與分頁"
+          },
+          {
+            "name": "工單生產",
+            "desc": "報工工單數、良品／報廢量、不良率趨勢、依產品分類與機台 Top 20 的生產指標"
+          },
+          {
+            "name": "同期比較",
+            "desc": "本期 vs 去年同期的單據數、金額、生產量與客戶／分類比較，無去年資料時誠實顯示「無資料」"
+          },
+          {
+            "name": "四層資料範圍導覽",
+            "desc": "集團 → 國家 → 公司 → 據點逐層下鑽，範圍縮小後比較圖自動改為下一層"
+          },
+          {
+            "name": "兩段式資料匯入",
+            "desc": "上傳預覽驗證矩陣、重複檔案偵測、Loc ID 對照、整批寫入或整批不寫入、即時匯入進度"
+          },
+          {
+            "name": "單據詳情與來源追溯",
+            "desc": "每一筆 SO/DN/WO 都可查看版本歷史與原始 Excel 列的逐欄原始值"
+          },
+          {
+            "name": "修正與作廢",
+            "desc": "重新上傳自動產生新版本；整批誤傳可作廢，但原始紀錄永不刪除"
+          },
+          {
+            "name": "共用匯率設定",
+            "desc": "全站共用的報表幣別與各幣別匯率，含版本衝突保護"
+          },
+          {
+            "name": "帳號與權限",
+            "desc": "管理者／一般使用者角色，可依國家、公司、據點三層授權查看範圍"
+          }
+        ],
+        "ai_usage": [
+          "整個平台由數位發展部以 Claude Code 進行 AI 輔助開發，從資料模型、Excel 解析、匯入流程到儀表板 UI 均由 AI 協作完成",
+          "以 AI 協助撰寫與維護架構文件（ARCHITECTURE.md）、進行安全性審查（如上傳檔名清理）與 UI/UX 規格改版",
+          "平台上的「本期重點」刻意採用規則產生，而非 AI 推測文字，確保管理層看到的每句摘要都有真實數據依據"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "AI 輔助開發、除錯、安全審查與文件撰寫"
+          },
+          {
+            "name": "React Router 8 + React 19",
+            "desc": "SSR 前端框架，建構各分析頁面"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "網站執行環境與部署"
+          },
+          {
+            "name": "Cloudflare D1 + Drizzle ORM",
+            "desc": "儲存明細、版本、權限與匯率資料"
+          },
+          {
+            "name": "Cloudflare R2",
+            "desc": "永久保存上傳的原始 Excel，供追溯查核"
+          },
+          {
+            "name": "SheetJS（xlsx）",
+            "desc": "在伺服器端解析 SO/DN/WO Excel"
+          },
+          {
+            "name": "ECharts",
+            "desc": "趨勢圖、環圈圖、長條圖等儀表板圖表"
+          },
+          {
+            "name": "Tailwind CSS + lucide-react",
+            "desc": "UI 樣式與圖示"
+          },
+          {
+            "name": "GitHub Actions",
+            "desc": "每日自動備份資料庫"
+          }
+        ],
+        "results": [
+          "平台已部署上線，涵蓋東南亞 6 國、35 個據點的 SO/DN/WO 資料",
+          "建立從上傳、驗證、去重、版本管理到作廢的完整資料匯入管線，每一筆數字都可追溯到原始 Excel 列",
+          "完成總覽、接單與出貨、工單生產、同期比較、區域／公司／據點分析、單據詳情等頁面",
+          "完成多國本位幣換算與共用匯率機制，以及國家／公司／據點三層權限控管"
+        ],
+        "value": [
+          {
+            "name": "對東南亞總部",
+            "desc": "不必再等各單位人工彙整報表，可即時依國家、公司、據點查看接單、出貨與生產狀況，並與去年同期比較"
+          },
+          {
+            "name": "對各子公司",
+            "desc": "只要上傳 ERP 原始匯出檔即可，不需另做報表格式；重新匯出修正後的檔案系統會自動更新版本"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立東南亞營運資料的單一可信來源，數字可追溯、可稽核，降低人工彙整造成的誤差與重複計算"
+          }
+        ],
+        "extensions": [
+          "同一套「兩段式匯入 + Line Rec Key 版本管理 + 原始列追溯」架構，可複製到台灣、大陸等其他地區的 ERP 報表分析",
+          "可延伸納入更多 ERP 報表類型（如庫存、採購、應收帳款），擴大為區域營運總覽",
+          "未來可在真實數據基礎上加入 AI 分析摘要或異常偵測，但仍保留數字可追溯的原則"
+        ],
+        "limitations": [
+          "資料來源仰賴各單位定期從 ERP 匯出並上傳 Excel，尚未與 ERP 直接串接，資料即時性取決於上傳頻率",
+          "上傳檔案中的 Loc ID 必須已登記在據點表，否則整批會被擋下，新增據點需先由管理者登記",
+          "SO 匯出檔沒有幣別欄位，金額換算依國家本位幣設定與共用匯率，匯率需由使用者自行維護",
+          "資料上傳與作廢批次僅限管理者操作；只有公司／據點授權、沒有整國授權的帳號，看不到全區彙總數字"
+        ],
+        "success_key": "堅持「畫面上每一個數字都來自實際匯入的真實資料」：以 Line Rec Key 做身分識別避免重複計算、全部驗證通過才整批寫入、原始 Excel 永久保存並可逐列追溯，缺資料時誠實顯示而不補值，讓管理層可以放心依據平台數字做決策。",
+        "keywords": [
+          "東南亞",
+          "SO",
+          "DN",
+          "WO",
+          "銷售訂單",
+          "送貨單",
+          "工單報工",
+          "營運儀表板",
+          "ERP 報表",
+          "資料匯入",
+          "資料追溯",
+          "多幣別換算",
+          "Cloudflare Workers",
+          "Claude Code",
+          "東南亞總部",
+          "數位發展部"
+        ]
+      },
+      "en": {
+        "title": "SEA SO/DN/WO Operations Data Analytics Platform (SEA SODNWO)",
+        "summary": "Sales order (SO), delivery note (DN) and work order production report (WO) Excel exports from the ERP of each Southeast Asia subsidiary are uploaded to a single web platform, validated, and automatically consolidated into order, shipment and production dashboards. Southeast Asia Headquarters and management can drill down by country, company and site, and every number on the platform can be traced back to the exact row of the original Excel file — no mock data or estimates are ever used.",
+        "category": [
+          "Data Integration & Analysis",
+          "Internal Management Tools"
+        ],
+        "unit_request": "Southeast Asia Headquarters",
+        "unit_owner": "Digital Development Department",
+        "author": "Mark Hsu",
+        "status": "Officially Launched (continuously expanding)",
+        "region": "Southeast Asia (Thailand, Vietnam, Malaysia, Indonesia, Myanmar, Cambodia — 35 sites in total)",
+        "problem_background": "Order, shipment and production report data for each Southeast Asia subsidiary lives in the ERP. To see overall operations, each unit had to export Excel files and consolidate them into reports by hand. Currencies differ by country (THB, VND, MYR, IDR, MMK, USD), and re-exporting the same document easily led to double counting. Management found it hard to get a timely, consistent view of order amounts, shipment progress and production yield across the region, each country, company and site — and even harder to verify which file and which row a given number came from.",
+        "core_problem": "How to safely import SO/DN/WO Excel reports — same format but exported separately by each country — into one platform, automatically de-duplicate and convert currencies, and provide operations analysis from group level down to a single site according to user permissions, while making sure every number is real and traceable.",
+        "solution": "A web platform built with React Router (SSR) + Cloudflare Workers + D1 + R2:\n- After an administrator uploads SO/DN/WO Excel files, the system first runs a preview validation (required columns, whether each Loc ID is registered, duplicate-file detection, counts of new / revised / unchanged rows) without writing any data. Only when everything passes can the batch be confirmed; if any file has a problem, nothing in the batch is written.\n- The ERP's Line Rec Key is the unique identity of every line, so re-exporting a document only creates a new revision instead of double counting. Original Excel files are stored permanently in R2, and every line can be traced back to its source file, worksheet and row number.\n- SO amounts use each country's home currency and are converted to the reporting currency with site-wide shared exchange rates; when a rate is missing, the amount is clearly marked as \"not included\" rather than filled with 0.\n- Dashboards switch across four scope levels — Group → Country → Company → Site — and visible data is filtered by the countries, companies and sites each user is authorized for.",
+        "process": [
+          "Confirmed the SO/DN/WO source Excel formats and analysis needs with Southeast Asia Headquarters, and built a Loc ID registry of 35 sites with their country and company assignments",
+          "Designed the data model: import batches, raw-row snapshots, line identities and revisions, shared exchange rates, accounts and three-level permissions",
+          "Developed Excel parsing and a two-step import flow (upload & preview → confirm import), with a real progress bar and whole-batch voiding",
+          "Built the Overview, Orders & Shipments, Production, Period Comparison, Region / Company / Site analysis and Document Detail pages",
+          "Deployed to Cloudflare Workers, with a daily automatic database backup via GitHub Actions",
+          "Continuously refined charts, currency conversion and company structure based on feedback from Southeast Asia Headquarters"
+        ],
+        "features": [
+          {
+            "name": "Executive Overview",
+            "desc": "Six KPI cards (SO/DN amount, document count, good quantity, defect rate) with period-over-period growth badges, order/shipment trend charts, product mix and scope comparisons, and rule-generated period highlights"
+          },
+          {
+            "name": "Orders & Shipments",
+            "desc": "SO/DN quantity and amount by product category, customer and product rankings, DN currency distribution, and searchable, paginated detail tables"
+          },
+          {
+            "name": "Production",
+            "desc": "Reported work order count, good / scrap quantity, defect rate trends, and production metrics by product category and top 20 machines"
+          },
+          {
+            "name": "Period Comparison",
+            "desc": "Current period vs. same period last year for document count, amount, production volume, customers and categories; shows \"no data\" honestly when last year's data is unavailable"
+          },
+          {
+            "name": "Four-Level Scope Navigation",
+            "desc": "Drill down Group → Country → Company → Site; comparison charts automatically switch to the next level down as the scope narrows"
+          },
+          {
+            "name": "Two-Step Data Import",
+            "desc": "Upload preview validation matrix, duplicate-file detection, Loc ID mapping, all-or-nothing batch writes, and live import progress"
+          },
+          {
+            "name": "Document Detail & Source Traceability",
+            "desc": "Every SO/DN/WO line shows its revision history and the column-by-column raw values of the original Excel row"
+          },
+          {
+            "name": "Corrections & Voiding",
+            "desc": "Re-uploading automatically creates new revisions; a mistakenly uploaded batch can be voided, while original records are never deleted"
+          },
+          {
+            "name": "Shared Exchange Rates",
+            "desc": "Site-wide reporting currency and exchange rates, with version-conflict protection"
+          },
+          {
+            "name": "Accounts & Permissions",
+            "desc": "Administrator / user roles, with viewing scope granted at country, company or site level"
+          }
+        ],
+        "ai_usage": [
+          "The entire platform was developed by the Digital Development Department with AI assistance from Claude Code — from the data model, Excel parsing and import pipeline to the dashboard UI",
+          "AI helped write and maintain the architecture document (ARCHITECTURE.md), perform security reviews (e.g. sanitizing uploaded filenames) and carry out UI/UX spec revisions",
+          "The platform's \"period highlights\" are intentionally rule-generated rather than AI-inferred text, so every summary sentence management sees is backed by real data"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "AI-assisted development, debugging, security review and documentation"
+          },
+          {
+            "name": "React Router 8 + React 19",
+            "desc": "SSR front-end framework for all analysis pages"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "Runtime environment and deployment"
+          },
+          {
+            "name": "Cloudflare D1 + Drizzle ORM",
+            "desc": "Stores line data, revisions, permissions and exchange rates"
+          },
+          {
+            "name": "Cloudflare R2",
+            "desc": "Permanently stores uploaded original Excel files for traceability"
+          },
+          {
+            "name": "SheetJS (xlsx)",
+            "desc": "Parses SO/DN/WO Excel files on the server"
+          },
+          {
+            "name": "ECharts",
+            "desc": "Trend, donut and bar charts for the dashboards"
+          },
+          {
+            "name": "Tailwind CSS + lucide-react",
+            "desc": "UI styling and icons"
+          },
+          {
+            "name": "GitHub Actions",
+            "desc": "Daily automatic database backup"
+          }
+        ],
+        "results": [
+          "The platform is live, covering SO/DN/WO data for 6 countries and 35 sites in Southeast Asia",
+          "Built a complete import pipeline — upload, validation, de-duplication, revision management and voiding — with every number traceable to its original Excel row",
+          "Completed the Overview, Orders & Shipments, Production, Period Comparison, Region / Company / Site analysis and Document Detail pages",
+          "Implemented multi-country home-currency conversion with shared exchange rates, plus three-level country / company / site permission control"
+        ],
+        "value": [
+          {
+            "name": "For Southeast Asia Headquarters",
+            "desc": "No more waiting for units to consolidate reports by hand; orders, shipments and production can be viewed instantly by country, company and site, and compared with the same period last year"
+          },
+          {
+            "name": "For subsidiaries",
+            "desc": "Just upload the original ERP export — no separate report formatting needed; re-exported corrected files automatically update to a new revision"
+          },
+          {
+            "name": "For the company",
+            "desc": "A single trusted source of Southeast Asia operations data that is traceable and auditable, reducing errors and double counting from manual consolidation"
+          }
+        ],
+        "extensions": [
+          "The same \"two-step import + Line Rec Key revisioning + raw-row traceability\" architecture can be reused for ERP report analysis in Taiwan, China and other regions",
+          "Can be extended to more ERP report types (e.g. inventory, purchasing, accounts receivable) to become a regional operations overview",
+          "AI-generated analysis summaries or anomaly detection could be added on top of the real data in the future, while keeping every number traceable"
+        ],
+        "limitations": [
+          "Data depends on units regularly exporting and uploading Excel files from the ERP; there is no direct ERP integration yet, so freshness depends on upload frequency",
+          "Every Loc ID in an uploaded file must already be registered in the site table, otherwise the whole batch is blocked; new sites must be registered by an administrator first",
+          "SO exports have no currency column, so amount conversion relies on each country's home-currency setting and the shared exchange rates, which users must maintain",
+          "Data upload and batch voiding are administrator-only; accounts with only company / site permissions (no country-level grant) cannot see region-wide totals"
+        ],
+        "success_key": "A strict rule that \"every number on screen comes from real, imported data\": Line Rec Key identity prevents double counting, batches are written only when all validation passes, original Excel files are kept permanently and traceable row by row, and missing data is shown honestly rather than filled in — so management can make decisions with confidence in the platform's numbers.",
+        "keywords": [
+          "Southeast Asia",
+          "SO",
+          "DN",
+          "WO",
+          "Sales Orders",
+          "Delivery Notes",
+          "Work Order Reports",
+          "Operations Dashboard",
+          "ERP Reports",
+          "Data Import",
+          "Data Traceability",
+          "Multi-Currency Conversion",
+          "Cloudflare Workers",
+          "Claude Code",
+          "Southeast Asia Headquarters",
+          "Digital Development Department"
+        ]
+      }
+    }
+  },
+  {
     "id": "case-038",
     "number": 38,
     "updated": "2026.09",
