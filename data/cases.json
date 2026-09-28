@@ -7884,5 +7884,349 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-038",
+    "number": 38,
+    "updated": "2026.09",
+    "video": [],
+    "screenshot": "assets/line-insight-demo.jpg",
+    "url": "https://lineinsight.vercel.app/",
+    "i18n": {
+      "zh": {
+        "title": "THC LINE Insight：LINE 群組訊息 AI 分析平台",
+        "summary": "廠內與業務單位每天在 LINE 群組回報設備異常、生產批次、品管檢查、開機率、客戶專案進度等資訊，但這些訊息散落在聊天紀錄中，事後很難查找、統計與追蹤。LINE Insight 讓官方帳號加入既有的 LINE 群組，自動收下每一則訊息，由 AI 依群組類型萃取成結構化資料（異常事件、生產批次、專案進度、待辦議題等），再以 Dashboard 呈現 KPI、趨勢、排行與時間軸。現場人員不用改變任何回報習慣，管理者就能從「翻聊天紀錄」變成「看儀表板」。",
+        "category": [
+          "資料整合與分析",
+          "生產管理",
+          "流程自動化",
+          "內部管理工具"
+        ],
+        "unit_request": "數位發展部",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "正式上線（持續擴充中）",
+        "region": "集團各廠區與業務單位（含台灣及海外據點，支援中文、泰文、英文等多語訊息）",
+        "problem_background": "LINE 群組是廠內與業務單位最習慣、最即時的溝通工具：設備異常、產線生產狀況、品管檢查結果、各廠開機率、客戶專案進度，大多直接在群組裡回報。但聊天紀錄是流水帳，訊息一多就被洗掉；想知道「這台設備這個月壞了幾次」「哪些專案卡住需要主管決策」「哪個單位今天還沒回報」，都只能靠人工往回翻、再整理成 Excel。海外據點的群組還會混雜泰文、英文，閱讀門檻更高。",
+        "core_problem": "如何在不改變現場人員既有 LINE 回報習慣、不要求大家另外填表的前提下，把群組裡的非結構化對話自動轉成可查詢、可統計、可追蹤的管理資訊？",
+        "solution": "建立 LINE 官方帳號並加入各單位既有的 LINE 群組，透過 Webhook 即時接收訊息（文字、圖片），由 AI 依照群組套用的「分析模板」萃取成結構化資料，存進資料庫後以 Dashboard 呈現。目前提供 7 種分析模板，新群組只要選擇合適的模板即可使用，不需另外開發：\n- 一般（設備異常分析）：萃取異常事件，統計設備異常排行、故障 Pareto 與機台狀態\n- 日報（客戶專案進度）：追蹤客戶專案狀態、AI 標記風險與待主管決策事項、主管指示與重要日期\n- 生產回報（多單位開機率彙整）：彙整各廠開機率、回報完成率、設備與品質異常\n- 產線 Mini-MES：還原產線生產批次、CIP/SIP 製程與異常事件的時間軸\n- 異常事件分析：把同一設備的多則處理進度訊息合併成一個事件追蹤到結案\n- 產線 Mini-MES 2.0：解析格式化的生產批次回報、品管檢查與機台班報\n- 群組工作總覽：追蹤綜合型群組中的各項議題、待確認事項與排程公告\n\n群組依類別（廠區／部門）分組，使用者依權限只能看到自己被授權的類別。",
+        "process": [
+          "將 LINE 官方帳號加入既有的工作群組，Webhook 即時接收群組訊息與圖片",
+          "管理者在後台為群組設定分類與分析模板，並依需求開啟圖片分析、多語翻譯等選項",
+          "每則訊息由 AI 依模板萃取成結構化資料（事件、批次、專案、議題等），並保留與原始訊息的連結",
+          "AI 信心度不足的判斷進入人工審核佇列，由管理者確認或修正",
+          "使用者登入 Dashboard 依期間、類別篩選，查看 KPI、趨勢圖、排行與時間軸，並可一鍵回溯原始對話",
+          "系統依設定將每日／每週摘要推播給指定的主管，並每日自動備份資料"
+        ],
+        "features": [
+          {
+            "name": "多模板 Dashboard",
+            "desc": "7 種分析模板對應不同類型群組，共用總覽／訊息紀錄外殼，新群組選模板即可上線"
+          },
+          {
+            "name": "AI 結構化萃取",
+            "desc": "將自由文字回報轉為異常事件、生產批次、專案進度、品管紀錄、工作議題等結構化資料"
+          },
+          {
+            "name": "查看原始對話",
+            "desc": "每一筆分析結果都能連回原始 LINE 訊息，資料來源可追溯"
+          },
+          {
+            "name": "異常事件合併追蹤",
+            "desc": "同一設備的多則處理進度訊息自動合併為一個事件，追蹤狀態直到排除"
+          },
+          {
+            "name": "專案風險與決策提示",
+            "desc": "AI 標記有風險、需要主管決策、久未更新的專案"
+          },
+          {
+            "name": "多語訊息翻譯",
+            "desc": "非中文訊息（泰文、英文等）自動翻譯成中文，群組可自行開關"
+          },
+          {
+            "name": "訊息收回處理",
+            "desc": "已收回的訊息保留可查，但不列入任何統計數字"
+          },
+          {
+            "name": "人工審核佇列",
+            "desc": "低信心的 AI 判斷交由管理者確認，錯誤修正會被記錄下來"
+          },
+          {
+            "name": "每日／週報推播",
+            "desc": "依類別將 AI 摘要推播給指定收件人"
+          },
+          {
+            "name": "權限控管",
+            "desc": "依類別授權檢視範圍，管理者可管理帳號與群組設定"
+          },
+          {
+            "name": "資料匯出與備份",
+            "desc": "專案清單可勾選匯出，資料庫每日自動備份"
+          }
+        ],
+        "ai_usage": [
+          "依群組模板理解現場口語、縮寫與固定格式回報，萃取成結構化欄位（設備、異常類型、產品、箱數、效率、專案狀態等）",
+          "判斷同一事件的後續訊息是否屬於既有事件或議題，進行合併追蹤，並依完整處理時間軸重新判斷狀態與優先度",
+          "自動辨識專案風險、待主管決策事項與主管指示",
+          "將泰文、英文等非中文訊息翻譯成中文，降低跨國據點的閱讀門檻",
+          "產生每日／每週重點摘要，推播給主管",
+          "開發過程以 Claude Code 作為 AI 開發夥伴，快速迭代新模板與介面調整"
+        ],
+        "tools": [
+          {
+            "name": "LINE Messaging API",
+            "desc": "官方帳號加入群組、Webhook 接收訊息、推播摘要"
+          },
+          {
+            "name": "Claude（Haiku 4.5，經 Vercel AI Gateway）",
+            "desc": "訊息分析、結構化萃取、翻譯與摘要"
+          },
+          {
+            "name": "Next.js（App Router）+ TypeScript",
+            "desc": "Dashboard 與後台管理介面"
+          },
+          {
+            "name": "Supabase",
+            "desc": "PostgreSQL 資料庫、使用者登入、圖片檔案儲存"
+          },
+          {
+            "name": "Apache ECharts",
+            "desc": "趨勢圖、Pareto、排行等圖表"
+          },
+          {
+            "name": "Vercel",
+            "desc": "網站部署、排程工作（每日備份）、備份檔儲存"
+          },
+          {
+            "name": "Google Drive API",
+            "desc": "資料庫備份的異地副本"
+          },
+          {
+            "name": "Claude Code",
+            "desc": "系統開發與持續迭代"
+          }
+        ],
+        "results": [
+          "平台已正式上線，已有多個廠區、產線與業務單位的 LINE 群組實際使用",
+          "涵蓋設備異常、產線生產、品管檢查、開機率回報、客戶專案日報、綜合工作議題等不同類型的群組",
+          "現場人員維持原本的 LINE 回報方式，不需額外填表，資料即自動累積成可查詢的歷史紀錄",
+          "海外據點的泰文、英文訊息可直接以中文閱讀",
+          "平台持續依使用單位回饋快速迭代，新增模板與功能"
+        ],
+        "value": [
+          {
+            "name": "對現場與回報人員",
+            "desc": "照原本方式在 LINE 回報即可，不增加任何填表負擔"
+          },
+          {
+            "name": "對主管與管理者",
+            "desc": "不用翻聊天紀錄，即時掌握異常、生產、專案進度與需要決策的事項，每日／週摘要主動推送"
+          },
+          {
+            "name": "對公司",
+            "desc": "把原本散落在聊天紀錄的現場知識沉澱為結構化資料，可作為設備保養、品質改善與管理決策的依據"
+          }
+        ],
+        "extensions": [
+          "任何以 LINE 群組回報工作的單位（廠區、產線、業務、品管、倉儲等）都可以直接加入，選擇合適的模板即可使用",
+          "有新的回報格式時，可在既有模板上加開選項，或新增一套分析模板",
+          "結構化後的資料可進一步串接 MES、ERP、保養系統等既有系統",
+          "可延伸為設備異常預警、重複異常自動提醒等主動式通知"
+        ],
+        "limitations": [
+          "只能分析官方帳號加入之後的群組訊息，加入前的歷史訊息需另外匯入",
+          "AI 萃取結果依賴原始訊息的完整度，回報內容過於簡略時可能判斷錯誤，低信心結果需人工審核",
+          "原始訊息沒有提供的指標（例如目標產能、良率分母）不會自行推算，避免產生不實數字",
+          "群組訊息可能包含敏感資訊，檢視權限依類別授權控管，帳號由管理者開通"
+        ],
+        "success_key": "不改變使用者的習慣：現場照常在 LINE 回報，資料整理交給 AI。搭配「分析模板」的設計，讓不同類型的群組共用同一套平台，新單位加入的成本極低，才能從單一群組擴展到多個廠區與部門。",
+        "keywords": [
+          "LINE",
+          "LINE Bot",
+          "群組訊息分析",
+          "AI 結構化萃取",
+          "Dashboard",
+          "設備異常",
+          "生產管理",
+          "Mini-MES",
+          "品管",
+          "開機率",
+          "專案追蹤",
+          "多語翻譯",
+          "Claude",
+          "Next.js",
+          "Supabase",
+          "Vercel",
+          "數位發展部"
+        ]
+      },
+      "en": {
+        "title": "THC LINE Insight: AI Analytics Platform for LINE Group Messages",
+        "summary": "Plant and sales teams report equipment faults, production batches, QC checks, machine uptime and customer project progress in LINE groups every day, but these messages are buried in chat history and hard to search, count or follow up on afterwards. LINE Insight adds an official account to existing LINE groups, automatically receives every message, and uses AI to extract structured data according to the group type (fault events, production batches, project progress, open work issues, etc.), then presents KPIs, trends, rankings and timelines on a dashboard. Frontline staff keep reporting exactly as before, while managers move from scrolling through chats to reading a dashboard.",
+        "category": [
+          "Data Integration & Analysis",
+          "Production Management",
+          "Process Automation",
+          "Internal Management Tools"
+        ],
+        "unit_request": "Digital Development Department",
+        "unit_owner": "Digital Development Department",
+        "author": "Hsu Chiao-Kuei",
+        "status": "Live in production (continuously expanding)",
+        "region": "Group plants and business units (including Taiwan and overseas sites; supports Chinese, Thai, English and other languages)",
+        "problem_background": "LINE groups are the most familiar and immediate communication tool for plant and sales teams: equipment faults, line production status, QC results, plant uptime and customer project progress are mostly reported directly in groups. But chat history is a running stream, and messages quickly scroll away. Answering questions like \"How many times did this machine break down this month?\", \"Which projects are stuck waiting for a management decision?\" or \"Which unit hasn't reported today?\" means manually scrolling back and compiling everything into Excel. Groups at overseas sites also mix in Thai and English, making them even harder to follow.",
+        "core_problem": "How can unstructured conversations in LINE groups be automatically turned into searchable, measurable and trackable management information, without changing how frontline staff already report in LINE and without asking anyone to fill in extra forms?",
+        "solution": "A LINE official account is added to each unit's existing LINE groups and receives messages (text and images) in real time via webhook. AI extracts structured data according to the \"analysis template\" assigned to each group, stores it in a database and presents it on a dashboard. There are currently 7 analysis templates; a new group simply picks a suitable template and is ready to go, with no extra development:\n- General (equipment fault analysis): extracts fault events and shows equipment fault rankings, failure Pareto charts and machine status\n- Daily report (customer project progress): tracks customer project status, AI-flagged risks, items awaiting management decisions, manager instructions and key dates\n- Production report (multi-unit uptime roll-up): consolidates plant uptime, reporting completion rates, and equipment and quality issues\n- Line Mini-MES: reconstructs a timeline of production batches, CIP/SIP processes and fault events on a line\n- Incident analysis: merges multiple progress updates about the same machine into a single incident tracked through to closure\n- Line Mini-MES 2.0: parses formatted production batch reports, QC checks and machine shift reports\n- Group work overview: tracks issues, open questions and schedule announcements in mixed-topic groups\n\nGroups are organized by category (plant or department), and users only see the categories they are authorized for.",
+        "process": [
+          "Add the LINE official account to existing work groups; the webhook receives group messages and images in real time",
+          "Admins assign each group a category and an analysis template in the back office, and enable options such as image analysis or multilingual translation as needed",
+          "AI extracts each message into structured data (events, batches, projects, issues, etc.) according to the template, keeping a link back to the original message",
+          "Low-confidence AI judgments go to a manual review queue for admins to confirm or correct",
+          "Users log in to the dashboard, filter by period and category to view KPIs, trend charts, rankings and timelines, and jump back to the original conversation in one click",
+          "The system pushes daily/weekly summaries to designated managers and backs up data automatically every day"
+        ],
+        "features": [
+          {
+            "name": "Multi-template dashboards",
+            "desc": "7 analysis templates for different kinds of groups, sharing a common overview/message log shell; a new group goes live just by choosing a template"
+          },
+          {
+            "name": "AI structured extraction",
+            "desc": "Turns free-text reports into structured fault events, production batches, project progress, QC records and work issues"
+          },
+          {
+            "name": "View original conversation",
+            "desc": "Every analysis result links back to the original LINE message, so every data point is traceable"
+          },
+          {
+            "name": "Incident merge tracking",
+            "desc": "Multiple progress updates about the same machine are automatically merged into one incident, tracked until resolved"
+          },
+          {
+            "name": "Project risk and decision alerts",
+            "desc": "AI flags projects that are at risk, need a management decision, or haven't been updated for a while"
+          },
+          {
+            "name": "Multilingual translation",
+            "desc": "Non-Chinese messages (Thai, English, etc.) are automatically translated into Chinese; can be switched on or off per group"
+          },
+          {
+            "name": "Unsent message handling",
+            "desc": "Messages that were unsent remain viewable but are excluded from all statistics"
+          },
+          {
+            "name": "Manual review queue",
+            "desc": "Low-confidence AI judgments are confirmed by admins, and corrections are recorded"
+          },
+          {
+            "name": "Daily/weekly report push",
+            "desc": "AI summaries are pushed to designated recipients by category"
+          },
+          {
+            "name": "Access control",
+            "desc": "Viewing scope is granted by category; admins manage accounts and group settings"
+          },
+          {
+            "name": "Export and backup",
+            "desc": "Project lists can be exported by selection, and the database is backed up automatically every day"
+          }
+        ],
+        "ai_usage": [
+          "Understands colloquial language, abbreviations and fixed-format reports according to each group's template, extracting structured fields (equipment, fault type, product, case count, efficiency, project status, etc.)",
+          "Determines whether follow-up messages belong to an existing event or issue and merges them, re-evaluating status and priority from the full handling timeline",
+          "Automatically identifies project risks, items awaiting management decisions, and manager instructions",
+          "Translates Thai, English and other non-Chinese messages into Chinese, lowering the reading barrier for overseas sites",
+          "Generates daily/weekly highlight summaries and pushes them to managers",
+          "Claude Code served as the AI development partner throughout, enabling fast iteration on new templates and UI refinements"
+        ],
+        "tools": [
+          {
+            "name": "LINE Messaging API",
+            "desc": "Adds the official account to groups, receives messages via webhook, and pushes summaries"
+          },
+          {
+            "name": "Claude (Haiku 4.5, via Vercel AI Gateway)",
+            "desc": "Message analysis, structured extraction, translation and summaries"
+          },
+          {
+            "name": "Next.js (App Router) + TypeScript",
+            "desc": "Dashboard and admin interface"
+          },
+          {
+            "name": "Supabase",
+            "desc": "PostgreSQL database, user login, and image file storage"
+          },
+          {
+            "name": "Apache ECharts",
+            "desc": "Trend, Pareto and ranking charts"
+          },
+          {
+            "name": "Vercel",
+            "desc": "Website deployment, scheduled jobs (daily backup), and backup file storage"
+          },
+          {
+            "name": "Google Drive API",
+            "desc": "Off-site copy of database backups"
+          },
+          {
+            "name": "Claude Code",
+            "desc": "System development and continuous iteration"
+          }
+        ],
+        "results": [
+          "The platform is live in production and already used by LINE groups from multiple plants, production lines and business units",
+          "Covers many kinds of groups: equipment faults, line production, QC checks, uptime reporting, customer project daily reports and mixed-topic work issues",
+          "Frontline staff keep reporting in LINE as before with no extra forms, while the data automatically builds up into a searchable history",
+          "Thai and English messages from overseas sites can be read directly in Chinese",
+          "The platform keeps iterating quickly on feedback from user units, adding new templates and features"
+        ],
+        "value": [
+          {
+            "name": "For frontline and reporting staff",
+            "desc": "Just keep reporting in LINE as usual, with no additional form-filling"
+          },
+          {
+            "name": "For supervisors and managers",
+            "desc": "No more scrolling through chats: see faults, production, project progress and pending decisions at a glance, with daily/weekly summaries pushed proactively"
+          },
+          {
+            "name": "For the company",
+            "desc": "Turns frontline knowledge scattered across chat history into structured data that supports equipment maintenance, quality improvement and management decisions"
+          }
+        ],
+        "extensions": [
+          "Any unit that reports work in LINE groups (plants, production lines, sales, QC, warehousing, etc.) can join directly and start by choosing a suitable template",
+          "New reporting formats can be supported by adding options to an existing template or creating a new analysis template",
+          "The structured data can be further connected to existing systems such as MES, ERP and maintenance systems",
+          "Can be extended into proactive alerts, such as equipment fault early warnings and automatic reminders for recurring faults"
+        ],
+        "limitations": [
+          "Only messages sent after the official account joins a group can be analyzed; earlier history must be imported separately",
+          "AI extraction depends on how complete the original message is; overly brief reports may be misjudged, and low-confidence results require manual review",
+          "Metrics not provided in the original messages (such as target capacity or yield denominators) are never inferred, to avoid producing false numbers",
+          "Group messages may contain sensitive information; viewing rights are controlled by category, and accounts are provisioned by admins"
+        ],
+        "success_key": "Don't change how people work: frontline staff keep reporting in LINE, and AI takes care of organizing the data. Combined with the \"analysis template\" design, different kinds of groups share one platform and the cost of onboarding a new unit is minimal — which is what allowed it to grow from a single group to multiple plants and departments.",
+        "keywords": [
+          "LINE",
+          "LINE Bot",
+          "Group message analysis",
+          "AI structured extraction",
+          "Dashboard",
+          "Equipment faults",
+          "Production management",
+          "Mini-MES",
+          "Quality control",
+          "Machine uptime",
+          "Project tracking",
+          "Multilingual translation",
+          "Claude",
+          "Next.js",
+          "Supabase",
+          "Vercel",
+          "Digital Development Department"
+        ]
+      }
+    }
   }
 ]
