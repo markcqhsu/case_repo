@@ -8562,7 +8562,10 @@
     "number": 39,
     "updated": "2026.09",
     "video": [],
-    "screenshot": "assets/line-bot-notify.png",
+    "screenshots": [
+      "assets/line-bot-notify-cover.jpg",
+      "assets/line-bot-notify.png"
+    ],
     "url": "",
     "i18n": {
       "zh": {
