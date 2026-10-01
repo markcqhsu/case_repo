@@ -114,6 +114,7 @@
   .changelog-entry .date { font-size: 13px; color: var(--text-muted); margin-bottom: 3px; font-weight: 600; }
   .changelog-entry .notes { font-size: 15px; line-height: 1.6; }
   header h1 { margin: 0 0 10px; font-size: 30px; font-weight: 800; letter-spacing: -0.01em; }
+  #pageTitle { cursor: pointer; }
   header p { margin: 0 0 14px; color: var(--text-muted); font-size: 16px; }
   #totalCount {
     display: inline-block;
@@ -145,6 +146,28 @@
     color: var(--text);
   }
   #search:focus { outline: 2px solid var(--accent); outline-offset: -1px; }
+  .search-wrap { position: relative; }
+  .search-wrap #search { padding-right: 48px; }
+  #searchClear {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--text-muted);
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #searchClear:hover { background: var(--border); color: var(--text); }
+  #searchClear[hidden] { display: none; }
   .filter-row { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; }
   .filter-row .filter-label { font-size: 14px; color: var(--text-muted); margin-right: 2px; font-weight: 600; }
   .tag-btn {
@@ -510,7 +533,10 @@
   </header>
 
   <div class="controls">
-    <input id="search" type="text" placeholder="搜尋標題、問題、工具、製作人、關鍵字..." />
+    <div class="search-wrap">
+      <input id="search" type="text" placeholder="搜尋標題、問題、工具、製作人、關鍵字..." />
+      <button id="searchClear" type="button" aria-label="清除搜尋" title="清除搜尋" hidden>&times;</button>
+    </div>
     <div class="filter-row" id="categoryFilters"></div>
   </div>
 
@@ -558,6 +584,7 @@ const UI_STRINGS = {
     pageTitle: '宏全AI應用推動案例庫',
     subtitle: '分享用 AI 或自動化工具解決廠內流程問題的實際案例',
     searchPlaceholder: '搜尋標題、問題、工具、製作人、關鍵字...',
+    clearSearch: '清除搜尋',
     filterLabel: '分類',
     all: '全部',
     empty: '找不到符合的案例',
@@ -583,6 +610,7 @@ const UI_STRINGS = {
     pageTitle: 'Hon Chuan AI Application Case Library',
     subtitle: 'Real cases of using AI or automation tools to solve in-plant process problems',
     searchPlaceholder: 'Search title, problem, tool, author, keyword...',
+    clearSearch: 'Clear search',
     filterLabel: 'Category',
     all: 'All',
     empty: 'No matching cases found',
@@ -656,6 +684,8 @@ function applyStaticText() {
   document.getElementById('pageTitle').textContent = s.pageTitle;
   document.getElementById('pageSubtitle').textContent = s.subtitle;
   document.getElementById('search').placeholder = s.searchPlaceholder;
+  document.getElementById('searchClear').setAttribute('aria-label', s.clearSearch);
+  document.getElementById('searchClear').title = s.clearSearch;
   document.getElementById('empty').textContent = s.empty;
   document.getElementById('backBtn').textContent = s.backBtn;
   document.getElementById('leaderboardBackBtn').textContent = s.backBtn;
@@ -1104,6 +1134,7 @@ function goToUnit(unit) {
   activeCategory = null;
   currentPage = 1;
   document.getElementById('search').value = unit === ui().notProvided ? '' : unit;
+  syncSearchClear();
   renderCategoryFilters();
   render();
   location.hash = '';
@@ -1116,7 +1147,29 @@ function escapeHtml(str) {
     .replaceAll('>', '&gt;');
 }
 
-document.getElementById('search').addEventListener('input', () => { currentPage = 1; render(); });
+function syncSearchClear() {
+  document.getElementById('searchClear').hidden = !document.getElementById('search').value;
+}
+
+document.getElementById('search').addEventListener('input', () => { syncSearchClear(); currentPage = 1; render(); });
+document.getElementById('searchClear').addEventListener('click', () => {
+  const search = document.getElementById('search');
+  search.value = '';
+  syncSearchClear();
+  currentPage = 1;
+  render();
+  search.focus();
+});
+document.getElementById('pageTitle').addEventListener('click', () => {
+  activeCategory = null;
+  currentPage = 1;
+  document.getElementById('search').value = '';
+  syncSearchClear();
+  renderCategoryFilters();
+  render();
+  if (location.hash) location.hash = '';
+  else window.scrollTo({ top: 0, behavior: 'smooth' });
+});
 document.getElementById('backBtn').addEventListener('click', () => { location.hash = ''; });
 document.getElementById('leaderboardBackBtn').addEventListener('click', () => { location.hash = ''; });
 document.getElementById('leaderboardBtn').addEventListener('click', () => { location.hash = 'leaderboard'; });
