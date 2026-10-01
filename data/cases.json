@@ -9498,5 +9498,217 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-043",
+    "number": 43,
+    "updated": "2026.10",
+    "video": [],
+    "screenshots": [
+      "assets/export-coa-automation-cover.jpg"
+    ],
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "外銷COA 自動建立",
+        "summary": "外銷出貨需依不同客戶與國家的要求（例如香港太古、BPKS 等），提供特定格式與檢驗項目的英文版檢驗報告書（COA），並配合客戶需求呈現訂單相關資料。本案例透過自動化程式擷取測試數據與訂單資訊，依各客戶範本自動產出 Word 或 Excel 格式的 COA，確認後再轉為 PDF，取代人工逐份製作。",
+        "category": [
+          "流程自動化",
+          "品保工作流程"
+        ],
+        "unit_request": "品保處",
+        "unit_owner": "品保處",
+        "author": "謝欣錫、楊尚達、黃聖凱、劉騏維",
+        "status": "部分上線（尚有 2 種產品開發中，預計 2026 年 10 月底前完成）",
+        "region": "宏全一廠、宏全二廠",
+        "problem_background": "外銷出貨需依不同客戶與國家的要求，提供特定格式與檢驗項目的英文版 COA。過去的作業方式是先到現場取得 Bar Code 資訊，再手動輸入 PO 碼、製造日期與箱號對應、檢驗數據匯出等出貨資訊；部分客戶（例如港可 SCCK）還需另外手動登打出貨明細。由於資訊項目眾多，每份 COA 至少需花費 30 分鐘製作，輸入時也經常發生箱號、流水號等錯誤。",
+        "core_problem": "外銷 COA 格式依客戶而異且資訊繁多，人工逐份登打耗時，箱號、流水號等錯誤頻繁發生。",
+        "solution": "以 Python 開發自動化程式，將現場取得的 Bar Code、PO 碼、箱號等出貨資訊一律由程式直接載入，避免人工輸入錯誤。檢驗數據一部分自動從 IRP 系統取得，另需額外量測的項目則整理成 Excel 檔後由程式載入。每位客戶各有一份專屬範本，程式依產品料號從範本資料夾抓取對應的範本與檢驗項目，自動產出 Word 或 Excel 格式的英文版 COA，經確認無誤後再轉為 PDF。",
+        "process": [
+          "至現場取得 Bar Code 等出貨資訊",
+          "出貨資訊（PO 碼、製造日期、箱號、流水號等）以 TXT 或 Excel 檔案形式，由程式直接載入",
+          "程式自 IRP 系統取得檢驗數據",
+          "需另外量測的項目整理成 Excel 檔，由程式載入",
+          "程式依產品料號從範本資料夾抓取對應客戶的範本",
+          "自動產出 Word 或 Excel 格式的英文版 COA",
+          "同仁確認 COA 內容無誤後，轉成 PDF 檔案"
+        ],
+        "features": [
+          {
+            "name": "出貨資訊自動載入",
+            "desc": "直接讀取 TXT 或 Excel 檔案中的 PO 碼、箱號、流水號等資料，免除人工輸入"
+          },
+          {
+            "name": "檢驗數據整合",
+            "desc": "自動取得 IRP 系統的檢驗數據，並合併額外量測的 Excel 數據"
+          },
+          {
+            "name": "客戶範本自動對應",
+            "desc": "依產品料號從範本資料夾抓取對應客戶的專屬格式與檢驗項目"
+          },
+          {
+            "name": "多格式輸出",
+            "desc": "依客戶需求產出 Word 或 Excel 格式的英文版 COA，確認內容無誤後再轉成 PDF 檔案"
+          }
+        ],
+        "ai_usage": [
+          "使用 Claude 協助撰寫與除錯 Python 自動化程式"
+        ],
+        "tools": [
+          {
+            "name": "Python",
+            "desc": "自動化程式，負責載入出貨資訊、整合檢驗數據並產出 COA"
+          },
+          {
+            "name": "TXT／Excel 檔案",
+            "desc": "出貨資訊（PO 碼、箱號、流水號等）與額外量測數據的資料來源"
+          },
+          {
+            "name": "IRP 系統",
+            "desc": "提供檢驗數據"
+          },
+          {
+            "name": "範本資料夾",
+            "desc": "依產品料號存放各客戶的專屬 COA 範本檔"
+          },
+          {
+            "name": "Word／Excel／PDF",
+            "desc": "COA 的輸出格式，確認無誤後轉成 PDF"
+          },
+          {
+            "name": "Claude",
+            "desc": "協助撰寫與除錯 Python 自動化程式"
+          }
+        ],
+        "results": [
+          "已部分上線，尚有 2 種產品預計於 2026 年 10 月底前完成",
+          "每份 COA 製作時間從至少 30 分鐘，初期縮短為 15 分鐘，經持續優化後目前約 5～7 分鐘，時間節省約八成",
+          "出貨資訊改由程式直接載入，大幅減少箱號、流水號等輸入錯誤",
+          "支援香港太古、BPKS 等客戶的專屬格式與檢驗項目"
+        ],
+        "value": [
+          {
+            "name": "對品保同仁",
+            "desc": "免除繁瑣的資料登打與核對，每份 COA 省下大量時間"
+          }
+        ],
+        "extensions": [
+          "新增外銷客戶時，只要將客戶範本加入範本資料夾即可擴充"
+        ],
+        "limitations": [
+          "出貨資訊的 TXT／Excel 檔案需維持固定格式，程式才能正確載入",
+          "額外量測的數據需先整理成 Excel 檔，才能由程式載入",
+          "範本檔需依產品料號正確存放於範本資料夾；客戶格式變更時，需同步更新範本"
+        ],
+        "success_key": "所有資料一律由程式直接載入，從源頭杜絕人工輸入錯誤；再以「產品料號對應客戶範本」的設計，讓多樣化的外銷客戶格式也能自動產出，並藉由 Claude 協助開發，讓品保單位能自行完成程式建置與持續優化。",
+        "keywords": [
+          "COA檢驗報告書",
+          "Python",
+          "Claude",
+          "IRP",
+          "流程自動化"
+        ]
+      },
+      "en": {
+        "title": "Automated Export COA Creation",
+        "summary": "Export shipments require English Certificates of Analysis (COAs) in specific formats and with specific test items depending on the customer and country (e.g. Swire Hong Kong, BPKS), presenting order-related data as each customer requires. This case uses an automation program to extract test data and order information and automatically produce COAs in Word or Excel format from each customer's template, which are converted to PDF after review—replacing manual, document-by-document preparation.",
+        "category": [
+          "Process Automation",
+          "QA Workflow"
+        ],
+        "unit_request": "Quality Assurance Division",
+        "unit_owner": "Quality Assurance Division",
+        "author": "Hsieh Hsin-Hsi, Yang Shang-Ta, Huang Sheng-Kai, Liu Chi-Wei",
+        "status": "Partially launched (2 products still in development, expected by end of October 2026)",
+        "region": "Hon Chuan Plant 1, Hon Chuan Plant 2",
+        "problem_background": "Export shipments require English COAs in specific formats and with specific test items depending on the customer and country. Previously, staff first collected barcode information on site, then manually entered shipping information such as PO numbers, manufacturing dates mapped to carton numbers, and exported inspection data; some customers (e.g. SCCK) also required shipping details to be keyed in separately. With so many data items, each COA took at least 30 minutes to prepare, and errors in carton and serial numbers were common.",
+        "core_problem": "Export COA formats vary by customer and contain a lot of information; manual preparation of each document was time-consuming, and errors in carton and serial numbers occurred frequently.",
+        "solution": "A Python automation program loads all shipping information collected on site—barcodes, PO numbers, carton numbers and more—directly, avoiding manual entry errors. Part of the inspection data is pulled automatically from the IRP system, while additionally measured items are compiled into an Excel file for the program to load. Each customer has its own template; the program uses the product part number to pick the matching template and test items from the template folder, automatically produces the English COA in Word or Excel format, and converts it to PDF once reviewed.",
+        "process": [
+          "Collect barcode and other shipping information on site",
+          "Shipping information (PO number, manufacturing date, carton number, serial number, etc.) is loaded directly by the program from TXT or Excel files",
+          "The program retrieves inspection data from the IRP system",
+          "Additionally measured items are compiled into an Excel file and loaded by the program",
+          "The program picks the matching customer template from the template folder by product part number",
+          "An English COA is generated automatically in Word or Excel format",
+          "Staff review the COA and convert it to a PDF file"
+        ],
+        "features": [
+          {
+            "name": "Automatic shipping data loading",
+            "desc": "Reads PO numbers, carton numbers, serial numbers and more directly from TXT or Excel files, with no manual entry"
+          },
+          {
+            "name": "Inspection data integration",
+            "desc": "Automatically retrieves IRP inspection data and merges it with additional measurements from Excel"
+          },
+          {
+            "name": "Automatic customer template matching",
+            "desc": "Picks each customer's dedicated format and test items from the template folder by product part number"
+          },
+          {
+            "name": "Multi-format output",
+            "desc": "Produces English COAs in Word or Excel format as each customer requires, converted to PDF after review"
+          }
+        ],
+        "ai_usage": [
+          "Used Claude to help write and debug the Python automation program"
+        ],
+        "tools": [
+          {
+            "name": "Python",
+            "desc": "Automation program that loads shipping information, integrates inspection data and produces COAs"
+          },
+          {
+            "name": "TXT / Excel files",
+            "desc": "Data sources for shipping information (PO numbers, carton numbers, serial numbers, etc.) and additional measurements"
+          },
+          {
+            "name": "IRP system",
+            "desc": "Provides inspection data"
+          },
+          {
+            "name": "Template folder",
+            "desc": "Stores each customer's dedicated COA templates by product part number"
+          },
+          {
+            "name": "Word / Excel / PDF",
+            "desc": "COA output formats, converted to PDF after review"
+          },
+          {
+            "name": "Claude",
+            "desc": "Helped write and debug the Python automation program"
+          }
+        ],
+        "results": [
+          "Partially launched; 2 remaining products expected by end of October 2026",
+          "Time per COA dropped from at least 30 minutes to 15 minutes initially, and to about 5–7 minutes after continued optimization—roughly 80% time saved",
+          "Shipping information is now loaded directly by the program, greatly reducing carton and serial number errors",
+          "Supports dedicated formats and test items for customers such as Swire Hong Kong and BPKS"
+        ],
+        "value": [
+          {
+            "name": "For QA staff",
+            "desc": "No more tedious data entry and cross-checking, saving substantial time on every COA"
+          }
+        ],
+        "extensions": [
+          "New export customers can be supported simply by adding their templates to the template folder"
+        ],
+        "limitations": [
+          "Shipping information TXT / Excel files must keep a fixed format for the program to load them correctly",
+          "Additional measurement data must first be compiled into an Excel file before the program can load it",
+          "Templates must be stored correctly in the template folder by product part number; templates must be updated when a customer's format changes"
+        ],
+        "success_key": "All data is loaded directly by the program, eliminating manual entry errors at the source; a \"product part number → customer template\" design lets diverse export customer formats be produced automatically, and with Claude's help the QA unit can build and keep improving the program on its own.",
+        "keywords": [
+          "COA",
+          "Python",
+          "Claude",
+          "IRP",
+          "Process Automation"
+        ]
+      }
+    }
   }
 ]
