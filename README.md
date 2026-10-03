@@ -14,6 +14,8 @@
    python3 scripts/import_case.py 你的案例檔案.md
    ```
    會自動把新案例加進 `data/cases.json`。
+   接著執行 `python3 scripts/make_thumbs.py`，為新截圖產生列表用的 WebP 縮圖（放在 `assets/thumbs/`）；
+   沒產生也能正常顯示，只是列表會改載入原圖、比較慢。
 
 每個案例的欄位不需要完全一樣（例如有些案例沒有「執行流程」或「成功關鍵」），
 留空或不寫的欄位不會顯示在網頁上。
