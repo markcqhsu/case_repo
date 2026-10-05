@@ -11311,5 +11311,296 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-050",
+    "number": 50,
+    "updated": "2026.10",
+    "screenshots": [
+      "assets/cpr-aed-training-cover.jpg",
+      "assets/cpr-aed-training-01.jpg",
+      "assets/cpr-aed-training-02.jpg",
+      "assets/cpr-aed-training-03.jpg",
+      "assets/cpr-aed-training-04.jpg",
+      "assets/cpr-aed-training-05.jpg"
+    ],
+    "url": "",
+    "video": [
+      "https://youtu.be/DVuKC7Eloko"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "生成式 AI 輔助 CPR／AED 緊急救護教育訓練",
+        "summary": "運用生成式AI、動畫生成及AI語音技術，將CPR與AED緊急救護流程轉換為公司工廠情境式3D Q版動畫。\n\n從發現患者、確認反應、求援、胸外按壓、AED使用到119救護人員接手，以連續情境呈現完整救援流程。",
+        "category": [
+          "職安環保",
+          "教育訓練與文宣"
+        ],
+        "unit_request": "員工教育訓練及緊急應變相關單位",
+        "unit_owner": "職安衛中心",
+        "author": "陳芝妮",
+        "status": "教育訓練教材及動畫成果",
+        "region": "公司及工廠教育訓練",
+        "problem_background": "CPR及AED教育涉及連續動作、時間順序、角色分工及多人配合，單靠文字或靜態圖片較難完整呈現實際緊急狀況下的救援流程。",
+        "core_problem": "如何在維持CPR／AED關鍵動作正確性的前提下，將完整急救流程轉換成員工容易觀看、理解及記憶的工廠情境動畫。",
+        "solution": "利用生成式AI建立固定3D Q版人物及工廠場景，依完整急救流程拆解為多個動畫鏡頭，逐幕控制人物動作、位置、CPR操作、AED使用及119救護接手流程，最後完成旁白、字幕及影音整合。",
+        "process": [
+          "整理CPR／AED教育流程",
+          "將完整急救程序拆解成動畫場景",
+          "建立固定3D Q版角色及工廠環境",
+          "設計各幕人物動作、位置及鏡位",
+          "使用AI生成動畫",
+          "校正胸外按壓動作",
+          "校正AED操作及貼片位置",
+          "建立119救護接手流程",
+          "製作AI旁白",
+          "後製繁體中文字幕",
+          "整合完整教育影片"
+        ],
+        "features": [
+          {
+            "name": "CPR流程動畫",
+            "desc": "呈現完整救援流程"
+          },
+          {
+            "name": "AED教學",
+            "desc": "呈現AED操作及貼片位置"
+          },
+          {
+            "name": "119接手",
+            "desc": "呈現救援銜接"
+          },
+          {
+            "name": "角色一致性",
+            "desc": "維持人物、服裝及場景一致"
+          },
+          {
+            "name": "多媒體教學",
+            "desc": "結合動畫、旁白及字幕"
+          }
+        ],
+        "ai_usage": [
+          "急救流程拆解",
+          "動畫腳本及分鏡",
+          "3D Q版人物與場景製作",
+          "動畫生成",
+          "動作提示詞設計",
+          "AI語音製作",
+          "場景及角色一致性檢查"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "腳本、分鏡、動作指令及流程協作"
+          },
+          {
+            "name": "Flow",
+            "desc": "CPR／AED情境動畫"
+          },
+          {
+            "name": "F5-TTS",
+            "desc": "AI旁白"
+          },
+          {
+            "name": "HeyGen",
+            "desc": "影音及嘴型測試"
+          },
+          {
+            "name": "Blender",
+            "desc": "角色與動作技術測試"
+          },
+          {
+            "name": "影音後製工具",
+            "desc": "字幕、音訊及影片整合"
+          }
+        ],
+        "results": [
+          "建立CPR／AED工廠情境式3D Q版教材",
+          "完成胸外按壓及AED使用視覺教材",
+          "建立完整急救流程動畫",
+          "建立固定角色、場景及視覺規格",
+          "建立可延伸的AI急救動畫製作流程"
+        ],
+        "value": [
+          {
+            "name": "對教育訓練單位",
+            "desc": "提供傳統簡報以外的情境式教材"
+          },
+          {
+            "name": "對員工",
+            "desc": "透過動畫理解急救流程與角色分工"
+          },
+          {
+            "name": "對職安單位",
+            "desc": "建立符合企業環境的急救教材"
+          },
+          {
+            "name": "對公司",
+            "desc": "累積可持續使用及更新的緊急應變影音素材"
+          }
+        ],
+        "extensions": [
+          "AED操作",
+          "異物哽塞",
+          "緊急通報",
+          "火災疏散",
+          "化學品暴露緊急處置",
+          "其他緊急應變教育"
+        ],
+        "limitations": [
+          "AI動畫只能作為教育輔助",
+          "不可取代正式CPR實作訓練",
+          "急救動作及程序須人工確認",
+          "AI人體動作須逐幕檢查",
+          "CPR及AED關鍵操作須特別校正"
+        ],
+        "success_key": "不是直接要求AI生成完整影片，而是先拆解急救程序，再逐幕生成、檢查及修正。",
+        "keywords": [
+          "CPR",
+          "AED",
+          "急救",
+          "緊急應變",
+          "生成式AI",
+          "3D動畫",
+          "教育訓練"
+        ]
+      },
+      "en": {
+        "title": "Generative AI-Assisted CPR/AED Emergency Response Training",
+        "summary": "Using generative AI, animation generation and AI voice technology, the CPR and AED emergency response procedure was turned into chibi-style 3D animations set in the company's own plants.\n\nThe full rescue sequence is shown as one continuous scenario: finding the casualty, checking responsiveness, calling for help, chest compressions, using the AED and handing over to 119 paramedics.",
+        "category": [
+          "EHS & Environment",
+          "Training & Communications"
+        ],
+        "unit_request": "Employee training and emergency response units",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "陳芝妮",
+        "status": "Training materials and animations completed",
+        "region": "Company and plant training",
+        "problem_background": "CPR and AED training involves continuous actions, timing, role division and teamwork. Text or static images alone struggle to show the full rescue process as it happens in a real emergency.",
+        "core_problem": "How to turn the full first-aid procedure into plant-based animations that employees can easily watch, understand and remember, while keeping the key CPR/AED actions correct.",
+        "solution": "Use generative AI to create fixed chibi-style 3D characters and plant scenes, break the full first-aid procedure into multiple animated shots, and control each scene's character actions, positions, CPR technique, AED use and 119 handover—then finish with narration, subtitles and video integration.",
+        "process": [
+          "Organize the CPR/AED training procedure",
+          "Break the full first-aid procedure into animated scenes",
+          "Create fixed chibi-style 3D characters and the plant environment",
+          "Design character actions, positions and camera angles for each scene",
+          "Generate animations with AI",
+          "Correct the chest compression technique",
+          "Correct AED operation and pad placement",
+          "Build the 119 paramedic handover sequence",
+          "Produce AI narration",
+          "Add Traditional Chinese subtitles in post-production",
+          "Assemble the complete training video"
+        ],
+        "features": [
+          {
+            "name": "CPR procedure animation",
+            "desc": "Shows the complete rescue process"
+          },
+          {
+            "name": "AED instruction",
+            "desc": "Shows AED operation and pad placement"
+          },
+          {
+            "name": "119 handover",
+            "desc": "Shows the handover to paramedics"
+          },
+          {
+            "name": "Character consistency",
+            "desc": "Keeps characters, uniforms and scenes consistent"
+          },
+          {
+            "name": "Multimedia teaching",
+            "desc": "Combines animation, narration and subtitles"
+          }
+        ],
+        "ai_usage": [
+          "Breaking down the first-aid procedure",
+          "Animation scripts and storyboards",
+          "Creating chibi-style 3D characters and scenes",
+          "Animation generation",
+          "Designing motion prompts",
+          "AI voice production",
+          "Checking scene and character consistency"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "Scripts, storyboards, motion prompts and workflow collaboration"
+          },
+          {
+            "name": "Flow",
+            "desc": "CPR/AED scenario animations"
+          },
+          {
+            "name": "F5-TTS",
+            "desc": "AI narration"
+          },
+          {
+            "name": "HeyGen",
+            "desc": "Video and lip-sync testing"
+          },
+          {
+            "name": "Blender",
+            "desc": "Character and motion technical tests"
+          },
+          {
+            "name": "Video post-production tools",
+            "desc": "Subtitles, audio and video integration"
+          }
+        ],
+        "results": [
+          "Created chibi-style 3D CPR/AED training materials set in the plant",
+          "Completed visual materials on chest compressions and AED use",
+          "Built a full first-aid procedure animation",
+          "Established fixed characters, scenes and visual specifications",
+          "Built an extendable AI workflow for first-aid animations"
+        ],
+        "value": [
+          {
+            "name": "For the training unit",
+            "desc": "Scenario-based materials beyond traditional slides"
+          },
+          {
+            "name": "For employees",
+            "desc": "Understand the first-aid procedure and role division through animation"
+          },
+          {
+            "name": "For the safety unit",
+            "desc": "First-aid materials that fit the company's own environment"
+          },
+          {
+            "name": "For the company",
+            "desc": "Reusable, updatable emergency response video assets"
+          }
+        ],
+        "extensions": [
+          "AED operation",
+          "Choking",
+          "Emergency reporting",
+          "Fire evacuation",
+          "Chemical exposure emergency response",
+          "Other emergency response training"
+        ],
+        "limitations": [
+          "AI animations are only a teaching aid",
+          "They cannot replace formal hands-on CPR training",
+          "First-aid actions and procedures must be confirmed by a person",
+          "AI-generated body movements must be checked scene by scene",
+          "Key CPR and AED actions need particular correction"
+        ],
+        "success_key": "Rather than asking AI to generate a whole video at once, break down the first-aid procedure first, then generate, check and correct scene by scene.",
+        "keywords": [
+          "CPR",
+          "AED",
+          "First Aid",
+          "Emergency Response",
+          "Generative AI",
+          "3D Animation",
+          "Training"
+        ]
+      }
+    }
   }
 ]
