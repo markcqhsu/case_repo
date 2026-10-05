@@ -11054,5 +11054,262 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-049",
+    "number": 49,
+    "updated": "2026.10",
+    "url": "",
+    "screenshots": [
+      "assets/env-permit-management-cover.jpg",
+      "assets/env-permit-management-dashboard.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "環保許可管理系統",
+        "summary": "集中管理環保許可證照與文件，整合期限、展延及變更案件，透過主管 Dashboard 掌握辦理進度，並規劃串接環境檢測管理與廢棄物合約書管理資料。",
+        "category": [
+          "職安環保",
+          "內部管理工具",
+          "流程自動化"
+        ],
+        "unit_request": "環保管理單位與各廠區承辦人（實際單位待確認）",
+        "unit_owner": "職安衛中心",
+        "author": "林玟臻",
+        "status": "案例規劃；實際建置與上線狀態待確認",
+        "region": "企業內部各廠區（實際適用範圍待確認）",
+        "problem_background": "環保許可證照、申請附件及核定文件分散保存，期限與展延作業依賴人工提醒；變更案件、環境檢測報告與廢棄物合約書分屬不同管理流程，主管不易掌握完整辦理狀態。",
+        "core_problem": "證照版本與適用範圍不易確認，展延待辦缺乏一致的期限管理，變更案件的文件、負責人與進度缺少集中追蹤。",
+        "solution": "建立以廠區與許可證為主軸的管理平台，集中保存證照、期限及版本，將展延與變更作業轉為案件流程，提供主管 Dashboard，並以共同識別碼串接相關檢測及合約文件。",
+        "process": [
+          "基礎建檔｜盤點各廠區證照，登錄許可類別、證號、效期、適用範圍及承辦人。",
+          "文件歸檔｜上傳證照、申請附件與核定文件，建立版本及關聯。",
+          "期限提醒｜依證照效期與承辦設定建立提醒節點，指派展延待辦。",
+          "展延辦理｜追蹤資料準備、內部審核、送件、補件與核定進度。",
+          "變更管理｜記錄變更原因、影響範圍與相關文件，經審核後更新許可資料及版本。",
+          "資料串接｜關聯環境檢測報告及廢棄物合約書，供案件查閱與附件準備。",
+          "主管檢視｜以 Dashboard 查看即將到期、逾期、展延及變更案件，核定後歸檔留存。"
+        ],
+        "features": [
+          {
+            "name": "證照／文件集中管理",
+            "desc": "依廠區、許可類別與證號查詢文件、效期及版本。"
+          },
+          {
+            "name": "期限與展延提醒",
+            "desc": "設定提醒節點、承辦人及待辦期限，保留通知與辦理紀錄。"
+          },
+          {
+            "name": "展延案件追蹤",
+            "desc": "管理送件、補件與核定狀態，連結相關文件。"
+          },
+          {
+            "name": "變更管理",
+            "desc": "保存變更申請、審核、文件修訂及核定紀錄。"
+          },
+          {
+            "name": "主管 Dashboard",
+            "desc": "彙整證照到期分布、逾期清單、案件進度及承辦負荷，支援廠區篩選。"
+          },
+          {
+            "name": "環境檢測管理串接",
+            "desc": "以廠區、許可證及檢測項目關聯排程、執行狀態與報告連結。"
+          },
+          {
+            "name": "廢棄物合約書管理串接",
+            "desc": "以廠區及相關業務識別碼關聯合約對象、效期、版本與文件連結。"
+          }
+        ],
+        "ai_usage": [
+          "規劃以 AI 輔助擷取證照及附件中的證號、效期與文件名稱，經承辦人確認後建檔。",
+          "規劃以 AI 彙整展延或變更案件附件，產生辦理摘要與待補資料草稿。",
+          "AI 輸出由承辦人審核，期限提醒依已確認日期與設定規則執行。"
+        ],
+        "tools": [
+          {
+            "name": "內部網頁平台（規劃）",
+            "desc": "提供證照建檔、案件辦理與主管 Dashboard。"
+          },
+          {
+            "name": "資料庫與文件儲存（規劃）",
+            "desc": "保存證照索引、附件、版本及案件紀錄。"
+          },
+          {
+            "name": "工作流程與通知服務（規劃）",
+            "desc": "管理展延、變更及期限提醒。"
+          },
+          {
+            "name": "API／資料交換介面（規劃）",
+            "desc": "串接環境檢測與廢棄物合約書管理系統。"
+          },
+          {
+            "name": "OCR／AI 文件處理（選配）",
+            "desc": "輔助文件擷取與案件摘要，實際工具待選型。"
+          }
+        ],
+        "results": [
+          "預期建立跨廠區證照台帳與文件查詢入口，減少人工找件及重複建檔。",
+          "預期提升到期及辦理進度的可見度；可用資料完整率、展延準時率及案件辦理時間衡量，實際成效待驗證。"
+        ],
+        "value": [
+          {
+            "name": "對環保承辦人",
+            "desc": "集中管理文件與待辦，縮短展延及變更資料準備時間。"
+          },
+          {
+            "name": "對主管",
+            "desc": "掌握各廠區案件進度，協調逾期待辦與承辦資源。"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立一致的證照管理與文件留存方式，支援內部稽核。"
+          }
+        ],
+        "extensions": [
+          "可複製至各廠區，沿用證照台帳、版本及案件流程。",
+          "可延伸至其他企業證照與合約期限管理，重用提醒及審核機制。"
+        ],
+        "limitations": [
+          "期限、提醒節點與變更辦理條件須由環保承辦人依核定文件確認。",
+          "串接須先統一廠區、證照及文件識別碼，明確指定資料來源與更新責任。",
+          "依角色限制文件存取，保留版本與異動紀錄；AI 擷取內容須人工核對。",
+          "本案例為規劃內容，實際流程、工具與成效須於導入後確認。"
+        ],
+        "success_key": "先完成證照盤點與效期校驗，明確定義案件責任及提醒節點，再統一跨系統識別碼，讓 Dashboard 能反映實際辦理進度。",
+        "keywords": [
+          "環保許可",
+          "證照管理",
+          "文件管理",
+          "展延提醒",
+          "變更管理",
+          "主管Dashboard",
+          "環境檢測",
+          "廢棄物合約書"
+        ]
+      },
+      "en": {
+        "title": "Environmental Permit Management System",
+        "summary": "Centrally manages environmental permits and documents, brings together expiry dates, renewals and change cases, gives managers a Dashboard to track progress, and is planned to link with environmental monitoring and waste contract management data.",
+        "category": [
+          "EHS & Environment",
+          "Internal Management Tools",
+          "Process Automation"
+        ],
+        "unit_request": "Environmental management unit and plant-level permit handlers (exact unit to be confirmed)",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "林玟臻",
+        "status": "Case planning; actual build and launch status to be confirmed",
+        "region": "Company plants (actual scope to be confirmed)",
+        "problem_background": "Environmental permits, application attachments and approval documents were stored in different places, and expiry and renewal relied on manual reminders. Change cases, environmental monitoring reports and waste contracts each followed separate processes, making it hard for managers to see the full picture.",
+        "core_problem": "It was hard to confirm permit versions and scope, renewal to-dos lacked consistent deadline management, and documents, owners and progress for change cases were not tracked in one place.",
+        "solution": "Build a management platform organized by plant and permit that centrally stores permits, expiry dates and versions, turns renewals and changes into case workflows, provides a manager Dashboard, and links related monitoring and contract documents through shared identifiers.",
+        "process": [
+          "Master data | Inventory each plant's permits and record permit type, number, validity, scope and handler.",
+          "Document filing | Upload permits, application attachments and approval documents, with versions and links.",
+          "Deadline reminders | Set reminder points based on permit validity and handler settings, and assign renewal to-dos.",
+          "Renewal handling | Track data preparation, internal review, submission, supplements and approval.",
+          "Change management | Record the reason, impact and related documents for each change, then update permit data and version after review.",
+          "Data linking | Link environmental monitoring reports and waste contracts for case lookup and attachment preparation.",
+          "Manager review | Use the Dashboard to see expiring, overdue, renewal and change cases, and archive after approval."
+        ],
+        "features": [
+          {
+            "name": "Central permit/document management",
+            "desc": "Search documents, validity and versions by plant, permit type and number."
+          },
+          {
+            "name": "Expiry and renewal reminders",
+            "desc": "Set reminder points, handlers and due dates, keeping notification and handling records."
+          },
+          {
+            "name": "Renewal case tracking",
+            "desc": "Manage submission, supplement and approval status with linked documents."
+          },
+          {
+            "name": "Change management",
+            "desc": "Keep change requests, reviews, document revisions and approval records."
+          },
+          {
+            "name": "Manager Dashboard",
+            "desc": "Summarizes permit expiry distribution, overdue list, case progress and handler workload, filterable by plant."
+          },
+          {
+            "name": "Environmental monitoring link",
+            "desc": "Links schedules, status and report links by plant, permit and test item."
+          },
+          {
+            "name": "Waste contract link",
+            "desc": "Links contract parties, validity, versions and document links by plant and related business IDs."
+          }
+        ],
+        "ai_usage": [
+          "Planned: AI-assisted extraction of permit numbers, validity dates and document names from permits and attachments, confirmed by handlers before saving.",
+          "Planned: AI summaries of renewal or change case attachments, producing a handling summary and draft list of missing items.",
+          "AI output is reviewed by handlers; deadline reminders follow confirmed dates and configured rules."
+        ],
+        "tools": [
+          {
+            "name": "Internal web platform (planned)",
+            "desc": "Permit records, case handling and manager Dashboard."
+          },
+          {
+            "name": "Database & document storage (planned)",
+            "desc": "Stores the permit index, attachments, versions and case records."
+          },
+          {
+            "name": "Workflow & notification service (planned)",
+            "desc": "Manages renewals, changes and deadline reminders."
+          },
+          {
+            "name": "API / data exchange interface (planned)",
+            "desc": "Connects to the environmental monitoring and waste contract systems."
+          },
+          {
+            "name": "OCR / AI document processing (optional)",
+            "desc": "Assists document extraction and case summaries; tool selection pending."
+          }
+        ],
+        "results": [
+          "Expected: a cross-plant permit register and document lookup entry point, reducing manual searching and duplicate entry.",
+          "Expected: better visibility of expiry and case progress; measurable via data completeness, on-time renewal rate and case handling time—actual impact to be verified."
+        ],
+        "value": [
+          {
+            "name": "For environmental handlers",
+            "desc": "Documents and to-dos in one place, shortening preparation for renewals and changes."
+          },
+          {
+            "name": "For managers",
+            "desc": "See case progress at every plant and coordinate overdue items and handler resources."
+          },
+          {
+            "name": "For the company",
+            "desc": "A consistent way to manage permits and retain documents, supporting internal audits."
+          }
+        ],
+        "extensions": [
+          "Can be replicated at each plant, reusing the permit register, versioning and case workflow.",
+          "Can extend to other corporate licenses and contract deadlines, reusing the reminder and review mechanisms."
+        ],
+        "limitations": [
+          "Deadlines, reminder points and change conditions must be confirmed by environmental handlers against approved documents.",
+          "Linking requires unified plant, permit and document identifiers, with clearly assigned data sources and update responsibilities.",
+          "Document access is restricted by role with version and change logs kept; AI-extracted content must be checked manually.",
+          "This case describes planned content; actual workflow, tools and results must be confirmed after rollout."
+        ],
+        "success_key": "First complete the permit inventory and validity check, clearly define case responsibilities and reminder points, then unify identifiers across systems so the Dashboard reflects real progress.",
+        "keywords": [
+          "Environmental Permits",
+          "License Management",
+          "Document Management",
+          "Renewal Reminders",
+          "Change Management",
+          "Manager Dashboard",
+          "Environmental Monitoring",
+          "Waste Contracts"
+        ]
+      }
+    }
   }
 ]
