@@ -9954,5 +9954,268 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-045",
+    "number": 45,
+    "updated": "2026.10",
+    "video": [],
+    "screenshots": [
+      "assets/health-management-cover.jpg",
+      "assets/health-management-consultation.jpg"
+    ],
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "健康管理系統",
+        "summary": "整合員工健檢、職護作業與醫師簽核，建立從資料建檔、健康分級到追蹤結案的數位流程，協助企業掌握待辦與逾期案件，並保留完整健康歷程。",
+        "category": [
+          "職安環保",
+          "內部管理工具",
+          "流程自動化"
+        ],
+        "unit_request": "職業健康護理／人力資源單位（實際單位待確認）",
+        "unit_owner": "職安衛中心",
+        "author": "林玟臻",
+        "status": "案例規劃；實際建置與上線狀態待確認",
+        "region": "企業內部各廠區與辦公據點（實際適用範圍待確認）",
+        "problem_background": "新進體格資料、一般與特殊健檢報告、健康文件及追蹤紀錄分散於紙本、試算表與郵件，職護需逐筆彙整並確認醫師簽核，難以即時掌握員工健康分級及追蹤進度。",
+        "core_problem": "資料缺乏統一索引，簽核與追蹤依賴人工交接；跨年度健康歷程不易查詢，待補件、待簽核與逾期追蹤案件容易遺漏。",
+        "solution": "以員工為主軸建立健康資料與案件管理平台，串接員工填報、職護審核、醫師簽核及追蹤通知，依專業評估結果管理健康分級，並以權限控管保護個人健康資料。",
+        "process": [
+          "新進建檔｜匯入員工基本資料，登錄新進體格資料並上傳相關文件。",
+          "資料彙整｜收集一般／特殊健檢資料與員工自填血壓、血糖，職護確認完整性及量測來源。",
+          "專業評估｜職護整理需關注項目，送醫師評估與簽核，登錄健康分級及追蹤建議。",
+          "追蹤執行｜職護建立追蹤事項、負責人與期限，員工補件或回報後更新進度。",
+          "逾期處理｜系統通知承辦職護及相關員工，依設定持續提醒並記錄處理情形。",
+          "結案留存｜依評估結果完成追蹤，保存簽核、分級變更及歷史紀錄。"
+        ],
+        "features": [
+          {
+            "name": "醫師簽核",
+            "desc": "提供待簽核清單、審閱意見、退回補件與簽核時間紀錄。"
+          },
+          {
+            "name": "職護流程",
+            "desc": "管理資料審核、健康諮詢、轉介、追蹤與結案待辦。"
+          },
+          {
+            "name": "健康分級管理",
+            "desc": "記錄經專業人員確認的分級、判定依據與後續追蹤安排。"
+          },
+          {
+            "name": "逾期追蹤通知",
+            "desc": "依案件期限推送提醒，呈現逾期天數與處理狀態。"
+          },
+          {
+            "name": "新進體格資料",
+            "desc": "集中登錄到職體格資料、報告與補件狀態。"
+          },
+          {
+            "name": "員工自主填報",
+            "desc": "填寫血壓、血糖、量測日期與備註，供職護檢視。"
+          },
+          {
+            "name": "健康文件上傳",
+            "desc": "管理報告、附件與文件版本，依角色限制查閱。"
+          },
+          {
+            "name": "歷史紀錄",
+            "desc": "依年度查詢健檢、分級、簽核與追蹤歷程。"
+          },
+          {
+            "name": "特殊健檢與健康追蹤",
+            "desc": "依作業類別建立檢查及追蹤案件，記錄複檢、諮詢與處置進度。"
+          }
+        ],
+        "ai_usage": [
+          "規劃以 AI 輔助擷取健檢文件中的日期、檢查項目與數值，由職護核對後入庫。",
+          "規劃以 AI 彙整已授權的健康歷程，產生供職護與醫師審閱的追蹤摘要。",
+          "分級、醫師簽核與處置由專業人員確認；期限通知以明確規則執行。"
+        ],
+        "tools": [
+          {
+            "name": "內部網頁平台（規劃）",
+            "desc": "提供員工填報、職護作業與醫師簽核介面。"
+          },
+          {
+            "name": "資料庫與文件儲存（規劃）",
+            "desc": "保存健康資料、附件及異動紀錄。"
+          },
+          {
+            "name": "工作流程與通知服務（規劃）",
+            "desc": "管理待辦、簽核與期限提醒。"
+          },
+          {
+            "name": "OCR／AI 文件處理（選配）",
+            "desc": "輔助文件擷取與摘要，實際工具待選型。"
+          }
+        ],
+        "results": [
+          "預期形成以員工為中心的健康資料與追蹤案件清單，減少重複彙整。",
+          "預期提高待簽核與逾期追蹤案件的可見度；可用簽核週期、逾期率與結案率衡量，實際成效待驗證。"
+        ],
+        "value": [
+          {
+            "name": "對職護與醫師",
+            "desc": "集中審閱與追蹤，減少交接及資料搜尋時間。"
+          },
+          {
+            "name": "對員工",
+            "desc": "提供自主填報、文件補交與追蹤回應管道。"
+          },
+          {
+            "name": "對公司",
+            "desc": "提升職業健康管理的可追溯性與跨據點作業一致性。"
+          }
+        ],
+        "extensions": [
+          "可複製至不同廠區，沿用建檔、簽核、分級與追蹤流程。",
+          "可延伸串接人資名冊及健檢資料匯入，降低重複輸入。"
+        ],
+        "limitations": [
+          "採最小必要權限，記錄查閱與異動，依公司規範管理敏感資料及保存期限。",
+          "員工自填數值須註明來源，不能直接視為醫療診斷或正式健檢結果。",
+          "AI 輸出須人工核對；主管僅查看授權範圍內的彙總資訊。",
+          "本案例為規劃內容，實際流程、工具與成效須於導入後確認。"
+        ],
+        "success_key": "職護與醫師共同定義分級、簽核與結案條件，統一資料格式與責任分工，並將追蹤期限和提醒納入日常作業。",
+        "keywords": [
+          "健康管理",
+          "醫師簽核",
+          "職護流程",
+          "健康分級",
+          "新進體格",
+          "血壓血糖",
+          "特殊健檢",
+          "健康追蹤"
+        ]
+      },
+      "en": {
+        "title": "Health Management System",
+        "summary": "Brings together employee health checkups, occupational health nurse workflows and physician sign-off into one digital process—from record creation and health classification to follow-up and case closure—so the company can see pending and overdue cases and keep a complete health history.",
+        "category": [
+          "EHS & Environment",
+          "Internal Management Tools",
+          "Process Automation"
+        ],
+        "unit_request": "Occupational Health Nursing / Human Resources (exact unit to be confirmed)",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "林玟臻",
+        "status": "Case planning; actual build and launch status to be confirmed",
+        "region": "Plants and office sites across the company (actual scope to be confirmed)",
+        "problem_background": "Pre-employment physical data, general and special health checkup reports, health documents and follow-up records were scattered across paper, spreadsheets and email. Nurses had to compile them one by one and chase physician sign-off, making it hard to see each employee's health classification and follow-up progress in real time.",
+        "core_problem": "There was no unified index for the data, and sign-off and follow-up relied on manual handoffs. Multi-year health histories were hard to look up, and cases awaiting documents, awaiting sign-off or overdue for follow-up were easily missed.",
+        "solution": "Build an employee-centric health data and case management platform that links employee self-reporting, nurse review, physician sign-off and follow-up notifications. Health classifications are managed based on professional assessment, and role-based permissions protect personal health data.",
+        "process": [
+          "Onboarding records | Import employee master data, record pre-employment physical data and upload related documents.",
+          "Data consolidation | Collect general/special checkup data and employee-reported blood pressure and blood sugar; nurses verify completeness and measurement source.",
+          "Professional assessment | Nurses list items needing attention and send them for physician review and sign-off; the health classification and follow-up advice are recorded.",
+          "Follow-up | Nurses create follow-up items with owners and deadlines; progress is updated as employees submit documents or report back.",
+          "Overdue handling | The system notifies the responsible nurse and employee, keeps reminding per settings and logs how each case was handled.",
+          "Closure and retention | Follow-up is completed per the assessment, and sign-offs, classification changes and history are retained."
+        ],
+        "features": [
+          {
+            "name": "Physician sign-off",
+            "desc": "Pending sign-off list, review comments, return-for-more-documents and sign-off timestamps."
+          },
+          {
+            "name": "Nurse workflow",
+            "desc": "Manages to-dos for data review, health consultation, referral, follow-up and closure."
+          },
+          {
+            "name": "Health classification",
+            "desc": "Records professionally confirmed classifications, their basis and follow-up arrangements."
+          },
+          {
+            "name": "Overdue follow-up alerts",
+            "desc": "Pushes reminders based on case deadlines and shows days overdue and status."
+          },
+          {
+            "name": "Pre-employment physicals",
+            "desc": "Centralizes onboarding physical data, reports and missing-document status."
+          },
+          {
+            "name": "Employee self-reporting",
+            "desc": "Employees enter blood pressure, blood sugar, measurement date and notes for nurse review."
+          },
+          {
+            "name": "Health document upload",
+            "desc": "Manages reports, attachments and versions, with access restricted by role."
+          },
+          {
+            "name": "History",
+            "desc": "Look up checkups, classifications, sign-offs and follow-ups by year."
+          },
+          {
+            "name": "Special checkups & health follow-up",
+            "desc": "Creates checkup and follow-up cases by job category and tracks re-tests, consultations and actions."
+          }
+        ],
+        "ai_usage": [
+          "Planned: AI-assisted extraction of dates, test items and values from checkup documents, verified by nurses before saving.",
+          "Planned: AI summaries of authorized health histories for nurse and physician review.",
+          "Classification, physician sign-off and interventions are confirmed by professionals; deadline alerts follow explicit rules."
+        ],
+        "tools": [
+          {
+            "name": "Internal web platform (planned)",
+            "desc": "Interfaces for employee reporting, nurse work and physician sign-off."
+          },
+          {
+            "name": "Database & document storage (planned)",
+            "desc": "Stores health data, attachments and change logs."
+          },
+          {
+            "name": "Workflow & notification service (planned)",
+            "desc": "Manages to-dos, sign-offs and deadline reminders."
+          },
+          {
+            "name": "OCR / AI document processing (optional)",
+            "desc": "Assists with document extraction and summaries; tool selection pending."
+          }
+        ],
+        "results": [
+          "Expected: an employee-centric list of health data and follow-up cases, reducing repeated compiling.",
+          "Expected: better visibility of cases awaiting sign-off or overdue; measurable via sign-off cycle time, overdue rate and closure rate—actual impact to be verified."
+        ],
+        "value": [
+          {
+            "name": "For nurses and physicians",
+            "desc": "Review and follow up in one place, cutting handoff and data-search time."
+          },
+          {
+            "name": "For employees",
+            "desc": "A channel to self-report, submit missing documents and respond to follow-ups."
+          },
+          {
+            "name": "For the company",
+            "desc": "Better traceability of occupational health management and consistent practice across sites."
+          }
+        ],
+        "extensions": [
+          "Can be replicated at other plants, reusing the record, sign-off, classification and follow-up flow.",
+          "Can be connected to the HR roster and checkup data imports to reduce duplicate entry."
+        ],
+        "limitations": [
+          "Least-privilege access with view and change logging; sensitive data and retention periods follow company policy.",
+          "Employee-reported values must note their source and cannot be treated as medical diagnoses or official checkup results.",
+          "AI output must be checked by a person; managers see only aggregated information within their authorized scope.",
+          "This case describes planned content; actual workflow, tools and results must be confirmed after rollout."
+        ],
+        "success_key": "Nurses and physicians jointly define classification, sign-off and closure criteria, standardize data formats and responsibilities, and build follow-up deadlines and reminders into daily work.",
+        "keywords": [
+          "Health Management",
+          "Physician Sign-off",
+          "Nurse Workflow",
+          "Health Classification",
+          "Pre-employment Physical",
+          "Blood Pressure & Sugar",
+          "Special Health Checkup",
+          "Health Follow-up"
+        ]
+      }
+    }
   }
 ]
