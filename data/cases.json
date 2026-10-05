@@ -10753,5 +10753,306 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-048",
+    "number": 48,
+    "updated": "2026.10",
+    "url": "",
+    "video": [
+      "https://youtu.be/S03smLaqfeY"
+    ],
+    "screenshots": [
+      "assets/loto-electrical-training-cover.jpg",
+      "assets/loto-electrical-training-01.jpg",
+      "assets/loto-electrical-training-02.jpg",
+      "assets/loto-electrical-training-03.jpg",
+      "assets/loto-electrical-training-04.jpg",
+      "assets/loto-electrical-training-05.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "生成式 AI 輔助危險能量控制、上鎖掛牌與感電危害預防教育訓練",
+        "summary": "針對設備維修、異常排除及電氣作業可能發生的危險能量與感電事故，將公司危險能量管制程序、能源隔離觀念及相關安全要求，結合生成式AI製作成情境式教育訓練教材。\n\n核心觀念為：設備停止運轉，不代表危險能量已經隔離。\n\n教材內容包含危險能量辨識、能源隔離、上鎖掛牌、殘留能量釋放、零能量驗證及感電危害預防。",
+        "category": [
+          "職安環保",
+          "教育訓練與文宣"
+        ],
+        "unit_request": "生產、品保、倉儲、維修及相關作業單位",
+        "unit_owner": "職安衛中心",
+        "author": "陳芝妮",
+        "status": "正式教育訓練教材完成",
+        "region": "公司工廠及設備作業區",
+        "problem_background": "設備按下停止按鈕後，仍可能存在電、氣、壓力、熱、重力、轉動慣性或其他殘留能量。\n\n若將「設備停止」誤認為「設備已安全」，在維修、清潔、卡料排除或異常處理時，仍可能發生夾傷、捲入、燙傷、噴濺或感電等危害。",
+        "core_problem": "如何讓不同工作角色理解：停機 ≠ 危險能量已隔離，並知道一般員工、作業人員及電氣專業人員各自可以做到哪一步。",
+        "solution": "將危險能量控制及感電預防轉換成工廠情境式教材，說明從危險辨識、停機、能源隔離、上鎖掛牌、釋能、驗證到安全復歸的完整邏輯。",
+        "process": [
+          "盤點公司危險能量管制程序",
+          "整理危險能量種類",
+          "建立現場作業情境",
+          "區分不同工作角色的作業界線",
+          "建立危險能量與感電教育架構",
+          "製作情境式教材及影片",
+          "加入感電及電氣安全內容",
+          "建立互動判斷題",
+          "整合公司程序、教材及授課內容",
+          "完成正式教育訓練"
+        ],
+        "features": [
+          {
+            "name": "危險能量辨識",
+            "desc": "認識不同危險能量來源"
+          },
+          {
+            "name": "能源隔離",
+            "desc": "理解停止設備與能源隔離的差異"
+          },
+          {
+            "name": "上鎖掛牌",
+            "desc": "建立正確LOTO觀念"
+          },
+          {
+            "name": "釋能與驗證",
+            "desc": "理解殘留能量及零能量驗證"
+          },
+          {
+            "name": "工作角色界線",
+            "desc": "區分不同人員權責"
+          },
+          {
+            "name": "感電危害教育",
+            "desc": "建立電氣危害預防觀念"
+          },
+          {
+            "name": "情境互動",
+            "desc": "利用工廠案例進行判斷"
+          }
+        ],
+        "ai_usage": [
+          "教育訓練架構整理",
+          "公司程序內容情境化",
+          "教材文字轉換",
+          "Q版情境教材製作",
+          "動畫腳本與分鏡",
+          "情境題設計",
+          "教材視覺化"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "教材架構、授課內容、情境題、腳本及分鏡"
+          },
+          {
+            "name": "AI圖像生成工具",
+            "desc": "情境教材製作"
+          },
+          {
+            "name": "AI影音工具",
+            "desc": "教育情境影片"
+          },
+          {
+            "name": "PowerPoint",
+            "desc": "正式教育訓練教材"
+          },
+          {
+            "name": "影音後製工具",
+            "desc": "影片、配音及字幕整合"
+          }
+        ],
+        "results": [
+          "完成危險能量控制及感電危害預防教材",
+          "建立「停機不等於能源隔離」核心觀念",
+          "將隔離 → 上鎖掛牌 → 釋能 → 驗證流程視覺化",
+          "建立不同工作角色的作業界線",
+          "加入不同部門實際情境題",
+          "整合情境圖、影片、公司程序及授課內容"
+        ],
+        "value": [
+          {
+            "name": "對現場單位",
+            "desc": "知道設備異常時應做到哪一步"
+          },
+          {
+            "name": "對維修人員",
+            "desc": "強化能源隔離、上鎖掛牌及驗證觀念"
+          },
+          {
+            "name": "對職安單位",
+            "desc": "將公司程序轉換為容易授課的多媒體教材"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立可延伸至不同設備的危險能量教育模式"
+          }
+        ],
+        "extensions": [
+          "機械維修",
+          "電氣維修",
+          "卡料排除",
+          "壓力管線",
+          "承攬商維修",
+          "臨時用電",
+          "個別設備能源隔離程序"
+        ],
+        "limitations": [
+          "AI教材不可取代每台設備實際能源隔離程序",
+          "實際隔離點及釋能方式須依設備確認",
+          "電氣作業須依公司規範執行",
+          "AI產生內容須由專業人員確認",
+          "PPE不能取代斷電、隔離及上鎖掛牌"
+        ],
+        "success_key": "讓員工真正理解：停止按鈕只是停止設備運轉，不代表所有危險能量已經消失。",
+        "keywords": [
+          "危險能量",
+          "LOTO",
+          "上鎖掛牌",
+          "感電",
+          "能源隔離",
+          "零能量驗證",
+          "生成式AI"
+        ]
+      },
+      "en": {
+        "title": "Generative AI-Assisted Training on Hazardous Energy Control, Lockout/Tagout and Electrical Hazard Prevention",
+        "summary": "To address hazardous energy and electric shock incidents that can occur during equipment maintenance, troubleshooting and electrical work, the company's hazardous energy control procedure, energy isolation concepts and related safety requirements were combined with generative AI to create scenario-based training materials.\n\nThe core message: stopping a machine does not mean its hazardous energy has been isolated.\n\nThe materials cover hazardous energy identification, energy isolation, lockout/tagout, releasing stored energy, zero-energy verification and electrical hazard prevention.",
+        "category": [
+          "EHS & Environment",
+          "Training & Communications"
+        ],
+        "unit_request": "Production, QA, warehousing, maintenance and related operating units",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "陳芝妮",
+        "status": "Official training materials completed",
+        "region": "Company plants and equipment operating areas",
+        "problem_background": "After the stop button is pressed, equipment may still hold electrical, pneumatic, pressure, thermal, gravitational, rotational-inertia or other stored energy.\n\nIf \"equipment stopped\" is mistaken for \"equipment safe,\" maintenance, cleaning, jam clearing or troubleshooting can still lead to pinching, entanglement, burns, spray or electric shock.",
+        "core_problem": "How to help people in different roles understand that stopping ≠ isolating hazardous energy, and know how far general employees, operators and qualified electrical staff are each allowed to go.",
+        "solution": "Turn hazardous energy control and electrical hazard prevention into plant-based scenario training that explains the full sequence: hazard identification, shutdown, energy isolation, lockout/tagout, energy release, verification and safe restart.",
+        "process": [
+          "Review the company's hazardous energy control procedure",
+          "Organize the types of hazardous energy",
+          "Build on-site work scenarios",
+          "Define work boundaries for different roles",
+          "Build the hazardous energy and electrical safety course structure",
+          "Create scenario-based materials and videos",
+          "Add electric shock and electrical safety content",
+          "Create interactive judgment questions",
+          "Integrate company procedures, materials and lecture content",
+          "Deliver the official training"
+        ],
+        "features": [
+          {
+            "name": "Hazardous energy identification",
+            "desc": "Recognize different sources of hazardous energy"
+          },
+          {
+            "name": "Energy isolation",
+            "desc": "Understand the difference between stopping equipment and isolating energy"
+          },
+          {
+            "name": "Lockout/tagout",
+            "desc": "Build correct LOTO concepts"
+          },
+          {
+            "name": "Release and verification",
+            "desc": "Understand stored energy and zero-energy verification"
+          },
+          {
+            "name": "Role boundaries",
+            "desc": "Clarify responsibilities for different people"
+          },
+          {
+            "name": "Electrical hazard training",
+            "desc": "Build awareness of electrical hazard prevention"
+          },
+          {
+            "name": "Interactive scenarios",
+            "desc": "Make judgments using plant cases"
+          }
+        ],
+        "ai_usage": [
+          "Structuring the training",
+          "Turning company procedures into scenarios",
+          "Rewriting material text",
+          "Creating chibi-style scenario materials",
+          "Animation scripts and storyboards",
+          "Designing scenario questions",
+          "Visualizing the materials"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "Course structure, lecture content, scenario questions, scripts and storyboards"
+          },
+          {
+            "name": "AI image generation tools",
+            "desc": "Create scenario materials"
+          },
+          {
+            "name": "AI video tools",
+            "desc": "Training scenario videos"
+          },
+          {
+            "name": "PowerPoint",
+            "desc": "Official training materials"
+          },
+          {
+            "name": "Video post-production tools",
+            "desc": "Video, voice-over and subtitle integration"
+          }
+        ],
+        "results": [
+          "Completed hazardous energy control and electrical hazard prevention materials",
+          "Established the core idea that \"stopping is not isolating\"",
+          "Visualized the isolate → lockout/tagout → release → verify sequence",
+          "Defined work boundaries for different roles",
+          "Added real scenario questions from different departments",
+          "Integrated scenario images, videos, company procedures and lecture content"
+        ],
+        "value": [
+          {
+            "name": "For site units",
+            "desc": "Know how far to go when equipment malfunctions"
+          },
+          {
+            "name": "For maintenance staff",
+            "desc": "Stronger understanding of energy isolation, LOTO and verification"
+          },
+          {
+            "name": "For the safety unit",
+            "desc": "Company procedures turned into easy-to-teach multimedia materials"
+          },
+          {
+            "name": "For the company",
+            "desc": "A hazardous energy training model that extends to different equipment"
+          }
+        ],
+        "extensions": [
+          "Mechanical maintenance",
+          "Electrical maintenance",
+          "Jam clearing",
+          "Pressurized piping",
+          "Contractor maintenance",
+          "Temporary power",
+          "Equipment-specific energy isolation procedures"
+        ],
+        "limitations": [
+          "AI materials cannot replace the actual energy isolation procedure for each machine",
+          "Actual isolation points and energy release methods must be confirmed per machine",
+          "Electrical work must follow company rules",
+          "AI-generated content must be confirmed by qualified professionals",
+          "PPE cannot replace de-energizing, isolation and lockout/tagout"
+        ],
+        "success_key": "Help employees truly understand that the stop button only stops the machine from running—it does not mean all hazardous energy is gone.",
+        "keywords": [
+          "Hazardous Energy",
+          "LOTO",
+          "Lockout/Tagout",
+          "Electric Shock",
+          "Energy Isolation",
+          "Zero-Energy Verification",
+          "Generative AI"
+        ]
+      }
+    }
   }
 ]
