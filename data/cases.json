@@ -1028,8 +1028,8 @@
           "品保工作流程",
           "流程自動化"
         ],
-        "unit_request": "台宏品保",
-        "unit_owner": "台宏品保處",
+        "unit_request": "品保處",
+        "unit_owner": "品保處",
         "author": "謝欣錫",
         "status": "正式上架",
         "region": "",
@@ -1143,8 +1143,8 @@
           "QA Workflow",
           "Process Automation"
         ],
-        "unit_request": "Thai Hong Quality Assurance",
-        "unit_owner": "Thai Hong QA Department",
+        "unit_request": "Quality Assurance Division",
+        "unit_owner": "Quality Assurance Division",
         "author": "Hsieh Hsin-Hsi",
         "status": "Live in production",
         "region": "",
@@ -1419,8 +1419,8 @@
           "業務支援",
           "品保工作流程"
         ],
-        "unit_request": "台宏品保",
-        "unit_owner": "台宏品保處",
+        "unit_request": "品保處",
+        "unit_owner": "品保處",
         "author": "謝欣錫",
         "status": "已完成雛型並於品保群組實際使用中",
         "region": "",
@@ -1533,8 +1533,8 @@
           "Business Support",
           "QA Workflow"
         ],
-        "unit_request": "Thai Hong Quality Assurance",
-        "unit_owner": "Thai Hong QA Department",
+        "unit_request": "Quality Assurance Division",
+        "unit_owner": "Quality Assurance Division",
         "author": "Hsieh Hsin-Hsi",
         "status": "Prototype completed and already in active use within the QA group",
         "region": "",
