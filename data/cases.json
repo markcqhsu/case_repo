@@ -10219,5 +10219,286 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-046",
+    "number": 46,
+    "updated": "2026.10",
+    "video": [
+      "https://youtu.be/Jbt7bUY2g30",
+      "https://youtu.be/DHdGY2iH1KE",
+      "https://youtu.be/0X1G7DY62Is",
+      "https://youtu.be/BOswhVjek84",
+      "https://youtu.be/yVc9dUffVsk",
+      "https://youtu.be/z6z4br08ekQ"
+    ],
+    "url": "",
+    "screenshots": [
+      "assets/noise-hazard-training-cover.jpg",
+      "assets/noise-hazard-training-01.jpg",
+      "assets/noise-hazard-training-02.jpg",
+      "assets/noise-hazard-training-03.jpg",
+      "assets/noise-hazard-training-04.jpg",
+      "assets/noise-hazard-training-05.jpg",
+      "assets/noise-hazard-training-06.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "生成式 AI 輔助飲料廠噪音作業危害預防教育訓練",
+        "summary": "針對飲料製造工廠噪音作業環境，運用生成式 AI 協助課程架構規劃、教材內容整理、Q版情境圖、動畫腳本、分鏡、影音製作及教材整合。\n\n將噪音形成、現場噪音來源、工程改善、個人防護及健康管理等專業內容，轉化為貼近飲料工廠實際工作環境的情境式教育訓練教材。",
+        "category": [
+          "職安環保",
+          "教育訓練與文宣"
+        ],
+        "unit_request": "全體員工",
+        "unit_owner": "職安衛中心",
+        "author": "陳芝妮",
+        "status": "教育訓練教材及動畫完成",
+        "region": "公司飲料製造廠區",
+        "problem_background": "飲料工廠具有生產設備、輸送帶、馬達、包裝設備、堆高機及其他多種噪音來源。\n\n傳統噪音教育訓練多以文字、法規及靜態簡報呈現，受訓人員較難將抽象的噪音形成、暴露及防護觀念與自己的實際工作環境連結。",
+        "core_problem": "如何在維持職業安全衛生專業正確性的前提下，將抽象的噪音知識轉化成員工看得懂、容易理解，而且與飲料工廠實際作業相關的教育內容。",
+        "solution": "由職安人員主導專業內容，再利用生成式 AI 建立飲料工廠Q版人物、設備及作業情境，並將噪音形成、噪音來源、預防、工程改善、個人防護及健康管理等內容製作成簡報及動畫教材。",
+        "process": [
+          "盤點飲料工廠噪音作業與教育訓練需求",
+          "建立課程架構及各單元教學重點",
+          "利用生成式 AI 協助整理教材與教學邏輯",
+          "建立飲料工廠Q版人物、設備及場景",
+          "設計動畫腳本、分鏡與生成指令",
+          "製作噪音形成、預防、防護及追蹤等情境影片",
+          "後製旁白、環境音及繁體中文字幕",
+          "整合至正式教育訓練簡報",
+          "逐頁檢查職安內容、人物、設備及情境正確性"
+        ],
+        "features": [
+          {
+            "name": "情境式教材",
+            "desc": "以飲料工廠實際作業環境呈現噪音來源與危害"
+          },
+          {
+            "name": "噪音形成視覺化",
+            "desc": "以動畫呈現設備振動、聲音傳播與人員暴露"
+          },
+          {
+            "name": "防護教育",
+            "desc": "呈現耳塞、耳罩及聽力防護觀念"
+          },
+          {
+            "name": "工程改善",
+            "desc": "透過情境協助理解噪音控制措施"
+          },
+          {
+            "name": "健康管理",
+            "desc": "連結噪音暴露、環境監測與健康管理"
+          },
+          {
+            "name": "多媒體教學",
+            "desc": "整合簡報、動畫、旁白及字幕"
+          }
+        ],
+        "ai_usage": [
+          "教育訓練課程架構與內容整理",
+          "Q版人物、設備與飲料工廠場景製作",
+          "動畫腳本與分鏡規劃",
+          "動畫生成提示詞設計",
+          "將抽象噪音概念轉換為視覺情境",
+          "影音旁白、字幕及後製規劃"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "課程架構、教材內容、腳本、分鏡及生成指令"
+          },
+          {
+            "name": "Flow",
+            "desc": "生成飲料工廠噪音情境動畫"
+          },
+          {
+            "name": "AI圖像生成工具",
+            "desc": "製作Q版人物、設備及工廠場景"
+          },
+          {
+            "name": "PowerPoint",
+            "desc": "整合正式教育訓練教材"
+          },
+          {
+            "name": "影音後製工具",
+            "desc": "旁白、字幕、環境音與影片整合"
+          }
+        ],
+        "results": [
+          "完成飲料廠噪音作業危害預防教育訓練教材",
+          "完成多段工廠情境式教育動畫",
+          "將抽象噪音概念轉換為視覺化內容",
+          "建立一致性的Q版工廠情境及角色設定",
+          "建立可持續修改與延伸的AI教材製作模式"
+        ],
+        "value": [
+          {
+            "name": "對職安單位",
+            "desc": "降低情境式教材及影音素材從零開始製作所需時間"
+          },
+          {
+            "name": "對受訓人員",
+            "desc": "透過熟悉的工作情境理解噪音危害及防護方式"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立可延伸至其他職安主題的AI輔助教材製作模式"
+          }
+        ],
+        "extensions": [
+          "化學品危害教育",
+          "熱危害預防",
+          "機械安全",
+          "承攬商教育訓練",
+          "個人防護具教育",
+          "其他廠區噪音教育"
+        ],
+        "limitations": [
+          "AI產生之法規及專業內容須由職安衛人員確認",
+          "AI生成設備、PPE及作業動作須人工檢查",
+          "動畫不可取代實際風險評估及工程改善",
+          "人物、制服、設備及公司識別須維持一致"
+        ],
+        "success_key": "由熟悉現場的職安人員掌握專業內容及風險，再利用生成式 AI 提升教材視覺化與影音製作效率。",
+        "keywords": [
+          "生成式AI",
+          "職業安全衛生",
+          "噪音",
+          "飲料工廠",
+          "教育訓練",
+          "動畫",
+          "Q版教材"
+        ]
+      },
+      "en": {
+        "title": "Generative AI-Assisted Noise Hazard Prevention Training for Beverage Plants",
+        "summary": "For the noisy working environment of beverage manufacturing plants, generative AI was used to help plan the course structure, organize training content, create chibi-style scene illustrations, write animation scripts and storyboards, produce videos and assemble the final materials.\n\nProfessional content on how noise forms, on-site noise sources, engineering controls, personal protection and health management was turned into scenario-based training materials that closely reflect the real working environment of a beverage plant.",
+        "category": [
+          "EHS & Environment",
+          "Training & Communications"
+        ],
+        "unit_request": "All employees",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "陳芝妮",
+        "status": "Training materials and animations completed",
+        "region": "Company beverage manufacturing sites",
+        "problem_background": "Beverage plants have many noise sources, including production equipment, conveyors, motors, packaging machines and forklifts.\n\nTraditional noise training relies mostly on text, regulations and static slides, making it hard for trainees to connect abstract ideas about how noise forms, exposure and protection with their own workplace.",
+        "core_problem": "How to turn abstract noise knowledge into training content that employees can easily understand and relate to their actual beverage-plant work, while keeping occupational safety and health content professionally accurate.",
+        "solution": "Safety staff lead the professional content, while generative AI is used to create chibi-style beverage-plant characters, equipment and work scenes. Noise formation, noise sources, prevention, engineering controls, personal protection and health management are then turned into slides and animated training materials.",
+        "process": [
+          "Survey noise-related work in beverage plants and the training needs",
+          "Build the course structure and key teaching points for each unit",
+          "Use generative AI to help organize content and teaching logic",
+          "Create chibi-style beverage-plant characters, equipment and scenes",
+          "Design animation scripts, storyboards and generation prompts",
+          "Produce scenario videos on noise formation, prevention, protection and follow-up",
+          "Post-produce narration, ambient sound and Traditional Chinese subtitles",
+          "Integrate everything into the official training slide deck",
+          "Check every page for correct safety content, characters, equipment and scenarios"
+        ],
+        "features": [
+          {
+            "name": "Scenario-based materials",
+            "desc": "Show noise sources and hazards in a realistic beverage-plant setting"
+          },
+          {
+            "name": "Visualizing how noise forms",
+            "desc": "Animations of equipment vibration, sound propagation and worker exposure"
+          },
+          {
+            "name": "Protection training",
+            "desc": "Covers earplugs, earmuffs and hearing protection"
+          },
+          {
+            "name": "Engineering controls",
+            "desc": "Scenarios that explain noise control measures"
+          },
+          {
+            "name": "Health management",
+            "desc": "Links noise exposure, environmental monitoring and health management"
+          },
+          {
+            "name": "Multimedia teaching",
+            "desc": "Combines slides, animations, narration and subtitles"
+          }
+        ],
+        "ai_usage": [
+          "Structuring the training course and organizing content",
+          "Creating chibi-style characters, equipment and beverage-plant scenes",
+          "Planning animation scripts and storyboards",
+          "Writing prompts for animation generation",
+          "Turning abstract noise concepts into visual scenarios",
+          "Planning narration, subtitles and post-production"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "Course structure, content, scripts, storyboards and generation prompts"
+          },
+          {
+            "name": "Flow",
+            "desc": "Generates beverage-plant noise scenario animations"
+          },
+          {
+            "name": "AI image generation tools",
+            "desc": "Create chibi-style characters, equipment and plant scenes"
+          },
+          {
+            "name": "PowerPoint",
+            "desc": "Assembles the official training materials"
+          },
+          {
+            "name": "Video post-production tools",
+            "desc": "Narration, subtitles, ambient sound and video editing"
+          }
+        ],
+        "results": [
+          "Completed noise hazard prevention training materials for beverage plants",
+          "Completed multiple scenario-based training animations set in the plant",
+          "Turned abstract noise concepts into visual content",
+          "Established consistent chibi-style plant scenes and character designs",
+          "Built an AI-assisted material production model that can be revised and extended"
+        ],
+        "value": [
+          {
+            "name": "For the safety unit",
+            "desc": "Less time needed to build scenario-based materials and video assets from scratch"
+          },
+          {
+            "name": "For trainees",
+            "desc": "Understand noise hazards and protection through familiar work scenes"
+          },
+          {
+            "name": "For the company",
+            "desc": "An AI-assisted training production model that can extend to other safety topics"
+          }
+        ],
+        "extensions": [
+          "Chemical hazard training",
+          "Heat stress prevention",
+          "Machine safety",
+          "Contractor training",
+          "Personal protective equipment training",
+          "Noise training at other plants"
+        ],
+        "limitations": [
+          "Regulatory and professional content generated by AI must be confirmed by safety and health staff",
+          "AI-generated equipment, PPE and work actions must be checked manually",
+          "Animations cannot replace actual risk assessment and engineering improvements",
+          "Characters, uniforms, equipment and corporate identity must stay consistent"
+        ],
+        "success_key": "Safety staff who know the site own the professional content and risks, while generative AI makes the materials more visual and speeds up video production.",
+        "keywords": [
+          "Generative AI",
+          "Occupational Safety & Health",
+          "Noise",
+          "Beverage Plant",
+          "Training",
+          "Animation",
+          "Chibi-style Materials"
+        ]
+      }
+    }
   }
 ]
