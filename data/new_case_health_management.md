@@ -42,6 +42,8 @@
 ## 畫面截圖
 - assets/health-management-cover.jpg
 - assets/health-management-consultation.jpg
+- assets/health-management-nurse-care.jpg
+- assets/health-management-employee-reply.jpg
 
 
 ## 問題背景
