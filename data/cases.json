@@ -12351,5 +12351,210 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-054",
+    "number": 54,
+    "updated": "2026.10",
+    "screenshots": [
+      "assets/work-permit-form-spec-cover.jpg",
+      "assets/work-permit-form-spec-form.jpg"
+    ],
+    "url": "",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "一般性作業安全許可證－臨時使用與職安確認增修",
+        "summary": "針對一般性作業安全許可證，於「施工內容」下方增設臨時使用申請、缺繳資料項目與職安補繳確認欄位，使突發作業、人員資料未齊及後續追蹤處理均能在同一張表單中完整留存。",
+        "category": [
+          "職安環保",
+          "內部管理工具"
+        ],
+        "unit_request": "職安衛中心",
+        "unit_owner": "職安衛中心",
+        "author": "林玟臻",
+        "status": "已完成表單增修版",
+        "region": "無菌二廠",
+        "problem_background": "一般性作業可能因生產突發狀況、主管臨時交辦、施工人員臨時更換或入廠資料尚未繳齊而需立即進場。原有許可證缺少臨時使用原因、資料缺繳類別及職安後續追蹤的集中記錄欄位。",
+        "core_problem": "臨時使用的核准依據與補件進度未能於同一份許可證中清楚呈現，增加資料追蹤、罰款轉回及矯正預防處理的管理難度。",
+        "solution": "於「施工內容」下方新增「□ 臨時使用」及「職安確認欄」兩個區塊；以勾選式欄位標準化申請原因、缺繳資料與後續處理方式，並加入一週內補件確認規範。",
+        "process": [
+          "施工單位填寫一般性作業安全許可證與施工內容。",
+          "如屬臨時使用，勾選使用原因並填寫其他因素說明。",
+          "勾選缺繳資料項目：勞保、教育訓練及／或團保。",
+          "職安於一週內確認資料上傳時間與補繳結果。",
+          "未符合者依規定開立扣款單、矯正及預防處理單或註明其他處理方式。"
+        ],
+        "features": [
+          {
+            "name": "臨時使用勾選",
+            "desc": "標示本案是否屬臨時使用。"
+          },
+          {
+            "name": "使用原因說明",
+            "desc": "提供 8 項原因，包含生產突發、主管臨時交辦、未事前申請及其他因素。"
+          },
+          {
+            "name": "缺繳資料複選",
+            "desc": "可同時勾選勞保、教育訓練及團保。"
+          },
+          {
+            "name": "資料補繳追蹤",
+            "desc": "記錄資料上傳時間及符合／不符合結果。"
+          },
+          {
+            "name": "後續處理紀錄",
+            "desc": "填寫扣款單、矯正及預防處理單或其他處理方式。"
+          }
+        ],
+        "ai_usage": [
+          "依既有許可證版面與指定文字，協助整理新增欄位、資訊層級及可列印的表單版面。",
+          "將使用規則轉換為一致的勾選欄與追蹤欄位，降低手動設計與遺漏風險。"
+        ],
+        "tools": [
+          {
+            "name": "HTML／CSS",
+            "desc": "建立可於瀏覽器開啟與列印的表單增修版。"
+          },
+          {
+            "name": "Markdown",
+            "desc": "整理本案例的可匯入案例資料。"
+          }
+        ],
+        "results": [
+          "完成一般性作業安全許可證臨時使用增修版。",
+          "新增臨時使用原因與缺繳資料項目之標準化勾選欄位。",
+          "新增職安一週內確認、扣款與矯正預防處理追蹤欄位。"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "可於緊急或臨時作業情境下保留清楚的申請與核准依據。"
+          },
+          {
+            "name": "對客戶",
+            "desc": "施工人員與承攬商可明確了解補繳要求及期限。"
+          },
+          {
+            "name": "對公司",
+            "desc": "集中管理補繳狀態與後續處置，提升職安稽核可追溯性。"
+          }
+        ],
+        "extensions": [
+          "可套用至其他類型作業許可證的臨時使用與補件追蹤流程。",
+          "可延伸串接表單系統，將勾選結果轉為逾期提醒、扣款或缺失單流程。"
+        ],
+        "limitations": [
+          "臨時使用原因與缺繳項目應由申請單位據實勾選。",
+          "職安確認應於一週內完成；廠商未繳回時依規定轉回罰款。",
+          "無法扣款的廠商應開立矯正及預防處理單。"
+        ],
+        "success_key": "將申請原因、缺繳資料、補繳時程與後續處置整合於同一份表單，並以明確勾選項目降低填寫歧義。",
+        "keywords": [
+          "一般性作業安全許可證",
+          "臨時使用",
+          "職安確認",
+          "承攬商管理",
+          "資料補繳",
+          "矯正預防處理"
+        ]
+      },
+      "en": {
+        "title": "General Work Safety Permit – Adding Temporary Use and Safety Confirmation Sections",
+        "summary": "Below the \"Work Content\" field of the general work safety permit, new sections were added for temporary-use requests, missing documents and safety follow-up confirmation, so urgent jobs, incomplete worker records and later follow-up can all be fully recorded on the same form.",
+        "category": [
+          "EHS & Environment",
+          "Internal Management Tools"
+        ],
+        "unit_request": "Occupational Safety & Health Center",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "林玟臻",
+        "status": "Revised form completed",
+        "region": "Aseptic Plant 2",
+        "problem_background": "General work may need to start immediately because of production emergencies, last-minute requests from supervisors, sudden changes of workers, or site-entry documents not yet submitted. The original permit had no place to record the reason for temporary use, the type of missing documents, or the safety unit's follow-up.",
+        "core_problem": "The basis for approving temporary use and the progress of document submission were not clearly shown on the same permit, making it harder to track documents, apply penalty deductions and handle corrective and preventive actions.",
+        "solution": "Add two sections below \"Work Content\": \"□ Temporary Use\" and \"Safety Confirmation.\" Checkbox fields standardize the request reason, missing documents and follow-up actions, and a rule requiring document confirmation within one week was added.",
+        "process": [
+          "The contractor/work unit fills in the general work safety permit and work content.",
+          "For temporary use, tick the reason and describe any other factors.",
+          "Tick the missing documents: labor insurance, safety training and/or group insurance.",
+          "The safety unit confirms the upload time and submission result within one week.",
+          "If not compliant, issue a deduction slip or corrective and preventive action form, or note another handling method, per the rules."
+        ],
+        "features": [
+          {
+            "name": "Temporary use checkbox",
+            "desc": "Marks whether the job is a temporary-use case."
+          },
+          {
+            "name": "Reason for use",
+            "desc": "Eight options, including production emergency, supervisor's last-minute request, no advance application and other factors."
+          },
+          {
+            "name": "Missing documents (multi-select)",
+            "desc": "Labor insurance, training and group insurance can be ticked together."
+          },
+          {
+            "name": "Document follow-up",
+            "desc": "Records the upload time and compliant/non-compliant result."
+          },
+          {
+            "name": "Follow-up action record",
+            "desc": "Records deduction slips, corrective and preventive action forms or other handling."
+          }
+        ],
+        "ai_usage": [
+          "Based on the existing permit layout and specified wording, helped organize the new fields, information hierarchy and a printable form layout.",
+          "Turned the usage rules into consistent checkbox and tracking fields, reducing manual design effort and the risk of omissions."
+        ],
+        "tools": [
+          {
+            "name": "HTML/CSS",
+            "desc": "Built the revised form so it can be opened and printed in a browser."
+          },
+          {
+            "name": "Markdown",
+            "desc": "Organized this case into importable case data."
+          }
+        ],
+        "results": [
+          "Completed the temporary-use revision of the general work safety permit.",
+          "Added standardized checkboxes for temporary-use reasons and missing documents.",
+          "Added fields for one-week safety confirmation, deductions and corrective/preventive action tracking."
+        ],
+        "value": [
+          {
+            "name": "For operating units",
+            "desc": "A clear record of the request and approval basis for urgent or temporary jobs."
+          },
+          {
+            "name": "For contractors",
+            "desc": "Workers and contractors clearly understand what must be submitted and by when."
+          },
+          {
+            "name": "For the company",
+            "desc": "Central tracking of submission status and follow-up, improving traceability for safety audits."
+          }
+        ],
+        "extensions": [
+          "Apply the same temporary-use and document follow-up flow to other types of work permits.",
+          "Connect to a form system so ticked items trigger overdue reminders, deductions or non-conformance workflows."
+        ],
+        "limitations": [
+          "Temporary-use reasons and missing documents must be ticked truthfully by the applying unit.",
+          "Safety confirmation should be completed within one week; if the contractor does not submit, the penalty is deducted per the rules.",
+          "For contractors where deduction isn't possible, a corrective and preventive action form should be issued."
+        ],
+        "success_key": "Bring the request reason, missing documents, submission deadline and follow-up action together on one form, with clear checkbox options to reduce ambiguity when filling it in.",
+        "keywords": [
+          "General Work Safety Permit",
+          "Temporary Use",
+          "Safety Confirmation",
+          "Contractor Management",
+          "Document Submission",
+          "Corrective and Preventive Action"
+        ]
+      }
+    }
   }
 ]
