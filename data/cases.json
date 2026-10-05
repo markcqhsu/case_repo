@@ -11839,5 +11839,251 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-052",
+    "number": 52,
+    "updated": "2026.10",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/chlorophenol-sample-packaging-cover.jpg",
+      "assets/chlorophenol-sample-packaging-guide.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "鄰氯苯酚樣品送驗鋁箔防逸散包裝指引",
+        "summary": "針對鄰氯苯酚（o-Chlorophenol）樣品送交廠商檢測時可能產生的氣味逸散、滲漏及運送碰撞風險，建立標準化送驗包裝方式。以具 PTFE 墊片的螺旋蓋玻璃樣品瓶為第一層密封，搭配密封袋、鋁箔完整包覆、外層密封袋及硬質防撞外盒，降低氣味逸散與樣品外洩風險。本版本不使用吸附材料，並搭配圖卡方式協助現場人員快速理解與正確執行。",
+        "category": [
+          "職安環保",
+          "教育訓練與文宣"
+        ],
+        "unit_request": "職安衛中心",
+        "unit_owner": "職安衛中心",
+        "author": "林玟臻",
+        "status": "完成包裝方式與宣導圖卡設計",
+        "region": "各廠區",
+        "problem_background": "鄰氯苯酚樣品送交外部廠商檢測時，因物質具有明顯氣味及危害性，若樣品瓶密封性不足或外部包裝不完整，可能在暫存及運送過程中產生氣味逸散、滲漏或容器碰撞破損等問題。現場需要一套簡單、清楚且容易執行的包裝方式，並希望在不使用吸附材料的前提下，加強氣味阻隔及運送防護。",
+        "core_problem": "如何在不使用吸附材料的情況下，透過樣品瓶密封、密封袋、鋁箔包覆及硬質外盒等多層防護，降低鄰氯苯酚樣品於送驗過程中的氣味逸散與滲漏風險，同時讓現場人員可以快速理解並依一致方式執行。",
+        "solution": "建立「樣品瓶 → 內層密封袋 → 鋁箔完整包覆 → 外層密封袋 → 硬質防撞外盒」的多層包裝方式。樣品優先使用具 PTFE 墊片的螺旋蓋玻璃樣品瓶，確認瓶蓋旋緊且瓶身外部無污染後，先置入耐化學性密封袋，再以鋁箔完整包覆並將接縫向內折疊，之後放入第二層密封袋，最後置入硬質外盒並使用適當緩衝材料固定。採樣與封裝應於通風良好處或具局部排氣的區域進行，並依 SDS 穿戴適當 PPE；送交物流或廠商前，再確認危險品運輸及收樣規定。",
+        "process": [
+          "確認送驗廠商對樣品容器、樣品量及運送方式的要求。",
+          "依 SDS 確認鄰氯苯酚危害資訊及所需個人防護具。",
+          "於通風良好處或具局部排氣的區域完成採樣與封裝。",
+          "使用具 PTFE 墊片的螺旋蓋玻璃樣品瓶盛裝樣品，確認瓶蓋旋緊且外部無污染。",
+          "將樣品瓶放入第一層耐化學性密封袋並確實封口。",
+          "將密封袋外層以鋁箔完整包覆，接縫向內折疊，增加氣味阻隔並減少光照。",
+          "將鋁箔包覆後的樣品再放入第二層密封袋並確實封口。",
+          "放入硬質防撞外盒，以適當緩衝材料固定，避免運送過程碰撞或擠壓。",
+          "完成樣品名稱、編號、採樣日期、採樣人員及必要危害資訊標示。",
+          "交寄前確認 SDS、危險品運輸規定及物流／檢測廠商收樣要求。"
+        ],
+        "features": [
+          {
+            "name": "多層防逸散包裝",
+            "desc": "利用樣品瓶、密封袋、鋁箔及外層密封袋形成多層阻隔。"
+          },
+          {
+            "name": "鋁箔阻隔",
+            "desc": "降低氣味逸散並減少樣品受到光照影響。"
+          },
+          {
+            "name": "防漏防撞",
+            "desc": "透過雙層密封及硬質外盒降低滲漏、碰撞及破損風險。"
+          },
+          {
+            "name": "標準化作業",
+            "desc": "將包裝流程轉換為固定步驟，降低不同人員操作差異。"
+          },
+          {
+            "name": "視覺化宣導",
+            "desc": "以圖卡呈現包裝順序與注意事項，方便現場快速理解。"
+          },
+          {
+            "name": "送驗前確認",
+            "desc": "納入 SDS、危險品運輸及廠商收樣要求確認。"
+          }
+        ],
+        "ai_usage": [
+          "協助將化學品樣品送驗需求整理成標準化包裝流程與文字說明。",
+          "將包裝流程轉換為圖像化宣導內容，提升現場人員閱讀與執行效率。",
+          "協助整理包裝注意事項、標示內容及送驗前檢查項目。"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "協助需求整理、流程設計、文字精簡及案例內容撰寫。"
+          },
+          {
+            "name": "AI 圖像生成工具",
+            "desc": "製作鄰氯苯酚樣品鋁箔防逸散包裝宣導圖卡。"
+          }
+        ],
+        "results": [
+          "建立不使用吸附材料的鄰氯苯酚樣品送驗包裝流程。",
+          "明確定義樣品瓶、密封袋、鋁箔、外層密封袋及硬質外盒的包裝順序。",
+          "完成圖像化宣導內容，讓現場人員可依圖示快速執行。",
+          "將 PPE、通風、標示、SDS 及危險品運輸確認納入送驗注意事項。"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "提供一致且容易執行的化學品樣品送驗包裝方式，降低臨時判斷與重複溝通。"
+          },
+          {
+            "name": "對現場人員",
+            "desc": "透過圖卡及標準流程快速掌握包裝順序與安全注意事項。"
+          },
+          {
+            "name": "對公司",
+            "desc": "降低樣品送驗過程中氣味逸散、滲漏及容器破損風險，強化化學品管理與職業安全衛生管理品質。"
+          }
+        ],
+        "extensions": [
+          "可依不同化學品的 SDS、物化特性及相容性，調整容器材質與包裝方式後套用至其他化學品樣品送驗。",
+          "可延伸製作化學品採樣、暫存、交接及送驗前檢查表。",
+          "可將圖卡納入職安衛教育訓練、化學品管理教材或現場作業指引。",
+          "可建立不同化學品的標準送樣包裝資料庫，供各廠區共同使用。"
+        ],
+        "limitations": [
+          "本案例的鋁箔屬輔助阻隔層，不能取代樣品瓶本身的氣密與防漏功能。",
+          "若包裝完成後仍可明顯聞到氣味，應先檢查瓶蓋是否旋緊、墊片是否適用或更換密封性較佳的樣品瓶，不應僅增加鋁箔層數處理。",
+          "樣品容器材質及包裝材料須確認與樣品相容，不得使用可能與樣品發生反應的材料。",
+          "採樣及封裝應在通風良好處或具局部排氣的區域進行，並依 SDS 穿戴適當 PPE。",
+          "高濃度或純品送驗前，應依 SDS 及相關危險品運輸規定確認包裝、標示及運送方式。",
+          "交由物流、快遞或外部廠商運送前，應確認承運單位是否接受該類化學品及其包裝要求。",
+          "本版本依需求不使用吸附材料；實際包裝仍應以法規、SDS、分析方法、檢測廠商及承運單位要求為準。"
+        ],
+        "success_key": "將「容器密封」視為防止氣味逸散的第一優先，鋁箔僅作為額外阻隔層；同時以固定的多層包裝順序、清楚標示及圖像化宣導降低操作差異，並在送驗前完成 SDS、廠商收樣及運輸規定確認。",
+        "keywords": [
+          "鄰氯苯酚",
+          "o-Chlorophenol",
+          "化學品",
+          "樣品送驗",
+          "鋁箔包裝",
+          "氣味逸散",
+          "密封包裝",
+          "職業安全衛生",
+          "化學品管理",
+          "AI圖卡"
+        ]
+      },
+      "en": {
+        "title": "Aluminum Foil Anti-Emission Packaging Guide for o-Chlorophenol Sample Submission",
+        "summary": "To address odor emission, leakage and impact risks when o-chlorophenol samples are sent to external labs for testing, a standardized submission packaging method was established. A screw-cap glass sample bottle with a PTFE-lined cap forms the first seal, followed by a sealed bag, full aluminum foil wrapping, an outer sealed bag and a rigid impact-resistant box to reduce odor emission and leakage. This version uses no absorbent materials and comes with info cards that help on-site staff understand and carry out the steps correctly.",
+        "category": [
+          "EHS & Environment",
+          "Training & Communications"
+        ],
+        "unit_request": "Occupational Safety & Health Center",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "林玟臻",
+        "status": "Packaging method and awareness cards completed",
+        "region": "All plants",
+        "problem_background": "o-Chlorophenol has a strong odor and is hazardous. When samples are sent to external labs, an inadequately sealed bottle or incomplete outer packaging can lead to odor emission, leakage or breakage during storage and transport. The site needed a simple, clear and easy-to-follow packaging method that improves odor barrier and transport protection without using absorbent materials.",
+        "core_problem": "How to reduce odor emission and leakage of o-chlorophenol samples during submission through multiple layers—sealed bottle, sealed bags, foil wrapping and a rigid box—without absorbent materials, while letting on-site staff understand and follow the same method quickly.",
+        "solution": "Establish a multi-layer packaging sequence: sample bottle → inner sealed bag → full aluminum foil wrap → outer sealed bag → rigid impact-resistant box. Samples go in a screw-cap glass bottle with a PTFE liner; after confirming the cap is tight and the outside is clean, the bottle is placed in a chemical-resistant sealed bag, fully wrapped in foil with seams folded inward, placed in a second sealed bag, and finally secured in a rigid box with suitable cushioning. Sampling and packing take place in a well-ventilated area or under local exhaust, with PPE worn per the SDS; dangerous goods transport and lab acceptance rules are confirmed before shipping.",
+        "process": [
+          "Confirm the testing lab's requirements for sample containers, quantity and shipping method.",
+          "Check o-chlorophenol hazard information and required PPE in the SDS.",
+          "Sample and pack in a well-ventilated area or under local exhaust.",
+          "Fill a screw-cap glass sample bottle with a PTFE liner; confirm the cap is tight and the outside is clean.",
+          "Place the bottle in the first chemical-resistant sealed bag and seal it.",
+          "Fully wrap the sealed bag in aluminum foil, folding seams inward to improve odor barrier and reduce light exposure.",
+          "Place the foil-wrapped sample in a second sealed bag and seal it.",
+          "Put it in a rigid impact-resistant box secured with suitable cushioning to prevent knocks or crushing.",
+          "Label the sample name, number, sampling date, sampler and required hazard information.",
+          "Before shipping, confirm the SDS, dangerous goods transport rules and courier/lab acceptance requirements."
+        ],
+        "features": [
+          {
+            "name": "Multi-layer anti-emission packaging",
+            "desc": "Bottle, sealed bags, foil and outer bag form multiple barriers."
+          },
+          {
+            "name": "Foil barrier",
+            "desc": "Reduces odor emission and limits light exposure to the sample."
+          },
+          {
+            "name": "Leak and impact protection",
+            "desc": "Double sealing and a rigid box reduce leakage, impact and breakage."
+          },
+          {
+            "name": "Standardized procedure",
+            "desc": "Fixed steps reduce differences between operators."
+          },
+          {
+            "name": "Visual awareness",
+            "desc": "Info cards show the packing order and precautions for quick on-site understanding."
+          },
+          {
+            "name": "Pre-shipment checks",
+            "desc": "Includes SDS, dangerous goods transport and lab acceptance checks."
+          }
+        ],
+        "ai_usage": [
+          "Helped turn chemical sample submission needs into a standardized packaging procedure and written instructions.",
+          "Turned the packaging procedure into visual awareness content so on-site staff can read and follow it more easily.",
+          "Helped organize packaging precautions, label content and pre-shipment checklist items."
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "Organizing requirements, designing the procedure, condensing text and writing the case."
+          },
+          {
+            "name": "AI image generation tools",
+            "desc": "Created the o-chlorophenol foil anti-emission packaging info cards."
+          }
+        ],
+        "results": [
+          "Established an o-chlorophenol sample submission packaging procedure that uses no absorbent materials.",
+          "Clearly defined the packing order of bottle, sealed bag, foil, outer sealed bag and rigid box.",
+          "Completed visual awareness content so on-site staff can follow the illustrated steps quickly.",
+          "Included PPE, ventilation, labeling, SDS and dangerous goods transport checks in the submission precautions."
+        ],
+        "value": [
+          {
+            "name": "For operating units",
+            "desc": "A consistent, easy-to-follow way to pack chemical samples, reducing ad-hoc decisions and repeated communication."
+          },
+          {
+            "name": "For on-site staff",
+            "desc": "Info cards and a standard procedure make the packing order and safety precautions quick to learn."
+          },
+          {
+            "name": "For the company",
+            "desc": "Lower risk of odor emission, leakage and breakage during sample submission, strengthening chemical and occupational safety management."
+          }
+        ],
+        "extensions": [
+          "Adjust container materials and packaging for other chemical samples based on each chemical's SDS, properties and compatibility.",
+          "Extend to checklists for chemical sampling, temporary storage, handover and pre-shipment checks.",
+          "Include the info cards in EHS training, chemical management materials or on-site work instructions.",
+          "Build a standard sample packaging library for different chemicals, shared across plants."
+        ],
+        "limitations": [
+          "The foil here is a supplementary barrier and cannot replace the airtightness and leak-proofing of the sample bottle itself.",
+          "If odor is still noticeable after packing, first check whether the cap is tight and the liner is suitable, or switch to a better-sealing bottle—don't just add more foil.",
+          "Container and packaging materials must be compatible with the sample; never use materials that may react with it.",
+          "Sampling and packing should take place in a well-ventilated area or under local exhaust, with PPE worn per the SDS.",
+          "Before submitting concentrated or pure samples, confirm packaging, labeling and shipping per the SDS and dangerous goods transport rules.",
+          "Before handing over to a courier or external lab, confirm the carrier accepts this type of chemical and its packaging requirements.",
+          "This version uses no absorbent materials by request; actual packaging must still follow regulations, the SDS, the analytical method, the lab and the carrier."
+        ],
+        "success_key": "Treat container sealing as the top priority for preventing odor emission, with foil only as an extra barrier. A fixed multi-layer packing order, clear labeling and visual awareness reduce operator differences, and SDS, lab acceptance and transport rules are confirmed before submission.",
+        "keywords": [
+          "o-Chlorophenol",
+          "Chemicals",
+          "Sample Submission",
+          "Aluminum Foil Packaging",
+          "Odor Emission",
+          "Sealed Packaging",
+          "Occupational Safety & Health",
+          "Chemical Management",
+          "AI Info Cards"
+        ]
+      }
+    }
   }
 ]
