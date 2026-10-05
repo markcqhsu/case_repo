@@ -12556,5 +12556,212 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-055",
+    "number": 55,
+    "updated": "2026.10",
+    "url": "",
+    "screenshots": [
+      "assets/workload-procedure-revision-cover.jpg",
+      "assets/workload-procedure-revision-tracked.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "異常工作負荷管理辦法修訂",
+        "summary": "以 AI 逐條對照現行法規與官方指引，檢視公司的《異常工作負荷危害預防管理辦法》（A-SEA-020），在保留公司既有架構與流程的前提下完成修訂版，所有修改處都清楚標示。",
+        "category": [
+          "職安環保",
+          "內部管理工具"
+        ],
+        "unit_request": "",
+        "unit_owner": "職安衛中心",
+        "author": "陳佳勳",
+        "status": "已完成修訂版（2026 年 8–9 月）",
+        "region": "台灣",
+        "problem_background": "公司訂有《異常工作負荷危害預防管理辦法》（文件編號 A-SEA-020），作為推動異常工作負荷促發疾病預防的依據。管理辦法需要與現行職業安全衛生法規及官方指引保持一致，並符合公司實際的作業流程。",
+        "core_problem": "要確認辦法是否符合現行規定，必須把辦法條文與法規、指引逐條比對，內容多、比對費時，人工閱讀也容易遺漏；修訂後還要讓審核的人看得出改了哪裡、為什麼改。",
+        "solution": "由職護提供現行辦法、相關法規與官方指引，請 AI 逐條對照，找出需要補充或調整的地方，在保留公司既有架構與流程的前提下提出修訂文字，產出修改處清楚標示的追蹤修訂版，由職護逐項確認。",
+        "process": [
+          "職護提供現行管理辦法（A-SEA-020）、相關法規與《異常工作負荷促發疾病預防指引》",
+          "AI 逐條對照辦法內容與法規、指引",
+          "AI 列出需要修訂的條文與理由",
+          "在保留公司既有架構與流程的前提下擬定修訂文字",
+          "產出追蹤修訂版，修改處清楚標示",
+          "職護逐項確認修訂內容"
+        ],
+        "features": [
+          {
+            "name": "逐條對照",
+            "desc": "把辦法條文與現行法規、官方指引一一比對"
+          },
+          {
+            "name": "修訂建議",
+            "desc": "指出需要補充或調整的條文，並說明依據"
+          },
+          {
+            "name": "追蹤修訂版",
+            "desc": "修改處清楚標示，審核時一眼看得出改了哪裡"
+          },
+          {
+            "name": "保留既有架構",
+            "desc": "只調整需要修改的內容，不更動公司原有的章節與流程"
+          }
+        ],
+        "ai_usage": [
+          "閱讀法規與官方指引原文",
+          "逐條比對公司辦法與法規、指引的差異",
+          "依公司既有用語與格式擬定修訂文字",
+          "標示修改處並說明修訂理由"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "閱讀法規與指引、逐條比對、擬定修訂文字"
+          },
+          {
+            "name": "Word",
+            "desc": "管理辦法的追蹤修訂版本"
+          }
+        ],
+        "results": [
+          "完成《異常工作負荷危害預防管理辦法》（A-SEA-020）修訂版",
+          "修訂內容舉例：明訂以心血管疾病風險與工作負荷風險的綜合評估結果安排醫師面談；新增面談前應向勞工說明，健康與隱私資料依個人資料保護法辦理、不予外洩",
+          "修改處清楚標示，可直接進入審核"
+        ],
+        "value": [
+          {
+            "name": "對職護與職安衛單位",
+            "desc": "省下逐條比對的時間，修訂有依據、有紀錄"
+          },
+          {
+            "name": "對員工",
+            "desc": "面談、工作調整與追蹤的作法更明確"
+          },
+          {
+            "name": "對公司",
+            "desc": "管理辦法與現行法規、官方指引保持一致"
+          }
+        ],
+        "extensions": [
+          "同樣的逐條對照作法，可用於其他健康保護計畫的管理辦法與程序書",
+          "法規或指引更新時，可用同樣方式快速檢視受影響的條文"
+        ],
+        "limitations": [
+          "修訂版需經職護確認並依公司文件管制程序審核後才生效",
+          "法規與指引以主管機關公告的最新版本為準，AI 引用的條文需回原文核對",
+          "AI 提出的是修訂建議，是否採用以及如何配合公司實際作業，由負責單位決定"
+        ],
+        "success_key": "提供法規與指引原文讓 AI 逐條對照，而不是憑印象修改；保留公司既有架構，只改需要改的地方；所有修改都標示清楚並由職護逐項確認。",
+        "keywords": [
+          "異常工作負荷",
+          "管理辦法修訂",
+          "A-SEA-020",
+          "法規對照",
+          "追蹤修訂",
+          "職業安全衛生",
+          "文件管理",
+          "AI 協作"
+        ]
+      },
+      "en": {
+        "title": "Revising the Abnormal Workload Management Procedure",
+        "summary": "AI was used to compare the company's Abnormal Workload Hazard Prevention Procedure (A-SEA-020) clause by clause against current regulations and official guidelines, producing a revised version that keeps the company's existing structure and workflow, with every change clearly marked.",
+        "category": [
+          "EHS & Environment",
+          "Internal Management Tools"
+        ],
+        "unit_request": "",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "陳佳勳",
+        "status": "Revised version completed (Aug–Sep 2026)",
+        "region": "Taiwan",
+        "problem_background": "The company maintains an Abnormal Workload Hazard Prevention Procedure (document no. A-SEA-020) as the basis for preventing diseases triggered by abnormal workload. The procedure must stay consistent with current occupational safety and health regulations and official guidelines, and match the company's actual workflow.",
+        "core_problem": "Checking whether the procedure complies with current rules means comparing each clause against regulations and guidelines—a large, time-consuming job where manual reading easily misses things. After revising, reviewers also need to see what changed and why.",
+        "solution": "The occupational health nurse provides the current procedure, related regulations and official guidelines, and AI compares them clause by clause, identifies what needs to be added or adjusted, and proposes revised wording that keeps the company's existing structure and workflow. The result is a tracked-changes version with every change clearly marked, which the nurse confirms item by item.",
+        "process": [
+          "The nurse provides the current procedure (A-SEA-020), related regulations and the Guidelines for Preventing Diseases Triggered by Abnormal Workload",
+          "AI compares the procedure with the regulations and guidelines clause by clause",
+          "AI lists the clauses that need revision and the reasons",
+          "Draft revised wording while keeping the company's existing structure and workflow",
+          "Produce a tracked-changes version with all changes clearly marked",
+          "The nurse confirms each revision item by item"
+        ],
+        "features": [
+          {
+            "name": "Clause-by-clause comparison",
+            "desc": "Compares each clause with current regulations and official guidelines"
+          },
+          {
+            "name": "Revision suggestions",
+            "desc": "Points out clauses to add or adjust, with the basis for each"
+          },
+          {
+            "name": "Tracked-changes version",
+            "desc": "Changes are clearly marked so reviewers see at a glance what changed"
+          },
+          {
+            "name": "Keeps existing structure",
+            "desc": "Only the content that needs changing is adjusted; the company's chapters and workflow stay as they are"
+          }
+        ],
+        "ai_usage": [
+          "Reading the original text of regulations and official guidelines",
+          "Comparing the company procedure with regulations and guidelines clause by clause",
+          "Drafting revised wording in the company's existing terminology and format",
+          "Marking changes and explaining the reason for each"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "Reads regulations and guidelines, compares clauses and drafts revised wording"
+          },
+          {
+            "name": "Word",
+            "desc": "Manages the tracked-changes version of the procedure"
+          }
+        ],
+        "results": [
+          "Completed the revised Abnormal Workload Hazard Prevention Procedure (A-SEA-020)",
+          "Example revisions: physician interviews are now arranged based on the combined assessment of cardiovascular disease risk and workload risk; a new requirement that before the interview, workers are told their health and privacy data will be handled under the Personal Data Protection Act and not disclosed",
+          "Changes are clearly marked and ready for review"
+        ],
+        "value": [
+          {
+            "name": "For nurses and the safety unit",
+            "desc": "Saves the time of clause-by-clause comparison, with revisions that are grounded and documented"
+          },
+          {
+            "name": "For employees",
+            "desc": "Clearer practices for interviews, work adjustments and follow-up"
+          },
+          {
+            "name": "For the company",
+            "desc": "The procedure stays consistent with current regulations and official guidelines"
+          }
+        ],
+        "extensions": [
+          "The same clause-by-clause approach can be used for procedures and work instructions of other health protection programs",
+          "When regulations or guidelines are updated, the same approach can quickly check which clauses are affected"
+        ],
+        "limitations": [
+          "The revised version takes effect only after the nurse confirms it and it passes the company's document control review",
+          "The latest regulations and guidelines published by the competent authority prevail; clauses cited by AI must be checked against the original text",
+          "AI only proposes revisions; whether to adopt them and how to fit them to actual company practice is decided by the responsible unit"
+        ],
+        "success_key": "Give AI the original text of regulations and guidelines to compare clause by clause rather than revising from memory; keep the company's existing structure and change only what needs changing; and mark every change clearly for the nurse to confirm item by item.",
+        "keywords": [
+          "Abnormal Workload",
+          "Procedure Revision",
+          "A-SEA-020",
+          "Regulatory Comparison",
+          "Tracked Changes",
+          "Occupational Safety & Health",
+          "Document Management",
+          "AI Collaboration"
+        ]
+      }
+    }
   }
 ]
