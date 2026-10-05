@@ -10500,5 +10500,258 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-047",
+    "number": 47,
+    "updated": "2026.10",
+    "url": "",
+    "screenshots": [
+      "assets/forklift-ai-safety-cover.jpg",
+      "assets/forklift-ai-safety-v2.jpg",
+      "assets/forklift-ai-safety-v3.jpg",
+      "assets/forklift-ai-safety-v31.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "AI 堆高機追蹤安全研發",
+        "summary": "利用既有監視器影像結合AI影像辨識技術，研究人員行走辨識、人員追蹤及安全帽判定的可行性，希望使傳統監視器由「事後錄影回看」逐步發展為可協助辨識作業風險的智慧職安工具。",
+        "category": [
+          "職安環保",
+          "資料整合與分析"
+        ],
+        "unit_request": "職業安全衛生及廠區作業管理相關單位",
+        "unit_owner": "職安衛中心／相關技術協作單位",
+        "author": "陳芝妮",
+        "status": "研發中｜目前狀態：人員行走辨識、安全帽判定、影像辨識測試",
+        "region": "工廠、倉儲及物流作業區",
+        "problem_background": "傳統監視器主要用於事後回放，職安人員仍需人工觀看大量影像，才能確認堆高機作業是否符合安全要求。\n\n因此嘗試利用AI影像辨識，探索監視器主動協助安全管理的可能性。",
+        "core_problem": "如何利用既有監視器影像辨識人員、追蹤人員活動，並進一步研究堆高機駕駛及安全行為辨識的可行性。",
+        "solution": "以實際監視器畫面進行測試，逐步建立人員辨識、人員追蹤及堆高機相關安全辨識功能，並記錄成功與失敗測試結果，作為後續模型及資料調整依據。",
+        "process": [
+          "盤點堆高機安全管理需求",
+          "蒐集實際監視器作業影像",
+          "進行人員辨識測試",
+          "進行人員行走及追蹤測試",
+          "進行堆高機安全辨識測試",
+          "分析辨識成功與失敗原因",
+          "調整資料量、解析度及模型條件",
+          "規劃後續違規事件紀錄及報表功能"
+        ],
+        "features": [
+          {
+            "name": "人員辨識",
+            "desc": "辨識監視器畫面中的作業人員"
+          },
+          {
+            "name": "人員追蹤",
+            "desc": "測試持續追蹤人員活動"
+          },
+          {
+            "name": "安全帽判定",
+            "desc": "研究堆高機作業人員安全帽判定"
+          },
+          {
+            "name": "測試紀錄",
+            "desc": "保留成功與失敗測試結果"
+          },
+          {
+            "name": "事件管理",
+            "desc": "規劃後續違規事件紀錄及報表"
+          }
+        ],
+        "ai_usage": [
+          "監視器影像辨識",
+          "人員偵測",
+          "人員行走及追蹤",
+          "堆高機相關安全狀態辨識",
+          "程式邏輯協作",
+          "測試與問題排除"
+        ],
+        "tools": [
+          "監視器實際影像",
+          "AI影像辨識技術",
+          "程式開發工具",
+          {
+            "name": "Codex",
+            "desc": "協助程式開發、測試與問題排除"
+          },
+          {
+            "name": "生成式AI",
+            "desc": "協助功能規劃及研發分析"
+          }
+        ],
+        "results": [
+          "完成人員行走辨識測試",
+          "進行堆高機安全帽辨識測試並確認目前限制",
+          "測試中出現人員實際有佩戴安全帽，但系統判定為未佩戴的誤判情形，目前程式仍有錯誤（bug），尚待修正",
+          "建立AI堆高機安全監控初步研發架構",
+          "累積實際監視器影像辨識測試經驗"
+        ],
+        "value": [
+          {
+            "name": "對職安單位",
+            "desc": "探索降低完全依靠人工觀看監視器的可能性"
+          },
+          {
+            "name": "對現場單位",
+            "desc": "建立堆高機風險智慧辨識的研發基礎"
+          },
+          {
+            "name": "對公司",
+            "desc": "探索AI影像技術導入智慧職安及智慧工廠的可能性"
+          }
+        ],
+        "extensions": [
+          "人車接近警示",
+          "人車分流辨識",
+          "危險區域闖入",
+          "PPE穿戴辨識",
+          "安全帶辨識",
+          "高風險行為辨識",
+          "違規事件紀錄",
+          "即時監視器警報",
+          "安全管理儀表板"
+        ],
+        "limitations": [
+          "目前仍為研發階段",
+          "實際影像資料量仍需增加",
+          "攝影角度、遮蔽物、解析度及光線會影響辨識",
+          "AI可能發生誤判及漏判",
+          "系統不可取代人車分流及其他工程控制措施",
+          "影像使用須符合公司管理及隱私規範"
+        ],
+        "success_key": "保留實際測試結果並持續增加資料，而不是只展示成功案例。透過失敗測試找出影像、資料量與辨識模型的限制，再逐步改善。",
+        "keywords": [
+          "堆高機",
+          "AI影像辨識",
+          "監視器",
+          "人員追蹤",
+          "智慧職安",
+          "智慧工廠",
+          "研發"
+        ]
+      },
+      "en": {
+        "title": "AI Forklift Tracking Safety R&D",
+        "summary": "Using existing CCTV footage with AI image recognition, this project studies the feasibility of detecting walking personnel, tracking people and judging hard-hat use—aiming to evolve traditional cameras from \"recording for later review\" into smart safety tools that help identify operational risks.",
+        "category": [
+          "EHS & Environment",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Occupational safety & health and site operations management units",
+        "unit_owner": "Occupational Safety & Health Center / related technical partners",
+        "author": "陳芝妮",
+        "status": "In R&D | Current stage: walking-person detection, hard-hat judgment and image recognition testing",
+        "region": "Plants, warehouses and logistics areas",
+        "problem_background": "CCTV is mainly used for playback after the fact, so safety staff still have to watch large amounts of footage manually to check whether forklift operations meet safety requirements.\n\nThe project therefore explores using AI image recognition so cameras can actively support safety management.",
+        "core_problem": "How to use existing CCTV footage to detect and track people, and further study the feasibility of recognizing forklift drivers and their safety behavior.",
+        "solution": "Test with real CCTV footage, gradually building person detection, person tracking and forklift-related safety recognition, while recording both successful and failed tests as the basis for later model and data adjustments.",
+        "process": [
+          "Review forklift safety management needs",
+          "Collect real CCTV footage of operations",
+          "Test person detection",
+          "Test walking detection and tracking",
+          "Test forklift safety recognition",
+          "Analyze why recognition succeeded or failed",
+          "Adjust data volume, resolution and model settings",
+          "Plan follow-up violation event logging and reporting"
+        ],
+        "features": [
+          {
+            "name": "Person detection",
+            "desc": "Detects workers in CCTV footage"
+          },
+          {
+            "name": "Person tracking",
+            "desc": "Tests continuous tracking of people's movement"
+          },
+          {
+            "name": "Hard-hat judgment",
+            "desc": "Studies whether forklift operators are wearing hard hats"
+          },
+          {
+            "name": "Test records",
+            "desc": "Keeps both successful and failed test results"
+          },
+          {
+            "name": "Event management",
+            "desc": "Planned violation event logging and reports"
+          }
+        ],
+        "ai_usage": [
+          "CCTV image recognition",
+          "Person detection",
+          "Walking detection and tracking",
+          "Forklift-related safety status recognition",
+          "Collaborating on program logic",
+          "Testing and troubleshooting"
+        ],
+        "tools": [
+          "Real CCTV footage",
+          "AI image recognition",
+          "Development tools",
+          {
+            "name": "Codex",
+            "desc": "Assists with coding, testing and troubleshooting"
+          },
+          {
+            "name": "Generative AI",
+            "desc": "Assists with feature planning and R&D analysis"
+          }
+        ],
+        "results": [
+          "Completed walking-person detection tests",
+          "Tested forklift hard-hat recognition and identified current limitations",
+          "In testing, some workers who were actually wearing hard hats were judged as not wearing one; this is a known bug still to be fixed",
+          "Established an initial R&D framework for AI forklift safety monitoring",
+          "Gained hands-on experience with recognition on real CCTV footage"
+        ],
+        "value": [
+          {
+            "name": "For the safety unit",
+            "desc": "Explores reducing reliance on manually watching CCTV"
+          },
+          {
+            "name": "For site units",
+            "desc": "Lays an R&D foundation for smart recognition of forklift risks"
+          },
+          {
+            "name": "For the company",
+            "desc": "Explores bringing AI imaging into smart safety and smart factory work"
+          }
+        ],
+        "extensions": [
+          "Person–vehicle proximity alerts",
+          "Pedestrian–vehicle separation recognition",
+          "Danger zone intrusion",
+          "PPE detection",
+          "Seat belt detection",
+          "High-risk behavior recognition",
+          "Violation event logging",
+          "Real-time CCTV alerts",
+          "Safety management dashboard"
+        ],
+        "limitations": [
+          "Still in the R&D stage",
+          "More real footage is needed",
+          "Camera angle, obstructions, resolution and lighting affect recognition",
+          "AI may produce false positives and misses",
+          "The system cannot replace pedestrian–vehicle separation or other engineering controls",
+          "Use of footage must follow company management and privacy rules"
+        ],
+        "success_key": "Keep real test results and keep adding data instead of only showing successes. Failed tests reveal the limits of footage, data volume and the recognition model, which can then be improved step by step.",
+        "keywords": [
+          "Forklift",
+          "AI Image Recognition",
+          "CCTV",
+          "Person Tracking",
+          "Smart Safety",
+          "Smart Factory",
+          "R&D"
+        ]
+      }
+    }
   }
 ]
