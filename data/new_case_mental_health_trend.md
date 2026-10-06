@@ -30,10 +30,6 @@
 
 ## 畫面截圖
 - assets/mental-health-trend-cover.jpg
-- assets/mental-health-trend-01.jpg
-- assets/mental-health-trend-02.jpg
-- assets/mental-health-trend-03.jpg
-- assets/mental-health-trend-04.jpg
 
 ## 問題背景
 公司每年都會在員工健康檢查時請員工填寫心理健康相關量表（壓力指數測量、簡式健康量表 BSRS-5），各廠各年度的結果分別存成不同檔案。每年的資料都只在當年度使用，沒有放在一起比較。
