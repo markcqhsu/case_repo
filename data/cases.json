@@ -1837,199 +1837,245 @@
   {
     "id": "workload-risk-analysis",
     "number": 10,
-    "screenshot": "assets/workload-risk-analysis-demo.png",
     "url": "",
-    "updated": "2026.07",
+    "updated": "2026.10",
     "i18n": {
       "zh": {
-        "title": "異常工作負荷風險資料整合與分析",
-        "summary": "因應《職業安全衛生法》四大計畫之一「異常工作負荷促發疾病預防計畫」，需整合員工健康、過勞狀況及加班時數等資料，進行員工危害風險等級分析。本次共需處理約 683 筆資料，並針對三項不同來源的資料進行整併與交叉分析。原本若以人工方式逐筆整理、比對及判斷，預估需花費近一個月；透過 Claude 協助處理後，約 15 分鐘即可完成，大幅提升資料整理與分析效率。",
+        "title": "異常工作負荷風險分析",
+        "summary": "以 AI 整合四廠 855 名員工的十年心血管風險評估、加班工時與過勞量表三份資料，依官方指引自動分級，產出可直接用於安排面談與追蹤的健康管理名單。每廠分析時間由 3–4 天縮短為 1 小時內。",
         "category": [
           "職安環保",
-          "資料整合與分析"
+          "資料整合與分析",
+          "流程自動化"
         ],
-        "unit_request": "無菌二廠",
+        "unit_request": "職安衛中心",
         "unit_owner": "職安衛中心",
-        "author": "陳佳勳（無菌二廠）",
-        "status": "正式版本",
-        "region": "",
-        "problem_background": "為執行異常工作負荷促發疾病預防計畫，需要整合以下三項資料：健康總表暨十年心血管疾病風險評估、員工過勞量表、員工加班時數。由於三項資料來自不同檔案，欄位格式、資料內容及人員排序可能不一致，因此必須先進行資料清理、對應及整併，再進一步交叉分析員工的健康風險、過勞程度與工作負荷。本次需處理約 683 筆員工資料，若完全依靠人工逐筆整理與比對，流程繁雜且耗時，預估需近一個月才能完成。",
-        "core_problem": "如何快速整合不同來源、不同格式的大量員工資料，並完成交叉分析與風險分級，減少人工逐筆整理、比對及判斷所需的時間。",
-        "solution": "利用 Claude 協助整理三項不同來源的資料，統一欄位格式並建立員工資料對應關係。完成資料整併後，再依健康風險、過勞量表及加班時數進行交叉分析，快速整理出員工危害風險等級，供職安衛人員進一步確認及執行後續管理措施。透過 AI 處理原本大量、繁雜且高度重複的資料整理程序，讓人員將時間集中在結果確認、風險判斷及後續改善，而不是耗費在逐筆複製與比對資料。",
-        "process": [],
+        "author": "陳佳勳",
+        "status": "已完成（2026 年 8–9 月，四廠名單皆已交付）",
+        "region": "台灣（四廠：無菌一廠、無菌二廠、無菌三廠、自貿廠）",
+        "problem_background": "依職業安全衛生法規，公司需推動異常工作負荷促發疾病預防計畫，定期找出過勞與腦心血管疾病的高風險員工。判定時要同時看三份資料：健康檢查的十年心血管風險、每月加班工時、過勞量表分數，再依官方指引對照出風險等級與建議處置。三份資料分屬不同 Excel 檔案，各廠的欄位順序與格式也不一樣。",
+        "core_problem": "過去由職護以 Excel 人工逐筆比對三份資料並分級，每廠需要 3–4 天，四廠做完一輪耗時很長，也容易在比對與分級時出錯。職護的時間被資料整理佔用，壓縮到真正需要投入的面談與追蹤。",
+        "solution": "由職護提供三份原始資料與官方指引，請 AI 先讀指引原文確認分級標準，再以工號整合三份資料、自動判定工作負荷與心血管風險等級，對照出每位員工的建議處置，產出分頁、上色的健康管理名單。完成後由 AI 以另一套獨立計算逐筆複核。第一廠確認無誤後，判定邏輯與名單格式固定下來，其餘各廠直接沿用。",
+        "process": [
+          "職護準備各廠三份原始資料（十年心血管風險評估、加班工時、過勞量表）與《異常工作負荷促發疾病預防指引》",
+          "AI 讀取指引原文，整理加班工時、個人疲勞、工作疲勞、心血管風險的分級門檻，由職護確認",
+          "AI 以工號整合三份資料，依欄位名稱對應各廠不同的欄位配置，原始檔案全程不修改",
+          "AI 自動判定工作負荷程度與風險等級，對照出建議處置",
+          "AI 產出健康管理名單 Excel，並以獨立計算逐筆重算複核",
+          "職護檢視結果，處理邊界值與資料不足的個案，確認後作為面談與追蹤依據"
+        ],
         "features": [
-          "整合不同來源的員工資料。",
-          "統一欄位與資料格式。",
-          "對應三份資料中的相同員工。",
-          "交叉分析健康風險、過勞程度及加班時數。",
-          "協助整理員工危害風險等級。",
-          "產生可供職安衛人員確認與後續追蹤的分析結果。"
+          {
+            "name": "三份資料整合",
+            "desc": "以工號合併健檢、加班工時、過勞量表，三份資料中任一份有出現的員工都納入分析"
+          },
+          {
+            "name": "自動分級",
+            "desc": "依官方指引判定工作負荷程度與十年心血管風險等級，再對照出綜合風險等級"
+          },
+          {
+            "name": "建議處置",
+            "desc": "每位員工自動歸入優先醫師面談、建議面談待職護評估、職護追蹤、不需處理、需補充資料其中一類"
+          },
+          {
+            "name": "健康管理名單",
+            "desc": "依建議處置分頁並整列上色，每筆都附上列入原因"
+          },
+          {
+            "name": "資料缺漏標示",
+            "desc": "區分「不在名冊內」與「欄位空白」，讓職護知道要補哪一份資料"
+          },
+          {
+            "name": "獨立複核",
+            "desc": "另寫一套計算逐筆重算，比對結果、人數與工號是否一致"
+          }
         ],
         "ai_usage": [
-          "分析不同檔案的資料結構",
-          "清理及統一資料格式",
-          "建立員工資料配對關係",
-          "整併三項不同來源的資料",
-          "執行條件比對與交叉分析",
-          "整理危害風險等級",
-          "檢查資料缺漏與異常內容",
-          "AI 主要負責大量且重複的資料整理與初步分析，最終風險判定及後續處理仍由職安衛專業人員確認"
+          "閱讀官方指引原文，整理成可執行的分級規則",
+          "撰寫並執行程式，整合欄位與格式不一致的多份 Excel",
+          "處理格式混雜的資料（例如百分比寫成文字、數值與文字並存）",
+          "自動分級並產出格式一致的 Excel 名單",
+          "以獨立計算交叉驗證分析結果"
         ],
         "tools": [
-          "Claude",
-          "Excel",
-          "員工健康及工時相關資料"
+          {
+            "name": "Claude",
+            "desc": "讀取指引與原始資料、撰寫並執行分析程式、產出名單並複核"
+          },
+          {
+            "name": "Excel",
+            "desc": "原始資料來源，也是健康管理名單的輸出格式"
+          },
+          {
+            "name": "Python",
+            "desc": "由 AI 撰寫並執行，用於資料整合、分級判定與獨立複核"
+          }
         ],
         "results": [
-          "完成約 683 筆員工資料整合。",
-          "完成三項不同來源資料的交叉分析。",
-          "將原本預估近一個月的工作縮短至約 15 分鐘。",
-          "大幅減少人工逐筆整理及比對資料的時間。",
-          "降低資料遺漏、對應錯誤及判斷不一致的風險。",
-          "提升風險評估流程的速度與一致性。",
-          "讓職安衛人員可以更快進入風險確認及後續管理階段。"
+          "完成四廠 855 名員工的異常工作負荷風險分析",
+          "每廠分析時間由 3–4 天縮短為 1 小時內",
+          "各廠產出格式一致的健康管理名單，可直接用於安排醫師面談與職護追蹤",
+          "名單經獨立計算逐筆複核"
         ],
         "value": [
           {
-            "name": "對執行人員",
-            "desc": "不需要再逐筆整理及比對大量資料，大幅降低重複性作業時間與工作負擔。"
+            "name": "對職護與職安衛單位",
+            "desc": "省下資料比對的時間，用在面談、追蹤與健康指導；各廠判定標準一致，結果可複核"
           },
           {
-            "name": "對職安衛人員",
-            "desc": "可快速取得整合後的風險分析結果，將時間集中在高風險人員確認、健康管理及改善措施規劃。"
+            "name": "對員工",
+            "desc": "高風險同仁能更早被辨識出來，及早安排醫師面談或職護追蹤"
           },
           {
             "name": "對公司",
-            "desc": "以 AI 協助處理繁雜的資料整合程序，將近一個月的工作縮短至約 15 分鐘，提升作業效率，也使風險評估流程更加快速、一致且有效率。"
+            "desc": "各廠以同一套標準落實異常工作負荷促發疾病預防計畫"
           }
         ],
         "extensions": [
-          "員工健康檢查資料整理",
-          "高風險族群篩選",
-          "工時與出勤資料分析",
-          "職業健康管理名單整理",
-          "教育訓練完成狀況分析",
-          "跨檔案員工資料整併",
-          "大量問卷與評估表分析"
+          "判定邏輯與名單格式已固定，往後每年度與其他廠區可直接沿用",
+          "「多份 Excel 以工號整合＋依明確規則分級」的作法，可用於年度健檢分級等其他健康管理工作"
         ],
         "limitations": [
-          "AI 產生的分析結果仍需由職安衛專業人員進行確認，不應直接作為最終醫療或健康判斷。",
-          "員工姓名或識別資料是否正確對應",
-          "原始資料是否完整及為最新版本",
-          "重複、空白或異常資料是否已處理",
-          "風險分級條件是否符合公司規範",
-          "個人健康資料的存取權限及保密要求",
-          "分析結果是否經過職安衛專業人員複核"
+          "健康資料屬敏感個資：分析只使用工號、不含姓名，使用時須符合公司資訊安全與個資規範，對外展示時工號需遮蔽",
+          "AI 的分級結果是初步篩選，是否面談與後續處置仍由職護與醫師判斷",
+          "分級標準必須回到官方指引原文確認；剛好落在門檻上的邊界值需人工複核",
+          "各廠原始檔案的欄位與格式不同，分析前要先核對資料結構，並確認人員是否屬於該廠",
+          "三份資料不齊全的員工無法完整判定，需補齊資料後再分析"
         ],
-        "success_key": "",
+        "success_key": "分級標準以官方指引原文為準並由職護確認；先在一個廠把邏輯與格式做對，再複製到其他廠；每份名單都經過獨立複核，邊界個案交回人工判斷。",
         "keywords": [
-          "職業安全衛生",
           "異常工作負荷",
-          "員工健康",
+          "過勞預防",
+          "腦心血管疾病風險",
+          "加班工時",
           "過勞量表",
-          "加班時數",
-          "資料整合",
-          "交叉分析",
-          "Claude",
-          "風險分級",
-          "資料整理"
+          "健康管理名單",
+          "職業健康護理",
+          "Excel 自動化",
+          "AI 協作"
         ]
       },
       "en": {
-        "title": "Abnormal Workload Risk Data Integration & Analysis",
-        "summary": "In response to the \"Abnormal Workload-Induced Disease Prevention Plan\" — one of the four core plans under the Occupational Safety and Health Act — employee health, burnout, and overtime data needed to be integrated to analyze each employee's hazard risk level. This round covered about 683 records, merging and cross-analyzing three separate data sources. Manually organizing, matching, and judging the data record by record was estimated to take nearly a month; with Claude's help, it was completed in about 15 minutes, greatly improving data organization and analysis efficiency.",
+        "title": "Abnormal Workload Risk Analysis",
+        "summary": "AI combined three datasets for 855 employees across four plants—10-year cardiovascular risk assessments, overtime hours and burnout questionnaire scores—classified risk automatically according to official guidelines, and produced health management lists that can be used directly to schedule interviews and follow-up. Analysis time per plant dropped from 3–4 days to under 1 hour.",
         "category": [
           "EHS & Environment",
-          "Data Integration & Analysis"
+          "Data Integration & Analysis",
+          "Process Automation"
         ],
-        "unit_request": "Aseptic Plant 2",
-        "unit_owner": "EHS Center",
-        "author": "Chia-Hsun Chen (Aseptic Plant 2)",
-        "status": "Production",
-        "region": "",
-        "problem_background": "Carrying out the Abnormal Workload-Induced Disease Prevention Plan required integrating three data sources: the health summary sheet with the 10-year cardiovascular disease risk assessment, the employee burnout scale, and employee overtime hours. Since the three data sets came from different files with inconsistent field formats, content, and employee ordering, the data first had to be cleaned, matched, and merged before cross-analyzing each employee's health risk, burnout level, and workload. This round covered about 683 employee records; doing this entirely by hand — organizing and matching record by record — was a complex, time-consuming process estimated to take nearly a month.",
-        "core_problem": "How to quickly integrate large volumes of employee data from different sources and formats, complete the cross-analysis and risk grading, and cut down the time needed for manual record-by-record organizing, matching, and judgment.",
-        "solution": "Used Claude to help organize the three data sources, standardize the field formats, and build a mapping between records for the same employee. After merging the data, it was cross-analyzed by health risk, burnout scale, and overtime hours to quickly produce each employee's hazard risk level, for EHS staff to further confirm and act on with follow-up management measures. Using AI to handle what was originally a large-volume, complex, and highly repetitive data organization process let staff focus their time on confirming results, judging risk, and planning improvements, instead of on copying and matching data record by record.",
-        "process": [],
+        "unit_request": "Occupational Safety & Health Center",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "陳佳勳",
+        "status": "Completed (Aug–Sep 2026; lists delivered for all four plants)",
+        "region": "Taiwan (four plants: Aseptic Plants 1, 2 and 3, and the Free Trade Zone Plant)",
+        "problem_background": "Under occupational safety and health regulations, the company must run a program to prevent diseases triggered by abnormal workload, regularly identifying employees at high risk of overwork and cerebrovascular/cardiovascular disease. Each judgment requires three datasets together—10-year cardiovascular risk from health checkups, monthly overtime hours and burnout questionnaire scores—matched against official guidelines to determine risk level and recommended action. The three datasets are separate Excel files, and column order and formats differ between plants.",
+        "core_problem": "Nurses previously compared the three datasets record by record in Excel and assigned risk levels manually, taking 3–4 days per plant. A full round for four plants took a long time and was prone to matching and classification errors. Data preparation ate into the time nurses needed for interviews and follow-up.",
+        "solution": "The nurse provided the three source datasets and official guidelines. AI first read the original guideline text to confirm the classification criteria, then merged the three datasets by employee ID, automatically judged workload and cardiovascular risk levels, matched each employee to a recommended action, and produced a health management list split into color-coded tabs. AI then re-checked every record with a separate, independent calculation. Once the first plant was confirmed, the logic and list format were fixed and reused for the other plants.",
+        "process": [
+          "The nurse prepares each plant's three source datasets (10-year cardiovascular risk, overtime hours, burnout questionnaire) and the Guidelines for Preventing Diseases Triggered by Abnormal Workload",
+          "AI reads the original guideline text and compiles thresholds for overtime, personal fatigue, work fatigue and cardiovascular risk, confirmed by the nurse",
+          "AI merges the three datasets by employee ID, mapping each plant's different column layout by column name, without ever modifying the original files",
+          "AI automatically judges workload level and risk level and matches each to a recommended action",
+          "AI produces the health management list in Excel and re-checks every record with an independent recalculation",
+          "The nurse reviews the results, handles borderline and incomplete cases, and uses the confirmed list for interviews and follow-up"
+        ],
         "features": [
-          "Integrates employee data from different sources.",
-          "Standardizes fields and data formats.",
-          "Matches the same employee across three data sets.",
-          "Cross-analyzes health risk, burnout level, and overtime hours.",
-          "Helps organize employee hazard risk levels.",
-          "Produces analysis results EHS staff can confirm and track further."
+          {
+            "name": "Three-dataset integration",
+            "desc": "Merges health checkup, overtime and burnout data by employee ID; anyone appearing in any of the three is included"
+          },
+          {
+            "name": "Automatic classification",
+            "desc": "Judges workload level and 10-year cardiovascular risk per the official guidelines, then derives the combined risk level"
+          },
+          {
+            "name": "Recommended action",
+            "desc": "Each employee is placed in one of: priority physician interview, interview recommended pending nurse review, nurse follow-up, no action needed, or more data needed"
+          },
+          {
+            "name": "Health management list",
+            "desc": "Tabs by recommended action with color-coded rows, each with the reason for inclusion"
+          },
+          {
+            "name": "Missing data flags",
+            "desc": "Distinguishes \"not on the roster\" from \"blank field\" so nurses know which dataset to complete"
+          },
+          {
+            "name": "Independent check",
+            "desc": "A separate calculation recomputes each record and checks that results, counts and employee IDs match"
+          }
         ],
         "ai_usage": [
-          "Analyzing the data structure of different files",
-          "Cleaning and standardizing data formats",
-          "Building employee record matching relationships",
-          "Merging three different data sources",
-          "Running conditional matching and cross-analysis",
-          "Organizing hazard risk levels",
-          "Checking for missing or abnormal data",
-          "AI is mainly responsible for the large-volume, repetitive data organization and initial analysis — final risk determination and follow-up handling are still confirmed by EHS professionals"
+          "Reading the original official guidelines and turning them into executable classification rules",
+          "Writing and running code to merge multiple Excel files with inconsistent columns and formats",
+          "Handling mixed-format data (e.g. percentages stored as text, numbers mixed with text)",
+          "Classifying automatically and producing consistently formatted Excel lists",
+          "Cross-validating results with an independent calculation"
         ],
         "tools": [
-          "Claude",
-          "Excel",
-          "Employee health and working-hours data"
+          {
+            "name": "Claude",
+            "desc": "Reads guidelines and source data, writes and runs analysis code, produces and checks the lists"
+          },
+          {
+            "name": "Excel",
+            "desc": "Source data and output format of the health management lists"
+          },
+          {
+            "name": "Python",
+            "desc": "Written and run by AI for data integration, classification and independent checks"
+          }
         ],
         "results": [
-          "Completed integration of about 683 employee records.",
-          "Completed cross-analysis of three different data sources.",
-          "Cut work originally estimated at nearly a month down to about 15 minutes.",
-          "Greatly reduced the time spent on manual record-by-record organizing and matching.",
-          "Lowered the risk of missing data, mismatches, and inconsistent judgment.",
-          "Improved the speed and consistency of the risk assessment process.",
-          "Let EHS staff move faster into risk confirmation and follow-up management."
+          "Completed abnormal workload risk analysis for 855 employees across four plants",
+          "Analysis time per plant reduced from 3–4 days to under 1 hour",
+          "Each plant received a consistently formatted health management list, ready for scheduling physician interviews and nurse follow-up",
+          "Every list was re-checked record by record with an independent calculation"
         ],
         "value": [
           {
-            "name": "For the Staff Doing the Work",
-            "desc": "No longer need to organize and match large volumes of data record by record, greatly reducing repetitive workload and time."
+            "name": "For nurses and the safety unit",
+            "desc": "Time saved on data matching goes to interviews, follow-up and health guidance; every plant uses the same criteria and results can be re-checked"
           },
           {
-            "name": "For EHS Staff",
-            "desc": "Can quickly get integrated risk analysis results and focus their time on confirming high-risk individuals, health management, and planning improvement measures."
+            "name": "For employees",
+            "desc": "High-risk colleagues are identified sooner, with earlier physician interviews or nurse follow-up"
           },
           {
-            "name": "For the Company",
-            "desc": "Using AI to handle a complex data integration process cut work that used to take nearly a month down to about 15 minutes, improving efficiency and making the risk assessment process faster, more consistent, and more effective."
+            "name": "For the company",
+            "desc": "Every plant applies the abnormal workload disease prevention program with the same standard"
           }
         ],
         "extensions": [
-          "Employee health check-up data organization",
-          "High-risk group screening",
-          "Working hours and attendance data analysis",
-          "Occupational health management list organization",
-          "Training completion status analysis",
-          "Cross-file employee data merging",
-          "Large-scale survey and assessment form analysis"
+          "The classification logic and list format are fixed, so they can be reused every year and at other plants",
+          "The approach of merging multiple Excel files by employee ID and classifying by clear rules can be used for other health management work, such as annual checkup grading"
         ],
         "limitations": [
-          "AI-generated analysis results still need to be confirmed by EHS professionals and should not be used directly as a final medical or health determination.",
-          "Whether employee names or identifying data are correctly matched",
-          "Whether the source data is complete and up to date",
-          "Whether duplicate, blank, or abnormal data has been handled",
-          "Whether the risk grading criteria comply with company rules",
-          "Access permissions and confidentiality requirements for personal health data",
-          "Whether the analysis results have been reviewed by EHS professionals"
+          "Health data is sensitive personal data: analysis uses employee IDs only, not names; use must follow company information security and personal data rules, and IDs must be masked when shown externally",
+          "AI classification is an initial screen; whether to interview and what follow-up to take is still decided by nurses and physicians",
+          "Classification criteria must be confirmed against the original official guidelines; values exactly on a threshold need manual review",
+          "Source file columns and formats differ by plant, so the data structure must be checked first and plant membership confirmed",
+          "Employees without all three datasets cannot be fully classified and must be re-analyzed once the data is complete"
         ],
-        "success_key": "",
+        "success_key": "Base the criteria on the original official guidelines, confirmed by the nurse; get the logic and format right at one plant before copying to the others; independently check every list and hand borderline cases back to people.",
         "keywords": [
-          "Occupational Safety and Health",
           "Abnormal Workload",
-          "Employee Health",
-          "Burnout Scale",
+          "Overwork Prevention",
+          "Cerebrovascular & Cardiovascular Risk",
           "Overtime Hours",
-          "Data Integration",
-          "Cross-Analysis",
-          "Claude",
-          "Risk Grading",
-          "Data Organization"
+          "Burnout Questionnaire",
+          "Health Management List",
+          "Occupational Health Nursing",
+          "Excel Automation",
+          "AI Collaboration"
         ]
       }
-    }
+    },
+    "screenshots": [
+      "assets/workload-risk-analysis-cover.jpg",
+      "assets/workload-risk-analysis-list.jpg",
+      "assets/workload-risk-analysis-demo.png"
+    ]
   },
   {
     "id": "ehs-training-materials",
