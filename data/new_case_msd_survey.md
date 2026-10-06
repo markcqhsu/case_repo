@@ -29,7 +29,7 @@
 
 
 ## 畫面截圖
-- assets/msd-survey-cover.jpg
+- assets/msd-survey-cover-v2.jpg
 - assets/msd-survey-01.jpg
 - assets/msd-survey-02.jpg
 - assets/msd-survey-03.jpg
