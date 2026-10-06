@@ -12763,5 +12763,245 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-056",
+    "number": 56,
+    "updated": "2026.10",
+    "video": [],
+    "screenshots": [
+      "assets/mental-health-trend-cover.jpg",
+      "assets/mental-health-trend-01.jpg",
+      "assets/mental-health-trend-02.jpg",
+      "assets/mental-health-trend-03.jpg",
+      "assets/mental-health-trend-04.jpg"
+    ],
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "近三年員工心理健康趨勢分析",
+        "summary": "以 AI 整合 2024–2026 年三年、四廠共 12 份量表資料，首次完成跨年度的員工心理健康趨勢報告，以圖表呈現各項目的變化；並依 2026 年度量表結果（有效樣本 682 人）完成分析報告，提出 EAP（員工協助方案）導入建議。",
+        "category": [
+          "職安環保",
+          "資料整合與分析"
+        ],
+        "unit_request": "職安衛中心",
+        "unit_owner": "職安衛中心",
+        "author": "陳佳勳",
+        "status": "已完成（2026 年 8–9 月）",
+        "region": "台灣（四廠：無菌一廠、無菌二廠、無菌三廠、自貿廠）",
+        "problem_background": "公司每年都會在員工健康檢查時請員工填寫心理健康相關量表（壓力指數測量、簡式健康量表 BSRS-5），各廠各年度的結果分別存成不同檔案。每年的資料都只在當年度使用，沒有放在一起比較。",
+        "core_problem": "三年、四廠共 12 份資料，以人工整合並比較的工作量大，因此過去一直沒有做過跨年度的分析，無法知道員工的心理健康狀況是變好還是變差、哪些項目需要優先關注。",
+        "solution": "由職護提供三年、四廠的量表資料，請 AI 整合成同一套格式，統計各年度、各項目的結果，製作趨勢圖表並整理成報告，由職護確認內容與解讀。",
+        "process": [
+          "職護準備 2024–2026 年四廠共 12 份量表資料",
+          "AI 檢查各份資料的欄位與格式，整合成一致的結構",
+          "AI 統計各年度、各項目的結果",
+          "AI 製作趨勢圖表並整理成報告",
+          "依當年度量表結果整理主要發現，提出 EAP 導入建議",
+          "職護確認統計結果與解讀"
+        ],
+        "features": [
+          {
+            "name": "跨年度整合",
+            "desc": "把三年、四廠共 12 份量表資料整合成同一套格式"
+          },
+          {
+            "name": "趨勢圖表",
+            "desc": "以圖表呈現各項目三年間的變化"
+          },
+          {
+            "name": "趨勢分析報告",
+            "desc": "整理出整體趨勢與需要關注的項目，報告以去識別的統計結果呈現"
+          },
+          {
+            "name": "年度量表分析",
+            "desc": "統計各題結果、總分分布與各廠別分布，以廠別為最小分析單位"
+          },
+          {
+            "name": "EAP 導入建議",
+            "desc": "依分析結果整理主要發現與導入 EAP 的預期效益，作為現行員工健康管理機制的補充"
+          }
+        ],
+        "ai_usage": [
+          "讀取並整合多份欄位與格式不一致的量表資料",
+          "統計各年度、各項目的結果",
+          "製作圖表並撰寫趨勢分析報告",
+          "依統計結果歸納主要發現，撰寫 EAP 導入建議"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "整合量表資料、統計分析、製作圖表與報告"
+          },
+          {
+            "name": "Excel",
+            "desc": "量表資料來源"
+          },
+          {
+            "name": "Word",
+            "desc": "分析報告文件"
+          }
+        ],
+        "results": [
+          "整合三年、四廠共 12 份量表資料",
+          "首次完成跨年度的員工心理健康趨勢報告",
+          "完成 2026 年度「員工心理健康量表分析暨 EAP 導入建議」報告（有效樣本 682 人）",
+          "主要發現：睡眠是最突出的困擾，其次為疲勞及身體不適；各廠別之間未觀察到明顯差異，EAP 可先依全公司的共同需求規劃"
+        ],
+        "value": [
+          {
+            "name": "對職護與職安衛單位",
+            "desc": "第一次能用數據看出三年間的變化，作為規劃健康促進活動的依據"
+          },
+          {
+            "name": "對員工",
+            "desc": "心理健康需求能被看見，相關資源可以放在更需要的地方"
+          },
+          {
+            "name": "對公司",
+            "desc": "掌握員工心理健康的長期趨勢，可作為管理決策的參考"
+          }
+        ],
+        "extensions": [
+          "往後每年新增當年度資料，即可持續更新趨勢",
+          "同樣作法可用於其他每年重複進行的問卷或健檢資料，做跨年度比較",
+          "可進一步依廠別或部門分析，找出需要優先關注的單位"
+        ],
+        "limitations": [
+          "心理健康資料屬敏感個資，報告只呈現去識別的統計結果，使用時須符合公司資訊安全與個資規範",
+          "量表是員工自填的結果，趨勢僅供參考，不能用來判斷個別員工的狀況",
+          "各年度填答人數與對象可能不同，比較時需留意",
+          "樣本數較少的廠別，結果僅供描述性參考",
+          "量表結果屬篩檢及群體統計資料，不作為精神疾病的診斷依據",
+          "數字的解讀與後續措施由職護與醫師專業判斷"
+        ],
+        "success_key": "先把多年、多廠的資料整合成一致格式，才有辦法比較；統計與圖表交給 AI，解讀與後續規劃由職護負責。",
+        "keywords": [
+          "員工心理健康",
+          "跨年度趨勢分析",
+          "量表資料",
+          "簡式健康量表",
+          "EAP",
+          "員工協助方案",
+          "健康促進",
+          "職業健康護理",
+          "資料整合",
+          "AI 協作"
+        ]
+      },
+      "en": {
+        "title": "Three-Year Employee Mental Health Trend Analysis",
+        "summary": "AI was used to combine 12 questionnaire datasets from four plants over three years (2024–2026), producing the company's first cross-year employee mental health trend report with charts showing how each item changed. An analysis report based on the 2026 questionnaire results (682 valid responses) was also completed, with recommendations for introducing an EAP (Employee Assistance Program).",
+        "category": [
+          "EHS & Environment",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Occupational Safety & Health Center",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "陳佳勳",
+        "status": "Completed (Aug–Sep 2026)",
+        "region": "Taiwan (four plants: Aseptic Plants 1, 2 and 3, and the Free Trade Zone Plant)",
+        "problem_background": "Each year during health checkups, employees fill in mental health questionnaires (a stress index and the Brief Symptom Rating Scale, BSRS-5). Results for each plant and year were saved in separate files and only used for that year, never compared side by side.",
+        "core_problem": "Manually combining and comparing 12 datasets across three years and four plants is a big job, so no cross-year analysis had ever been done. There was no way to tell whether employee mental health was improving or worsening, or which items needed priority attention.",
+        "solution": "The occupational health nurse provided three years of questionnaire data from four plants. AI merged them into one consistent format, calculated results by year and item, built trend charts and compiled a report, and the nurse confirmed the content and interpretation.",
+        "process": [
+          "The nurse prepares 12 questionnaire datasets from four plants for 2024–2026",
+          "AI checks each dataset's fields and format and merges them into a consistent structure",
+          "AI calculates results by year and by item",
+          "AI builds trend charts and compiles the report",
+          "Summarize key findings from the current year's results and propose EAP recommendations",
+          "The nurse confirms the statistics and interpretation"
+        ],
+        "features": [
+          {
+            "name": "Cross-year integration",
+            "desc": "Merges 12 questionnaire datasets from three years and four plants into one format"
+          },
+          {
+            "name": "Trend charts",
+            "desc": "Shows how each item changed over three years"
+          },
+          {
+            "name": "Trend analysis report",
+            "desc": "Summarizes overall trends and items needing attention, presented as de-identified statistics"
+          },
+          {
+            "name": "Annual questionnaire analysis",
+            "desc": "Item results, total score distribution and distribution by plant, with the plant as the smallest unit of analysis"
+          },
+          {
+            "name": "EAP recommendations",
+            "desc": "Key findings and expected benefits of introducing an EAP, as a supplement to the current employee health management system"
+          }
+        ],
+        "ai_usage": [
+          "Reading and combining multiple questionnaire datasets with inconsistent fields and formats",
+          "Calculating results by year and item",
+          "Building charts and writing the trend analysis report",
+          "Summarizing key findings from the statistics and writing EAP recommendations"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "Combines questionnaire data, runs statistics, builds charts and writes reports"
+          },
+          {
+            "name": "Excel",
+            "desc": "Source questionnaire data"
+          },
+          {
+            "name": "Word",
+            "desc": "Analysis report document"
+          }
+        ],
+        "results": [
+          "Combined 12 questionnaire datasets from three years and four plants",
+          "Completed the first cross-year employee mental health trend report",
+          "Completed the 2026 \"Employee Mental Health Questionnaire Analysis and EAP Recommendations\" report (682 valid responses)",
+          "Key findings: sleep problems are the most prominent concern, followed by fatigue and physical discomfort; no clear differences were seen between plants, so the EAP can first be planned around company-wide shared needs"
+        ],
+        "value": [
+          {
+            "name": "For nurses and the safety unit",
+            "desc": "For the first time, data shows changes over three years as a basis for planning health promotion activities"
+          },
+          {
+            "name": "For employees",
+            "desc": "Mental health needs become visible, and resources can go where they're needed most"
+          },
+          {
+            "name": "For the company",
+            "desc": "Insight into long-term employee mental health trends to inform management decisions"
+          }
+        ],
+        "extensions": [
+          "Add each new year's data to keep the trend up to date",
+          "Apply the same approach to other recurring annual surveys or checkup data for cross-year comparison",
+          "Analyze further by plant or department to find units needing priority attention"
+        ],
+        "limitations": [
+          "Mental health data is sensitive personal data; reports show only de-identified statistics, and use must follow company information security and personal data rules",
+          "Questionnaires are self-reported; trends are for reference only and cannot be used to judge any individual employee",
+          "Respondent numbers and groups may differ by year, so take care when comparing",
+          "Results for plants with small samples are descriptive only",
+          "Questionnaire results are screening and group statistics and are not a basis for diagnosing mental illness",
+          "Interpreting the numbers and deciding next steps is the professional judgment of nurses and physicians"
+        ],
+        "success_key": "Merge multi-year, multi-plant data into one consistent format first—only then can it be compared. Leave statistics and charts to AI, while nurses own the interpretation and follow-up planning.",
+        "keywords": [
+          "Employee Mental Health",
+          "Cross-Year Trend Analysis",
+          "Questionnaire Data",
+          "BSRS-5",
+          "EAP",
+          "Employee Assistance Program",
+          "Health Promotion",
+          "Occupational Health Nursing",
+          "Data Integration",
+          "AI Collaboration"
+        ]
+      }
+    }
   }
 ]
