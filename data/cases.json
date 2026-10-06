@@ -12999,5 +12999,231 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-057",
+    "number": 57,
+    "updated": "2026.10",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/respirator-eval-cover.jpg",
+      "assets/respirator-eval-01.jpg",
+      "assets/respirator-eval-02.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "呼吸防護計畫生理評估",
+        "summary": "以 AI 協助檢視呼吸防護計畫，把是否需要轉介醫師的判斷整理成三個步驟，並將 28 位呼吸防護具配戴人員的生理評估結果彙整成一張表，另整理一份逐案判定原因說明，作為職護留存紀錄及與職安、臨場服務醫師溝通的依據。",
+        "category": [
+          "職安環保",
+          "資料整合與分析"
+        ],
+        "unit_request": "職安衛中心",
+        "unit_owner": "職安衛中心",
+        "author": "陳佳勳",
+        "status": "已完成（2026 年 8–9 月）",
+        "region": "台灣",
+        "problem_background": "依呼吸防護計畫，需要配戴呼吸防護具的人員在使用前要先做生理評估，確認身體狀況適合配戴，必要時轉介醫師進一步評估。是否需要轉介，要同時看問卷的勾選項目、個人病史，以及任務與防護具的負荷程度。",
+        "core_problem": "轉介的判斷條件分散在法規附表、技術手冊與公司辦法中，哪些是法規強制、哪些是公司可以裁量，並不容易一眼分清楚。逐一對照每位人員的評估表費時，也不容易確保每個人都用同樣的標準判斷；評估完成後缺少一份一目了然的總表，判定的理由也沒有留下紀錄。",
+        "solution": "請 AI 檢視呼吸防護計畫內容，把轉介判斷整理成依序檢查的三個步驟，並標明每一步是法規強制還是公司裁量。再依這三個步驟整理 28 位配戴人員的評估結果，彙整成一張表，同時逐案寫下判定原因，由職護確認後使用。",
+        "process": [
+          "職護提供呼吸防護計畫與配戴人員的生理評估資料",
+          "AI 檢視計畫內容，整理出轉介判斷的條件，並區分法規強制與公司裁量",
+          "將判斷條件簡化為三個步驟，由職護確認",
+          "依三步驟整理 28 位配戴人員的評估結果，彙整成一張總表",
+          "整理逐案判定原因說明，標出職護提出的延伸判斷",
+          "職護複核後使用，並據以與職安、臨場服務醫師討論"
+        ],
+        "features": [
+          {
+            "name": "第一步（法規強制）",
+            "desc": "問卷勾選附表三 ※ 標記項目（如癲癇、心臟病史、中風、心絞痛、心衰竭等）→ 直接轉介，沒有裁量空間"
+          },
+          {
+            "name": "第二步（技術指引，公司裁量）",
+            "desc": "沒有心臟血管、呼吸系統、神經系統、肌肉骨骼、心理精神等五大類病史 → 免轉介，不需再看任務負荷"
+          },
+          {
+            "name": "第三步（公司裁量）",
+            "desc": "有第二步病史者，再看任務與防護具是否屬高負荷（如 SCBA、高溫第三級以上、強腐蝕性化學品緊急應變、中重度以上工作）→ 負荷不高免轉介，負荷高建議轉介"
+          },
+          {
+            "name": "評估結果總表",
+            "desc": "28 位配戴人員的防護具種類、工作負荷、判定與原因集中在一張表，判定結果以顏色區分，並記錄醫師評估結果"
+          },
+          {
+            "name": "逐案判定原因說明",
+            "desc": "逐一寫下每一案的判定理由，並把職護依風險合理性提出、手冊與公司辦法未明文規定的延伸判斷另外標示"
+          }
+        ],
+        "ai_usage": [
+          "閱讀呼吸防護計畫，找出與轉介判斷有關的條件",
+          "區分哪些條件是法規強制、哪些是公司裁量",
+          "把分散的條件整理成依序檢查的步驟",
+          "依步驟整理每位人員的評估結果並彙整成表",
+          "撰寫逐案判定原因說明"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "檢視計畫內容、整理轉介判斷步驟、彙整評估結果、撰寫判定原因說明"
+          },
+          {
+            "name": "Excel",
+            "desc": "評估結果總表"
+          },
+          {
+            "name": "Word",
+            "desc": "逐案判定原因說明文件"
+          }
+        ],
+        "results": [
+          "轉介判斷整理成三個步驟，判斷標準一致",
+          "28 位配戴人員的評估結果一表彙整",
+          "完成逐案判定原因說明，每一案的判定都有理由可查"
+        ],
+        "value": [
+          {
+            "name": "對職護與職安衛單位",
+            "desc": "判斷有明確步驟可依循，結果集中在一張表，判定理由有紀錄，方便追蹤、查核以及與醫師溝通"
+          },
+          {
+            "name": "對員工",
+            "desc": "每位配戴人員都以同一套標準評估，需要醫師評估的人不會被漏掉"
+          },
+          {
+            "name": "對公司",
+            "desc": "呼吸防護計畫的生理評估有完整紀錄可查"
+          }
+        ],
+        "extensions": [
+          "往後新增配戴人員或定期重新評估時，可沿用同一套三步驟與總表",
+          "「把計畫或辦法中的判斷條件整理成步驟，並標明強制與裁量」的作法，可用於其他需要逐案判斷的健康管理作業"
+        ],
+        "limitations": [
+          "健康資料屬敏感個資，使用時須符合公司資訊安全與個資規範，對外展示時需去識別",
+          "三步驟是協助職護初步判斷的工具，是否適合配戴仍由醫師與職護專業判斷",
+          "職護提出的延伸判斷，手冊與公司辦法未明文規定，僅供參考裁量，需與職安、醫師討論確認",
+          "三步驟是依公司現行呼吸防護計畫整理，計畫內容或相關指引更新時需重新檢視"
+        ],
+        "success_key": "先把判斷條件整理清楚、分清法規強制與公司裁量，並由職護確認，再套用到每位人員；每一案都留下判定理由。AI 負責整理，適任與否的判斷留給專業人員。",
+        "keywords": [
+          "呼吸防護計畫",
+          "生理評估",
+          "呼吸防護具",
+          "轉介判斷",
+          "職業健康護理",
+          "流程整理",
+          "AI 協作"
+        ]
+      },
+      "en": {
+        "title": "Physiological Evaluation for the Respiratory Protection Program",
+        "summary": "AI helped review the respiratory protection program and turn the decision on whether to refer someone to a physician into three steps. The physiological evaluation results for 28 respirator wearers were compiled into one table, with a separate case-by-case explanation of each decision, serving as the nurse's record and the basis for discussions with safety staff and the on-site physician.",
+        "category": [
+          "EHS & Environment",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Occupational Safety & Health Center",
+        "unit_owner": "Occupational Safety & Health Center",
+        "author": "陳佳勳",
+        "status": "Completed (Aug–Sep 2026)",
+        "region": "Taiwan",
+        "problem_background": "Under the respiratory protection program, people who need to wear respirators must have a physiological evaluation before use to confirm they are fit to wear one, with referral to a physician when needed. Deciding whether to refer requires looking at questionnaire answers, personal medical history, and the load imposed by the task and respirator together.",
+        "core_problem": "Referral criteria are scattered across regulatory appendices, the technical manual and company procedures, and it isn't easy to tell which are legally mandatory and which are company discretion. Checking each person's evaluation form one by one takes time and makes it hard to apply the same standard to everyone; once done, there was no at-a-glance summary table, and the reasons behind each decision weren't recorded.",
+        "solution": "AI reviewed the respiratory protection program and organized the referral decision into three sequential steps, marking whether each step is legally mandatory or company discretion. The 28 wearers' evaluation results were then organized by these steps into one table, with the reason for each decision written down, and used after the nurse confirmed them.",
+        "process": [
+          "The nurse provides the respiratory protection program and wearers' physiological evaluation data",
+          "AI reviews the program, extracts the referral criteria and separates legal requirements from company discretion",
+          "Simplify the criteria into three steps, confirmed by the nurse",
+          "Organize the 28 wearers' results by the three steps into one summary table",
+          "Write a case-by-case explanation of each decision, marking the nurse's extended judgments",
+          "The nurse reviews before use, and uses it for discussions with safety staff and the on-site physician"
+        ],
+        "features": [
+          {
+            "name": "Step 1 (legal requirement)",
+            "desc": "If the questionnaire ticks any ※-marked item in Appendix 3 (e.g. epilepsy, heart disease history, stroke, angina, heart failure) → refer directly, no discretion"
+          },
+          {
+            "name": "Step 2 (technical guideline, company discretion)",
+            "desc": "No history in the five major categories—cardiovascular, respiratory, neurological, musculoskeletal, psychiatric → no referral, no need to check task load"
+          },
+          {
+            "name": "Step 3 (company discretion)",
+            "desc": "For those with Step 2 history, check whether the task and respirator are high-load (e.g. SCBA, heat level 3 or above, emergency response to strongly corrosive chemicals, moderate-to-heavy work) → not high-load: no referral; high-load: referral recommended"
+          },
+          {
+            "name": "Evaluation summary table",
+            "desc": "Respirator type, workload, decision and reason for all 28 wearers in one table, color-coded by decision, with physician evaluation results recorded"
+          },
+          {
+            "name": "Case-by-case decision explanation",
+            "desc": "Records the reason for each case, and separately marks the nurse's extended judgments based on risk reasonableness that aren't explicitly covered by the manual or company procedure"
+          }
+        ],
+        "ai_usage": [
+          "Reading the respiratory protection program to find conditions relevant to referral",
+          "Separating legally mandatory conditions from company discretion",
+          "Organizing scattered conditions into sequential steps",
+          "Organizing each person's results by the steps and compiling them into a table",
+          "Writing the case-by-case decision explanations"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "Reviews the program, organizes the referral steps, compiles results and writes decision explanations"
+          },
+          {
+            "name": "Excel",
+            "desc": "Evaluation summary table"
+          },
+          {
+            "name": "Word",
+            "desc": "Case-by-case decision explanation document"
+          }
+        ],
+        "results": [
+          "The referral decision is organized into three steps, giving a consistent standard",
+          "Evaluation results for 28 wearers are compiled into one table",
+          "Completed case-by-case decision explanations, so every decision has a documented reason"
+        ],
+        "value": [
+          {
+            "name": "For nurses and the safety unit",
+            "desc": "Clear steps to follow, results in one table and documented reasons, making tracking, audits and communication with physicians easier"
+          },
+          {
+            "name": "For employees",
+            "desc": "Every wearer is evaluated with the same standard, so no one who needs a physician evaluation is missed"
+          },
+          {
+            "name": "For the company",
+            "desc": "A complete, auditable record of physiological evaluations under the respiratory protection program"
+          }
+        ],
+        "extensions": [
+          "Reuse the same three steps and summary table when adding new wearers or doing periodic re-evaluations",
+          "The approach of turning decision criteria in a program or procedure into steps, marked as mandatory or discretionary, can be used for other health management tasks that need case-by-case judgment"
+        ],
+        "limitations": [
+          "Health data is sensitive personal data; use must follow company information security and personal data rules, and anything shown externally must be de-identified",
+          "The three steps help the nurse make an initial judgment; fitness to wear a respirator is still decided by physicians and nurses",
+          "The nurse's extended judgments are not explicitly covered by the manual or company procedure and are for discretionary reference only, to be confirmed with safety staff and physicians",
+          "The three steps are based on the company's current respiratory protection program and must be reviewed again when the program or related guidelines change"
+        ],
+        "success_key": "First organize the decision criteria clearly—separating legal requirements from company discretion—and have the nurse confirm them, then apply them to each person and record the reason for every case. AI does the organizing; fitness decisions stay with professionals.",
+        "keywords": [
+          "Respiratory Protection Program",
+          "Physiological Evaluation",
+          "Respirators",
+          "Referral Decision",
+          "Occupational Health Nursing",
+          "Process Organization",
+          "AI Collaboration"
+        ]
+      }
+    }
   }
 ]
