@@ -13729,5 +13729,339 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-060",
+    "number": 60,
+    "updated": "2026.10",
+    "screenshots": [
+      "assets/performance-appraisal-cover.jpg"
+    ],
+    "url": "",
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "東南亞六國多語言績效考核系統",
+        "summary": "以 Google Sheets 作為資料後台、Google Apps Script Web App 作為員工與主管的操作介面，取代原本「Excel 訂 KPI → Google Form 自評 → HR 人工整理 → 主管 Excel 評核」的流程。沒有公司信箱的員工也能用工號與 PIN 自行登入自評，主管依序評核，並支援雙語介面、評語翻譯、進度通知與各廠成績同步。",
+        "category": [
+          "流程自動化",
+          "內部管理工具",
+          "資料整合與分析"
+        ],
+        "unit_request": "東南亞人資",
+        "unit_owner": "東南亞人資",
+        "author": "禤珮宜",
+        "status": "已完成可操作版本，持續試填與修正中",
+        "region": "柬埔寨、緬甸、越南、泰國、印尼、馬來西亞（共 10 個廠區）",
+        "problem_background": "原本的考核分散在 Excel、Google Form 與 HR 人工整理之間，KPI 設定、自評、主管評分到最終結果沒有串成完整的資料鏈。HR 需要反覆複製、轉貼與追蹤，主管要在不同表單間作業，員工也不容易確認自己適用的項目與完成狀態。六國語言不同、管理層級不同，部分現場員工也沒有公司信箱；加上需付費的 AppSheet 無法採用，因此改以既有的 Google 工具自行建置。",
+        "core_problem": "考核資料靠人工在多個表單間銜接，容易遺漏與版本不一致；沒有公司信箱的員工無法自行填寫，主管評核也無法控制先後順序，跨國語言差異更增加了操作難度。",
+        "solution": "採用「中央資料後台＋員工自評入口＋主管評核入口＋各廠成績輸出」的架構。Google Sheets 儲存員工主檔、KPI 指派、自評、主管評核、草稿、翻譯快取與寄信紀錄；Apps Script 依登入身分與員工類型提供個人化的 KPI 與表單，並控制送出與流轉。員工完成自評後，案件依序交給第一、二、三階主管獨立評分，最後以實際完成主管的加權總分平均產生最終分數，再由中央系統單向同步到各廠成績活頁簿。過程中以 AI 協助產出與修正程式、翻譯資源、測試與操作指南。",
+        "process": [
+          "HR 準備本期員工主檔、員工類型、KPI 與權重、主管對應與登入 PIN",
+          "員工選擇語言，以工號＋PIN 登入，先確認基本資料（有誤則提出更正申請並暫停）",
+          "員工填寫個人 KPI、Teamwork 與 Leadership（適用者）自評，可暫存草稿，檢查後送出",
+          "主管以主管編號＋PIN 登入，查看待評核清單、員工自評與前階紀錄，必要時翻譯評語",
+          "第一、二、三階主管依序獨立評分並送出，系統自動流轉並計算最終平均分數",
+          "HR 透過各廠追蹤活頁簿掌握進度，成績由中央系統同步到各廠 Final sheet"
+        ],
+        "features": [
+          {
+            "name": "工號＋PIN 登入",
+            "desc": "不需公司信箱，員工本人即可登入自評"
+          },
+          {
+            "name": "個人化 KPI",
+            "desc": "依後台指派顯示每位員工適用的 KPI 項目與權重"
+          },
+          {
+            "name": "依序主管評核",
+            "desc": "第一 → 第二 → 第三階主管依序獨立評分，後階可看到前階紀錄"
+          },
+          {
+            "name": "角色差異化計分",
+            "desc": "Individual 為 KPI 80%＋Teamwork 20%；Leadership 為 KPI 60%＋Teamwork 20%＋Leadership 20%"
+          },
+          {
+            "name": "草稿與資料更正",
+            "desc": "手動與自動暫存，可中斷後繼續；基本資料有誤時提出更正申請，由 HR 處理"
+          },
+          {
+            "name": "送出後鎖定",
+            "desc": "防止重複自評與送出後自行修改，第一階主管須確認已完成績效面談"
+          },
+          {
+            "name": "八組雙語介面",
+            "desc": "英文、泰文、越南文、馬來文、尼泊爾文、印尼文、緬甸文、柬埔寨文分別搭配中文或英文"
+          },
+          {
+            "name": "評語翻譯",
+            "desc": "主管可將員工評語按需翻譯為繁體中文或英文，保留原文並快取結果"
+          },
+          {
+            "name": "批次通知與 HR 彙總",
+            "desc": "依時段合併寄信給主管與 HR，並記錄寄信狀態防止重寄"
+          },
+          {
+            "name": "廠區追蹤與成績同步",
+            "desc": "各廠 HR 看本廠進度與未完成明細，成績由中央單向同步到 10 個廠區活頁簿"
+          }
+        ],
+        "ai_usage": [
+          "將 HR 提出的跨國考核流程拆解為登入、自評、路由、評核、通知與同步的系統規格",
+          "協助比較 Google Form、AppSheet 與 Apps Script 的適用性，選定可行方案",
+          "依使用者確認的規則逐步產出 Apps Script、HTML／CSS／JavaScript 與廠區同步程式",
+          "根據使用者提供的畫面與錯誤訊息定位問題，反覆修正欄名、狀態、翻譯與寄信連結",
+          "產生八組雙語介面與通知文字，並先做介面模擬，確認後才修改正式版本",
+          "整理員工版、主管版操作指南（Word）與教育訓練簡報（PPT）"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "desc": "中央資料後台，儲存主檔、考核結果、草稿與寄信紀錄"
+          },
+          {
+            "name": "Google Apps Script",
+            "desc": "登入驗證、流程路由、計分、同步與排程"
+          },
+          {
+            "name": "Apps Script Web App",
+            "desc": "員工自評與主管評核的瀏覽器入口"
+          },
+          {
+            "name": "LanguageApp",
+            "desc": "主管端評語的機器翻譯"
+          },
+          {
+            "name": "MailApp",
+            "desc": "主管與 HR 的批次通知寄信"
+          },
+          {
+            "name": "IMPORTRANGE",
+            "desc": "各廠追蹤活頁簿讀取總部資料"
+          },
+          {
+            "name": "ChatGPT／Codex",
+            "desc": "需求整理、程式協作、除錯、翻譯資源與操作指南"
+          },
+          {
+            "name": "Word／PowerPoint",
+            "desc": "員工版、主管版操作指南與培訓簡報"
+          }
+        ],
+        "results": [
+          "已完成員工自評與主管評核的可操作版本，涵蓋登入、個人 KPI、依序評核、角色權重與最終平均",
+          "已加入草稿、資料更正、送出後鎖定、面談確認、待評核重整與已完成總覽",
+          "已建立 10 個廠區的進度追蹤與獨立成績活頁簿，並交付單向同步程式",
+          "已提供批次寄信、HR 完成進度彙總與寄信紀錄（目前定時寄信暫停，保留手動寄信）",
+          "已產出員工版、主管版中英文操作指南與整合培訓簡報"
+        ],
+        "value": [
+          {
+            "name": "對員工",
+            "desc": "沒有公司信箱也能自行自評，用熟悉的語言看到個人 KPI，並可分次完成"
+          },
+          {
+            "name": "對主管",
+            "desc": "集中查看自評與前階紀錄，逐階獨立給分，評語可即時翻譯"
+          },
+          {
+            "name": "對廠區 HR",
+            "desc": "直接取得本廠進度與成績，減少人工串接與追蹤"
+          },
+          {
+            "name": "對總部 HR",
+            "desc": "以一致的欄位、計分與流程治理六國考核，降低版本混用風險"
+          },
+          {
+            "name": "對公司",
+            "desc": "利用既有 Google 工具建置可每半年複製使用的考核流程，並完整保留評核歷程"
+          }
+        ],
+        "extensions": [
+          "每半年複製新的考核檔案，更新本期主檔、KPI 與主管即可沿用",
+          "新增廠區時，沿用廠區分流與權限邏輯即可擴充",
+          "工號＋PIN 登入、草稿、更正申請、依序簽核與寄信紀錄等設計，可作為其他內部簽核流程的參考",
+          "員工版與主管版操作指南可依語言與實際畫面更新後重複用於教育訓練"
+        ],
+        "limitations": [
+          "六國正式上線、全部廠區同步驗收與整體結案尚未完成確認",
+          "尚未量化節省的工時、錯誤率降低或使用滿意度",
+          "後台欄位名稱不可任意更改，否則程式會找不到表單或欄位",
+          "員工主檔、員工類型、KPI 權重與主管對應須由 HR 確保正確",
+          "程式修改後須重新部署新版本，正式網址才會套用",
+          "評語機器翻譯涉及評核判斷時，主管仍應核對原文語意",
+          "各廠檔案需分別設定權限，IMPORTRANGE 與共用資料夾本身不提供完整資料隔離",
+          "目前未做正式負載測試，大量同時使用需依 Apps Script 配額另行驗證"
+        ],
+        "success_key": "由 HR 持續主導制度與操作規則，先解決員工本人填寫、無信箱登入、個人 KPI、主管依序評核與計分等核心需求，再依試填結果逐步加入草稿、資料更正、翻譯與進度追蹤。以使用者提供的真實畫面與錯誤反覆驗證，介面調整先模擬再實作；並將歷史設計、已交付程式與未驗收項目分開管理，讓單一測試版能複製為六國可持續使用的流程。",
+        "keywords": [
+          "績效考核",
+          "多語言",
+          "Google Apps Script",
+          "ChatGPT"
+        ]
+      },
+      "en": {
+        "title": "Multilingual Performance Appraisal System for Six Southeast Asian Countries",
+        "summary": "Using Google Sheets as the data backend and a Google Apps Script Web App as the interface for employees and managers, this system replaces the old flow of \"KPIs set in Excel → self-evaluation via Google Form → manual HR processing → manager review in Excel\". Employees without a company email can log in with their employee ID and PIN to complete self-evaluations, managers review in sequence, and the system supports bilingual interfaces, comment translation, progress notifications and score syncing to each plant.",
+        "category": [
+          "Process Automation",
+          "Internal Management Tools",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Southeast Asia HR",
+        "unit_owner": "Southeast Asia HR",
+        "author": "禤珮宜",
+        "status": "Working version completed; trial use and refinement ongoing",
+        "region": "Cambodia, Myanmar, Vietnam, Thailand, Indonesia, Malaysia (10 plants in total)",
+        "problem_background": "Appraisals were previously split across Excel, Google Forms and manual HR processing, so KPI setting, self-evaluation, manager scoring and final results never formed a complete data chain. HR had to copy, paste and chase repeatedly, managers worked across different forms, and employees struggled to confirm which items applied to them and whether they were done. The six countries differ in language and management levels, and some frontline employees have no company email. With paid AppSheet not an option, the system was built with existing Google tools.",
+        "core_problem": "Appraisal data was manually passed between multiple forms, leading to omissions and version inconsistencies; employees without company email could not fill in forms themselves, the order of manager reviews could not be controlled, and language differences across countries made operation even harder.",
+        "solution": "The system uses a \"central data backend + employee self-evaluation portal + manager review portal + per-plant score output\" architecture. Google Sheets stores the employee master, KPI assignments, self-evaluations, manager reviews, drafts, translation cache and email logs; Apps Script serves personalized KPIs and forms based on the logged-in identity and employee type, and controls submission and routing. After an employee submits, the case passes in order to Reviewer 1, 2 and 3 for independent scoring; the final score is the average of the weighted totals from the reviewers who completed it, and the central system then syncs scores one-way to each plant's score workbook. AI helped produce and fix code, translation resources, tests and user guides throughout.",
+        "process": [
+          "HR prepares this period's employee master, employee types, KPIs and weights, reviewer assignments and login PINs",
+          "Employees choose a language, log in with employee ID + PIN and confirm their basic data first (if wrong, they submit a correction request and pause)",
+          "Employees complete self-evaluations of personal KPIs, Teamwork and Leadership (where applicable), can save drafts, then check and submit",
+          "Reviewers log in with reviewer ID + PIN, view their pending list, the employee's self-evaluation and earlier reviews, and translate comments when needed",
+          "Reviewers 1, 2 and 3 score independently in sequence; the system routes cases automatically and calculates the final average score",
+          "HR tracks progress through per-plant tracking workbooks, and scores are synced from the central system to each plant's Final sheet"
+        ],
+        "features": [
+          {
+            "name": "Employee ID + PIN login",
+            "desc": "No company email needed; employees log in and self-evaluate themselves"
+          },
+          {
+            "name": "Personalized KPIs",
+            "desc": "Shows each employee's applicable KPI items and weights from backend assignments"
+          },
+          {
+            "name": "Sequential manager review",
+            "desc": "Reviewer 1 → 2 → 3 score independently in order; later reviewers can see earlier records"
+          },
+          {
+            "name": "Role-based scoring",
+            "desc": "Individual: KPI 80% + Teamwork 20%; Leadership: KPI 60% + Teamwork 20% + Leadership 20%"
+          },
+          {
+            "name": "Drafts and data correction",
+            "desc": "Manual and automatic saving to resume later; employees with wrong basic data submit a correction request for HR"
+          },
+          {
+            "name": "Lock after submission",
+            "desc": "Prevents duplicate self-evaluations and edits after submission; Reviewer 1 must confirm the performance interview is done"
+          },
+          {
+            "name": "Eight bilingual interfaces",
+            "desc": "English, Thai, Vietnamese, Malay, Nepali, Indonesian, Burmese and Khmer, each paired with Chinese or English"
+          },
+          {
+            "name": "Comment translation",
+            "desc": "Reviewers can translate employee comments into Traditional Chinese or English on demand, keeping the original and caching results"
+          },
+          {
+            "name": "Batch notifications and HR summary",
+            "desc": "Combines emails to reviewers and HR by time slot, logging send status to prevent duplicates"
+          },
+          {
+            "name": "Plant tracking and score sync",
+            "desc": "Plant HR sees its own progress and incomplete items; scores sync one-way from the center to 10 plant workbooks"
+          }
+        ],
+        "ai_usage": [
+          "Broke down HR's cross-country appraisal process into system specs for login, self-evaluation, routing, review, notification and sync",
+          "Helped compare Google Forms, AppSheet and Apps Script to choose a feasible approach",
+          "Produced Apps Script, HTML/CSS/JavaScript and plant sync code step by step based on rules confirmed by the user",
+          "Located issues from screenshots and error messages provided by the user, repeatedly fixing field names, statuses, translations and email links",
+          "Generated eight bilingual interfaces and notification text, and mocked up UI changes for confirmation before changing the live version",
+          "Prepared employee and reviewer user guides (Word) and a training deck (PPT)"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "desc": "Central data backend storing the master data, appraisal results, drafts and email logs"
+          },
+          {
+            "name": "Google Apps Script",
+            "desc": "Login verification, routing, scoring, syncing and scheduling"
+          },
+          {
+            "name": "Apps Script Web App",
+            "desc": "Browser portals for employee self-evaluation and manager review"
+          },
+          {
+            "name": "LanguageApp",
+            "desc": "Machine translation of comments on the reviewer side"
+          },
+          {
+            "name": "MailApp",
+            "desc": "Batch notification emails to reviewers and HR"
+          },
+          {
+            "name": "IMPORTRANGE",
+            "desc": "Lets plant tracking workbooks read headquarters data"
+          },
+          {
+            "name": "ChatGPT / Codex",
+            "desc": "Requirements, code collaboration, debugging, translation resources and user guides"
+          },
+          {
+            "name": "Word / PowerPoint",
+            "desc": "Employee and reviewer user guides and training deck"
+          }
+        ],
+        "results": [
+          "Working version of employee self-evaluation and manager review completed, covering login, personal KPIs, sequential review, role weights and final average",
+          "Added drafts, data correction, lock after submission, interview confirmation, pending-list refresh and completed overview",
+          "Set up progress tracking and separate score workbooks for 10 plants, and delivered the one-way sync program",
+          "Provided batch emails, HR completion summaries and email logs (scheduled emails are currently paused; manual sending is kept)",
+          "Produced bilingual Chinese/English user guides for employees and reviewers, plus a combined training deck"
+        ],
+        "value": [
+          {
+            "name": "For employees",
+            "desc": "Can self-evaluate without a company email, see personal KPIs in a familiar language and finish in several sittings"
+          },
+          {
+            "name": "For managers",
+            "desc": "See self-evaluations and earlier reviews in one place, score independently at each level and translate comments instantly"
+          },
+          {
+            "name": "For plant HR",
+            "desc": "Get their plant's progress and scores directly, reducing manual linking and follow-up"
+          },
+          {
+            "name": "For headquarters HR",
+            "desc": "Govern appraisals across six countries with consistent fields, scoring and flow, reducing the risk of mixed versions"
+          },
+          {
+            "name": "For the company",
+            "desc": "A half-yearly appraisal process built on existing Google tools that can be reused, with the full review history preserved"
+          }
+        ],
+        "extensions": [
+          "Copy a new appraisal file each half year and update the master data, KPIs and reviewers to reuse it",
+          "New plants can be added by reusing the plant routing and permission logic",
+          "Designs such as ID + PIN login, drafts, correction requests, sequential approval and email logs can serve as a reference for other internal approval flows",
+          "The employee and reviewer guides can be updated with languages and real screenshots and reused for training"
+        ],
+        "limitations": [
+          "Official go-live in all six countries, sync acceptance for all plants and overall closure have not yet been confirmed",
+          "Time saved, error reduction and user satisfaction have not yet been quantified",
+          "Backend field names must not be changed freely, or the program will not find sheets or fields",
+          "HR must keep the employee master, employee types, KPI weights and reviewer assignments correct",
+          "After code changes, a new version must be deployed for the live URL to apply them",
+          "When machine-translated comments affect review judgments, reviewers should still check the original meaning",
+          "Each plant's files need their own permissions; IMPORTRANGE and shared folders do not provide full data isolation",
+          "No formal load test has been done; heavy concurrent use must be verified against Apps Script quotas"
+        ],
+        "success_key": "HR continuously led the rules and procedures, first solving the core needs—employees filling in their own forms, login without email, personal KPIs, sequential manager review and scoring—then gradually adding drafts, data correction, translation and progress tracking based on trial results. Real screenshots and errors from the user were used for repeated verification, UI changes were mocked up before implementation, and historical designs, delivered code and unaccepted items were managed separately, turning a single test version into a process all six countries can keep using.",
+        "keywords": [
+          "Performance appraisal",
+          "Multilingual",
+          "Google Apps Script",
+          "ChatGPT"
+        ]
+      }
+    }
   }
 ]
