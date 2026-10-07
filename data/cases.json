@@ -13506,5 +13506,228 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-059",
+    "number": 59,
+    "updated": "2026.10",
+    "url": "",
+    "screenshots": [
+      "assets/risk-heatmap-cover.jpg",
+      "assets/risk-heatmap-01.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "風險地圖熱力圖分析",
+        "summary": "將稽核缺失的資料以熱力圖呈現在廠區的風險地圖上，讓主管一眼就能看出廠區中缺失集中的區域，作為安排重點管理與改善的依據。",
+        "category": [
+          "資料整合與分析",
+          "品保工作流程",
+          "內部管理工具"
+        ],
+        "unit_request": "品保處",
+        "unit_owner": "品保處",
+        "author": "謝欣錫",
+        "status": "已完成測試版本",
+        "region": "宏全一廠、宏全二廠",
+        "problem_background": "過去主管只能逐筆查看稽核紀錄，再自行推測缺失集中在廠區的哪些區域。紀錄以文字或表格呈現，無法一眼看出缺失的分布與熱點，難以判斷應優先加強管理的區域。",
+        "core_problem": "稽核缺失缺乏空間化的呈現方式，主管無法直觀掌握缺失熱點，難以重點呈現需要管理區域。",
+        "solution": "使用 Claude 協助開發「異常位置熱力圖累積工具」，以單一 HTML 檔製作，開啟就能使用。將 IRP 稽核資料匯出的 Excel 載入工具後，系統會依缺失的位置標示在廠區圖上，並把一段期間（例如一個月）的缺失累積疊加，次數越多顏色越深，讓主管一眼就能看出缺失熱點。",
+        "process": [
+          "從 IRP 系統匯出指定期間的稽核缺失資料（Excel）",
+          "開啟「異常位置熱力圖累積工具」（HTML 檔）",
+          "載入 Excel 資料，系統依缺失位置對應到廠區圖",
+          "系統將同一期間的缺失累積疊加，產生熱力圖",
+          "主管檢視熱力圖，找出缺失集中區域並安排重點管理"
+        ],
+        "features": [
+          {
+            "name": "Excel 資料載入",
+            "desc": "直接載入 IRP 稽核資料匯出的 Excel，不需另外整理"
+          },
+          {
+            "name": "缺失位置對應",
+            "desc": "依缺失位置自動標示在廠區平面圖上"
+          },
+          {
+            "name": "期間累積疊加",
+            "desc": "將一段期間的缺失疊加，次數越多顏色越深"
+          },
+          {
+            "name": "熱點一眼辨識",
+            "desc": "以熱力圖呈現缺失集中區域，協助主管判斷重點管理位置"
+          },
+          {
+            "name": "免安裝即開即用",
+            "desc": "單一 HTML 檔，用瀏覽器開啟即可使用"
+          }
+        ],
+        "ai_usage": [
+          "使用 Claude 協助開發熱力圖工具的 HTML 網頁程式",
+          "使用 Claude 協助處理 Excel 資料載入與位置對應的邏輯"
+        ],
+        "tools": [
+          {
+            "name": "IRP 系統",
+            "desc": "稽核缺失資料的來源，匯出為 Excel"
+          },
+          {
+            "name": "Excel",
+            "desc": "載入熱力圖工具的資料檔"
+          },
+          {
+            "name": "HTML 網頁工具",
+            "desc": "「異常位置熱力圖累積工具」，負責位置對應與熱力圖呈現"
+          },
+          {
+            "name": "Claude",
+            "desc": "協助開發網頁程式與資料處理邏輯"
+          }
+        ],
+        "results": [
+          "已完成測試版本，可依 IRP 稽核資料產生廠區缺失熱力圖",
+          "主管能一眼看出缺失集中的區域",
+          "將原本需要從紀錄推測的分布，轉為直觀的視覺化圖表"
+        ],
+        "value": [
+          {
+            "name": "對主管",
+            "desc": "一眼掌握缺失熱點，快速決定重點管理區域"
+          },
+          {
+            "name": "對品保同仁",
+            "desc": "稽核資料不再只是紀錄，而能轉化成可行動的改善方向"
+          },
+          {
+            "name": "對公司",
+            "desc": "將管理資源集中在高風險區域，提升改善效率"
+          }
+        ],
+        "extensions": [
+          "只要更換廠區平面圖，就能應用到其他廠區或樓層",
+          "可延伸分析其他類型的異常資料，例如客訴、工安事件、蟲害監測點",
+          "可比較不同期間的熱力圖，追蹤改善前後的變化"
+        ],
+        "limitations": [
+          "目前為測試版本，尚未有實際改善案例驗證成效",
+          "稽核資料中的位置需能對應到廠區圖，位置記錄不一致時可能無法正確標示",
+          "廠區配置或機台位置異動時，需同步更新廠區平面圖",
+          "熱力圖反映的是缺失「次數」，仍需搭配缺失內容與嚴重程度一起判斷"
+        ],
+        "success_key": "直接使用 IRP 系統既有的稽核資料，不需另外蒐集；以熱力圖將分散的稽核紀錄轉化為廠區上的空間分布，讓主管一眼看出缺失熱點。並藉由 Claude 協助開發成單一 HTML 檔，免安裝即可使用，品保單位就能自行快速完成開發與調整。",
+        "keywords": [
+          "稽核缺失",
+          "資料視覺化",
+          "IRP",
+          "Claude"
+        ]
+      },
+      "en": {
+        "title": "Risk Map Heatmap Analysis",
+        "summary": "Audit findings are displayed as a heatmap on the plant's risk map, so managers can see at a glance which areas have concentrated findings and use this to plan focused management and improvements.",
+        "category": [
+          "Data Integration & Analysis",
+          "QA Workflow",
+          "Internal Management Tools"
+        ],
+        "unit_request": "Quality Assurance Division",
+        "unit_owner": "Quality Assurance Division",
+        "author": "謝欣錫",
+        "status": "Test version completed",
+        "region": "Hon Chuan Plant 1, Hon Chuan Plant 2",
+        "problem_background": "Managers previously had to review audit records one by one and guess which plant areas had concentrated findings. Records were presented as text or tables, making it impossible to see the distribution and hotspots of findings at a glance, or to decide which areas needed stronger management first.",
+        "core_problem": "Audit findings lacked a spatial presentation, so managers could not intuitively grasp hotspots or highlight the areas that needed management.",
+        "solution": "Claude helped develop the \"Abnormal Location Heatmap Accumulation Tool\" as a single HTML file that works as soon as it is opened. After loading the Excel exported from the IRP audit system, the tool marks each finding's location on the plant map and accumulates findings over a period (e.g. one month). The more findings, the darker the color, so managers can spot hotspots at a glance.",
+        "process": [
+          "Export audit findings for the chosen period from the IRP system (Excel)",
+          "Open the Abnormal Location Heatmap Accumulation Tool (HTML file)",
+          "Load the Excel data; the tool maps each finding's location onto the plant map",
+          "The tool accumulates findings from the same period to generate a heatmap",
+          "Managers review the heatmap, identify areas with concentrated findings and arrange focused management"
+        ],
+        "features": [
+          {
+            "name": "Excel data loading",
+            "desc": "Loads the Excel exported from IRP audit data directly, with no extra preparation"
+          },
+          {
+            "name": "Finding location mapping",
+            "desc": "Automatically marks each finding on the plant floor plan by location"
+          },
+          {
+            "name": "Period accumulation",
+            "desc": "Overlays findings over a period; the more findings, the darker the color"
+          },
+          {
+            "name": "Hotspots at a glance",
+            "desc": "Shows concentrated findings as a heatmap to help managers decide where to focus"
+          },
+          {
+            "name": "No installation",
+            "desc": "A single HTML file that runs in any browser"
+          }
+        ],
+        "ai_usage": [
+          "Claude helped develop the HTML web code for the heatmap tool",
+          "Claude helped build the logic for loading Excel data and mapping locations"
+        ],
+        "tools": [
+          {
+            "name": "IRP system",
+            "desc": "Source of audit findings, exported as Excel"
+          },
+          {
+            "name": "Excel",
+            "desc": "Data file loaded into the heatmap tool"
+          },
+          {
+            "name": "HTML web tool",
+            "desc": "The Abnormal Location Heatmap Accumulation Tool, handling location mapping and heatmap display"
+          },
+          {
+            "name": "Claude",
+            "desc": "Helped develop the web code and data processing logic"
+          }
+        ],
+        "results": [
+          "Test version completed; generates plant finding heatmaps from IRP audit data",
+          "Managers can see at a glance where findings are concentrated",
+          "Turns a distribution that had to be inferred from records into an intuitive visual chart"
+        ],
+        "value": [
+          {
+            "name": "For managers",
+            "desc": "Grasp finding hotspots at a glance and quickly decide where to focus management"
+          },
+          {
+            "name": "For QA staff",
+            "desc": "Audit data is no longer just records but becomes actionable improvement direction"
+          },
+          {
+            "name": "For the company",
+            "desc": "Concentrates management resources on high-risk areas and improves improvement efficiency"
+          }
+        ],
+        "extensions": [
+          "Swapping in a different floor plan applies the tool to other plants or floors",
+          "Can be extended to other types of abnormal data, such as customer complaints, safety incidents or pest monitoring points",
+          "Heatmaps from different periods can be compared to track changes before and after improvements"
+        ],
+        "limitations": [
+          "Currently a test version; no actual improvement case has yet verified its effectiveness",
+          "Locations in audit data must map to the plant map; inconsistent location records may not be marked correctly",
+          "When plant layout or machine positions change, the floor plan must be updated accordingly",
+          "The heatmap reflects the number of findings, so it still needs to be judged together with finding content and severity"
+        ],
+        "success_key": "It uses existing audit data from the IRP system with no extra collection, and turns scattered audit records into a spatial distribution on the plant map so managers can see hotspots at a glance. With Claude's help it was built as a single HTML file that needs no installation, so the QA team can develop and adjust it quickly on its own.",
+        "keywords": [
+          "Audit findings",
+          "Data visualization",
+          "IRP",
+          "Claude"
+        ]
+      }
+    }
   }
 ]
