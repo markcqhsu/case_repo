@@ -14095,5 +14095,294 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-061",
+    "number": 61,
+    "updated": "2026.10",
+    "url": "",
+    "screenshots": [
+      "assets/foreign-payroll-check-cover.jpg",
+      "assets/foreign-payroll-check-demo.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "外籍員工薪資清冊離線比對工具",
+        "summary": "運用 AI 協助開發 Windows 離線工具，將國稅局「申報單位各類所得清冊」PDF 與財務薪資 Excel 自動比對，列出所得人代號、姓名及金額差異，並辨識缺漏、重複與待人工確認項目。工具提供繁體中文介面與可追溯報表，協助財務同事集中處理異常資料；所有比對均在本機完成。",
+        "category": [
+          "流程自動化",
+          "資料整合與分析",
+          "小工具"
+        ],
+        "unit_request": "財務單位",
+        "unit_owner": "數位發展部",
+        "author": "陳姸惠",
+        "status": "Windows 測試版已完成打包，成品操作驗證中",
+        "region": "台灣",
+        "problem_background": "外籍員工薪資分為每月 10 號及 15 號發放，財務需要核對各批次所得清冊與 Excel 薪資資料。原有 Python 原型以 OCR 讀取圖片 PDF，辨識品質不足，且操作方式需要程式環境，不便讓一般財務同事使用。後續確認電子申報系統可透過「印表機設定 → 名稱 → Microsoft Print to PDF」另存文字版 PDF，已有七月清冊成功比對的實際案例。",
+        "core_problem": "需要正確識別員工、核對給付日期與所得月份，並區分真正差異、缺漏及讀取不確定情況。圖片辨識可能造成錯字與誤判，檔名日期也不能直接視為內容日期，因此工具必須保留來源與原值，讓財務能回查確認。",
+        "solution": "建立以文字版 PDF 為主要來源的 Windows 離線工具，唯一以 PDF「統一編（證）號」與 Excel「居留證號」配對。核對完整日期後，10 號批次對應 P1，15 號批次對應 P2，再比較姓名、所得人代號、所得、稅額與淨額。圖片版或含無可用文字頁面的 PDF 會在讀取員工前提示並停止，說明如何從電子申報系統另存文字版。財務發佈包內含 Python 執行環境與必要依賴，不攜帶 OCR 元件。",
+        "process": [
+          "從電子申報系統以 Microsoft Print to PDF 另存對應批次的所得清冊",
+          "選擇薪資 Excel、結果資料夾與一份或多份 PDF；薪資工作表自動讀取，多個符合的表才需要選擇",
+          "檢查 PDF 文字層，核對完整給付日期、所得月份及 P1／P2 對應，日期不明或衝突時提示確認",
+          "依居留證號配對，逐欄比較姓名、所得人代號及該期三個金額，檢查缺漏與重複",
+          "匯出批次摘要、差異與待確認項目、完整比對 CSV 及摘要 JSON，供財務回查來源"
+        ],
+        "features": [
+          {
+            "name": "多批次比對",
+            "desc": "支援多份 PDF，依 10 號／15 號及完整年月日區分薪資批次"
+          },
+          {
+            "name": "唯一證號配對",
+            "desc": "以居留證號識別員工，姓名與所得人代號作為配對後的比較欄位"
+          },
+          {
+            "name": "差異與缺漏檢查",
+            "desc": "列出姓名、代號、金額不一致，以及 Excel 或 PDF 單邊缺漏"
+          },
+          {
+            "name": "重複與不確定資料標示",
+            "desc": "保留同批次重複證號、空白、無法讀取與日期不明等待確認項目"
+          },
+          {
+            "name": "金額與文字正規化",
+            "desc": "金額以數值比較；文字統一全半形，姓名連續空白縮為一個，保留原值"
+          },
+          {
+            "name": "可追溯報表",
+            "desc": "保留 Excel 序號、工作表與列號，以及 PDF 檔名、頁碼和兩邊原值"
+          },
+          {
+            "name": "繁體中文操作",
+            "desc": "提供選檔、進度與結果介面，財務操作不需輸入命令"
+          },
+          {
+            "name": "本機離線處理",
+            "desc": "不修改來源 Excel／PDF，不上傳資料，不呼叫外部 API"
+          }
+        ],
+        "ai_usage": [
+          "使用 Codex 協助把財務需求整理成可驗證的配對、日期、金額與異常處理規則",
+          "協助檢查及修改既有 Python 原型，建立文字 PDF 讀取、比對報表與繁體中文介面",
+          "依測試回報與打包記錄定位錯誤，補充回歸測試並修正 Windows 建置流程",
+          "協助產出離線打包工具、操作說明與驗證記錄；實際薪資比對由本機程式依明確規則執行"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "需求整理、程式開發、測試、除錯與文件撰寫"
+          },
+          {
+            "name": "Python／Tkinter",
+            "desc": "本機比對邏輯與繁體中文桌面介面"
+          },
+          {
+            "name": "PyMuPDF",
+            "desc": "直接擷取 PDF 文字及欄位位置"
+          },
+          {
+            "name": "openpyxl",
+            "desc": "讀取 Excel 薪資資料，保留欄位、公式快取狀態與來源位置"
+          },
+          {
+            "name": "PyInstaller",
+            "desc": "製作包含執行環境與必要依賴的 Windows 發佈包"
+          },
+          {
+            "name": "Microsoft Print to PDF",
+            "desc": "從電子申報系統另存可供工具讀取的文字版清冊"
+          }
+        ],
+        "results": [
+          "七月文字版清冊已由使用者在 Windows 測試比對成功；本機驗證讀取七筆並完成證號配對，能列出所得人代號差異",
+          "已建立正常資料、代號錯誤、金額錯誤、雙向缺漏、重複、空白與零值等回歸測試",
+          "四月圖片版測試確認整體辨識不足，據此改為先提示不適用並引導取得文字版",
+          "已移除主畫面的工作表及列號進階輸入，使用者回報新版介面測試成功",
+          "已提供雙擊離線打包入口，使用者回報 Windows 打包成功；成品真實資料操作與無 Python 電腦驗證仍待完成"
+        ],
+        "value": [
+          {
+            "name": "對財務單位",
+            "desc": "減少逐筆查找與核對工作，將注意力集中在差異及待確認項目"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立一致的核對規則與可追溯紀錄，降低批次混用、漏查及人工操作錯誤的風險"
+          },
+          {
+            "name": "對使用同事",
+            "desc": "透過繁體中文介面完成選檔與比對，發佈包設計為不需另裝 Python 或 Tesseract"
+          }
+        ],
+        "extensions": [
+          "延伸至其他月份及相同版面的所得清冊核對",
+          "將唯一識別碼配對、批次日期核對與來源追溯模式，應用於其他 PDF／Excel 資料核對作業",
+          "依後續需求擴充其他所得類別或清冊版面，新增對應規則及驗證樣本"
+        ],
+        "limitations": [
+          "本版以文字型 PDF 為使用前提；圖片版或含無可用文字頁面的 PDF 會提示並停止",
+          "Microsoft Print to PDF 必須從電子申報系統原始清冊列印；既有圖片 PDF 重新列印不會自動轉成文字",
+          "測試及正式比對需使用給付日期與所得月份相互對應的 PDF 與 Excel；檔名日期僅作提示",
+          "待人工確認項目需要回查原始檔，總額相同不能作為逐筆一致的證明",
+          "Excel 該期三個金額皆為確定的數值零時，免列 PDF 缺漏；空白或讀取失敗不能當成零",
+          "成品需保留 exe 旁的 _internal 資料夾；無 Python 電腦的實際操作驗證尚待完成",
+          "尚未量測實際節省工時與導入後的錯誤率，效益描述為預期改善"
+        ],
+        "success_key": "由財務提供對應月份的實際資料與 Windows 操作回饋，逐步釐清配對規則和使用方式；確認圖片 OCR 的限制後，改採可取得的文字 PDF，並透過保留原值、來源位置與人工確認機制，讓自動比對結果可被核查。",
+        "keywords": [
+          "外籍員工薪資",
+          "財務核對",
+          "所得清冊",
+          "PDF",
+          "Excel",
+          "離線工具",
+          "Windows",
+          "流程自動化",
+          "AI 輔助開發",
+          "資料比對"
+        ]
+      },
+      "en": {
+        "title": "Offline Payroll Register Comparison Tool for Foreign Employees",
+        "summary": "With AI assistance, a Windows offline tool was developed to automatically compare the National Taxation Bureau's \"Income Register by Reporting Unit\" PDF with Finance's payroll Excel. It lists differences in income earner codes, names and amounts, and flags missing, duplicate and to-be-confirmed items. The tool offers a Traditional Chinese interface and traceable reports, helping finance colleagues focus on exceptions; all comparisons are done locally on the computer.",
+        "category": [
+          "Process Automation",
+          "Data Integration & Analysis",
+          "Small Tools"
+        ],
+        "unit_request": "Finance",
+        "unit_owner": "Digital Development Department",
+        "author": "陳姸惠",
+        "status": "Windows test build packaged; hands-on verification of the packaged tool in progress",
+        "region": "Taiwan",
+        "problem_background": "Foreign employees are paid in two batches, on the 10th and 15th of each month, and Finance must check each batch's income register against the payroll Excel. The original Python prototype read image PDFs via OCR, with insufficient recognition quality, and required a programming environment that ordinary finance colleagues could not easily use. It was later confirmed that the e-filing system can save a text-based PDF via \"Printer settings → Name → Microsoft Print to PDF\", and the July register has already been compared successfully this way.",
+        "core_problem": "Employees must be identified correctly, payment dates and income months verified, and true differences, missing records and uncertain readings distinguished. Image recognition can cause typos and misjudgments, and the date in a file name cannot be taken as the content date, so the tool must keep sources and original values for Finance to trace and confirm.",
+        "solution": "A Windows offline tool built around text-based PDFs, matching employees solely by the PDF's \"Unified ID number\" and the Excel's \"Resident permit number\". After verifying full dates, the 10th batch maps to P1 and the 15th batch to P2, and then names, income earner codes, income, tax and net amounts are compared. Image PDFs, or PDFs with pages lacking usable text, trigger a prompt and stop before reading employees, explaining how to save a text version from the e-filing system. The finance release bundles the Python runtime and required dependencies, without OCR components.",
+        "process": [
+          "Save the income register for the relevant batch from the e-filing system using Microsoft Print to PDF",
+          "Select the payroll Excel, output folder and one or more PDFs; the payroll sheet is detected automatically, and a choice is needed only when several sheets match",
+          "Check the PDF text layer and verify the full payment date, income month and P1/P2 mapping, prompting for confirmation when dates are unclear or conflicting",
+          "Match by resident permit number, compare names, income earner codes and the period's three amounts field by field, and check for missing and duplicate records",
+          "Export the batch summary, differences and items to confirm, a full comparison CSV and a summary JSON for Finance to trace back to the sources"
+        ],
+        "features": [
+          {
+            "name": "Multi-batch comparison",
+            "desc": "Supports multiple PDFs, distinguishing payroll batches by the 10th/15th and the full date"
+          },
+          {
+            "name": "Unique ID matching",
+            "desc": "Identifies employees by resident permit number; names and income earner codes are compared after matching"
+          },
+          {
+            "name": "Difference and gap checks",
+            "desc": "Lists mismatched names, codes and amounts, as well as records missing on either the Excel or PDF side"
+          },
+          {
+            "name": "Duplicate and uncertain data flags",
+            "desc": "Keeps duplicate IDs within a batch, blanks, unreadable values and unclear dates as items to confirm"
+          },
+          {
+            "name": "Amount and text normalization",
+            "desc": "Compares amounts numerically; unifies full-/half-width text and collapses repeated spaces in names, while keeping original values"
+          },
+          {
+            "name": "Traceable reports",
+            "desc": "Keeps the Excel serial number, sheet and row, plus the PDF file name, page and original values on both sides"
+          },
+          {
+            "name": "Traditional Chinese interface",
+            "desc": "File selection, progress and results screens, so Finance does not need to type commands"
+          },
+          {
+            "name": "Local offline processing",
+            "desc": "Does not modify source Excel/PDF files, upload data or call external APIs"
+          }
+        ],
+        "ai_usage": [
+          "Used Codex to turn Finance's requirements into verifiable rules for matching, dates, amounts and exception handling",
+          "Helped review and modify the existing Python prototype, building text PDF reading, comparison reports and a Traditional Chinese interface",
+          "Located errors from test reports and build logs, added regression tests and fixed the Windows build process",
+          "Helped produce the offline packaging tool, user guide and verification records; the actual payroll comparison is performed by the local program using explicit rules"
+        ],
+        "tools": [
+          {
+            "name": "Codex",
+            "desc": "Requirements, development, testing, debugging and documentation"
+          },
+          {
+            "name": "Python / Tkinter",
+            "desc": "Local comparison logic and Traditional Chinese desktop interface"
+          },
+          {
+            "name": "PyMuPDF",
+            "desc": "Extracts PDF text and field positions directly"
+          },
+          {
+            "name": "openpyxl",
+            "desc": "Reads payroll Excel data, keeping columns, cached formula status and source locations"
+          },
+          {
+            "name": "PyInstaller",
+            "desc": "Builds the Windows release with the runtime and required dependencies"
+          },
+          {
+            "name": "Microsoft Print to PDF",
+            "desc": "Saves a text-based register from the e-filing system that the tool can read"
+          }
+        ],
+        "results": [
+          "The July text-based register was compared successfully by the user on Windows; local verification read seven records, matched all IDs and listed income earner code differences",
+          "Regression tests built for normal data, wrong codes, wrong amounts, two-way gaps, duplicates, blanks and zero values",
+          "Testing the April image PDF confirmed overall recognition was insufficient, so the tool now first warns it is unsupported and guides users to obtain a text version",
+          "Advanced sheet and row inputs were removed from the main screen; the user reported the new interface tested successfully",
+          "A double-click offline packaging entry was provided and the user reported a successful Windows build; hands-on use with real data and verification on a PC without Python are still pending"
+        ],
+        "value": [
+          {
+            "name": "For Finance",
+            "desc": "Less record-by-record searching and checking, with attention focused on differences and items to confirm"
+          },
+          {
+            "name": "For the company",
+            "desc": "Consistent checking rules and traceable records, reducing the risk of mixed batches, missed checks and manual errors"
+          },
+          {
+            "name": "For colleagues using it",
+            "desc": "Select files and compare through a Traditional Chinese interface; the release is designed to need no separate Python or Tesseract install"
+          }
+        ],
+        "extensions": [
+          "Extend to income registers with the same layout for other months",
+          "Apply the unique-ID matching, batch date verification and source tracing pattern to other PDF/Excel reconciliation tasks",
+          "Add other income types or register layouts as needed, with matching rules and verification samples"
+        ],
+        "limitations": [
+          "This version requires text-based PDFs; image PDFs or PDFs with pages lacking usable text trigger a prompt and stop",
+          "Microsoft Print to PDF must be used on the original register from the e-filing system; reprinting an existing image PDF will not turn it into text",
+          "Tests and official comparisons must use a PDF and Excel whose payment date and income month correspond; the file-name date is only a hint",
+          "Items to confirm must be checked against the original files; matching totals do not prove that every record matches",
+          "When all three amounts for the period in Excel are confirmed numeric zeros, a missing PDF record is not reported; blanks or read failures are not treated as zero",
+          "The packaged tool needs the _internal folder next to the exe; hands-on verification on a PC without Python is still pending",
+          "Actual time saved and post-adoption error rates have not been measured; benefits are described as expected improvements"
+        ],
+        "success_key": "Finance supplied real data for the matching months and Windows usage feedback, step by step clarifying the matching rules and usage. After confirming the limits of image OCR, the tool switched to the available text PDFs, and by keeping original values, source locations and a manual confirmation mechanism, the automated comparison results can be verified.",
+        "keywords": [
+          "Foreign employee payroll",
+          "Finance reconciliation",
+          "Income register",
+          "PDF",
+          "Excel",
+          "Offline tool",
+          "Windows",
+          "Process automation",
+          "AI-assisted development",
+          "Data comparison"
+        ]
+      }
+    }
   }
 ]
