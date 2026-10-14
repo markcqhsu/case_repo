@@ -14384,5 +14384,207 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-062",
+    "number": 62,
+    "updated": "2026.10",
+    "video": [
+      "https://youtu.be/CVKwlUWUWwQ"
+    ],
+    "screenshots": [
+      "assets/image-recognition-cover.jpg"
+    ],
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "AI 一般物件圖片辨識系統",
+        "summary": "自行開發 AI 圖片辨識系統，透過輸入圖片辨識其中的一般物件，協助使用者判讀圖片內容。目前系統處於測試階段，後續將依測試結果確認辨識效果及實際適用情境。",
+        "category": [
+          "流程自動化",
+          "資料整合與分析"
+        ],
+        "unit_request": "無菌三廠儲運課",
+        "unit_owner": "無菌三廠生產課",
+        "author": "紀裕慶",
+        "status": "完成30%",
+        "region": "",
+        "problem_background": "當使用者需要判讀圖片中的物件時，可能需要逐張查看圖片並依經驗辨識。圖片辨識在物件判讀上的應用，開發自有圖片辨識系統，並透過測試確認其辨識能力及使用方式。",
+        "core_problem": "- 如何讓系統辨識輸入圖片中的一般物件。\n- 如何確認系統輸出的辨識結果是否符合圖片實際內容。\n- 如何評估系統在不同圖片條件下的辨識表現。",
+        "solution": "開發圖片辨識系統，讓使用者輸入圖片後由系統進行分析並呈現辨識結果。透過測試圖片與人工判讀結果進行比對，記錄辨識情形，作為評估系統及後續改善的依據。",
+        "process": [
+          "確認圖片辨識的測試目的及一般物件辨識範圍。",
+          "準備測試用圖片。",
+          "將圖片輸入自行開發的圖片辨識系統。",
+          "執行圖片分析及物件辨識。",
+          "檢視系統輸出的辨識結果。",
+          "以人工判讀結果核對系統辨識內容。",
+          "記錄辨識結果及需要改善的情形。",
+          "依測試結果評估後續調整方向。"
+        ],
+        "features": [
+          {
+            "name": "圖片輸入",
+            "desc": "提供圖片作為辨識系統的輸入資料。"
+          },
+          {
+            "name": "一般物件辨識",
+            "desc": "分析圖片內容並辨識其中的物件。"
+          },
+          {
+            "name": "辨識結果呈現",
+            "desc": "呈現系統對輸入圖片的辨識結果。"
+          },
+          {
+            "name": "結果檢核",
+            "desc": "供使用者核對辨識結果與圖片實際內容。"
+          }
+        ],
+        "ai_usage": [
+          "運用 AI 影像辨識能力分析輸入圖片。",
+          "辨識圖片中可識別的一般物件，並輸出辨識結果。",
+          "透過人工核對測試結果，了解系統的辨識表現及限制。"
+        ],
+        "tools": [
+          {
+            "name": "使用 Codex 開發的 AI 圖片辨識系統",
+            "desc": "用於輸入圖片、執行物件辨識及呈現辨識結果。"
+          },
+          {
+            "name": "測試圖片",
+            "desc": "用於驗證系統的圖片辨識功能。"
+          }
+        ],
+        "results": [
+          "目前系統處於持續開發階段。",
+          "已能辨識出貨標籤、加和紙業出貨單並匯出 Excel 檔案"
+        ],
+        "value": [
+          {
+            "name": "對儲運單位",
+            "desc": "若測試結果符合需求，可協助辨識圖片中的一般物件，減少部分人工判讀作業。"
+          },
+          {
+            "name": "對公司",
+            "desc": "累積自行開發 AI 圖片辨識系統的測試經驗，作為後續評估影像辨識應用的參考。"
+          }
+        ],
+        "extensions": [
+          "可依實際需求評估延伸至其他一般物件的圖片辨識情境。",
+          "後續可依測試結果，評估是否應用於圖片分類或其他影像判讀作業。"
+        ],
+        "limitations": [
+          "辨識結果可能受到圖片清晰度、光線、拍攝角度、物件遮蔽及背景等因素影響。",
+          "AI 辨識結果仍須核對，不應在未經驗證的情況下視為完全正確。",
+          "應使用具代表性的測試圖片，並記錄辨識成功、錯誤及無法判讀的情形。",
+          "正式使用前，應確認系統辨識表現、穩定性及實際作業需求是否相符。",
+          "輸入圖片應符合公司資訊安全及資料管理規範。"
+        ],
+        "success_key": "明確定義一般物件辨識的範圍，準備具代表性的測試圖片，並以人工核對方式持續驗證辨識結果。根據測試紀錄確認系統的適用情境與限制，再評估後續改善及導入方式。",
+        "keywords": [
+          "AI",
+          "人工智慧",
+          "圖片辨識",
+          "影像辨識",
+          "一般物件辨識",
+          "自行開發",
+          "系統測試"
+        ]
+      },
+      "en": {
+        "title": "AI General Object Image Recognition System",
+        "summary": "An in-house AI image recognition system that identifies general objects in input images to help users interpret image content. The system is currently in testing; its recognition performance and practical use cases will be confirmed based on test results.",
+        "category": [
+          "Process Automation",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Aseptic Plant 3 Warehousing & Logistics Section",
+        "unit_owner": "Aseptic Plant 3 Production Section",
+        "author": "Chi Yu-Ching",
+        "status": "30% complete",
+        "region": "",
+        "problem_background": "When users need to identify objects in images, they may have to review images one by one and rely on experience. To apply image recognition to object identification, an in-house image recognition system was developed and tested to confirm its recognition capability and usage.",
+        "core_problem": "- How to make the system recognize general objects in input images.\n- How to confirm whether the system's recognition results match the actual image content.\n- How to evaluate the system's recognition performance under different image conditions.",
+        "solution": "Develop an image recognition system where users input images, and the system analyzes them and presents recognition results. Test images are compared with manual judgments, and recognition outcomes are recorded as the basis for evaluating and improving the system.",
+        "process": [
+          "Define the testing purpose and the scope of general object recognition.",
+          "Prepare test images.",
+          "Input images into the in-house image recognition system.",
+          "Run image analysis and object recognition.",
+          "Review the recognition results output by the system.",
+          "Check the system's results against manual judgments.",
+          "Record recognition results and issues needing improvement.",
+          "Evaluate next adjustments based on test results."
+        ],
+        "features": [
+          {
+            "name": "Image Input",
+            "desc": "Accepts images as input data for the recognition system."
+          },
+          {
+            "name": "General Object Recognition",
+            "desc": "Analyzes image content and identifies the objects in it."
+          },
+          {
+            "name": "Result Display",
+            "desc": "Presents the system's recognition results for the input image."
+          },
+          {
+            "name": "Result Verification",
+            "desc": "Lets users check recognition results against actual image content."
+          }
+        ],
+        "ai_usage": [
+          "Uses AI image recognition to analyze input images.",
+          "Identifies recognizable general objects in images and outputs recognition results.",
+          "Manually verifies test results to understand the system's recognition performance and limitations."
+        ],
+        "tools": [
+          {
+            "name": "AI image recognition system developed with Codex",
+            "desc": "Used to input images, run object recognition and present results."
+          },
+          {
+            "name": "Test images",
+            "desc": "Used to validate the system's image recognition function."
+          }
+        ],
+        "results": [
+          "The system is still under active development.",
+          "It can already recognize shipping labels and Chia Ho Paper delivery notes and export the results to Excel."
+        ],
+        "value": [
+          {
+            "name": "For Warehousing & Logistics",
+            "desc": "If test results meet requirements, it can help identify general objects in images and reduce some manual interpretation work."
+          },
+          {
+            "name": "For the Company",
+            "desc": "Builds testing experience with in-house AI image recognition as a reference for evaluating future image recognition applications."
+          }
+        ],
+        "extensions": [
+          "Can be evaluated for extension to other general object recognition scenarios as needed.",
+          "Based on test results, may be evaluated for image classification or other image interpretation tasks."
+        ],
+        "limitations": [
+          "Recognition results may be affected by image clarity, lighting, shooting angle, object occlusion and background.",
+          "AI recognition results must still be verified and should not be treated as fully correct without validation.",
+          "Use representative test images and record successful, incorrect and unreadable recognition cases.",
+          "Before formal use, confirm that recognition performance, stability and actual operational needs are aligned.",
+          "Input images must comply with company information security and data management policies."
+        ],
+        "success_key": "Clearly define the scope of general object recognition, prepare representative test images, and continuously verify results through manual checks. Use test records to confirm suitable scenarios and limitations before evaluating further improvements and rollout.",
+        "keywords": [
+          "AI",
+          "Artificial Intelligence",
+          "Image Recognition",
+          "Computer Vision",
+          "General Object Recognition",
+          "In-house Development",
+          "System Testing"
+        ]
+      }
+    }
   }
 ]
