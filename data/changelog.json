@@ -1,6 +1,10 @@
 {
-  "version": "v1.58.1",
+  "version": "v1.58.2",
   "entries": [
+    {
+      "date": "2026-10-14",
+      "notes": "第六十二個案例英文版需求單位統一為「Aseptic Factory 3 - Warehousing & Logistics Section」。"
+    },
     {
       "date": "2026-10-14",
       "notes": "紀裕慶負責的案例（第二十二、六十二個）負責單位統一改為「無菌三廠 - 生產課」。"
