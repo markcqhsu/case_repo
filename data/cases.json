@@ -14604,7 +14604,7 @@
           "內部管理工具",
           "流程自動化"
         ],
-        "unit_request": "財務部（全公司使用紙本單據的各部門）",
+        "unit_request": "馬宏 - 財務部（全公司使用紙本單據的各部門）",
         "unit_owner": "馬宏 - 財務部",
         "author": "洪誠傑",
         "status": "正式上線（2026年5月25日上線，持續收集反饋優化中）",
@@ -14724,7 +14724,7 @@
           "Internal Management Tools",
           "Process Automation"
         ],
-        "unit_request": "Finance Department (all departments using paper forms)",
+        "unit_request": "HCM - Finance (all departments using paper forms)",
         "unit_owner": "HCM - Finance",
         "author": "Hung Cheng-Chieh",
         "status": "Live (launched May 25, 2026; continuously improving based on feedback)",
