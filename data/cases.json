@@ -14838,5 +14838,245 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-064",
+    "number": 64,
+    "updated": "2026.10",
+    "url": "https://scrap-web-cc0.pages.dev/",
+    "video": [],
+    "screenshots": [
+      "assets/scrap-tracking-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "廢料管理追蹤平台",
+        "summary": "廢料從秤重、入庫、出庫到出售，橫跨廠務、倉儲、總務、稽核與財務五個單位，過去各自以紙本與 Excel 記錄，版本不一、資訊不對稱。本案由財務主管發起，透過 Claude 協助自行開發一套網頁平台：廠務秤重後即可在網站上取得統一編號並直接列印標籤，各部門於同一平台即時查看庫存、辦理出庫，並可查詢歷史紀錄與產出報表，讓廢料全流程在單一平台上被完整追蹤。",
+        "category": [
+          "內部管理工具",
+          "資料整合與分析"
+        ],
+        "unit_request": "馬來西亞宏全廠 - 財務部（跨部門共同需求：廠務、倉儲、總務、稽核）",
+        "unit_owner": "馬來西亞宏全廠",
+        "author": "洪誠傑",
+        "status": "測試中（2026年10月各部門試用，預計 2026年11月正式上線）",
+        "region": "馬來西亞 Enstek 廠、Rawang 廠（可擴充至其他廠區）",
+        "problem_background": "廢料管理涉及多個單位分工：廠務負責秤重、填寫標籤與記錄；倉儲負責入庫與出庫；總務負責廢料報告書與出售；稽核與財務負責監盤。各單位皆以紙本登記，再各自建立 Excel 檔案管理，同一批廢料在不同部門手上有不同版本的紀錄。任何一方修改資料，其他單位無從得知，導致整體資料混亂，各部門對廢料數量與狀態的認知也存在落差。",
+        "core_problem": "缺乏統一的編碼規則與共同的資料平台，造成部門間資訊不對稱，廢料流程無法從產生到處分完整控管，監盤與對帳也難以有一致的依據。",
+        "solution": "建立一個所有相關部門共用的廢料管理網站，以「統一標籤、同一平台」為核心：廢料在源頭即取得唯一編號並列印標籤，後續入庫、出庫、出售、粉碎等所有異動都在同一平台上登錄，資料統一存放於 Google Sheets，各部門隨時查看同一份即時資料，不再各自維護檔案。",
+        "process": [
+          "廠務端完成廢料秤重",
+          "登入廢料網站，選擇廢料類別並取號，系統產生統一編號",
+          "網站直接產出標籤並列印，貼附於廢料上",
+          "資料即時寫入平台，各部門可同步查看即時庫存，廠務無需再另行寄信通知",
+          "後續出售或粉碎時，由相關單位於網站辦理出庫",
+          "稽核與財務可隨時查詢歷史紀錄並產出報表，作為監盤依據"
+        ],
+        "features": [
+          {
+            "name": "統一編碼取號",
+            "desc": "依廢料類別自動產生唯一編號，取代各部門自行編號"
+          },
+          {
+            "name": "標籤列印",
+            "desc": "取號同時由網站產出標籤，不需人工製作"
+          },
+          {
+            "name": "即時庫存查詢",
+            "desc": "各部門登入即可看到同一份最新庫存資訊"
+          },
+          {
+            "name": "出庫作業",
+            "desc": "出售、粉碎等處分直接於網站辦理出庫登錄"
+          },
+          {
+            "name": "歷史查詢與報表",
+            "desc": "可查詢過往出入庫紀錄，並產出統一格式的歷史報表"
+          }
+        ],
+        "ai_usage": [
+          "需求釐清與系統架構設計：與 Claude 討論各部門分工與流程，規劃出平台功能與資料結構",
+          "程式開發：前端網頁與後端資料串接程式幾乎全數由 Claude 撰寫",
+          "除錯與部署：由 Claude 協助排除錯誤並完成網站上架",
+          "持續優化：依測試期間的意見與 Claude 來回討論，逐步更新與調整功能"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "從系統設計、程式撰寫、除錯到上架的全程開發協助"
+          },
+          {
+            "name": "Cloudflare Pages",
+            "desc": "網站前端託管與上線"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "後端處理取號、出入庫等資料寫入作業"
+          },
+          {
+            "name": "Google Sheets",
+            "desc": "作為出入庫紀錄的資料庫，存放所有歷史資料"
+          }
+        ],
+        "results": [
+          "已完成網站開發並上架，由非 IT 背景的財務主管自行完成",
+          "2026年10月開放各部門登入測試，收集使用反饋",
+          "規劃於 2026年10月底將既有未處理的廢料重新編碼入庫",
+          "預計 2026年11月於 Enstek 廠、Rawang 廠正式上線",
+          "目前處於資料收集階段，正式上線後將補充量化成效"
+        ],
+        "value": [
+          {
+            "name": "對各作業部門",
+            "desc": "不再各自維護 Excel 與紙本，廠務免去寄信通知，標籤由系統產出，減少重複作業"
+          },
+          {
+            "name": "對稽核與財務",
+            "desc": "所有異動集中於同一平台並留有紀錄，監盤與對帳有一致的資料依據，廢料流向可完整追蹤"
+          },
+          {
+            "name": "對公司",
+            "desc": "消除部門間資訊不對稱，強化廢料這類高風險資產的內部控制，並以統一報表支援管理決策"
+          }
+        ],
+        "extensions": [
+          "擴充至其他廠區或東南亞其他子公司",
+          "套用於其他需要多部門流轉的實物管理，例如模具、備品、退貨品",
+          "未來可加入庫存異常提醒，或與 ERP 系統資料進行比對"
+        ],
+        "limitations": [
+          "廢料重量仍需現場人工秤重後輸入，資料正確性仰賴輸入端",
+          "各部門須依平台流程操作，避免回到線下記錄，才能維持資料一致",
+          "上線前需將既有廢料一次性重新編碼入庫",
+          "以 Google Sheets 作為資料庫適合目前資料量，未來資料大量累積時需評估效能"
+        ],
+        "success_key": "由負責監盤的財務單位主導，從跨部門的角度定義統一規格；並借助 AI 讓非 IT 人員也能快速把想法做成可用的系統，在試用過程中依各部門反饋即時調整。",
+        "keywords": [
+          "廢料管理",
+          "統一編碼",
+          "標籤列印",
+          "即時庫存",
+          "跨部門協作",
+          "內部控制",
+          "Google Sheets",
+          "Cloudflare",
+          "Claude"
+        ]
+      },
+      "en": {
+        "title": "Scrap Management Tracking Platform",
+        "summary": "Scrap moves from weighing, warehousing and outbound to sale across five units: plant operations, warehouse, general affairs, audit and finance. Each used to keep its own paper and Excel records, leading to inconsistent versions and information gaps. Initiated by the finance manager, this project used Claude to build an in-house web platform: after weighing, plant operations get a unified number on the website and print the label directly; all departments view real-time inventory and handle outbound on the same platform, and can look up history and generate reports, so the full scrap process is tracked on a single platform.",
+        "category": [
+          "Internal Management Tools",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Hon Chuan Malaysia Plant - Finance Department (shared cross-department need: plant operations, warehouse, general affairs, audit)",
+        "unit_owner": "Hon Chuan Malaysia Plant",
+        "author": "Hung Cheng-Chieh",
+        "status": "Testing (trial by departments in October 2026; official launch expected November 2026)",
+        "region": "Malaysia Enstek and Rawang plants (expandable to other plants)",
+        "problem_background": "Scrap management involves several units: plant operations weigh scrap, fill in labels and keep records; the warehouse handles inbound and outbound; general affairs prepares scrap reports and handles sales; audit and finance conduct stock counts. Each unit recorded on paper and then kept its own Excel files, so the same batch of scrap had different versions of records in different departments. When one party changed the data, the others had no way of knowing, leading to messy overall data and gaps in each department's understanding of scrap quantities and status.",
+        "core_problem": "The lack of unified coding rules and a shared data platform caused information asymmetry between departments. The scrap process could not be fully controlled from generation to disposal, and stock counts and reconciliation lacked a consistent basis.",
+        "solution": "Build a scrap management website shared by all related departments, centered on \"one label, one platform\": scrap receives a unique number and printed label at the source, and all later movements, including inbound, outbound, sale and shredding, are recorded on the same platform. Data is stored centrally in Google Sheets so every department sees the same real-time data instead of maintaining separate files.",
+        "process": [
+          "Plant operations finish weighing the scrap",
+          "Log in to the scrap website, choose the scrap category and get a number; the system generates a unified code",
+          "The website produces the label directly for printing and attaching to the scrap",
+          "Data is written to the platform immediately, all departments see real-time inventory, and plant operations no longer need to send notification emails",
+          "When scrap is later sold or shredded, the responsible unit records the outbound on the website",
+          "Audit and finance can look up history and generate reports at any time as the basis for stock counts"
+        ],
+        "features": [
+          {
+            "name": "Unified Numbering",
+            "desc": "Automatically generates unique numbers by scrap category, replacing department-specific numbering"
+          },
+          {
+            "name": "Label Printing",
+            "desc": "The website produces the label together with the number, with no manual label making"
+          },
+          {
+            "name": "Real-Time Inventory",
+            "desc": "Every department sees the same up-to-date inventory after logging in"
+          },
+          {
+            "name": "Outbound Processing",
+            "desc": "Disposals such as sales and shredding are recorded as outbound directly on the website"
+          },
+          {
+            "name": "History & Reports",
+            "desc": "Look up past inbound and outbound records and generate history reports in a unified format"
+          }
+        ],
+        "ai_usage": [
+          "Requirements and architecture: discussed each department's roles and process with Claude to plan platform features and data structure",
+          "Development: almost all of the front-end web pages and back-end data integration code was written by Claude",
+          "Debugging and deployment: Claude helped fix errors and publish the website",
+          "Continuous improvement: iterated with Claude on feedback from the trial period to update and adjust features"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "End-to-end development support from system design and coding to debugging and launch"
+          },
+          {
+            "name": "Cloudflare Pages",
+            "desc": "Front-end hosting and launch"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "Back-end handling of numbering and inbound/outbound data writes"
+          },
+          {
+            "name": "Google Sheets",
+            "desc": "Database for inbound and outbound records, storing all history"
+          }
+        ],
+        "results": [
+          "The website has been built and published, entirely by the finance manager without an IT background",
+          "Departments began logging in for testing in October 2026, and feedback is being collected",
+          "Existing unprocessed scrap is planned to be re-coded and entered into inventory by the end of October 2026",
+          "Official launch at the Enstek and Rawang plants is expected in November 2026",
+          "Currently in the data collection stage; quantitative results will be added after official launch"
+        ],
+        "value": [
+          {
+            "name": "For Operating Departments",
+            "desc": "No more separate Excel and paper records; plant operations no longer send notification emails, and labels are system-generated, reducing duplicate work"
+          },
+          {
+            "name": "For Audit and Finance",
+            "desc": "All movements are centralized on one platform with records, giving stock counts and reconciliation a consistent basis and making scrap flows fully traceable"
+          },
+          {
+            "name": "For the Company",
+            "desc": "Eliminates information asymmetry between departments, strengthens internal control over high-risk assets such as scrap, and supports management decisions with unified reports"
+          }
+        ],
+        "extensions": [
+          "Extend to other plants or other Southeast Asian subsidiaries",
+          "Apply to other physical items that flow across departments, such as molds, spare parts and returned goods",
+          "Add inventory anomaly alerts or comparison with ERP data in the future"
+        ],
+        "limitations": [
+          "Scrap still needs to be weighed manually on site and entered, so data accuracy depends on input",
+          "Departments must follow the platform process and avoid going back to offline records to keep data consistent",
+          "Existing scrap must be re-coded and entered into inventory once before launch",
+          "Google Sheets suits the current data volume; performance should be evaluated as data accumulates"
+        ],
+        "success_key": "Led by the finance unit responsible for stock counts, which defined unified specifications from a cross-department perspective; with AI, a non-IT staff member could quickly turn ideas into a usable system and adjust it in real time based on departmental feedback during the trial.",
+        "keywords": [
+          "Scrap Management",
+          "Unified Coding",
+          "Label Printing",
+          "Real-Time Inventory",
+          "Cross-Department Collaboration",
+          "Internal Control",
+          "Google Sheets",
+          "Cloudflare",
+          "Claude"
+        ]
+      }
+    }
   }
 ]
