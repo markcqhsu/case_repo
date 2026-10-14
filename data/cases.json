@@ -14586,5 +14586,257 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-063",
+    "number": 63,
+    "updated": "2026.10",
+    "url": "https://form-numbering.e5868983.workers.dev/",
+    "video": [],
+    "screenshots": [
+      "assets/form-numbering-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "紙本單據線上取號系統｜請款單、預支單、開支證明單、申購單統一編號",
+        "summary": "過去紙本請款單的編號，是由同仁到總務部門的白板上登記，以避免號碼重複；但出差、不在辦公室或新進同仁常因此搞混，甚至自行編號，白板也沒有留下任何歷史紀錄，出錯時無從追查。本案由財務主管發起，透過 Claude 協助自行開發線上取號網站，同仁只要選擇單據類型、點一下即可取得不重複的號碼，並自動記錄取號人員與日期，讓紙本單據編號統一、簡單且可追溯。",
+        "category": [
+          "內部管理工具",
+          "流程自動化"
+        ],
+        "unit_request": "財務部（全公司使用紙本單據的各部門）",
+        "unit_owner": "財務部",
+        "author": "洪誠傑",
+        "status": "正式上線（2026年5月25日上線，持續收集反饋優化中）",
+        "region": "馬來西亞（馬來西亞宏全 HCM）",
+        "problem_background": "公司的紙本請款單、預支單、開支證明單與申購單，需要有不重複的編號以利後續核銷與歸檔。過去的做法是由同仁親自到總務部門，在白板上寫下自己使用的號碼，藉此避免與他人重複。這個方式仰賴每個人都到現場登記，遇到同仁出差、不在辦公室或新進人員不熟悉流程時，就容易發生重號，或有人自行編號。此外，白板只是暫時性的記錄，沒有任何歷史資料，一旦號碼出錯，無法得知是誰、在什麼時候用了哪個號碼。",
+        "core_problem": "單據編號沒有一個可遠端使用、且留有紀錄的統一來源，導致重號與自行編號的情況無法避免，發生錯誤時也無法追查責任與時間點。",
+        "solution": "建立線上取號網站，由系統統一發放不重複的流水號。同仁不論身在何處，只要開啟網站、選擇單據類型即可取號，系統同時記錄取號人員與日期，並將每一筆紀錄同步至 Notion 資料庫，作為歷史查詢與備份，取代原本的白板登記。",
+        "process": [
+          "需要使用紙本單據的同仁開啟取號網站",
+          "選擇單據類型（請款單、預支單、開支證明單或申購單）",
+          "點擊取號，系統發放不重複的流水號",
+          "將號碼填寫於紙本單據上，依原流程送簽",
+          "系統自動記錄取號人員與日期，並同步至 Notion 取號紀錄資料庫，供日後查詢"
+        ],
+        "features": [
+          {
+            "name": "依單據類型取號",
+            "desc": "P 請款單、A 預支單、N 開支證明單，另含紙本申購單號碼，各類型分別編號"
+          },
+          {
+            "name": "不重複流水號",
+            "desc": "由系統統一發號，從源頭杜絕重號與自行編號"
+          },
+          {
+            "name": "取號紀錄追蹤",
+            "desc": "每筆號碼都記錄取號人員與日期，出錯時可追查"
+          },
+          {
+            "name": "當日紀錄查詢",
+            "desc": "可即時查看當天已取用的號碼"
+          },
+          {
+            "name": "補登功能",
+            "desc": "針對前期遺漏的單據補取號碼"
+          },
+          {
+            "name": "雲端備份與同步",
+            "desc": "取號紀錄自動同步至 Notion，同步失敗會自動重試並集中顯示，方便檢查"
+          }
+        ],
+        "ai_usage": [
+          "系統設計：與 Claude 討論取號規則、單據類型與資料架構",
+          "程式開發：前端網頁與後端取號程式由 Claude 撰寫",
+          "部署指導：在非 IT 背景下，由 Claude 一步步帶領完成環境安裝、雲端設定與上線測試",
+          "除錯：部署過程中由 Claude 檢查程式碼，找出設定名稱不一致的問題並修正",
+          "持續優化：依上線後的使用反饋，與 Claude 共同調整程式與流程，改善取號延遲"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "系統設計、程式撰寫、部署指導與除錯優化"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "網站託管與取號邏輯處理"
+          },
+          {
+            "name": "Cloudflare KV",
+            "desc": "存放流水號，確保號碼唯一不重複"
+          },
+          {
+            "name": "Notion",
+            "desc": "取號紀錄資料庫，作為歷史查詢與備份介面"
+          }
+        ],
+        "results": [
+          "2026年5月25日正式上線，持續使用至今",
+          "各部門反饋大致良好",
+          "同仁不需再跑到總務部門登記白板，點一下即可取號",
+          "每個號碼都可追溯到取號人員與日期",
+          "已依反饋進行一次程式與流程升級，減少取號延遲"
+        ],
+        "value": [
+          {
+            "name": "對各部門同仁",
+            "desc": "省去往返總務部門登記的時間，出差或不在辦公室也能取號，新進同仁也容易上手"
+          },
+          {
+            "name": "對財務與總務",
+            "desc": "號碼統一、不再重號，核銷與歸檔更順暢，錯誤發生時可追查到人員與日期"
+          },
+          {
+            "name": "對公司",
+            "desc": "以極低成本將紙本單據編號數位化並留下完整紀錄，強化單據管理的內部控制"
+          }
+        ],
+        "extensions": [
+          "擴充至其他需要統一編號的紙本表單",
+          "推廣至集團其他子公司使用",
+          "作為其他單據或表單數位化的基礎"
+        ],
+        "limitations": [
+          "取號後需等待數秒才會完成，已優化一次，仍持續改善中",
+          "系統僅負責發放號碼，紙本單據本身仍需人工填寫與送簽",
+          "目前尚未設置登入驗證，後續可評估導入身分驗證機制",
+          "系統由財務部自行開發維護，長期需規劃程式備份與交接"
+        ],
+        "success_key": "從日常最小的痛點切入，以「點一下就好」的簡單操作取代原本的現場登記，降低同仁的使用門檻；並借助 AI，讓非 IT 背景的財務人員也能快速開發、上線，並依反饋持續改善。",
+        "keywords": [
+          "線上取號",
+          "請款單",
+          "預支單",
+          "開支證明單",
+          "申購單",
+          "流水號",
+          "單據管理",
+          "內部控制",
+          "Cloudflare",
+          "Notion",
+          "Claude"
+        ]
+      },
+      "en": {
+        "title": "Online Numbering System for Paper Forms | Unified Numbers for Payment Requests, Advances, Expense Vouchers and Purchase Requisitions",
+        "summary": "Paper payment request numbers used to be reserved by writing them on a whiteboard at the General Affairs department to avoid duplicates. Colleagues who were traveling, out of the office or newly hired often got confused or even assigned numbers themselves, and the whiteboard kept no history, so errors could not be traced. Initiated by the finance manager, this project used Claude to build an in-house online numbering website: colleagues simply choose a form type and click once to get a unique number, with the requester and date recorded automatically, making paper form numbering unified, simple and traceable.",
+        "category": [
+          "Internal Management Tools",
+          "Process Automation"
+        ],
+        "unit_request": "Finance Department (all departments using paper forms)",
+        "unit_owner": "Finance Department",
+        "author": "Hung Cheng-Chieh",
+        "status": "Live (launched May 25, 2026; continuously improving based on feedback)",
+        "region": "Malaysia (Hon Chuan Malaysia, HCM)",
+        "problem_background": "The company's paper payment requests, advance requests, expense vouchers and purchase requisitions need unique numbers for later reimbursement and filing. Previously, colleagues had to go to the General Affairs department in person and write the number they used on a whiteboard to avoid duplicates. This relied on everyone registering on site; when colleagues were traveling, out of the office, or new and unfamiliar with the process, duplicate numbers or self-assigned numbers easily occurred. The whiteboard was also only a temporary record with no history, so when a number went wrong there was no way to know who used which number and when.",
+        "core_problem": "There was no unified, remotely accessible source of form numbers that kept records, so duplicate and self-assigned numbers could not be prevented, and when errors occurred, responsibility and timing could not be traced.",
+        "solution": "Build an online numbering website where the system issues unique sequential numbers centrally. Wherever they are, colleagues just open the website and choose a form type to get a number. The system records the requester and date and syncs every record to a Notion database for history lookup and backup, replacing the whiteboard.",
+        "process": [
+          "Colleagues who need a paper form open the numbering website",
+          "Choose the form type (payment request, advance request, expense voucher or purchase requisition)",
+          "Click to get a number; the system issues a unique sequential number",
+          "Write the number on the paper form and submit it for approval as usual",
+          "The system records the requester and date automatically and syncs them to the Notion numbering log for future lookup"
+        ],
+        "features": [
+          {
+            "name": "Numbering by Form Type",
+            "desc": "P for payment requests, A for advance requests, N for expense vouchers, plus paper purchase requisition numbers; each type is numbered separately"
+          },
+          {
+            "name": "Unique Sequential Numbers",
+            "desc": "Numbers are issued centrally by the system, eliminating duplicate and self-assigned numbers at the source"
+          },
+          {
+            "name": "Numbering Log",
+            "desc": "Every number records the requester and date, so errors can be traced"
+          },
+          {
+            "name": "Today's Records",
+            "desc": "View the numbers already taken today in real time"
+          },
+          {
+            "name": "Back-Entry",
+            "desc": "Get numbers for forms missed in earlier periods"
+          },
+          {
+            "name": "Cloud Backup & Sync",
+            "desc": "Records sync automatically to Notion; failed syncs are retried automatically and listed in one place for easy checking"
+          }
+        ],
+        "ai_usage": [
+          "System design: discussed numbering rules, form types and data structure with Claude",
+          "Development: Claude wrote the front-end web page and back-end numbering logic",
+          "Deployment guidance: without an IT background, Claude guided step by step through environment setup, cloud configuration and launch testing",
+          "Debugging: during deployment, Claude reviewed the code, found inconsistent configuration names and fixed them",
+          "Continuous improvement: adjusted the code and process with Claude based on post-launch feedback to reduce numbering delay"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "System design, coding, deployment guidance, debugging and optimization"
+          },
+          {
+            "name": "Cloudflare Workers",
+            "desc": "Website hosting and numbering logic"
+          },
+          {
+            "name": "Cloudflare KV",
+            "desc": "Stores sequence counters to keep numbers unique"
+          },
+          {
+            "name": "Notion",
+            "desc": "Numbering log database for history lookup and backup"
+          }
+        ],
+        "results": [
+          "Officially launched on May 25, 2026 and in use since",
+          "Feedback from departments has been generally positive",
+          "Colleagues no longer need to go to General Affairs to write on the whiteboard; one click gets a number",
+          "Every number can be traced to its requester and date",
+          "One code and process upgrade has been made based on feedback, reducing numbering delay"
+        ],
+        "value": [
+          {
+            "name": "For Colleagues in All Departments",
+            "desc": "Saves trips to General Affairs; numbers can be taken while traveling or away from the office, and new colleagues pick it up easily"
+          },
+          {
+            "name": "For Finance and General Affairs",
+            "desc": "Unified numbers with no duplicates make reimbursement and filing smoother, and errors can be traced to the person and date"
+          },
+          {
+            "name": "For the Company",
+            "desc": "Digitizes paper form numbering at very low cost with complete records, strengthening internal control over form management"
+          }
+        ],
+        "extensions": [
+          "Extend to other paper forms that need unified numbering",
+          "Roll out to other subsidiaries in the group",
+          "Serve as a foundation for digitizing other documents and forms"
+        ],
+        "limitations": [
+          "Getting a number takes a few seconds to complete; this has been optimized once and is still being improved",
+          "The system only issues numbers; paper forms still need to be filled in and submitted manually",
+          "There is no login authentication yet; identity verification may be evaluated later",
+          "The system is developed and maintained by the Finance Department; long-term code backup and handover need to be planned"
+        ],
+        "success_key": "Start from the smallest everyday pain point and replace on-site registration with a simple one-click operation to lower the barrier for colleagues; with AI, finance staff without an IT background could quickly build and launch the system and keep improving it based on feedback.",
+        "keywords": [
+          "Online Numbering",
+          "Payment Request",
+          "Advance Request",
+          "Expense Voucher",
+          "Purchase Requisition",
+          "Sequential Number",
+          "Form Management",
+          "Internal Control",
+          "Cloudflare",
+          "Notion",
+          "Claude"
+        ]
+      }
+    }
   }
 ]
