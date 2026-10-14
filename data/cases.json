@@ -14605,7 +14605,7 @@
           "流程自動化"
         ],
         "unit_request": "財務部（全公司使用紙本單據的各部門）",
-        "unit_owner": "財務部",
+        "unit_owner": "馬來西亞宏全廠 - 財務部",
         "author": "洪誠傑",
         "status": "正式上線（2026年5月25日上線，持續收集反饋優化中）",
         "region": "馬來西亞（馬來西亞宏全 HCM）",
@@ -14725,7 +14725,7 @@
           "Process Automation"
         ],
         "unit_request": "Finance Department (all departments using paper forms)",
-        "unit_owner": "Finance Department",
+        "unit_owner": "Hon Chuan Malaysia Plant - Finance Department",
         "author": "Hung Cheng-Chieh",
         "status": "Live (launched May 25, 2026; continuously improving based on feedback)",
         "region": "Malaysia (Hon Chuan Malaysia, HCM)",
@@ -14857,7 +14857,7 @@
           "資料整合與分析"
         ],
         "unit_request": "馬來西亞宏全廠 - 財務部（跨部門共同需求：廠務、倉儲、總務、稽核）",
-        "unit_owner": "馬來西亞宏全廠",
+        "unit_owner": "馬來西亞宏全廠 - 財務部",
         "author": "洪誠傑",
         "status": "測試中（2026年10月各部門試用，預計 2026年11月正式上線）",
         "region": "馬來西亞 Enstek 廠、Rawang 廠（可擴充至其他廠區）",
@@ -14971,7 +14971,7 @@
           "Data Integration & Analysis"
         ],
         "unit_request": "Hon Chuan Malaysia Plant - Finance Department (shared cross-department need: plant operations, warehouse, general affairs, audit)",
-        "unit_owner": "Hon Chuan Malaysia Plant",
+        "unit_owner": "Hon Chuan Malaysia Plant - Finance Department",
         "author": "Hung Cheng-Chieh",
         "status": "Testing (trial by departments in October 2026; official launch expected November 2026)",
         "region": "Malaysia Enstek and Rawang plants (expandable to other plants)",
