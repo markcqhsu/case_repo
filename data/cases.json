@@ -15078,5 +15078,259 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-065",
+    "number": 65,
+    "updated": "2026.10",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/sst-schedule-a-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "SST 豁免 Schedule A 申報表 AI 自動製表",
+        "summary": "公司進口或向本地供應商採購零件、機器並申請銷售稅（SST）豁免時，須依 Item 55 向政府提交 Schedule A（LAPORAN CJ(P) JADUAL A-MIDA）申報表，每月約 15 份。過去由零件採購單位人工填寫政府提供的 Excel 表單，錯誤率高，財務部需逐份重複審核，每份合計耗時 15 至 25 分鐘。本案將製表流程交由 AI 執行：只要把豁免函、發票與 K1 報單放入案件資料夾，Claude 即自動判讀文件、交叉勾稽金額與數量並產出 PDF 申報表，且已做成 Skill，可交由財務部同仁操作。",
+        "category": [
+          "流程自動化",
+          "資料整合與分析"
+        ],
+        "unit_request": "馬來西亞宏全廠 - 財務部",
+        "unit_owner": "馬來西亞宏全廠 - 財務部",
+        "author": "洪誠傑",
+        "status": "測試中（2026年9月下旬開發完成，已實際產出 5 份）",
+        "region": "馬來西亞（馬來西亞宏全 HCM）",
+        "problem_background": "公司採購零件與機器時，可依銷售稅豁免規定（Item 55 Schedule A）申請免稅，每次採購都必須向政府提交 Schedule A 申報表，進口貨與本地供應商供貨皆同。過去由零件採購單位負責，依豁免函、發票與海關 K1 報單，手動填寫政府提供的 Excel 表單，每份約 10 至 15 分鐘，每月約 15 份。由於表單涉及豁免函品項、核准數量、發票號碼、K1 報單與 CIF 金額等多項資料的對應，前端填寫錯誤率高，財務部必須逐份重複審核，每份至少再花 5 至 10 分鐘。這是提交給政府的文件，不能出錯，審核與退回修正耗費大量時間。",
+        "core_problem": "申報表需要跨三種文件精確對應資料，人工填寫容易出錯，導致財務部必須投入大量時間進行雙重審核，製表與審核的人力成本都很高。",
+        "solution": "將 Schedule A 的填表規則、文件判讀方式與勾稽檢查完整整理成 Claude Skill。每個案件以豁免函號碼建立一個資料夾，放入相關文件後，由 Claude 判讀文件內容、依規則填表、執行逐項勾稽，全部通過才產出 PDF 與 Excel，並同步更新申請追蹤表。最後由人員核對後送件，人力從「填表」轉為「覆核」。",
+        "process": [
+          "零件採購單位提供佐證文件（豁免函、發票、K1 報單等）",
+          "財務部以豁免函號碼建立案件資料夾，放入相關文件（本地採購無 K1）",
+          "在 Claude 中指定要處理的案件",
+          "Claude 讀取申請追蹤表，檢查是否重複申請、是否超過核准數量",
+          "Claude 判讀文件內容（含掃描件），擷取品項、數量、發票、K1 與金額資料",
+          "依規則填入申報表，並執行金額與數量的交叉勾稽",
+          "勾稽全部通過後產出 PDF 與 Excel，存回案件資料夾並更新追蹤表",
+          "由人員核對後送件"
+        ],
+        "features": [
+          {
+            "name": "文件自動判讀",
+            "desc": "自動辨識豁免函、發票與 K1 報單，包含品質不佳的掃描件"
+          },
+          {
+            "name": "自動填表",
+            "desc": "依政府表單格式填入品項、核准數量、發票、K1 與 CIF 金額，產出 PDF 與 Excel"
+          },
+          {
+            "name": "複雜案件處理",
+            "desc": "涵蓋多張發票、多張豁免函、分次進口、本地採購無 K1 等情況的拆表與併表規則"
+          },
+          {
+            "name": "金額勾稽驗證",
+            "desc": "以 FOB、運費、保費反算 K1 各行金額，必須一分不差，避免判讀錯誤"
+          },
+          {
+            "name": "申請追蹤表",
+            "desc": "記錄每次申請的品項與數量，自動檢查重複送件與超量申請"
+          },
+          {
+            "name": "異常即停",
+            "desc": "任何勾稽不通過或文件不完整時停下來提示，不自行調整數字"
+          }
+        ],
+        "ai_usage": [
+          "規則建置：將填表規則、實務案例與常見錯誤，與 Claude 共同整理成 Skill",
+          "文件判讀：由 Claude 讀取 PDF 與掃描件，擷取申報所需資料",
+          "製表與勾稽：由 Claude 依規則填表，並執行多道交叉驗證",
+          "知識傳承：Skill 封裝了完整作業規則，其他同仁不需熟悉細節也能執行"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "文件判讀、填表、勾稽與產出申報表"
+          },
+          {
+            "name": "Claude Skill",
+            "desc": "封裝 Schedule A 作業規則，讓不同人員都能一致執行"
+          },
+          {
+            "name": "Claude 專案雲端",
+            "desc": "存放申請追蹤表，記錄歷次申請與豁免函核准數量"
+          },
+          {
+            "name": "Excel／PDF",
+            "desc": "申報表的輸出格式，供核對與送件"
+          }
+        ],
+        "results": [
+          "2026年9月下旬開發完成，已實際產出約 5 份申報表，初步檢查皆無問題",
+          "製表不再需要人工填寫，放入文件後約 5 分鐘即可產出",
+          "原本每月約 15 份、每份填寫加審核 15 至 25 分鐘，合計每月約 3.75 至 6.25 小時的人工作業，轉為由 AI 製表、人員僅需覆核",
+          "已做成 Skill 並交由財務部同仁操作，不再依賴單一人員",
+          "持續測試中，視結果調整與優化"
+        ],
+        "value": [
+          {
+            "name": "對零件採購單位",
+            "desc": "只需提供發票、海關報單等佐證文件，不再負責填寫申報表，每月省下約 15 份、每份 10 至 15 分鐘的製表時間"
+          },
+          {
+            "name": "對財務部",
+            "desc": "從每份 5 至 10 分鐘的逐格抓錯，轉為覆核已通過系統勾稽的成品，也不再有退回修正的往返，審核負擔大幅降低"
+          },
+          {
+            "name": "對公司",
+            "desc": "降低政府申報文件出錯的風險，作業規則被完整保存於 Skill 中，不因人員異動而流失"
+          }
+        ],
+        "extensions": [
+          "套用於其他格式固定、須跨文件對應資料的政府申報表",
+          "推廣至集團其他子公司的同類申報作業",
+          "以相同方式將其他「人工填表＋財務審核」的流程交由 AI 製表"
+        ],
+        "limitations": [
+          "屬政府申報文件，AI 產出後仍須由人員核對再送件",
+          "掃描件品質不佳時判讀難度較高，系統以金額勾稽把關，勾稽不通過即停下來由人員確認",
+          "遇到尚無先例的情況（例如同一品項只進口部分數量），系統會停下來交由人員判斷",
+          "文件須依規定的資料夾規則存放，序號錯誤或重複時系統會提出警示"
+        ],
+        "success_key": "不只讓 AI 填表，而是把財務審核時會檢查的每一道勾稽都寫進規則，讓 AI 在產出前先自我驗證，並在有疑義時停下來而不是自行湊數；再將規則做成 Skill，讓這套作業能交給其他同仁穩定執行。",
+        "keywords": [
+          "Schedule A",
+          "Item 55",
+          "SST 豁免",
+          "銷售稅",
+          "K1 報單",
+          "MIDA",
+          "政府申報",
+          "自動製表",
+          "Claude Skill",
+          "文件判讀"
+        ]
+      },
+      "en": {
+        "title": "AI-Automated SST Exemption Schedule A Filing",
+        "summary": "When the company imports or buys parts and machinery from local suppliers under a Sales Tax (SST) exemption, it must submit a Schedule A return (LAPORAN CJ(P) JADUAL A-MIDA) to the government under Item 55, about 15 per month. Previously, the parts purchasing unit filled in the government Excel form manually with a high error rate, and the Finance Department had to re-review each one, taking 15 to 25 minutes per return in total. This project hands form preparation to AI: once the exemption letter, invoices and K1 customs declarations are placed in the case folder, Claude reads the documents, cross-checks amounts and quantities, and produces the PDF return. It has been packaged as a Skill so Finance colleagues can run it.",
+        "category": [
+          "Process Automation",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Hon Chuan Malaysia Plant - Finance Department",
+        "unit_owner": "Hon Chuan Malaysia Plant - Finance Department",
+        "author": "Hung Cheng-Chieh",
+        "status": "Testing (development completed in late September 2026; 5 returns produced so far)",
+        "region": "Malaysia (Hon Chuan Malaysia, HCM)",
+        "problem_background": "When purchasing parts and machinery, the company can apply for exemption under the sales tax exemption rules (Item 55 Schedule A), and every purchase requires a Schedule A return to the government, for both imports and local supplies. The parts purchasing unit used to fill in the government Excel form manually based on the exemption letter, invoices and K1 customs declarations, taking about 10 to 15 minutes each, around 15 per month. Because the form requires matching many data points, such as exemption letter items, approved quantities, invoice numbers, K1 declarations and CIF amounts, front-end errors were frequent, and the Finance Department had to re-review each return, spending at least another 5 to 10 minutes. As documents submitted to the government, they cannot contain errors, and review and rework consumed a lot of time.",
+        "core_problem": "The return requires precise matching of data across three types of documents. Manual entry is error-prone, forcing the Finance Department to spend significant time on double review, so both preparation and review are labor-intensive.",
+        "solution": "Fully document the Schedule A filling rules, document reading methods and cross-checks as a Claude Skill. Each case gets a folder named by exemption letter number; once the documents are placed in it, Claude reads them, fills in the form according to the rules and runs item-by-item cross-checks, producing PDF and Excel only when everything passes, and updates the application tracking sheet. Staff then verify and submit, shifting their work from \"filling in\" to \"reviewing\".",
+        "process": [
+          "The parts purchasing unit provides supporting documents (exemption letter, invoices, K1 declarations, etc.)",
+          "Finance creates a case folder named by exemption letter number and places the documents in it (local purchases have no K1)",
+          "Specify the case to process in Claude",
+          "Claude reads the application tracking sheet to check for duplicate applications and quantities exceeding approval",
+          "Claude reads the documents (including scans) and extracts items, quantities, invoices, K1 and amount data",
+          "Fill in the return according to the rules and cross-check amounts and quantities",
+          "Once all checks pass, produce PDF and Excel, save them to the case folder and update the tracking sheet",
+          "Staff verify and submit"
+        ],
+        "features": [
+          {
+            "name": "Automatic Document Reading",
+            "desc": "Automatically reads exemption letters, invoices and K1 declarations, including poor-quality scans"
+          },
+          {
+            "name": "Automatic Form Filling",
+            "desc": "Fills in items, approved quantities, invoices, K1 and CIF amounts in the government format and outputs PDF and Excel"
+          },
+          {
+            "name": "Complex Case Handling",
+            "desc": "Covers splitting and merging rules for multiple invoices, multiple exemption letters, partial imports and local purchases without K1"
+          },
+          {
+            "name": "Amount Cross-Check",
+            "desc": "Recalculates each K1 line amount from FOB, freight and insurance, which must match to the cent, to catch reading errors"
+          },
+          {
+            "name": "Application Tracking Sheet",
+            "desc": "Records the items and quantities of each application and automatically checks for duplicate or over-quantity submissions"
+          },
+          {
+            "name": "Stop on Exceptions",
+            "desc": "Stops and alerts when any check fails or documents are incomplete, without adjusting numbers on its own"
+          }
+        ],
+        "ai_usage": [
+          "Rule building: worked with Claude to turn filling rules, real cases and common mistakes into a Skill",
+          "Document reading: Claude reads PDFs and scans to extract the data needed for filing",
+          "Form filling and cross-checking: Claude fills in the form according to the rules and runs multiple cross-validations",
+          "Knowledge transfer: the Skill encapsulates the complete operating rules, so other colleagues can run it without knowing every detail"
+        ],
+        "tools": [
+          {
+            "name": "Claude",
+            "desc": "Document reading, form filling, cross-checking and producing returns"
+          },
+          {
+            "name": "Claude Skill",
+            "desc": "Encapsulates Schedule A operating rules so different staff can run it consistently"
+          },
+          {
+            "name": "Claude Project storage",
+            "desc": "Stores the application tracking sheet with past applications and approved quantities per exemption letter"
+          },
+          {
+            "name": "Excel / PDF",
+            "desc": "Output formats of the return for verification and submission"
+          }
+        ],
+        "results": [
+          "Development completed in late September 2026; about 5 returns have been produced, all passing initial checks",
+          "No more manual form filling; a return is produced in about 5 minutes after the documents are placed",
+          "About 15 returns per month at 15 to 25 minutes each for filling and review, roughly 3.75 to 6.25 hours of manual work per month, now prepared by AI with staff only reviewing",
+          "Packaged as a Skill and handed to Finance colleagues, no longer depending on a single person",
+          "Testing continues, with adjustments and optimization based on results"
+        ],
+        "value": [
+          {
+            "name": "For the Parts Purchasing Unit",
+            "desc": "Only needs to provide supporting documents such as invoices and customs declarations, no longer filling in returns, saving 10 to 15 minutes on each of about 15 returns per month"
+          },
+          {
+            "name": "For the Finance Department",
+            "desc": "Moves from 5 to 10 minutes of cell-by-cell error checking per return to reviewing finished returns that have passed system checks, with no more back-and-forth rework, greatly reducing review workload"
+          },
+          {
+            "name": "For the Company",
+            "desc": "Reduces the risk of errors in government filings, and the operating rules are fully preserved in the Skill so they are not lost with staff changes"
+          }
+        ],
+        "extensions": [
+          "Apply to other fixed-format government returns that require matching data across documents",
+          "Roll out to similar filing work at other group subsidiaries",
+          "Hand other \"manual form filling + finance review\" processes to AI in the same way"
+        ],
+        "limitations": [
+          "As government filings, AI output must still be verified by staff before submission",
+          "Poor-quality scans are harder to read; the system uses amount cross-checks as a safeguard and stops for staff confirmation when they fail",
+          "For situations without precedent (for example, importing only part of the quantity of an item), the system stops and leaves the decision to staff",
+          "Documents must be stored according to the folder rules; the system warns when sequence numbers are wrong or duplicated"
+        ],
+        "success_key": "Rather than just letting AI fill in forms, every cross-check that Finance would perform during review was written into the rules, so AI validates itself before producing output and stops when in doubt instead of forcing numbers to fit; the rules were then packaged as a Skill so the process can be handed to other colleagues and run reliably.",
+        "keywords": [
+          "Schedule A",
+          "Item 55",
+          "SST Exemption",
+          "Sales Tax",
+          "K1 Declaration",
+          "MIDA",
+          "Government Filing",
+          "Automated Form Preparation",
+          "Claude Skill",
+          "Document Reading"
+        ]
+      }
+    }
   }
 ]
