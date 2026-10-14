@@ -14598,7 +14598,7 @@
     ],
     "i18n": {
       "zh": {
-        "title": "紙本單據線上取號系統｜請款單、預支單、開支證明單、申購單統一編號",
+        "title": "紙本單據線上取號系統",
         "summary": "過去紙本請款單的編號，是由同仁到總務部門的白板上登記，以避免號碼重複；但出差、不在辦公室或新進同仁常因此搞混，甚至自行編號，白板也沒有留下任何歷史紀錄，出錯時無從追查。本案由財務主管發起，透過 Claude 協助自行開發線上取號網站，同仁只要選擇單據類型、點一下即可取得不重複的號碼，並自動記錄取號人員與日期，讓紙本單據編號統一、簡單且可追溯。",
         "category": [
           "內部管理工具",
@@ -14718,7 +14718,7 @@
         ]
       },
       "en": {
-        "title": "Online Numbering System for Paper Forms | Unified Numbers for Payment Requests, Advances, Expense Vouchers and Purchase Requisitions",
+        "title": "Online Numbering System for Paper Forms",
         "summary": "Paper payment request numbers used to be reserved by writing them on a whiteboard at the General Affairs department to avoid duplicates. Colleagues who were traveling, out of the office or newly hired often got confused or even assigned numbers themselves, and the whiteboard kept no history, so errors could not be traced. Initiated by the finance manager, this project used Claude to build an in-house online numbering website: colleagues simply choose a form type and click once to get a unique number, with the requester and date recorded automatically, making paper form numbering unified, simple and traceable.",
         "category": [
           "Internal Management Tools",
