@@ -4409,7 +4409,7 @@
           "職安環保"
         ],
         "unit_request": "無菌三廠",
-        "unit_owner": "無菌三廠",
+        "unit_owner": "無菌三廠 - 生產課",
         "author": "紀裕慶",
         "status": "已完成並已於平台發布",
         "region": "千萬里 HTS94 鷹架",
@@ -4503,7 +4503,7 @@
           "EHS & Environment"
         ],
         "unit_request": "Aseptic Factory 3",
-        "unit_owner": "Aseptic Factory 3",
+        "unit_owner": "Aseptic Factory 3 - Production Section",
         "author": "紀裕慶",
         "status": "Completed and published on the platform",
         "region": "千萬里 HTS94 scaffolding",
@@ -14405,7 +14405,7 @@
           "資料整合與分析"
         ],
         "unit_request": "無菌三廠儲運課",
-        "unit_owner": "無菌三廠生產課",
+        "unit_owner": "無菌三廠 - 生產課",
         "author": "紀裕慶",
         "status": "完成30%",
         "region": "",
@@ -14499,7 +14499,7 @@
           "Data Integration & Analysis"
         ],
         "unit_request": "Aseptic Plant 3 Warehousing & Logistics Section",
-        "unit_owner": "Aseptic Plant 3 Production Section",
+        "unit_owner": "Aseptic Factory 3 - Production Section",
         "author": "Chi Yu-Ching",
         "status": "30% complete",
         "region": "",
