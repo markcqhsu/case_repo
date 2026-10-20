@@ -30,6 +30,9 @@
 
 ## 畫面截圖
 - assets/thc-pmc-cover.jpg
+- assets/thc-pmc-01.jpg
+- assets/thc-pmc-02.jpg
+- assets/thc-pmc-03.jpg
 
 
 ## 問題背景
