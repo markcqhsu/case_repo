@@ -15332,5 +15332,261 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-066",
+    "number": 66,
+    "updated": "2026.10",
+    "screenshots": [
+      "assets/thc-pmc-cover.jpg"
+    ],
+    "video": [],
+    "url": "",
+    "i18n": {
+      "zh": {
+        "title": "宏全技術處專案管理平台",
+        "summary": "為宏全技術處設計集中管理跨年度、跨單位／工廠專案的平台。首頁以專案數、久未更新、即將到期、需主管協助及文件通知等資訊呈現管理重點；專案總帳可篩選與查找，點入後可查看摘要、完成率、進度時間軸、履歷及附件。管理者可逐筆或批次建立專案，更新進度並設定 Email 提醒，文件辨識則協助帶入欄位或提出更新建議。",
+        "category": [
+          "內部管理工具",
+          "工程管理",
+          "資料整合與分析"
+        ],
+        "unit_request": "海外技術處",
+        "unit_owner": "海外技術處",
+        "author": "張奕晨",
+        "status": "設計與主要功能已有程式實作及本機測試紀錄；公司環境部署、真實資料與使用者驗收狀態待確認。",
+        "region": "",
+        "problem_background": "技術處需同時掌握多個年度與工廠的專案。專案資料可能來自進度表、簽呈、投資報告、照片及後續往來文件；若只看最新一筆狀態，難以回溯進度變化、延期原因、費用異動與當時的佐證資料。",
+        "core_problem": "如何讓主管快速辨識需要處理的專案，同時讓執行人員以一致格式更新進度，並保留每次異動、附件及權限紀錄，供日後查閱與交接。",
+        "solution": "以「首頁管理重點 → 專案總帳 → 專案總覽 → 生命週期時間軸」作為主要操作路徑。首頁突出久未更新、近期到期及延遲／暫停專案；總帳依年份、狀態、單位與負責人篩選；總覽呈現專案編號、封面、狀態、時程、預算、進度、風險與文件。每次進度更新建立獨立節點，連結當次文件、照片和費用變動；重要日期及完成事件保留在履歷中。",
+        "process": [
+          "從首頁查看專案數、超過 14 天未更新、7 天內到期或已逾期、延遲／暫停及未讀通知等管理提示。",
+          "在專案總帳依年份、狀態、單位／工廠或負責人篩選，進入指定專案總覽。",
+          "以個別表單建立專案，或上傳 Excel、CSV、PDF、文件圖片等批次辨識；先預覽、補填與驗證，再確認新增。",
+          "管理者填寫本次完成率、已完成事項、下一步、問題、風險及協助需求，並把附件連到該次進度節點。",
+          "透過時間軸查看歷次進度、日期調整、完成紀錄與附件；依專案設定寄送到期 Email 提醒。"
+        ],
+        "features": [
+          {
+            "name": "管理儀表板",
+            "desc": "集中顯示待更新、到期、需協助、文件照片與通知等重點。"
+          },
+          {
+            "name": "專案總帳",
+            "desc": "列出編號、名稱、年度、單位、類型、負責人、狀態、金額、進度與提醒設定，支援多條件篩選。"
+          },
+          {
+            "name": "閱讀型專案總覽",
+            "desc": "以封面、摘要卡、進度條、風險區塊、照片及最近履歷快速掌握單一專案。"
+          },
+          {
+            "name": "生命週期時間軸",
+            "desc": "預設顯示最近 5 筆，完整模式可依年份、事件類型及關鍵字查找；每個節點可展開內容與附件。"
+          },
+          {
+            "name": "進度與附件管理",
+            "desc": "新增帶日期的進度紀錄，保留舊節點；文件和照片可連結至對應進度，管理者可維護紀錄。"
+          },
+          {
+            "name": "多種建立方式",
+            "desc": "支援單筆填寫與批次匯入，辨識後可在預覽表格直接修正缺漏欄位。"
+          },
+          {
+            "name": "提醒與權限",
+            "desc": "專案可設定 Email 到期提醒；管理者與瀏覽者分權，公司版另設計 LDAP 登入與個別授權管理。"
+          }
+        ],
+        "ai_usage": [
+          "上傳文件後，設計由伺服器端 AI 分析文件類型、候選關聯專案、欄位值與來源位置，並提出主管摘要或進度節點建議。",
+          "介面並列原始文件與「目前值／辨識值／來源／信心」供逐欄核對；使用者勾選採用欄位並確認後，才會建立或更新專案。",
+          "一般匯入另使用表格解析、PDF 文字擷取及圖片 OCR 協助帶入欄位；這些辨識結果仍須人工核對。"
+        ],
+        "tools": [
+          {
+            "name": "HTML、JavaScript、CSS",
+            "desc": "Hosted 版本的首頁、總帳、專案總覽、時間軸及操作視窗。"
+          },
+          {
+            "name": "Cloudflare Workers、D1、R2",
+            "desc": "Hosted 版本的 API、專案資料及附件儲存設計。"
+          },
+          {
+            "name": "Node.js、PostgreSQL",
+            "desc": "公司部署整合版的伺服器與資料儲存設計。"
+          },
+          {
+            "name": "SheetJS、PDF.js、Tesseract.js",
+            "desc": "解析試算表、含文字層的 PDF 及文件圖片。"
+          },
+          {
+            "name": "OpenAI API",
+            "desc": "在伺服器端完成金鑰設定後提供文件分析建議。"
+          }
+        ],
+        "results": [
+          "已完成儀表板、專案總帳、閱讀型總覽、進度時間軸、附件關聯、匯入、提醒與權限管理的程式設計與實作。",
+          "生命週期功能的本機建置與自動化測試有通過紀錄；這些紀錄不等於公司正式環境已完成部署或使用者驗收。",
+          "進度採逐次新增並保留歷史的設計，使日期異動、完成事件及佐證附件可追溯。"
+        ],
+        "value": [
+          {
+            "name": "對技術處與主管",
+            "desc": "從首頁快速找出逾期、久未更新及需協助專案，據此安排追蹤。"
+          },
+          {
+            "name": "對專案負責人",
+            "desc": "以固定欄位記錄每次進度和下一步，附件與當次更新放在一起，便於回顧與交接。"
+          },
+          {
+            "name": "對公司",
+            "desc": "形成可依年度、單位及負責人查詢的專案總帳，減少資料散落於多份文件的情況。"
+          }
+        ],
+        "extensions": [
+          "將相同的總帳、進度節點、提醒及附件模式套用到其他單位的專案管理。",
+          "在實際導入後，依使用者回饋擴充跨工廠報表、成本效益分析及文件辨識規則。"
+        ],
+        "limitations": [
+          "目前資料不足以確認正式網址、導入範圍、實際使用成效及公司環境驗收結果。",
+          "AI 分析須有部署端服務設定；模型信心分數不是正確保證，圖片或掃描文件也可能辨識錯誤，重要欄位須對照原件。",
+          "批次匯入需核對預設值及必要欄位；Email 實際送達、LDAP 連線與角色設定須在公司環境驗收。"
+        ],
+        "success_key": "讓主管看得見需處理的專案，讓執行人員容易持續更新；同時保留每次變更的日期、內容、操作者與附件，並在資料寫入前完成匯入及 AI 建議的人工核對。",
+        "keywords": [
+          "宏全技術處",
+          "PMC",
+          "專案總帳",
+          "跨工廠",
+          "管理儀表板",
+          "進度時間軸",
+          "批次匯入",
+          "文件辨識",
+          "Email 提醒",
+          "權限管理"
+        ]
+      },
+      "en": {
+        "title": "THC Technical Division Project Management Platform",
+        "summary": "A platform designed for the THC Technical Division to centrally manage projects across years, units and plants. The home page highlights management priorities such as project counts, projects not updated for a long time, upcoming deadlines, projects needing manager support, and document notifications. The project ledger can be filtered and searched; opening a project shows its summary, completion rate, progress timeline, history and attachments. Managers can create projects one by one or in batches, update progress and set email reminders, while document recognition helps fill in fields or suggest updates.",
+        "category": [
+          "Internal Management Tools",
+          "Engineering Management",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Overseas Technical Division",
+        "unit_owner": "Overseas Technical Division",
+        "author": "Chang Yi-Chen",
+        "status": "Design and main features have been implemented with local test records; deployment in the company environment, real data and user acceptance are yet to be confirmed.",
+        "region": "",
+        "problem_background": "The Technical Division needs to track many projects across years and plants at the same time. Project data may come from progress sheets, internal approval requests, investment reports, photos and later correspondence. Looking only at the latest status makes it hard to trace progress changes, reasons for delays, cost changes and the supporting documents at the time.",
+        "core_problem": "How to let managers quickly identify projects that need attention, while letting project staff update progress in a consistent format, and keep every change, attachment and permission record for later reference and handover.",
+        "solution": "The main workflow is \"home page priorities → project ledger → project overview → lifecycle timeline\". The home page highlights projects not updated for a long time, those nearing deadlines, and delayed or paused projects; the ledger filters by year, status, unit and owner; the overview shows project number, cover, status, schedule, budget, progress, risks and documents. Each progress update creates its own node linked to the documents, photos and cost changes of that update, and key dates and completion events are kept in the history.",
+        "process": [
+          "Check management alerts on the home page: project counts, projects not updated for over 14 days, due within 7 days or overdue, delayed/paused projects and unread notifications.",
+          "Filter the project ledger by year, status, unit/plant or owner, and open the target project overview.",
+          "Create projects with an individual form, or upload Excel, CSV, PDF or document images for batch recognition; preview, fill in and validate before confirming.",
+          "Managers fill in the current completion rate, completed items, next steps, issues, risks and support needed, and link attachments to that progress node.",
+          "Review past progress, date adjustments, completion records and attachments on the timeline; send email due-date reminders according to project settings."
+        ],
+        "features": [
+          {
+            "name": "Management Dashboard",
+            "desc": "Brings together items to update, due dates, support requests, documents/photos and notifications."
+          },
+          {
+            "name": "Project Ledger",
+            "desc": "Lists number, name, year, unit, type, owner, status, amount, progress and reminder settings, with multi-criteria filtering."
+          },
+          {
+            "name": "Read-Friendly Project Overview",
+            "desc": "Cover, summary cards, progress bar, risk section, photos and recent history for a quick grasp of a single project."
+          },
+          {
+            "name": "Lifecycle Timeline",
+            "desc": "Shows the latest 5 entries by default; full mode searches by year, event type and keyword, and each node expands to show details and attachments."
+          },
+          {
+            "name": "Progress & Attachment Management",
+            "desc": "Adds dated progress records while keeping old nodes; documents and photos can be linked to the related progress, and managers can maintain records."
+          },
+          {
+            "name": "Multiple Ways to Create",
+            "desc": "Supports single entry and batch import; missing fields can be corrected directly in the preview table after recognition."
+          },
+          {
+            "name": "Reminders & Permissions",
+            "desc": "Projects can have email due-date reminders; managers and viewers have separate rights, and the company version adds LDAP login and individual authorization management."
+          }
+        ],
+        "ai_usage": [
+          "After a document is uploaded, server-side AI is designed to analyze the document type, candidate related projects, field values and their source locations, and to suggest manager summaries or progress nodes.",
+          "The interface shows the original document side by side with \"current value / recognized value / source / confidence\" for field-by-field checking; projects are created or updated only after the user selects the fields to adopt and confirms.",
+          "Regular imports also use spreadsheet parsing, PDF text extraction and image OCR to help fill in fields; these results still require manual checking."
+        ],
+        "tools": [
+          {
+            "name": "HTML, JavaScript, CSS",
+            "desc": "Home page, ledger, project overview, timeline and dialogs of the hosted version."
+          },
+          {
+            "name": "Cloudflare Workers, D1, R2",
+            "desc": "API, project data and attachment storage design of the hosted version."
+          },
+          {
+            "name": "Node.js, PostgreSQL",
+            "desc": "Server and data storage design of the integrated version for company deployment."
+          },
+          {
+            "name": "SheetJS, PDF.js, Tesseract.js",
+            "desc": "Parse spreadsheets, PDFs with a text layer and document images."
+          },
+          {
+            "name": "OpenAI API",
+            "desc": "Provides document analysis suggestions once the key is configured on the server."
+          }
+        ],
+        "results": [
+          "Dashboard, project ledger, read-friendly overview, progress timeline, attachment linking, import, reminders and permission management have been designed and implemented.",
+          "Local builds and automated tests of the lifecycle features have passed; these records do not mean the formal company deployment or user acceptance is complete.",
+          "Progress is added entry by entry with history preserved, so date changes, completion events and supporting attachments are traceable."
+        ],
+        "value": [
+          {
+            "name": "For the Technical Division and Managers",
+            "desc": "Quickly find overdue, long-unupdated and support-needed projects from the home page and plan follow-up accordingly."
+          },
+          {
+            "name": "For Project Owners",
+            "desc": "Record each update and next step in fixed fields, with attachments kept alongside the update, making review and handover easier."
+          },
+          {
+            "name": "For the Company",
+            "desc": "Builds a project ledger searchable by year, unit and owner, reducing data scattered across many documents."
+          }
+        ],
+        "extensions": [
+          "Apply the same ledger, progress node, reminder and attachment model to project management in other units.",
+          "After actual rollout, expand cross-plant reports, cost-benefit analysis and document recognition rules based on user feedback."
+        ],
+        "limitations": [
+          "Current information is insufficient to confirm the official URL, rollout scope, actual effectiveness and company-environment acceptance results.",
+          "AI analysis requires the service to be configured on the deployment side; model confidence scores do not guarantee correctness, and images or scans may be misrecognized, so key fields must be checked against the originals.",
+          "Batch imports require checking default values and required fields; actual email delivery, LDAP connection and role settings must be verified in the company environment."
+        ],
+        "success_key": "Make projects needing attention visible to managers and keep updating easy for project staff, while preserving the date, content, operator and attachments of every change, and completing manual review of imports and AI suggestions before data is written.",
+        "keywords": [
+          "THC Technical Division",
+          "PMC",
+          "Project Ledger",
+          "Cross-Plant",
+          "Management Dashboard",
+          "Progress Timeline",
+          "Batch Import",
+          "Document Recognition",
+          "Email Reminders",
+          "Permission Management"
+        ]
+      }
+    }
   }
 ]
