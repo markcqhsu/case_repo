@@ -15591,5 +15591,199 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-067",
+    "number": 67,
+    "updated": "2026.10",
+    "url": "https://docs.google.com/spreadsheets/d/15ahDe9TyxRI_i_Dbk1e1TGpCOJxZ3Ky0QGR78SZOiqQ/edit?resourcekey=&gid=1527028611#gid=1527028611",
+    "screenshots": [
+      "assets/defect-rate-cover.jpg"
+    ],
+    "video": [],
+    "i18n": {
+      "zh": {
+        "title": "各站別不良率紀錄表",
+        "summary": "本案例透過各站別生產數據與不良率紀錄，協助掌握各站別品質狀況，藉由比較各站別不良率，找出異常站別，作為後續品質改善、改善成效追蹤及主管掌握生產品質狀況之依據。",
+        "category": [
+          "生產管理",
+          "品保工作流程",
+          "資料整合與分析"
+        ],
+        "unit_request": "塑蓋廠",
+        "unit_owner": "塑蓋廠",
+        "author": "陳堡榮",
+        "status": "已上線使用",
+        "region": "台灣",
+        "problem_background": "目前現場缺乏各站別不良率的系統化紀錄與彙整，生產數據分散於各站點，導致管理者難以即時掌握品質狀況及進行跨站別比較。在作業流程上，四個組別區分早晚班共需填寫 8 張紙本表單，事後全數依賴人工手動輸入至 Excel，不僅統計過程極為耗時，亦增加數據打錯與延遲的風險。為提升管理效率，急需將現行紙本流程整合並推動無紙化／數位化收集，建立自動化統計與跨站別品質分析看板，讓主管能定期且快速地追蹤各站別不良率、即時掌握異常並評估改善成效。",
+        "core_problem": "- 人工輸入耗時，增加資料錯誤與延遲風險\n- 各站別數據分散，無法快速比較不良率\n- 異常站別不易即時辨識，改善成效追蹤不便",
+        "solution": "- 將紙本表單數位化，集中記錄各站別生產與不良數據\n- 透過 Google 試算表整合資料，減少人工重複輸入\n- 彙整各站別不良率，方便跨站比較與異常追蹤",
+        "process": [
+          "由各組別依早、晚班填寫各站別生產與不良數據",
+          "將各站別資料集中記錄於 Google 試算表",
+          "彙整並比較各站別不良率，掌握品質狀況",
+          "依分析結果追蹤異常站別及改善成效"
+        ],
+        "features": [
+          "各站別生產數據與不良數據紀錄",
+          "各站別不良率統計與比較",
+          "協助辨識異常站別",
+          "自動計算不良率",
+          "集中管理早、晚班資料"
+        ],
+        "ai_usage": [
+          "曾使用 AI 協助規劃、設計或優化表單",
+          "使用工具：Gemini"
+        ],
+        "tools": [
+          {
+            "name": "Google 試算表（Google Sheets）",
+            "desc": "集中記錄各站別生產數據與不良數據，並進行統計分析"
+          },
+          {
+            "name": "Gemini",
+            "desc": "協助規劃、設計或優化表單"
+          },
+          {
+            "name": "Microsoft Excel",
+            "desc": "原有紙本資料的人工輸入與彙整工具"
+          }
+        ],
+        "results": [
+          "將原本分散的各站別資料集中於 Google 試算表管理",
+          "透過公式自動計算不良率，減少人工計算作業",
+          "可比較各站別不良率，協助掌握品質異常",
+          "降低紙本表單使用量，推動無紙化作業",
+          "縮短資料彙整與統計所需時間",
+          "現場人員（早、晚班）：8 人 × 每天 30 分鐘，每天約耗費 4 小時，每月約 100～120 小時用於手寫表單",
+          "案例負責人每日約花費 1 小時彙整資料，每月約 20～22 小時用於重複打字與複製貼上",
+          "改善前，整個廠區每天約花費 5 小時進行數據收集與統計"
+        ],
+        "value": [
+          "減少人工抄寫、重複輸入及資料彙整的時間",
+          "降低人工輸入錯誤與資料延遲風險",
+          "提升主管掌握各站別品質狀況的效率",
+          "加快異常站別辨識與改善成效追蹤",
+          "推動無紙化作業，減少紙張及表單管理負擔",
+          "讓人力能投入其他品質改善與管理工作",
+          "降低成本並提升整體生產管理效率"
+        ],
+        "extensions": [
+          "可複製至同公司其他廠區或生產線，建立各站別不良率紀錄表",
+          "可依不同產品、製程或站別調整表單欄位與統計公式",
+          "可應用於其他生產數據、品質異常及改善成效追蹤"
+        ],
+        "limitations": [
+          "各組別及早、晚班須依規定正確填寫資料，確保數據完整性",
+          "須統一各站別的不良項目、計算方式及填寫標準",
+          "須設定適當的試算表存取權限，避免資料遭誤改或未授權存取"
+        ],
+        "success_key": "- 將原本紙本填寫及人工彙整流程整合至 Google 試算表\n- 建立一致的資料填寫規範，確保各組別及早、晚班資料正確\n- 透過公式自動計算不良率，降低人工統計負擔\n- 集中呈現各站別不良率，方便主管比較及追蹤異常\n- 持續追蹤數據並將分析結果應用於品質改善\n- 主管支持推動數位化，並要求各組別確實執行",
+        "keywords": [
+          "品質管理",
+          "不良率分析",
+          "生產數據分析",
+          "Google 試算表",
+          "數位化管理",
+          "無紙化作業",
+          "品質改善",
+          "製造管理",
+          "生產管理",
+          "自動化統計",
+          "Gemini"
+        ]
+      },
+      "en": {
+        "title": "Station Defect Rate Log",
+        "summary": "This case uses production data and defect records from each station to help track quality at every station. By comparing defect rates across stations, abnormal stations can be identified, providing a basis for follow-up quality improvement, tracking improvement results, and giving managers a clear view of production quality.",
+        "category": [
+          "Production Management",
+          "QA Workflow",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Plastic Closure Plant",
+        "unit_owner": "Plastic Closure Plant",
+        "author": "Chen Pao-Jung",
+        "status": "Live and in use",
+        "region": "Taiwan",
+        "problem_background": "The shop floor lacked a systematic way to record and consolidate defect rates by station. Production data was scattered across stations, making it hard for managers to see quality status in real time or compare stations. Four groups, split into day and night shifts, had to fill in 8 paper forms in total, all of which were later typed into Excel by hand. This made the statistics very time-consuming and added the risk of typos and delays. To improve management efficiency, the paper process needed to be consolidated into paperless, digital data collection, with automated statistics and a cross-station quality dashboard so managers can regularly and quickly track station defect rates, spot anomalies right away and evaluate improvement results.",
+        "core_problem": "- Manual data entry is time-consuming and increases the risk of errors and delays\n- Station data is scattered, so defect rates cannot be compared quickly\n- Abnormal stations are hard to identify in real time, and tracking improvement results is inconvenient",
+        "solution": "- Digitize the paper forms and record production and defect data for every station in one place\n- Consolidate data in Google Sheets to reduce repeated manual entry\n- Summarize defect rates by station for easy cross-station comparison and anomaly tracking",
+        "process": [
+          "Each group enters production and defect data for each station by day and night shift",
+          "Station data is recorded centrally in Google Sheets",
+          "Defect rates are summarized and compared across stations to understand quality status",
+          "Abnormal stations and improvement results are tracked based on the analysis"
+        ],
+        "features": [
+          "Recording of production and defect data for each station",
+          "Defect rate statistics and comparison by station",
+          "Helps identify abnormal stations",
+          "Automatic defect rate calculation",
+          "Centralized management of day- and night-shift data"
+        ],
+        "ai_usage": [
+          "AI was used to help plan, design or refine the form",
+          "Tool used: Gemini"
+        ],
+        "tools": [
+          {
+            "name": "Google Sheets",
+            "desc": "Central record of production and defect data for each station, with statistical analysis"
+          },
+          {
+            "name": "Gemini",
+            "desc": "Helped plan, design or refine the form"
+          },
+          {
+            "name": "Microsoft Excel",
+            "desc": "The original tool for manually entering and consolidating paper form data"
+          }
+        ],
+        "results": [
+          "Previously scattered station data is now managed centrally in Google Sheets",
+          "Formulas calculate defect rates automatically, reducing manual calculation",
+          "Defect rates can be compared across stations to help catch quality anomalies",
+          "Fewer paper forms, moving toward paperless operations",
+          "Less time needed to consolidate data and compile statistics",
+          "Shop-floor staff (day and night shifts): 8 people × 30 minutes a day, about 4 hours daily and roughly 100–120 hours a month spent on handwritten forms",
+          "The case owner spent about 1 hour a day consolidating data, roughly 20–22 hours a month on repetitive typing and copy-pasting",
+          "Before the improvement, the whole plant spent about 5 hours a day collecting data and compiling statistics"
+        ],
+        "value": [
+          "Less time spent on manual transcription, repeated entry and data consolidation",
+          "Lower risk of manual entry errors and data delays",
+          "Managers grasp station quality status more efficiently",
+          "Faster identification of abnormal stations and tracking of improvement results",
+          "Paperless operations reduce paper and form management burden",
+          "Frees staff to focus on other quality improvement and management work",
+          "Lower costs and better overall production management efficiency"
+        ],
+        "extensions": [
+          "Can be replicated to other plants or production lines in the company to build station defect rate logs",
+          "Form fields and formulas can be adjusted for different products, processes or stations",
+          "Can be applied to other production data, quality anomaly and improvement tracking"
+        ],
+        "limitations": [
+          "Each group and shift must enter data correctly as required to keep the data complete",
+          "Defect items, calculation methods and entry standards must be unified across stations",
+          "Spreadsheet access permissions must be set properly to prevent accidental edits or unauthorized access"
+        ],
+        "success_key": "- Consolidated the paper forms and manual compilation process into Google Sheets\n- Established consistent data entry rules so every group and shift records data correctly\n- Formulas calculate defect rates automatically, reducing the manual statistics burden\n- Defect rates for all stations are shown in one place, making comparison and anomaly tracking easy for managers\n- Data is tracked continuously and the analysis is applied to quality improvement\n- Managers support the digital transformation and require every group to follow through",
+        "keywords": [
+          "Quality Management",
+          "Defect Rate Analysis",
+          "Production Data Analysis",
+          "Google Sheets",
+          "Digital Management",
+          "Paperless Operations",
+          "Quality Improvement",
+          "Manufacturing Management",
+          "Production Management",
+          "Automated Statistics",
+          "Gemini"
+        ]
+      }
+    }
   }
 ]
