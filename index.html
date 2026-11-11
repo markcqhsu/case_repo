@@ -1212,6 +1212,8 @@ let lightboxReturnFocus = null;
 function setupGallery(images, title) {
   if (!images.length) return;
   const mainImg = document.getElementById('galleryMainImg');
+  // 有影片的案例不顯示相簿（見 renderDetail），頁面上沒有相簿元素就不用綁事件
+  if (!mainImg) return;
   const thumbs = document.querySelectorAll('.gallery-thumb');
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', () => {
