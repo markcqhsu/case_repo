@@ -15806,8 +15806,8 @@
           "生產管理",
           "流程自動化"
         ],
-        "unit_request": "",
-        "unit_owner": "",
+        "unit_request": "飲料代工部",
+        "unit_owner": "數位發展部",
         "author": "陳姸惠",
         "status": "試行中（已有一家代工客戶以三條產線試行，業務進行測試使用）",
         "region": "台灣",
@@ -15941,8 +15941,8 @@
           "Production Management",
           "Process Automation"
         ],
-        "unit_request": "",
-        "unit_owner": "",
+        "unit_request": "Beverage OEM Department",
+        "unit_owner": "Digital Development Department",
         "author": "Chen Yen-Hui",
         "status": "In trial (one OEM customer is trialing it on three production lines; sales staff are testing it)",
         "region": "Taiwan",
