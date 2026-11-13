@@ -15785,5 +15785,289 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-068",
+    "number": 68,
+    "updated": "2026.11",
+    "url": "https://oem-schedule.vercel.app",
+    "video": [],
+    "screenshots": [
+      "assets/oem-schedule-cover.jpg",
+      "assets/oem-schedule-01.jpg",
+      "assets/oem-schedule-02.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "OEM 客戶生產排程與棧板分配系統",
+        "summary": "業務以前要拿著生管的排程表，跟代工客戶用信件、電話反覆確認每一批產品要用哪種棧板紙、各分多少，最後再自己整理成正式的排程 PDF。這套系統把整段流程搬到線上：業務依客戶、月份、產線建立排程（可以直接上傳生管的 Excel），客戶登入後自己分配每一批的棧板紙料號，業務確認後一鍵產生正式 PDF，客戶在線上確認。每個角色只看得到自己該看的資料，每次修改都有版本和紀錄。",
+        "category": [
+          "業務支援",
+          "生產管理",
+          "流程自動化"
+        ],
+        "unit_request": "",
+        "unit_owner": "",
+        "author": "",
+        "status": "試行中（已有一家代工客戶以三條產線試行，業務進行測試使用）",
+        "region": "台灣",
+        "problem_background": "宏全替飲料品牌代工生產，每個月都要跟客戶確認下個月每一批產品的通路包裝和棧板分配。例如同一批 975ML 麥茶，客戶可能要分成一般通路和量販通路兩種棧板紙，數量也要剛好對上產量。過去這些都靠業務用 Excel 和信件來回確認，再人工整理成正式排程 PDF；原本的靜態網頁只把資料存在瀏覽器裡，不能多人一起用，也沒有登入、客戶隔離和修改紀錄。",
+        "core_problem": "- 排程、棧板分配、正式 PDF 分散在不同檔案和信件裡，來回確認很花時間，也容易用到舊版本。\n- 客戶不能自己填分配，所有資料都要經過業務轉手輸入。\n- 生管的排程 Excel 混有其他客戶的批次和內部備註，業務要手動挑出來重打一次。\n- 沒有權限控管與修改紀錄，無法安全地讓客戶直接參與。",
+        "solution": "建立一套獨立的線上系統，分成管理員、業務、客戶三種角色。業務建立排程、客戶分配棧板紙、業務確認並產生 PDF、客戶線上確認，每一步都有狀態和版本控管，資料庫層級限制每個客戶只看得到自己的資料。生管的排程 Excel 和客戶的棧板紙料號表都可以直接上傳，系統先檢查、預覽差異，業務勾選確認後才寫入。",
+        "process": [
+          "管理員建立客戶、業務、客戶帳號，並設定每個客戶每年可以使用的產線",
+          "業務或客戶上傳棧板紙料號 Excel，建立產品與料號主檔",
+          "業務在總覽選月份，替產線建立排程，手動新增批次或上傳生管的排程 Excel",
+          "業務送出後，客戶登入替每一批分配棧板紙料號與數量，系統即時計算棧板數和是否分配完整",
+          "客戶送出後由業務審核，有問題可以附上原因退回，客戶修改後再送",
+          "業務補充包材資料後定稿，系統產生正式排程 PDF，客戶在線上確認或提出修正",
+          "每次狀態變更都會寄出通知信，並留下稽核紀錄"
+        ],
+        "features": [
+          {
+            "name": "多產線排程總覽",
+            "desc": "依客戶、年月切換，以甘特圖一次看所有產線的批次與停機事件"
+          },
+          {
+            "name": "棧板分配工作區",
+            "desc": "客戶選擇適用的棧板紙料號、輸入數量，系統即時計算棧板數並提示不相容的料號"
+          },
+          {
+            "name": "生管排程 Excel 匯入",
+            "desc": "自動找到該月份的分頁，用客戶料號代碼認出產品，略過其他客戶的資料，預覽新增／修改／刪除後再匯入"
+          },
+          {
+            "name": "棧板紙料號 Excel 匯入",
+            "desc": "一次上傳整份料號表，預覽差異後套用"
+          },
+          {
+            "name": "版本與流程控管",
+            "desc": "業務編排、客戶分配、業務審核、定稿、客戶確認，每個階段誰能改什麼都有限制，定稿版本不可更改"
+          },
+          {
+            "name": "正式排程 PDF",
+            "desc": "從資料庫直接產生，版面比照原本的紙本排程，含批次、分配明細與合計"
+          },
+          {
+            "name": "帳號與權限",
+            "desc": "管理員管理帳號、可立即停用，業務只看被指派的客戶，客戶只看自己的資料，可選用兩步驟驗證"
+          },
+          {
+            "name": "通知與稽核",
+            "desc": "狀態變更自動寄信，所有修改留下不可竄改的紀錄，支援加密備份與還原"
+          }
+        ],
+        "ai_usage": [
+          "用 Claude Code 搭配規格驅動開發（Spectra）：每個需求先討論、寫成規格與任務，再實作、測試、部署，最後封存成正式規格，需求改動有跡可循",
+          "AI 直接讀生管與客戶提供的真實 Excel 樣本，找出檔案結構（分頁、表頭、公式接續的時間、混雜的其他客戶資料），據此設計匯入規則與防呆",
+          "AI 依業務的測試回饋快速調整，例如把「本月」改成明確的月份、讀得懂手打的文字時間與全形字",
+          "AI 協助把系統行為寫成給業務與生管看的口語說明，例如生管 Excel 該怎麼調整的信件",
+          "每次修改都由 AI 執行自動測試、型別檢查與建置，確認沒有影響既有功能才部署"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "需求討論、撰寫規格、程式開發、測試與部署"
+          },
+          {
+            "name": "Spectra",
+            "desc": "規格驅動開發流程，管理每個需求的提案、設計、任務與正式規格"
+          },
+          {
+            "name": "Next.js",
+            "desc": "網站前後端"
+          },
+          {
+            "name": "Supabase",
+            "desc": "資料庫、登入驗證、資料列層級權限控管、PDF 私有儲存"
+          },
+          {
+            "name": "Vercel",
+            "desc": "網站部署與正式站託管"
+          },
+          {
+            "name": "Gmail SMTP",
+            "desc": "流程通知信"
+          }
+        ],
+        "results": [
+          "系統已上線試行，涵蓋三條產線（無菌一線、TBA 線、無菌四線）的排程、分配、PDF 定稿與客戶確認完整流程",
+          "業務完成第一波測試，並依回饋陸續新增跨月排程提示、Excel 匯入等功能",
+          "累計完成 12 個需求變更，每個都有規格紀錄",
+          "161 個自動測試，每次部署前全部通過"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "不用再來回寄信確認分配、不用手動重打生管排程，正式 PDF 由系統直接產生，減少抄錯與版本混亂"
+          },
+          {
+            "name": "對客戶",
+            "desc": "可以自己上線分配棧板紙、隨時看到最新排程與 PDF，不用等業務轉達"
+          },
+          {
+            "name": "對公司",
+            "desc": "排程與分配資料集中管理，有權限控管、版本與稽核紀錄，客戶資料彼此隔離"
+          }
+        ],
+        "extensions": [
+          "新增其他代工客戶時，只要建立帳號、設定可用產線與料號主檔即可使用",
+          "生管 Excel 匯入可以延伸到其他產線，只要補上產線辨識規則",
+          "同樣的「業務建立、客戶填寫、業務審核、定稿確認」流程，可以套用到其他需要跟客戶來回確認的文件"
+        ],
+        "limitations": [
+          "生管 Excel 必須有「客戶料號代碼」欄，系統才認得出是哪個客戶的哪個產品；目前代碼規則只設定一家客戶",
+          "匯入只適用還在業務編排中的排程，已送客戶後只能在系統逐筆修改",
+          "目前的資料庫與網站使用免費方案，正式上線前需改用公司帳號的付費方案，並把測試與正式環境分開"
+        ],
+        "success_key": "先用一家客戶、三條產線的真實資料試行，讓業務實際操作後再依回饋逐步調整；每個需求都先寫成規格再開發，加上自動測試把關，讓小步快速修改也不會破壞既有功能。",
+        "keywords": [
+          "生產排程",
+          "棧板分配",
+          "代工",
+          "OEM",
+          "客戶協作",
+          "Excel 匯入",
+          "PDF",
+          "Claude Code",
+          "規格驅動開發"
+        ]
+      },
+      "en": {
+        "title": "OEM Customer Production Schedule & Pallet Allocation System",
+        "summary": "Sales staff used to take the production planners' schedule and go back and forth with OEM customers by email and phone to confirm which pallet sheet each batch should use and how many cases go to each, then compile the official schedule PDF by hand. This system moves the whole process online: sales create a schedule by customer, month and production line (the planners' Excel can be uploaded directly), customers log in and allocate pallet sheet part numbers for each batch themselves, sales confirm and generate the official PDF with one click, and the customer confirms online. Each role sees only the data it should see, and every change is versioned and logged.",
+        "category": [
+          "Business Support",
+          "Production Management",
+          "Process Automation"
+        ],
+        "unit_request": "",
+        "unit_owner": "",
+        "author": "",
+        "status": "In trial (one OEM customer is trialing it on three production lines; sales staff are testing it)",
+        "region": "Taiwan",
+        "problem_background": "Hon Chuan produces beverages for brand owners on an OEM basis. Every month, the channel packaging and pallet allocation of each batch for the following month must be confirmed with the customer. For example, the same batch of 975 ML barley tea may be split between two pallet sheets, one for general retail and one for hypermarkets, and the quantities must add up exactly to the output. In the past, sales confirmed all of this back and forth by Excel and email, then compiled the official schedule PDF manually. The earlier static web page only stored data in the browser, so it could not be shared by multiple people and had no login, customer isolation or change history.",
+        "core_problem": "- Schedules, pallet allocations and official PDFs were scattered across files and emails; confirming back and forth took a lot of time, and outdated versions were easily used.\n- Customers could not enter allocations themselves; everything had to be re-entered by sales.\n- The planners' schedule Excel mixes in other customers' batches and internal notes, so sales had to pick out the relevant rows and retype them.\n- With no access control or change history, customers could not safely take part directly.",
+        "solution": "Build a standalone online system with three roles: administrator, sales and customer. Sales create the schedule, the customer allocates pallet sheets, sales confirm and generate the PDF, and the customer confirms online. Every step has status and version control, and database-level rules ensure each customer sees only its own data. Both the planners' schedule Excel and the customer's pallet sheet part number list can be uploaded directly; the system validates them and previews the differences, and nothing is written until sales tick and confirm.",
+        "process": [
+          "The administrator creates customers, sales accounts and customer accounts, and sets which production lines each customer may use each year",
+          "Sales or the customer upload the pallet sheet part number Excel to build the product and part number master data",
+          "Sales pick a month in the overview and create a schedule for a production line, adding batches manually or uploading the planners' schedule Excel",
+          "After sales submit, the customer logs in and allocates pallet sheet part numbers and quantities for each batch; the system calculates the pallet count in real time and shows whether the allocation is complete",
+          "After the customer submits, sales review it; if there is a problem it can be returned with a reason, and the customer revises and resubmits",
+          "Sales add packaging material details and finalize; the system generates the official schedule PDF, and the customer confirms it online or requests corrections",
+          "Every status change sends a notification email and leaves an audit record"
+        ],
+        "features": [
+          {
+            "name": "Multi-line schedule overview",
+            "desc": "Switch by customer and month, and see the batches and downtime events of all production lines at once in a Gantt chart"
+          },
+          {
+            "name": "Pallet allocation workspace",
+            "desc": "The customer selects applicable pallet sheet part numbers and enters quantities; the system calculates pallet counts in real time and flags incompatible part numbers"
+          },
+          {
+            "name": "Planner schedule Excel import",
+            "desc": "Automatically finds the sheet for the month, identifies products by customer part number code, skips other customers' data, and previews additions, changes and deletions before importing"
+          },
+          {
+            "name": "Pallet sheet part number Excel import",
+            "desc": "Upload the whole part number list at once and apply it after previewing the differences"
+          },
+          {
+            "name": "Version and workflow control",
+            "desc": "Sales scheduling, customer allocation, sales review, finalization and customer confirmation; each stage restricts who can change what, and finalized versions cannot be altered"
+          },
+          {
+            "name": "Official schedule PDF",
+            "desc": "Generated directly from the database in the layout of the original paper schedule, including batches, allocation details and totals"
+          },
+          {
+            "name": "Accounts and permissions",
+            "desc": "The administrator manages accounts and can deactivate them immediately; sales see only their assigned customers, customers see only their own data, and two-step verification is optional"
+          },
+          {
+            "name": "Notifications and audit",
+            "desc": "Status changes send emails automatically, all changes leave tamper-proof records, and encrypted backup and restore are supported"
+          }
+        ],
+        "ai_usage": [
+          "Claude Code with spec-driven development (Spectra): each requirement is discussed and written into a spec and tasks first, then implemented, tested and deployed, and finally archived as a formal spec, so requirement changes are traceable",
+          "AI read real Excel samples from the planners and the customer directly, worked out the file structure (sheets, headers, times chained by formulas, other customers' data mixed in), and designed the import rules and safeguards accordingly",
+          "AI adjusted the system quickly based on sales' test feedback, for example replacing \"this month\" with an explicit month, and reading hand-typed text times and full-width characters",
+          "AI helped write plain-language explanations of system behavior for sales and planners, such as an email on how the planners' Excel should be adjusted",
+          "For every change, AI runs the automated tests, type checks and build to confirm existing features are unaffected before deploying"
+        ],
+        "tools": [
+          {
+            "name": "Claude Code",
+            "desc": "Requirement discussion, spec writing, development, testing and deployment"
+          },
+          {
+            "name": "Spectra",
+            "desc": "Spec-driven development workflow that manages the proposal, design, tasks and formal spec of each requirement"
+          },
+          {
+            "name": "Next.js",
+            "desc": "Website front end and back end"
+          },
+          {
+            "name": "Supabase",
+            "desc": "Database, login authentication, row-level security and private PDF storage"
+          },
+          {
+            "name": "Vercel",
+            "desc": "Website deployment and production hosting"
+          },
+          {
+            "name": "Gmail SMTP",
+            "desc": "Workflow notification emails"
+          }
+        ],
+        "results": [
+          "The system is live for trial, covering the full flow of scheduling, allocation, PDF finalization and customer confirmation for three production lines (Aseptic Line 1, TBA Line and Aseptic Line 4)",
+          "Sales completed the first round of testing, and features such as cross-month schedule hints and Excel import were added based on their feedback",
+          "12 requirement changes completed so far, each with a spec record",
+          "161 automated tests, all passing before every deployment"
+        ],
+        "value": [
+          {
+            "name": "For the sales team",
+            "desc": "No more back-and-forth emails to confirm allocations and no more retyping the planners' schedule; the official PDF is generated by the system, reducing copying errors and version confusion"
+          },
+          {
+            "name": "For customers",
+            "desc": "They can allocate pallet sheets online themselves and see the latest schedule and PDF at any time, without waiting for sales to relay it"
+          },
+          {
+            "name": "For the company",
+            "desc": "Schedule and allocation data are managed centrally with access control, versioning and audit records, and each customer's data is isolated from the others"
+          }
+        ],
+        "extensions": [
+          "Other OEM customers can be added simply by creating accounts and setting their available production lines and part number master data",
+          "The planner Excel import can be extended to other production lines by adding line identification rules",
+          "The same flow of sales creating, customer filling in, sales reviewing and final confirmation can be applied to other documents that require back-and-forth confirmation with customers"
+        ],
+        "limitations": [
+          "The planners' Excel must contain a \"customer part number code\" column for the system to identify which customer and product a row belongs to; code rules are currently set up for one customer only",
+          "Import only applies to schedules still being drafted by sales; once sent to the customer, changes must be made one by one in the system",
+          "The database and website currently run on free plans; before full launch they should move to paid plans under a company account, with test and production environments separated"
+        ],
+        "success_key": "Start with a trial using real data from one customer and three production lines, let sales actually use it, then adjust step by step based on feedback. Every requirement is written as a spec before development, and automated tests guard each change, so small, fast modifications do not break existing features.",
+        "keywords": [
+          "Production Scheduling",
+          "Pallet Allocation",
+          "Contract Manufacturing",
+          "OEM",
+          "Customer Collaboration",
+          "Excel Import",
+          "PDF",
+          "Claude Code",
+          "Spec-Driven Development"
+        ]
+      }
+    }
   }
 ]
