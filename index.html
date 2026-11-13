@@ -13,6 +13,11 @@
 <link rel="icon" type="image/png" href="assets/icon-192.png" sizes="192x192" />
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
 <link rel="manifest" href="manifest.json" />
+<script>
+// 還沒輸入過入口密碼就先鎖住畫面（雜湊值要和下方 GATE_HASH 一致）
+try { if (localStorage.getItem('caseLibGate') !== '6e2a7d9e94d2e59370c57dfcafc70860c34f5a84a317bd16772f40149a6b6b17') document.documentElement.classList.add('gate-locked'); }
+catch (e) { document.documentElement.classList.add('gate-locked'); }
+</script>
 <style>
   :root {
     --bg: #f5f6f8;
@@ -605,9 +610,304 @@
   @media (pointer: coarse) and (max-width: 600px) {
     header { padding-top: 76px; }
   }
+
+  /* ===== 入口密碼畫面 ===== */
+  #gate { display: none; }
+  html.gate-locked body > :not(#gate) { display: none !important; }
+  html.gate-locked #gate {
+    display: grid;
+    grid-template-columns: minmax(0, 54%) minmax(420px, 46%);
+    min-height: 100vh;
+    min-height: 100dvh;
+    color: #112b52;
+    background: #f4f8fc;
+    overflow: hidden;
+    transition: opacity .55s ease, transform .55s ease;
+  }
+  #gate.gate-leaving { opacity: 0; transform: scale(1.03); pointer-events: none; }
+
+  .gate-brand {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    padding: clamp(30px, 5vh, 56px) clamp(32px, 5vw, 76px) 0;
+    overflow: hidden;
+    background:
+      radial-gradient(circle at 12% 6%, rgba(255,255,255,.98), transparent 36%),
+      radial-gradient(circle at 78% 78%, rgba(116,183,255,.28), transparent 46%),
+      linear-gradient(150deg, #f7fbff 0%, #e9f4ff 52%, #dcefff 100%);
+  }
+  .gate-brand::before {
+    content: "";
+    position: absolute; inset: 0; z-index: -1; opacity: .6;
+    background-image: radial-gradient(circle, rgba(59,128,213,.2) 1.3px, transparent 1.8px);
+    background-size: 22px 22px;
+    -webkit-mask-image: linear-gradient(to bottom, transparent 20%, #000 60%, transparent);
+            mask-image: linear-gradient(to bottom, transparent 20%, #000 60%, transparent);
+  }
+  .gate-blob { position: absolute; z-index: -1; border-radius: 50%; filter: blur(2px); opacity: .55; animation: gateDrift 14s ease-in-out infinite; }
+  .gate-blob.b1 { width: 230px; height: 230px; right: -70px; top: -60px; background: #ffe08a; }
+  .gate-blob.b2 { width: 150px; height: 150px; left: -50px; bottom: 16%; background: #b7f0c0; animation-delay: -5s; }
+  .gate-blob.b3 { width: 96px; height: 96px; right: 30%; top: 38%; background: #ffc6d9; animation-delay: -9s; }
+
+  .gate-lockup { display: flex; align-items: center; gap: 14px; }
+  .gate-lockup img { width: 58px; height: 58px; object-fit: contain; filter: drop-shadow(0 8px 14px rgba(20,69,139,.12)); }
+  .gate-lockup strong { display: block; color: #111c2f; font-size: 18px; letter-spacing: .16em; }
+  .gate-lockup span { display: block; margin-top: 3px; color: #4e6078; font: 10px Arial, sans-serif; letter-spacing: .42em; }
+
+  .gate-brand h1 {
+    margin: clamp(22px, 4vh, 44px) 0 0;
+    color: #0b2e64;
+    font-size: clamp(34px, 3.3vw, 56px);
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: .02em;
+    text-wrap: balance;
+  }
+  .gate-brand h1 mark {
+    color: inherit;
+    padding: 0 .12em;
+    background: linear-gradient(transparent 58%, #ffd95a 58%, #ffd95a 92%, transparent 92%);
+  }
+  .gate-desc { margin: 16px 0 0; max-width: 34em; color: #4f6785; font-size: clamp(15px, 1.1vw, 18px); line-height: 1.75; }
+
+  .gate-scene { position: relative; flex: 1; min-height: 340px; margin-top: 12px; }
+  .gate-scene::before {
+    content: "";
+    position: absolute; left: 50%; bottom: -70px; width: 120%; height: 190px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at 50% 0, rgba(255,255,255,.95), rgba(255,255,255,0) 70%);
+    transform: translateX(-50%);
+  }
+  .gate-mascot {
+    position: absolute; right: 8%; bottom: -2%; margin: 0;
+    height: min(100%, 470px); aspect-ratio: 520 / 818;
+    filter: drop-shadow(0 22px 20px rgba(30,82,140,.22));
+    animation: gateBob 3.6s ease-in-out infinite;
+    transform-origin: 50% 100%;
+  }
+  .gate-mascot img { width: 100%; height: 100%; object-fit: contain; display: block; }
+  .gate-mascot.cheer { animation: gateCheer .7s ease-in-out 2; }
+  .gate-mascot.nope { animation: gateNope .5s ease-in-out; }
+
+  .gate-bubble {
+    position: absolute; right: calc(8% + min(300px, 31vw)); bottom: 56%;
+    max-width: min(300px, 46%);
+    padding: 14px 18px;
+    border-radius: 20px 20px 4px 20px;
+    color: #0b2e64; background: #fff;
+    font-size: 16px; font-weight: 700; line-height: 1.55;
+    box-shadow: 0 14px 34px rgba(35,75,122,.16);
+    animation: gatePop .45s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  .gate-bubble.warn { color: #b3261e; background: #fff4f2; }
+  .gate-bubble.ok { color: #1c6b2c; background: #f0fbf1; }
+
+  .gate-chip {
+    position: absolute;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 14px; font-weight: 700; white-space: nowrap;
+    box-shadow: 0 10px 22px rgba(35,75,122,.13);
+    animation: gateFloat 5s ease-in-out infinite;
+  }
+  .gate-chip.c1 { left: 2%;  bottom: 18%; color: #1d4ea8; background: #e3eeff; --r: -6deg; }
+  .gate-chip.c2 { left: 26%; bottom: 6%;  color: #8a5a00; background: #fff1c4; --r: 4deg;  animation-delay: -1.2s; }
+  .gate-chip.c3 { left: 6%;  bottom: 80%; color: #1c6b2c; background: #dff6e2; --r: 5deg;  animation-delay: -2.4s; }
+  .gate-chip.c4 { right: 2%; bottom: 86%; color: #a3305c; background: #ffe3ec; --r: -4deg; animation-delay: -3.1s; }
+  .gate-chip.c5 { left: 36%; bottom: 90%; color: #5b3aa8; background: #ece5ff; --r: -3deg; animation-delay: -4s; }
+
+  .gate-panel {
+    display: grid; place-items: center;
+    padding: clamp(24px, 5vh, 60px) clamp(22px, 4vw, 64px);
+    background: linear-gradient(145deg, #f9fbfe, #f1f6fb);
+  }
+  .gate-card {
+    position: relative;
+    width: min(100%, 500px);
+    padding: clamp(34px, 6vh, 56px) clamp(26px, 3.4vw, 50px) 30px;
+    border: 1px solid rgba(255,255,255,.95);
+    border-radius: 26px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgba(35,75,122,.12);
+  }
+  .gate-card::before {
+    content: "";
+    position: absolute; left: 26px; right: 26px; top: 0; height: 5px;
+    border-radius: 0 0 6px 6px;
+    background: linear-gradient(90deg, #0d5bd7, #52a94f 55%, #ffc93c);
+  }
+  .gate-card.shake { animation: gateShake .45s ease-in-out; }
+  .gate-lang { position: absolute; top: 18px; right: 20px; display: flex; border: 1.5px solid #d5dfeb; border-radius: 999px; overflow: hidden; }
+  .gate-lang button { padding: 5px 12px; border: 0; color: #5b6f8b; background: #fff; font-size: 13px; font-weight: 700; cursor: pointer; }
+  .gate-lang button.active { color: #fff; background: #0d5bd7; }
+  .gate-head { text-align: center; }
+  .gate-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 13px; border-radius: 999px;
+    color: #1c6b2c; background: #e9f8eb; border: 1px solid #c4eac9;
+    font-size: 13px; font-weight: 700; letter-spacing: .06em;
+  }
+  .gate-badge i { width: 7px; height: 7px; border-radius: 50%; background: #52a94f; box-shadow: 0 0 0 4px rgba(82,169,79,.18); animation: gatePulse 1.8s ease-in-out infinite; }
+  .gate-head h2 { margin: 18px 0 0; color: #071f48; font-size: clamp(28px, 2.3vw, 36px); font-weight: 800; letter-spacing: .04em; }
+  .gate-head p { margin: 12px 0 28px; color: #6f809a; font-size: 15px; line-height: 1.6; }
+  .gate-form label { display: block; margin-bottom: 10px; color: #071f48; font-size: 15px; font-weight: 700; }
+  .gate-field {
+    display: flex; align-items: center; height: 62px; padding: 0 8px 0 16px;
+    border: 1.5px solid #cfdbe8; border-radius: 14px; background: #fff;
+    transition: border-color .2s, box-shadow .2s;
+  }
+  .gate-field:focus-within { border-color: #4a88dc; box-shadow: 0 0 0 4px rgba(27,105,213,.1); }
+  .gate-field.invalid { border-color: #d55763; box-shadow: 0 0 0 4px rgba(213,87,99,.09); }
+  .gate-field svg { width: 22px; height: 22px; flex: 0 0 auto; fill: none; stroke: #718099; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .gate-field input {
+    flex: 1; min-width: 0; height: 100%; padding: 0 12px;
+    border: 0; outline: 0; background: transparent;
+    color: #071f48; font: inherit; font-size: 17px; letter-spacing: .08em;
+  }
+  .gate-field input::placeholder { color: #a2adbc; letter-spacing: 0; }
+  .gate-eye { display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 10px; color: #6f7e95; background: transparent; cursor: pointer; }
+  .gate-eye:hover { color: #0d5bd7; background: #f1f6fd; }
+  .gate-eye svg { grid-area: 1 / 1; stroke: currentColor; }
+  .gate-eye .eye-closed, .gate-eye[aria-pressed="true"] .eye-open { display: none; }
+  .gate-eye[aria-pressed="true"] .eye-closed { display: block; }
+  .gate-error { min-height: 22px; margin: 8px 2px 10px; color: #c83c4d; font-size: 14px; }
+  .gate-submit {
+    position: relative; display: flex; align-items: center; justify-content: center; gap: 10px;
+    width: 100%; height: 62px; overflow: hidden;
+    border: 0; border-radius: 14px;
+    color: #fff; background: linear-gradient(100deg, #1668e3 0%, #0643a5 100%);
+    box-shadow: 0 12px 24px rgba(13,81,188,.22);
+    font: inherit; font-size: 18px; font-weight: 800; letter-spacing: .08em;
+    cursor: pointer; transition: transform .18s, box-shadow .18s;
+  }
+  .gate-submit::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(115deg, transparent 25%, rgba(255,255,255,.26) 50%, transparent 75%);
+    transform: translateX(-120%); transition: transform .6s;
+  }
+  .gate-submit:hover { transform: translateY(-2px); box-shadow: 0 16px 28px rgba(13,81,188,.28); }
+  .gate-submit:hover::before { transform: translateX(120%); }
+  .gate-submit:active { transform: translateY(0) scale(.99); }
+  .gate-submit:disabled { opacity: .75; cursor: default; }
+  .gate-submit svg { width: 20px; height: 20px; fill: none; stroke: #ffe08a; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; transition: transform .2s; }
+  .gate-submit:hover svg { transform: translateX(4px); }
+  .gate-foot { margin-top: 30px; text-align: center; color: #718099; }
+  .gate-foot p { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 0; font-size: 13px; }
+  .gate-foot svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+  .gate-foot small { display: block; margin-top: 8px; font-size: 12px; color: #94a1b5; }
+  #gate :focus-visible { outline: 3px solid rgba(13,91,215,.4); outline-offset: 2px; }
+  #gate .gate-field input:focus-visible { outline: 0; }
+
+  .gate-confetti { position: fixed; inset: 0; z-index: 5; pointer-events: none; overflow: hidden; }
+  .gate-confetti i {
+    position: absolute; top: -16px; width: 10px; height: 16px; border-radius: 3px;
+    animation: gateConfetti var(--d, 1.4s) cubic-bezier(.2,.6,.4,1) var(--delay, 0s) forwards;
+  }
+
+  @keyframes gateBob { 0%,100% { transform: translateY(0) rotate(-1.2deg); } 50% { transform: translateY(-14px) rotate(1.2deg); } }
+  @keyframes gateCheer { 0%,100% { transform: translateY(0) scale(1); } 40% { transform: translateY(-34px) scale(1.04, .98); } 70% { transform: translateY(0) scale(.98, 1.03); } }
+  @keyframes gateNope { 0%,100% { transform: rotate(0); } 25% { transform: rotate(-5deg); } 75% { transform: rotate(5deg); } }
+  @keyframes gateFloat { 0%,100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-10px) rotate(var(--r, 0deg)); } }
+  @keyframes gateDrift { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(14px,-18px) scale(1.08); } }
+  @keyframes gatePop { from { opacity: 0; transform: scale(.7) translateY(10px); } to { opacity: 1; transform: none; } }
+  @keyframes gatePulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.35); } }
+  @keyframes gateShake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-10px); } 40% { transform: translateX(9px); } 60% { transform: translateX(-6px); } 80% { transform: translateX(4px); } }
+  @keyframes gateConfetti { to { transform: translate(var(--x, 0), 105vh) rotate(var(--rot, 540deg)); opacity: .9; } }
+
+  @media (max-width: 1180px) {
+    .gate-chip.c2, .gate-chip.c5 { display: none; }
+    .gate-mascot { right: 2%; }
+    .gate-bubble { right: calc(2% + min(290px, 30vw)); }
+  }
+  @media (max-width: 860px) {
+    html.gate-locked #gate { display: block; overflow: visible; background: linear-gradient(160deg, #e6f3ff, #f8fbff 45%, #eaf5ff); }
+    .gate-brand { padding: 22px 20px 0; background: transparent; overflow: visible; }
+    .gate-brand::before, .gate-blob.b3, .gate-chip { display: none; }
+    .gate-lockup img { width: 44px; height: 44px; }
+    .gate-lockup strong { font-size: 15px; }
+    .gate-brand h1 { margin-top: 18px; font-size: clamp(26px, 7.4vw, 36px); }
+    .gate-desc { margin-top: 10px; font-size: 14px; }
+    .gate-scene { display: flex; align-items: flex-end; justify-content: center; gap: 6px; min-height: 0; height: 150px; margin-top: 8px; }
+    .gate-scene::before { display: none; }
+    .gate-mascot { position: relative; right: auto; bottom: auto; order: 2; height: 150px; flex: 0 0 auto; margin-bottom: -18px; z-index: 2; }
+    .gate-bubble { position: relative; right: auto; bottom: auto; order: 1; max-width: 220px; margin-bottom: 38px; padding: 11px 14px; font-size: 14px; }
+    .gate-panel { padding: 0 16px 28px; background: transparent; }
+    .gate-card { padding: 54px 22px 24px; border-radius: 22px; }
+    .gate-head p { margin-bottom: 22px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    #gate *, #gate *::before, #gate *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  }
 </style>
 </head>
 <body>
+
+<div id="gate">
+  <section class="gate-brand" aria-labelledby="gateTitle">
+    <i class="gate-blob b1" aria-hidden="true"></i>
+    <i class="gate-blob b2" aria-hidden="true"></i>
+    <i class="gate-blob b3" aria-hidden="true"></i>
+    <div class="gate-lockup">
+      <img src="assets/gate-logo.png" alt="THC" />
+      <div>
+        <strong id="gateCorp">宏全國際集團</strong>
+        <span>THC GROUP</span>
+      </div>
+    </div>
+    <h1 id="gateTitle"></h1>
+    <p class="gate-desc" id="gateDesc"></p>
+    <div class="gate-scene">
+      <span class="gate-chip c1" aria-hidden="true"></span>
+      <span class="gate-chip c2" aria-hidden="true"></span>
+      <span class="gate-chip c3" aria-hidden="true"></span>
+      <span class="gate-chip c4" aria-hidden="true"></span>
+      <span class="gate-chip c5" aria-hidden="true"></span>
+      <div class="gate-bubble" id="gateBubble" aria-hidden="true"></div>
+      <figure class="gate-mascot" id="gateMascot" aria-hidden="true">
+        <img src="assets/gate-mascot.webp" alt="" width="520" height="818" />
+      </figure>
+    </div>
+  </section>
+
+  <section class="gate-panel">
+    <div class="gate-card" id="gateCard">
+      <div class="gate-lang" role="group" aria-label="語言 Language">
+        <button type="button" data-gate-lang="zh" lang="zh-Hant">中文</button>
+        <button type="button" data-gate-lang="en" lang="en">EN</button>
+      </div>
+      <div class="gate-head">
+        <span class="gate-badge"><i aria-hidden="true"></i><span id="gateBadge"></span></span>
+        <h2 id="gateHeading"></h2>
+        <p id="gateHint"></p>
+      </div>
+      <form class="gate-form" id="gateForm" novalidate>
+        <label for="gatePassword" id="gateLabel"></label>
+        <div class="gate-field" id="gateField">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+          <input id="gatePassword" type="password" autocomplete="current-password" autocapitalize="none" spellcheck="false" aria-describedby="gateError" />
+          <button type="button" class="gate-eye" id="gateEye" aria-pressed="false">
+            <svg class="eye-open" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"></path><circle cx="12" cy="12" r="2.5"></circle></svg>
+            <svg class="eye-closed" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3l18 18M10.6 6.2A10.8 10.8 0 0 1 12 6c6.5 0 10 6 10 6a17 17 0 0 1-2 2.7M6.4 6.5C3.5 8.2 2 12 2 12s3.5 6 10 6c1.1 0 2.2-.2 3.1-.5"></path></svg>
+          </button>
+        </div>
+        <p class="gate-error" id="gateError" role="alert" aria-live="polite"></p>
+        <button class="gate-submit" id="gateSubmit" type="submit">
+          <span id="gateSubmitText"></span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg>
+        </button>
+      </form>
+      <div class="gate-foot">
+        <p>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l8 3v6c0 5-3.4 8-8 9-4.6-1-8-4-8-9V6l8-3Z"></path><path d="m9 12 2 2 4-4"></path></svg>
+          <span id="gateFootNote"></span>
+        </p>
+        <small>© <span id="gateYear"></span> THC Group. All rights reserved.</small>
+      </div>
+    </div>
+  </section>
+</div>
 
 <section id="listView">
   <header>
@@ -1479,7 +1779,226 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-load();
+// ===== 入口密碼畫面 =====
+// 這只是擋住隨手點進來的人的簡單門檻：程式裡只放密碼的雜湊值，不放密碼本身。
+// 要換密碼：在終端機執行  printf 'thc-case-repo:新密碼' | shasum -a 256
+// 把結果貼到下面的 GATE_HASH，並同步改 <head> 裡那一行的同一串值。
+const GATE_KEY = 'caseLibGate';
+const GATE_SALT = 'thc-case-repo:';
+const GATE_HASH = '6e2a7d9e94d2e59370c57dfcafc70860c34f5a84a317bd16772f40149a6b6b17';
+
+const GATE_TEXT = {
+  zh: {
+    corp: '宏全國際集團',
+    title: '宏全 AI 應用<br><mark>推動案例庫</mark>',
+    desc: '大家用 AI 和自動化工具解決工作問題的好點子，都收在這裡。',
+    chips: ['🤖 流程自動化', '📊 資料分析', '🏭 生產管理', '🛠️ 小工具', '✅ 品保流程'],
+    badge: '宏全同仁專屬',
+    heading: '歡迎來逛逛！',
+    hint: '輸入通關密碼，就能看到所有案例',
+    label: '通關密碼',
+    placeholder: '請輸入通關密碼',
+    show: '顯示密碼',
+    hide: '隱藏密碼',
+    submit: '進入案例庫',
+    checking: '確認中…',
+    footNote: '內部分享・僅供宏全同仁使用',
+    bubbleHello: '嗨！輸入通關密碼，一起來看大家的 AI 好點子 ✨',
+    bubbleEmpty: '先輸入通關密碼，我才能幫你開門喔！',
+    bubbleWrong: '哎呀，密碼不對，再試一次吧！',
+    bubbleOk: '答對了，歡迎光臨！🎉',
+    errEmpty: '請輸入通關密碼',
+    errWrong: '密碼不正確，請再試一次',
+    errUnsupported: '這個瀏覽器無法驗證密碼，請改用 Chrome、Edge 或 Safari 開啟',
+  },
+  en: {
+    corp: 'Hon Chuan Group',
+    title: 'Hon Chuan AI<br><mark>Case Library</mark>',
+    desc: 'Great ideas from colleagues who solved real work problems with AI and automation, all in one place.',
+    chips: ['🤖 Automation', '📊 Data Analysis', '🏭 Production', '🛠️ Utility Tools', '✅ QA Workflow'],
+    badge: 'For Hon Chuan staff',
+    heading: 'Welcome!',
+    hint: 'Enter the passcode to see all the cases',
+    label: 'Passcode',
+    placeholder: 'Enter the passcode',
+    show: 'Show passcode',
+    hide: 'Hide passcode',
+    submit: 'Enter the library',
+    checking: 'Checking…',
+    footNote: 'Internal sharing · Hon Chuan staff only',
+    bubbleHello: 'Hi! Enter the passcode and come see everyone’s AI ideas ✨',
+    bubbleEmpty: 'Type the passcode first and I’ll open the door!',
+    bubbleWrong: 'Oops, that’s not it. Try again!',
+    bubbleOk: 'That’s it, welcome in! 🎉',
+    errEmpty: 'Please enter the passcode',
+    errWrong: 'Incorrect passcode, please try again',
+    errUnsupported: 'This browser cannot verify the passcode. Please use Chrome, Edge or Safari.',
+  },
+};
+
+let gateBubbleState = 'Hello';
+let gateErrorKey = '';
+
+function gateText() { return GATE_TEXT[currentLang] || GATE_TEXT.zh; }
+
+function gateSetBubble(state) {
+  gateBubbleState = state;
+  const bubble = document.getElementById('gateBubble');
+  bubble.textContent = gateText()['bubble' + state];
+  bubble.className = 'gate-bubble' + (state === 'Wrong' || state === 'Empty' ? ' warn' : state === 'Ok' ? ' ok' : '');
+  // 重新觸發彈出動畫
+  bubble.style.animation = 'none';
+  void bubble.offsetWidth;
+  bubble.style.animation = '';
+}
+
+function gateSetError(key) {
+  gateErrorKey = key;
+  document.getElementById('gateError').textContent = key ? gateText()[key] : '';
+  document.getElementById('gateField').classList.toggle('invalid', !!key);
+}
+
+function gateRenderText() {
+  const t = gateText();
+  document.getElementById('gateCorp').textContent = t.corp;
+  document.getElementById('gateTitle').innerHTML = t.title;
+  document.getElementById('gateDesc').textContent = t.desc;
+  document.querySelectorAll('.gate-chip').forEach((el, i) => { el.textContent = t.chips[i] || ''; });
+  document.getElementById('gateBadge').textContent = t.badge;
+  document.getElementById('gateHeading').textContent = t.heading;
+  document.getElementById('gateHint').textContent = t.hint;
+  document.getElementById('gateLabel').textContent = t.label;
+  document.getElementById('gatePassword').placeholder = t.placeholder;
+  document.getElementById('gateSubmitText').textContent = t.submit;
+  document.getElementById('gateFootNote').textContent = t.footNote;
+  const eye = document.getElementById('gateEye');
+  eye.setAttribute('aria-label', eye.getAttribute('aria-pressed') === 'true' ? t.hide : t.show);
+  document.querySelectorAll('[data-gate-lang]').forEach(btn => {
+    const on = btn.dataset.gateLang === currentLang;
+    btn.classList.toggle('active', on);
+    btn.setAttribute('aria-pressed', String(on));
+  });
+  document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-Hant';
+  document.getElementById('gateBubble').textContent = t['bubble' + gateBubbleState];
+  if (gateErrorKey) document.getElementById('gateError').textContent = t[gateErrorKey];
+}
+
+async function gateDigest(password) {
+  const bytes = new TextEncoder().encode(GATE_SALT + password);
+  const buf = await crypto.subtle.digest('SHA-256', bytes);
+  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+function gateRestartAnimation(el, cls) {
+  el.classList.remove(cls);
+  void el.offsetWidth;
+  el.classList.add(cls);
+}
+
+function gateConfetti() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const colors = ['#0d5bd7', '#52a94f', '#ffc93c', '#ff8a3d', '#ff7aa8', '#7c5cff'];
+  const box = document.createElement('div');
+  box.className = 'gate-confetti';
+  for (let i = 0; i < 60; i++) {
+    const p = document.createElement('i');
+    p.style.left = (Math.random() * 100) + '%';
+    p.style.background = colors[i % colors.length];
+    p.style.setProperty('--x', (Math.random() * 240 - 120) + 'px');
+    p.style.setProperty('--rot', (Math.random() * 900 - 450) + 'deg');
+    p.style.setProperty('--d', (1.1 + Math.random() * 0.9) + 's');
+    p.style.setProperty('--delay', (Math.random() * 0.25) + 's');
+    if (i % 3 === 0) p.style.borderRadius = '50%';
+    box.appendChild(p);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => box.remove(), 2400);
+}
+
+function gateUnlock() {
+  try { localStorage.setItem(GATE_KEY, GATE_HASH); } catch (e) { /* 存不了就只開放這一次 */ }
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const gate = document.getElementById('gate');
+  gateSetBubble('Ok');
+  gateRestartAnimation(document.getElementById('gateMascot'), 'cheer');
+  gateConfetti();
+  setTimeout(() => gate.classList.add('gate-leaving'), reduced ? 0 : 900);
+  setTimeout(() => {
+    document.documentElement.classList.remove('gate-locked');
+    gate.remove();
+    window.scrollTo(0, 0);
+    load();
+  }, reduced ? 50 : 1450);
+}
+
+function setupGate() {
+  document.getElementById('gateYear').textContent = new Date().getFullYear();
+  gateRenderText();
+
+  const input = document.getElementById('gatePassword');
+  const eye = document.getElementById('gateEye');
+  const submit = document.getElementById('gateSubmit');
+
+  document.querySelectorAll('[data-gate-lang]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentLang = btn.dataset.gateLang;
+      try { localStorage.setItem('caseLibLang', currentLang); } catch (e) {}
+      gateRenderText();
+    });
+  });
+
+  eye.addEventListener('click', () => {
+    const show = eye.getAttribute('aria-pressed') !== 'true';
+    eye.setAttribute('aria-pressed', String(show));
+    eye.setAttribute('aria-label', show ? gateText().hide : gateText().show);
+    input.type = show ? 'text' : 'password';
+    input.focus();
+  });
+
+  input.addEventListener('input', () => {
+    if (gateErrorKey) gateSetError('');
+    if (gateBubbleState !== 'Hello') gateSetBubble('Hello');
+  });
+
+  document.getElementById('gateForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    if (submit.disabled) return;
+    const password = input.value.trim();
+    const fail = (errKey, bubble) => {
+      gateSetError(errKey);
+      gateSetBubble(bubble);
+      gateRestartAnimation(document.getElementById('gateCard'), 'shake');
+      gateRestartAnimation(document.getElementById('gateMascot'), 'nope');
+      input.focus();
+      input.select();
+    };
+    if (!password) { fail('errEmpty', 'Empty'); return; }
+    if (!(window.crypto && crypto.subtle)) { fail('errUnsupported', 'Wrong'); return; }
+
+    submit.disabled = true;
+    document.getElementById('gateSubmitText').textContent = gateText().checking;
+    let ok = false;
+    try { ok = (await gateDigest(password)) === GATE_HASH; } catch (err) { console.error(err); }
+    if (ok) {
+      gateSetError('');
+      gateUnlock();
+    } else {
+      submit.disabled = false;
+      document.getElementById('gateSubmitText').textContent = gateText().submit;
+      fail('errWrong', 'Wrong');
+    }
+  });
+
+  input.focus();
+}
+
+if (document.documentElement.classList.contains('gate-locked')) {
+  setupGate();
+} else {
+  const gate = document.getElementById('gate');
+  if (gate) gate.remove();
+  load();
+}
 </script>
 
 </body>
