@@ -16069,5 +16069,343 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-069",
+    "number": 69,
+    "updated": "2026.11",
+    "url": "https://thc-insight.vercel.app",
+    "video": [],
+    "screenshots": [
+      "assets/thc-insight-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "THC 情報中心：月報週報整合與業績分析平台",
+        "summary": "將分散於 Excel 的業務月報、飲料代工週報及業績統計表，整合成依單位與課別授權查閱的內部平台。主管可從總覽圖表掌握銷售與預算達成、查詢客戶及歷月開發進度，並直接核對原始文字與來源位置。AI 協助整理進度、問題與下一步，正式金額由程式計算，讓報告查閱與管理更集中且可追溯。",
+        "category": [
+          "資料整合與分析",
+          "內部管理工具",
+          "業務支援"
+        ],
+        "unit_request": "總管理處",
+        "unit_owner": "數位發展部",
+        "author": "徐喬奎",
+        "status": "正式上線（2026-11-12 已發布 v1.5.3）",
+        "region": "台灣內部應用；其他地區的網路可用性與資料管理要求需另行確認",
+        "problem_background": "不同單位使用各自的 Excel 報告格式，客戶銷售、開發進度、預算與直接交易資料分散在不同月份及工作表。主管查閱時需要反覆開啟檔案，才能了解同一客戶的歷月變化；原表累計與逐月加總的差異、空白金額及缺少客戶代號等情況，也容易在彙整時失去原始脈絡。",
+        "core_problem": "- 跨月、跨報告查詢不便，客戶業績與開發進度難以一起追蹤。\n- 月報、週報與業績統計表的期間及計算口徑不同，不能直接混加。\n- 原文空白、來源差異與客戶身分尚未對應，需要保留並清楚揭露。\n- 不同主管與單位的閱讀、上傳及覆核範圍不同，需要由後端落實權限。",
+        "solution": "建立以客戶與原始來源為核心的網頁平台，各單位保有獨立報告空間，業三月報與飲料代工週報採不同解析及呈現方式。匯入時檢查期間、可見內容、來源版本與金額，查閱時提供總覽、客戶歷程及業績分析，並以差額摘要及來源內容協助核對。AI 整理結果與原文並列，保留依據，不取代正式計算及人工判斷。",
+        "process": [
+          "需求與來源盤點：確認報告格式、使用者查閱需求、課別及權限範圍",
+          "唯讀解析與檢查：解析可見工作表及資料列，略過隱藏內容，檢查期間、缺值與格式異常",
+          "預覽與匯入：確認筆數與提醒，依檔案指紋及版本規則去重，原檔保存在私有儲存空間",
+          "資料核對：比對月報當期加總、所選月份月報填列累計及業績統計表當期小計，分別揭露差異",
+          "AI 進度整理：以授權可見的原文整理進度、問題及下一步，附來源依據後保存至平台",
+          "授權查閱與覆核：主管透過圖表、清單與客戶明細查閱，具覆核權限的人員補充確認與說明",
+          "驗證與發布：執行測試、建置及介面檢查，確認正式部署與入口存取限制"
+        ],
+        "features": [
+          {
+            "name": "多單位報告空間",
+            "desc": "業三部管理月報與飲料代工週報獨立解析、授權及呈現"
+          },
+          {
+            "name": "業務總覽",
+            "desc": "提供單月與年度銷售、同期比較、各課表現、主要客戶與開發紀錄趨勢"
+          },
+          {
+            "name": "業績 Dashboard",
+            "desc": "顯示預算與實績、各課橫條比較及達成率，支援單月與累計切換、金額提示及差異標記"
+          },
+          {
+            "name": "差異說明",
+            "desc": "直接顯示月報計算值、來源填列值、差額及可核對的來源明細，區分月報內部核對與業績統計表核對"
+          },
+          {
+            "name": "客戶與開發歷程",
+            "desc": "整合銷售、歷月進度與原文節錄，展開後可查完整內容及報告位置"
+          },
+          {
+            "name": "直接交易分析",
+            "desc": "依產品、出貨廠及交易明細查閱，缺少客戶編號時顯示「無客戶代號」"
+          },
+          {
+            "name": "AI 進度摘要",
+            "desc": "呈現已保存的最新進度、問題與下一步，保留原文依據及期間限制"
+          },
+          {
+            "name": "報告管理與覆核",
+            "desc": "提供管理者上傳、版本去重、解析提醒及可追溯的覆核說明"
+          },
+          {
+            "name": "帳號與權限管理",
+            "desc": "依角色、單位及課別限制閱讀、上傳與管理權限，支援一般帳號另授資料覆核權"
+          },
+          {
+            "name": "電腦與手機閱讀",
+            "desc": "清單分頁、圖表查值、原文節錄及適合窄螢幕的版面"
+          }
+        ],
+        "ai_usage": [
+          "開發協作：透過 ChatGPT／Codex 協助釐清需求、分析報表、開發功能、檢查資料及整理驗證紀錄",
+          "報告內容整理：以對話方式整理經授權的可見原文，產出最新進度、問題及下一步，經來源驗證後保存回平台",
+          "來源追溯：摘要保留報告與原文依據，未寫明的進度或成果不補造，建議與原文事實分開呈現",
+          "人機分工：AI 不計算正式金額、不決定存取權限，也不自動確認客戶對應或將計畫視為已完成"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT／Codex",
+            "desc": "需求整理、開發協作、報表檢查與對話進度摘要"
+          },
+          {
+            "name": "Next.js、React、TypeScript",
+            "desc": "平台介面、查詢流程及伺服器端功能"
+          },
+          {
+            "name": "ExcelJS",
+            "desc": "解析 Excel 報告及保留來源位置"
+          },
+          {
+            "name": "Decimal.js",
+            "desc": "金額運算與差異核對，避免以 AI 推算正式數字"
+          },
+          {
+            "name": "Supabase",
+            "desc": "資料庫、帳號驗證、資料列權限與私有原檔儲存"
+          },
+          {
+            "name": "Vercel",
+            "desc": "網站部署；使用 THC 團隊下的 monthly-weekly-report-system 專案"
+          },
+          {
+            "name": "GitHub",
+            "desc": "程式、規格與版本紀錄同步"
+          },
+          {
+            "name": "Vitest 與 TypeScript",
+            "desc": "功能、金額、權限及型別檢查"
+          }
+        ],
+        "results": [
+          "已建立並正式發布 THC 情報中心，提供業三月報與飲料代工週報查閱",
+          "依 2026-11-12 驗證紀錄，已匯入並核對 59 份報告，包含 2025 年 12 份業三月報、2026 年 1～10 月共 10 份業三月報及 37 份飲料代工週報",
+          "已提供各課實績／預算與達成率比較、差額對照、來源內容追溯、空白計 0 註記及無客戶代號顯示",
+          "已保存 277 組對話進度摘要及 1,286 筆來源依據；此為該次驗證數量，不代表客戶家數或已完成案件數",
+          "v1.5.3 通過 350 項測試、型別及正式建置；進度原文節錄已以合成資料驗證電腦與手機閱讀",
+          "尚未量測導入後的實際工時節省、使用率或營收影響，不填列推估成效"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "集中查閱客戶銷售與開發進度，減少跨檔案尋找資料的步驟"
+          },
+          {
+            "name": "對主管",
+            "desc": "同一介面比較各課預算達成與歷月變化，直接查看差額與來源依據"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立可追溯、可控權限的報告資料基礎，支援後續擴充與交接維護"
+          }
+        ],
+        "extensions": [
+          "以共用登入、權限、原檔保存及來源追溯機制，擴充其他單位的獨立報告空間",
+          "為不同 Excel 格式增加專用解析器、期間規則及驗證流程，不直接套用既有銷售口徑",
+          "將具來源依據的進度摘要流程延伸至其他例行報告及專案追蹤",
+          "依管理需求增加分析指標；跨單位彙整前，先確認幣別、期間、單位與資料粒度一致"
+        ],
+        "limitations": [
+          "平台需登入並取得授權，網站連結不代表任何人均可閱讀內部資料",
+          "原始 Excel 保持唯讀；隱藏工作表、列與欄不解析、不索引、不覆核，也不送交 AI",
+          "空白金額計算時可用 0 代入，但保留空白標記；缺少整份報告或月份不當作 0",
+          "相同客戶名稱或相同行號不代表同一客戶；尚未確認的身分對應與差異原因需人工核對",
+          "網站上傳不會自動使用 ChatGPT／Codex 對話額度或啟動外部付費 AI；目前新增外部 AI 分析維持關閉",
+          "既有摘要仍須符合來源閱讀權限、可見狀態及截止期間；不能把歷史摘要當成最新進度",
+          "目前支援已驗證的報表格式；其他單位格式、正式資料人工覆核及資料庫還原演練仍需後續處理",
+          "案例若對外展示，截圖應使用合成資料或經核准遮蔽的內容，不公開真實客戶、金額、原始報表與帳號資訊"
+        ],
+        "success_key": "先確立來源、期間與權限，再做圖表與 AI 整理。保留原文與版本，不以總額相同掩蓋缺值，也不以 AI 摘要取代事實。透過單位獨立、功能模組化與可追溯驗證，讓平台可以逐步擴充並持續維護。",
+        "keywords": [
+          "THC情報中心",
+          "月報週報管理",
+          "Excel整合",
+          "業績Dashboard",
+          "預算達成",
+          "客戶歷程",
+          "開發進度",
+          "資料核對",
+          "來源追溯",
+          "權限管理",
+          "AI摘要",
+          "Codex",
+          "Vercel",
+          "Supabase"
+        ]
+      },
+      "en": {
+        "title": "THC Intelligence Center: Monthly/Weekly Report Integration & Sales Performance Analytics Platform",
+        "summary": "Consolidates Excel-based sales monthly reports, beverage OEM weekly reports and performance statistics into an internal platform with access controlled by department and section. Managers can follow sales and budget attainment from overview charts, look up customers and their month-by-month development progress, and check the original text and its source location directly. AI helps summarize progress, issues and next steps, while official amounts are calculated by code, making report review and management more centralized and traceable.",
+        "category": [
+          "Data Integration & Analysis",
+          "Internal Management Tools",
+          "Business Support"
+        ],
+        "unit_request": "General Administration Office",
+        "unit_owner": "Digital Development Department",
+        "author": "Hsu Chiao-Kuei",
+        "status": "Live (v1.5.3 released on 2026-11-12)",
+        "region": "Internal use in Taiwan; network availability and data management requirements for other regions must be confirmed separately",
+        "problem_background": "Each department uses its own Excel report format, and customer sales, development progress, budgets and direct-transaction data are scattered across different months and worksheets. Managers had to open file after file to understand how a single customer changed month by month, and differences between a sheet's cumulative figure and the sum of its months, blank amounts and missing customer codes easily lost their original context during consolidation.",
+        "core_problem": "- Searching across months and reports is inconvenient, so customer performance and development progress are hard to track together.\n- Monthly reports, weekly reports and performance statistics use different periods and calculation bases and cannot simply be added together.\n- Blank source text, source discrepancies and unmatched customer identities must be preserved and clearly disclosed.\n- Managers and departments have different reading, uploading and review scopes, so permissions must be enforced on the back end.",
+        "solution": "Build a web platform centered on customers and original sources, giving each department its own report space, with the Sales Dept. III monthly reports and the beverage OEM weekly reports parsed and presented differently. On import, the period, visible content, source version and amounts are checked; for review, the platform offers an overview, customer history and performance analysis, and supports verification with difference summaries and source content. AI-generated summaries sit alongside the original text with their evidence, and do not replace official calculations or human judgment.",
+        "process": [
+          "Requirement and source inventory: confirm report formats, users' review needs, sections and permission scope",
+          "Read-only parsing and checks: parse visible worksheets and rows, skip hidden content, and check periods, missing values and format anomalies",
+          "Preview and import: confirm record counts and warnings, de-duplicate by file fingerprint and version rules, and keep original files in private storage",
+          "Data reconciliation: compare the monthly report's current-period total, the cumulative figure filled in for the selected month and the performance statistics' current-period subtotal, disclosing each difference separately",
+          "AI progress summarization: summarize progress, issues and next steps from authorized visible text, and save them to the platform with source evidence",
+          "Authorized review and verification: managers review via charts, lists and customer details, and staff with review permission add confirmations and notes",
+          "Verification and release: run tests, build and UI checks, and confirm production deployment and entry access restrictions"
+        ],
+        "features": [
+          {
+            "name": "Multi-department report spaces",
+            "desc": "Sales Dept. III monthly reports and beverage OEM weekly reports are parsed, authorized and presented independently"
+          },
+          {
+            "name": "Sales overview",
+            "desc": "Monthly and annual sales, year-over-year comparison, section performance, key customers and development record trends"
+          },
+          {
+            "name": "Performance dashboard",
+            "desc": "Shows budget vs. actual, section bar comparisons and attainment rates, with monthly/cumulative switching, amount tooltips and difference flags"
+          },
+          {
+            "name": "Difference explanation",
+            "desc": "Shows the calculated monthly value, the source-filled value, the difference and verifiable source details, distinguishing monthly-report internal checks from performance-statistics checks"
+          },
+          {
+            "name": "Customer & development history",
+            "desc": "Combines sales, month-by-month progress and original-text excerpts; expand to see full content and report location"
+          },
+          {
+            "name": "Direct-transaction analysis",
+            "desc": "Browse by product, shipping plant and transaction details; shows \"No customer code\" when a customer number is missing"
+          },
+          {
+            "name": "AI progress summaries",
+            "desc": "Shows the latest saved progress, issues and next steps, keeping original-text evidence and period limits"
+          },
+          {
+            "name": "Report management & review",
+            "desc": "Administrator upload, version de-duplication, parsing warnings and traceable review notes"
+          },
+          {
+            "name": "Account & permission management",
+            "desc": "Limits reading, uploading and management by role, department and section, and lets ordinary accounts be granted data-review rights"
+          },
+          {
+            "name": "Desktop & mobile reading",
+            "desc": "Paginated lists, chart value lookup, text excerpts and a layout suited to narrow screens"
+          }
+        ],
+        "ai_usage": [
+          "Development collaboration: ChatGPT/Codex helps clarify requirements, analyze reports, develop features, check data and compile verification records",
+          "Report content summarization: authorized visible text is summarized in conversation into the latest progress, issues and next steps, which are saved back to the platform after source verification",
+          "Source traceability: summaries keep the report and original-text evidence; progress or results not stated in the source are never invented, and suggestions are presented separately from source facts",
+          "Human–AI division of labor: AI does not calculate official amounts, decide access permissions, automatically confirm customer matches or treat plans as completed"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT/Codex",
+            "desc": "Requirement clarification, development collaboration, report checking and conversational progress summaries"
+          },
+          {
+            "name": "Next.js, React, TypeScript",
+            "desc": "Platform UI, query flows and server-side features"
+          },
+          {
+            "name": "ExcelJS",
+            "desc": "Parsing Excel reports while preserving source locations"
+          },
+          {
+            "name": "Decimal.js",
+            "desc": "Amount calculation and difference checking, so official figures are never inferred by AI"
+          },
+          {
+            "name": "Supabase",
+            "desc": "Database, authentication, row-level permissions and private storage of original files"
+          },
+          {
+            "name": "Vercel",
+            "desc": "Website deployment, using the monthly-weekly-report-system project under the THC team"
+          },
+          {
+            "name": "GitHub",
+            "desc": "Syncing code, specifications and version history"
+          },
+          {
+            "name": "Vitest and TypeScript",
+            "desc": "Functional, amount, permission and type checks"
+          }
+        ],
+        "results": [
+          "THC Intelligence Center has been built and officially released, providing access to Sales Dept. III monthly reports and beverage OEM weekly reports",
+          "According to the 2026-11-12 verification record, 59 reports were imported and reconciled: 12 Sales Dept. III monthly reports for 2025, 10 for January–October 2026, and 37 beverage OEM weekly reports",
+          "Delivers section actual/budget and attainment comparisons, difference reconciliation, source-content tracing, blank-counted-as-0 notes and \"No customer code\" display",
+          "277 conversation progress summaries and 1,286 source-evidence records are saved; these are the counts at that verification and do not represent the number of customers or completed cases",
+          "v1.5.3 passed 350 tests, type checks and the production build; progress text excerpts were verified for desktop and mobile reading using synthetic data",
+          "Actual time savings, adoption or revenue impact after rollout have not yet been measured, so no estimated benefits are listed"
+        ],
+        "value": [
+          {
+            "name": "For sales units",
+            "desc": "Customer sales and development progress in one place, with fewer steps hunting across files"
+          },
+          {
+            "name": "For managers",
+            "desc": "Compare each section's budget attainment and month-over-month changes in one interface, with differences and source evidence directly visible"
+          },
+          {
+            "name": "For the company",
+            "desc": "Builds a traceable, permission-controlled foundation for report data, supporting future expansion and handover"
+          }
+        ],
+        "extensions": [
+          "Extend to other departments' independent report spaces using the shared login, permissions, original-file storage and source-tracing mechanisms",
+          "Add dedicated parsers, period rules and verification flows for different Excel formats, rather than reusing the existing sales basis directly",
+          "Extend the evidence-backed progress summarization flow to other routine reports and project tracking",
+          "Add analysis metrics as management needs arise; before consolidating across departments, first confirm that currency, period, unit and data granularity are consistent"
+        ],
+        "limitations": [
+          "The platform requires login and authorization; having the link does not mean anyone can read internal data",
+          "Original Excel files stay read-only; hidden worksheets, rows and columns are not parsed, indexed, reviewed or sent to AI",
+          "Blank amounts can be calculated as 0 but keep a blank marker; a missing whole report or month is not treated as 0",
+          "The same customer name or row number does not mean the same customer; unconfirmed identity matches and causes of differences need manual checking",
+          "Uploading on the site does not automatically use ChatGPT/Codex conversation quota or start external paid AI; new external AI analysis is currently switched off",
+          "Existing summaries must still respect source reading permissions, visibility and cut-off periods; historical summaries must not be treated as the latest progress",
+          "Only verified report formats are supported; other departments' formats, manual review of production data and database restore drills still need follow-up",
+          "If the case is shown externally, screenshots should use synthetic or approved masked content and must not expose real customers, amounts, original reports or account information"
+        ],
+        "success_key": "Establish sources, periods and permissions first, then build charts and AI summarization. Keep the original text and versions, never let matching totals hide missing values, and never let AI summaries replace facts. With department independence, modular features and traceable verification, the platform can grow step by step and remain maintainable.",
+        "keywords": [
+          "THC Intelligence Center",
+          "Monthly/weekly report management",
+          "Excel integration",
+          "Sales performance dashboard",
+          "Budget attainment",
+          "Customer history",
+          "Development progress",
+          "Data reconciliation",
+          "Source traceability",
+          "Permission management",
+          "AI summaries",
+          "Codex",
+          "Vercel",
+          "Supabase"
+        ]
+      }
+    }
   }
 ]
