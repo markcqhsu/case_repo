@@ -17647,5 +17647,219 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-075",
+    "number": 75,
+    "updated": "2026.11",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/press-machine-repair-ai-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "壓模機生產異常查修 AI 建議系統",
+        "summary": "塑蓋壓模機出現異常時，維修人員可以用現場用語描述症狀，也可以直接輸入警報碼或零件料號。例如詢問「轉盤開機時無法定位，以前怎麼處理？」，即可查找過去的處理紀錄、零件及來源。遇到需要整理多筆資料的問題，系統可用 AI 協助彙整，供人員對照當前機況，決定下一步要查什麼。",
+        "category": [
+          "生產管理",
+          "工程管理",
+          "內部管理工具"
+        ],
+        "unit_request": "",
+        "unit_owner": "海外技術處",
+        "author": "張佳揚",
+        "status": "已有可供測試的系統版本；正式上線與現場導入範圍待確認",
+        "region": "",
+        "problem_background": "壓模機面板顯示的是警報碼，交班人員描述的是現象，維修紀錄留下的往往是零件名稱與處理結果。即使同一問題曾經發生，接手的人仍要把這些線索對起來，才能找到值得參考的案例。",
+        "core_problem": "當人員只知道一個症狀、一組代碼或一個零件名稱時，如何快速找到相關紀錄，同時分辨「上次做過什麼」與「這台機器還需要確認什麼」？",
+        "solution": "把維修案例、零件條目、作業文件索引與警報資料放進同一個查詢介面。代碼或料號有明確對應時，系統直接列出來源內容。症狀描述可能對應數筆資料時，則提供候選紀錄或請人員補充線索。需要綜合說明時，再把相關內容交給模型整理。",
+        "process": [
+          "維修人員輸入機台顯示的警報碼，或描述哪個部位、在什麼情況下發生異常",
+          "系統比對知識庫，列出符合的警報、案例或零件；若出現多個候選項目，人員可補充完整代碼或部位再查",
+          "人員閱讀來源記載的處理方式、日期或料號，需要時再提問，比較不同案例的條件",
+          "現場人員核對機型、實際狀況及現行作業程序，再決定檢查或處置方式"
+        ],
+        "features": [
+          {
+            "name": "警報查詢",
+            "desc": "依四位故障碼或警報名稱查找說明、來源記載的處置及資料出處"
+          },
+          {
+            "name": "維修案例查詢",
+            "desc": "用症狀或部位查找過去的處理紀錄，並對照當時使用的零件"
+          },
+          {
+            "name": "零件查詢",
+            "desc": "用料號找相關條目，在有紀錄時核對規格或原廠料號"
+          },
+          {
+            "name": "管理與統計",
+            "desc": "管理者可檢視知識庫、對話紀錄與使用統計，作為補充資料的依據"
+          }
+        ],
+        "ai_usage": [
+          "檢索增強生成（RAG）：系統先挑出與提問相關的紀錄，再讓模型依據這些內容整理回答；能直接從知識庫回答的問題可省去生成步驟",
+          "本機與雲端回答：在裝置及設定支援時，可使用瀏覽器內的模型整理資料；需要雲端生成時，則經後端呼叫已設定的 AI 服務"
+        ],
+        "tools": [
+          {
+            "name": "React、TypeScript",
+            "desc": "建立瀏覽器查詢介面與管理後台"
+          },
+          {
+            "name": "JSON 知識庫",
+            "desc": "保存可比對的案例、零件、文件索引與警報條目，以及各筆來源識別碼"
+          },
+          {
+            "name": "Node.js、Express",
+            "desc": "提供查詢服務所需的後端 API，並銜接雲端模型；專案提供 Google Cloud Run 部署設定"
+          },
+          {
+            "name": "Google Apps Script、Google 試算表",
+            "desc": "支援帳號、模型設定與使用紀錄管理"
+          }
+        ],
+        "results": [
+          "本機專案版本收錄 129 筆維修知識條目，包括 56 筆維修案例、72 筆零件條目及 1 筆作業文件索引，另收錄 287 筆警報資料",
+          "以「轉盤開機時無法定位」為例，2025 年 1 月 7 日的紀錄載明，當時更換了刮刀轉盤的定位軸承（正心輪），料號為 140064407；人員可用這筆資料核對部位與備品，再判斷是否適用於本次異常"
+        ],
+        "value": [
+          {
+            "name": "對維修人員",
+            "desc": "從現象、代碼或料號都能開始查詢，交班時也能指出參考的是哪一筆紀錄"
+          },
+          {
+            "name": "對設備主管",
+            "desc": "可用同一筆案例與不同班別討論，指出缺少的機型、規格或處理結果，作為補登紀錄的依據"
+          },
+          {
+            "name": "對公司",
+            "desc": "把個別維修經驗保留下來，供其他人員查閱與訓練；實際節省的查找時間與停機時數，仍需現場量測"
+          }
+        ],
+        "extensions": [
+          "擴充至其他機型時，可沿用查詢介面，另行整理該機型的警報手冊、維修紀錄及零件對照",
+          "可挑選常見異常作為交班訓練題，請不同班別查找相同問題，記錄是否找到正確來源及所需時間"
+        ],
+        "limitations": [
+          "查詢從人員輸入的症狀或警報開始；本案例驗證範圍限於既有資料查詢，機台即時監測與故障預測成效尚未查證",
+          "歷史案例可能缺少機型或規格，警報定義也須核對機台手冊版本；實際拆裝、調整與復機應依現行核准程序，由具資格人員執行",
+          "使用雲端 AI 前，應確認問題與引用紀錄符合公司資料使用規範，避免輸入個資或未經授權的製程資訊"
+        ],
+        "success_key": "每筆資料都要能回答「這是哪一次、哪個部位、當時怎麼處理、出處在哪裡」。保留現場慣用名稱及原始料號，讓下一班找得到同一筆紀錄。缺少機型或規格時，明確標出待確認之處，才能讓人員判斷這段經驗是否適用。",
+        "keywords": [
+          "塑蓋壓模機",
+          "生產異常",
+          "設備查修",
+          "警報碼",
+          "維修案例",
+          "零件料號",
+          "知識庫",
+          "檢索增強生成"
+        ]
+      },
+      "en": {
+        "title": "AI Repair Suggestion System for Press Molding Machine Production Faults",
+        "summary": "When a plastic cap press molding machine has a fault, maintenance staff can describe the symptom in shop-floor language, or enter an alarm code or part number directly. For example, asking \"the turntable cannot position at start-up, how was it handled before?\" retrieves past handling records, parts and their sources. For questions that need several records pulled together, the system can use AI to compile them, so staff can compare against the machine's current condition and decide what to check next.",
+        "category": [
+          "Production Management",
+          "Engineering Management",
+          "Internal Management Tools"
+        ],
+        "unit_request": "",
+        "unit_owner": "Overseas Technical Division",
+        "author": "Chang Chia-Yang",
+        "status": "A testable version of the system exists; official go-live and the scope of on-site rollout are to be confirmed",
+        "region": "",
+        "problem_background": "The press molding machine panel shows alarm codes, the handover staff describe symptoms, and maintenance records often only note part names and the result of the work. Even if the same problem has happened before, the person taking over still has to match these clues up before finding a case worth referring to.",
+        "core_problem": "When someone knows only a symptom, a code or a part name, how can they quickly find the related records, while telling apart \"what was done last time\" from \"what still needs to be confirmed on this machine\"?",
+        "solution": "Put maintenance cases, part entries, an index of work documents and alarm data into one lookup interface. When a code or part number has a clear match, the system lists the source content directly. When a symptom description may match several records, it offers candidate records or asks the user for more clues. When a combined explanation is needed, the relevant content is handed to a model to organize.",
+        "process": [
+          "Maintenance staff enter the alarm code shown on the machine, or describe which part has the fault and under what conditions",
+          "The system searches the knowledge base and lists matching alarms, cases or parts; if there are several candidates, the user can add the full code or part and search again",
+          "Staff read the handling method, date or part number in the source, and ask further questions if needed to compare the conditions of different cases",
+          "On-site staff check the machine model, the actual condition and the current operating procedure before deciding how to inspect or handle it"
+        ],
+        "features": [
+          {
+            "name": "Alarm lookup",
+            "desc": "Find explanations, the handling recorded in the source and the data origin by four-digit fault code or alarm name"
+          },
+          {
+            "name": "Maintenance case lookup",
+            "desc": "Find past handling records by symptom or part, and compare with the parts used at the time"
+          },
+          {
+            "name": "Part lookup",
+            "desc": "Find related entries by part number, and check the specification or original manufacturer part number where recorded"
+          },
+          {
+            "name": "Management and statistics",
+            "desc": "Administrators can view the knowledge base, conversation logs and usage statistics as a basis for adding material"
+          }
+        ],
+        "ai_usage": [
+          "Retrieval-augmented generation (RAG): the system first selects records related to the question, then has a model compile an answer from them; questions that the knowledge base can answer directly skip the generation step",
+          "Local and cloud answers: where the device and settings support it, a model inside the browser can be used to compile the data; when cloud generation is needed, the back end calls the configured AI service"
+        ],
+        "tools": [
+          {
+            "name": "React, TypeScript",
+            "desc": "Build the browser lookup interface and admin console"
+          },
+          {
+            "name": "JSON knowledge base",
+            "desc": "Stores the cases, parts, document index and alarm entries that can be matched, with a source identifier for each"
+          },
+          {
+            "name": "Node.js, Express",
+            "desc": "Provide the back-end API for the lookup service and connect to the cloud model; the project includes Google Cloud Run deployment settings"
+          },
+          {
+            "name": "Google Apps Script, Google Sheets",
+            "desc": "Support management of accounts, model settings and usage logs"
+          }
+        ],
+        "results": [
+          "The local project version contains 129 maintenance knowledge entries, including 56 maintenance cases, 72 part entries and 1 work-document index, plus 287 alarm records",
+          "Taking \"the turntable cannot position at start-up\" as an example, the record of 7 January 2025 states that the positioning bearing of the scraper turntable (centering wheel) was replaced, with part number 140064407; staff can use this record to check the location and spare part, then judge whether it applies to the current fault"
+        ],
+        "value": [
+          {
+            "name": "For maintenance staff",
+            "desc": "They can start a lookup from a symptom, a code or a part number, and at handover can name which record was referred to"
+          },
+          {
+            "name": "For equipment supervisors",
+            "desc": "The same case can be discussed with different shifts, pointing out missing machine models, specifications or results as a basis for completing records"
+          },
+          {
+            "name": "For the company",
+            "desc": "Keeps individual maintenance experience for other staff to look up and train with; the lookup time and downtime actually saved still need to be measured on site"
+          }
+        ],
+        "extensions": [
+          "When extending to other machine models, the lookup interface can be reused, with that model's alarm manual, maintenance records and part cross-references organized separately",
+          "Common faults can be chosen as handover training questions, asking different shifts to look up the same problem and recording whether they found the correct source and how long it took"
+        ],
+        "limitations": [
+          "Lookups start from the symptom or alarm the user enters; the verified scope of this case is limited to lookup of existing data, and the effect of real-time machine monitoring and fault prediction has not been verified",
+          "Historical cases may lack a machine model or specification, and alarm definitions must be checked against the machine manual version; actual disassembly, adjustment and restart must follow the currently approved procedure and be carried out by qualified personnel",
+          "Before using cloud AI, confirm that the questions and the records cited comply with company data-use rules, and avoid entering personal data or unauthorized process information"
+        ],
+        "success_key": "Every record must answer \"which occurrence, which part, how it was handled then, and where the source is\". Keep the names used on the floor and the original part numbers so the next shift can find the same record. When the machine model or specification is missing, mark clearly what is to be confirmed, so staff can judge whether the experience applies.",
+        "keywords": [
+          "Plastic cap press molding machine",
+          "Production fault",
+          "Equipment repair lookup",
+          "Alarm code",
+          "Maintenance case",
+          "Part number",
+          "Knowledge base",
+          "Retrieval-augmented generation"
+        ]
+      }
+    }
   }
 ]
