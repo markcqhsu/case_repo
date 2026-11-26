@@ -16958,5 +16958,217 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-072",
+    "number": 72,
+    "updated": "2026.11",
+    "url": "https://sites.google.com/view/gvgas/full-page-embed",
+    "video": [],
+    "screenshots": [
+      "assets/gv-calculator-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "小蘇打粉及檸檬酸顆粒 GV 值換算系統",
+        "summary": "針對飲料與食品碳酸化製程及實驗測試需求，將標準「GV 值（氣體體積比）對照表」數位化並結合化學計量公式，打造互動式網頁換算工具。使用者只需輸入液體容量、水溫與目標 GV 值（或錶壓 PSI），即可精準計算小蘇打粉與檸檬酸顆粒的配比克數及對應平衡壓力，大幅降低人工查表與手算誤差。",
+        "category": [
+          "小工具",
+          "業務支援",
+          "資料整合與分析"
+        ],
+        "unit_request": "",
+        "unit_owner": "",
+        "author": "張百瑞",
+        "status": "已完成測試版本",
+        "region": "台灣",
+        "problem_background": "在進行碳酸飲料開發、包材耐壓測試或小規模碳酸化實驗時，現場人員與業務常需依據不同水溫與目標含氣量（GV 值），計算反應所需的小蘇打粉（碳酸氫鈉）與檸檬酸顆粒用量。傳統作業高度仰賴紙本或 Excel 查表，再搭配計算機進行化學莫耳數換算，流程繁瑣且容易出錯。",
+        "core_problem": "- 傳統《GV 值對照表》橫跨 6.5°C 至 33.5°C、10 至 65 PSI 共超過 3,000 筆數據，人工比對費時且極易看錯行列。\n- 遇到非整數水溫或非整數 GV 值時，缺乏即時線性內插工具，只能粗略估算導致含氣量不準。\n- 需同時考量無水檸檬酸與一水檸檬酸的分子量差異，手算配方比例容易產生誤差。",
+        "solution": "將標準《GV 值對照表》（6.5°C–33.5°C × 10–65 PSI）完整內建於單頁式網頁應用程式中，結合雙線性內插演算法與碳酸氫鈉／檸檬酸化學計量公式，提供「輸入 GV 算用量」與「輸入壓力查 GV」雙向即時換算介面，並附上可點擊帶入數值的互動式標準對照表。",
+        "process": [
+          "彙整與校驗原始《GV 值對照表》（P1 與 P2 工作表，共 55 個溫度階與 56 個壓力階數據）",
+          "建立標準狀態（STP）下 CO₂ 氣體體積與小蘇打粉、檸檬酸（無水／一水）的化學反應計量模型",
+          "透過 AI 輔助開發互動式前端網頁，實作雙向計算邏輯、單位轉換（PSI / Bar / kgf/cm²）與雙線性內插功能",
+          "設計可篩選、可點擊帶入的標準對照表介面並完成數值驗證測試"
+        ],
+        "features": [
+          {
+            "name": "雙向即時換算模式",
+            "desc": "支援「輸入目標 GV 值算原料克數與壓力」及「輸入壓力錶 PSI 反查 GV 值與原料用量」兩種模式"
+          },
+          {
+            "name": "雙線性內插精準計算",
+            "desc": "內建 6.5°C–33.5°C（每 0.5°C）與 10–65 PSI（每 1 PSI）完整標準矩陣，輸入小數點水溫或 GV 值亦可精準推算"
+          },
+          {
+            "name": "檸檬酸規格切換",
+            "desc": "支援「無水檸檬酸」與「一水檸檬酸」分子量自動切換，精準計算小蘇打粉與檸檬酸顆粒配比"
+          },
+          {
+            "name": "多單位壓力同步顯示",
+            "desc": "自動換算並同步顯示 PSI、Bar 與 kgf/cm² 三種常用壓力單位"
+          },
+          {
+            "name": "互動式標準對照表",
+            "desc": "完整呈現 P1 與 P2 原始對照數據，支援溫度與壓力篩選，點擊任一數據格即可直接帶入計算機"
+          }
+        ],
+        "ai_usage": [
+          "透過 AI 解析原始 Excel 對照表結構並自動檢測異常數值，轉換為網頁可直接運算的標準化資料矩陣",
+          "利用 AI 快速生成具備響應式介面、化學計量邏輯與雙線性內插演算法的完整前端網頁程式碼",
+          "藉由 AI 協助整理案例結構並產出中英雙語技術說明文件"
+        ],
+        "tools": [
+          {
+            "name": "Gemini（AI 輔助開發）",
+            "desc": "解析 Excel 數據、驗證化學計量公式並生成完整互動式網頁程式碼"
+          },
+          {
+            "name": "HTML / CSS / JavaScript",
+            "desc": "建構免安裝、跨裝置可離線開啟的單頁式網頁計算工具"
+          },
+          {
+            "name": "Python（pandas）",
+            "desc": "前期讀取與清理 Excel《GV 值對照表》數據"
+          }
+        ],
+        "results": [
+          "成功將超過 3,000 筆 GV 對照數據轉化為秒級查詢與自動配比計算的網頁工具，大幅縮短配方計算時間",
+          "單一 HTML 檔案即可在電腦或手機瀏覽器離線運行，無需額外架設後端伺服器即可供業務與技術人員隨身使用"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "在客戶現場溝通包材耐壓規格或碳酸飲品含氣量需求時，可即時試算並展示標準依據，提升專業度與溝通效率"
+          },
+          {
+            "name": "對客戶",
+            "desc": "獲得更精準、透明的碳酸化數據與測試配比參考，縮短打樣與規格確認週期"
+          },
+          {
+            "name": "對公司",
+            "desc": "將散落的 Excel 經驗表格轉化為可重複使用的數位標準工具，降低人為計算失誤並加速內部知識沉澱"
+          }
+        ],
+        "extensions": [
+          "可延伸擴充其他氣體（如氮氣 N₂ 混合氣）或不同飲料糖度（Brix）對 CO₂ 溶解度的修正係數計算",
+          "同樣的「Excel 對照表轉互動計算網頁」模式，可快速複製至包材耐壓測試、吹瓶參數換算或原料成本試算等業務場景"
+        ],
+        "limitations": [
+          "內建對照表適用水溫範圍為 6.5°C 至 33.5°C、錶壓範圍為 10 至 65 PSI，超出此範圍將無法進行查表換算",
+          "化學計量結果為理論反應克數，實際密閉容器產氣時需預留頂部空間（Headspace）並注意容器耐壓安全上限"
+        ],
+        "success_key": "完整保留並校驗第一線人員習慣使用的標準《GV 值對照表》作為計算基準，確保數據與既有作業標準完全一致；採用純前端單檔網頁架構，兼顧操作直覺性與現場離線使用的便利性。",
+        "keywords": [
+          "GV值換算",
+          "碳酸化",
+          "小蘇打粉",
+          "檸檬酸",
+          "CO2溶解度",
+          "配方計算",
+          "數位工具"
+        ]
+      },
+      "en": {
+        "title": "GV Value Conversion System for Baking Soda and Citric Acid Granules",
+        "summary": "For carbonation processes and lab testing of beverages and foods, the standard GV value (gas volume ratio) reference table was digitized and combined with stoichiometric formulas into an interactive web conversion tool. The user enters the liquid volume, water temperature and the target GV value (or gauge pressure in PSI), and the tool calculates the grams of baking soda and citric acid granules and the corresponding equilibrium pressure, greatly reducing errors from manual table lookup and hand calculation.",
+        "category": [
+          "Utility Tools",
+          "Business Support",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "",
+        "unit_owner": "",
+        "author": "Chang Pai-Jui",
+        "status": "Test version completed",
+        "region": "Taiwan",
+        "problem_background": "When developing carbonated drinks, testing the pressure resistance of packaging, or running small-scale carbonation experiments, floor staff and sales often need to calculate the amounts of baking soda (sodium bicarbonate) and citric acid granules needed for a given water temperature and target carbonation level (GV value). The traditional method relies heavily on paper or Excel lookup tables followed by a calculator for mole conversions, which is cumbersome and error-prone.",
+        "core_problem": "- The traditional GV reference table spans 6.5°C to 33.5°C and 10 to 65 PSI, with more than 3,000 data points; checking by hand is slow and it is very easy to read the wrong row or column.\n- For non-integer water temperatures or GV values there was no instant linear interpolation tool, so only rough estimates were possible and the carbonation level was inaccurate.\n- The difference in molecular weight between anhydrous and monohydrate citric acid has to be taken into account, so hand-calculated recipe ratios easily contain errors.",
+        "solution": "The complete standard GV reference table (6.5°C–33.5°C × 10–65 PSI) is built into a single-page web application, combined with a bilinear interpolation algorithm and the stoichiometric formulas for sodium bicarbonate and citric acid. It offers two-way instant conversion, \"enter GV to get amounts\" and \"enter pressure to look up GV\", plus an interactive standard reference table whose cells can be clicked to fill in values.",
+        "process": [
+          "Compile and verify the original GV reference table (sheets P1 and P2, with 55 temperature steps and 56 pressure steps)",
+          "Build a stoichiometric model of CO₂ gas volume at standard conditions (STP) and the reaction of baking soda and citric acid (anhydrous / monohydrate)",
+          "Develop the interactive front-end page with AI assistance, implementing the two-way calculation logic, unit conversion (PSI / Bar / kgf/cm²) and bilinear interpolation",
+          "Design the filterable, click-to-fill reference table interface and complete numerical verification tests"
+        ],
+        "features": [
+          {
+            "name": "Two-way instant conversion",
+            "desc": "Supports both \"enter the target GV to get ingredient grams and pressure\" and \"enter the gauge pressure in PSI to look up GV and ingredient amounts\""
+          },
+          {
+            "name": "Accurate bilinear interpolation",
+            "desc": "Built-in full standard matrix of 6.5°C–33.5°C (every 0.5°C) and 10–65 PSI (every 1 PSI); decimal temperatures or GV values are also calculated accurately"
+          },
+          {
+            "name": "Citric acid type switch",
+            "desc": "Automatically switches the molecular weight between anhydrous and monohydrate citric acid to calculate the baking soda and citric acid granule ratio accurately"
+          },
+          {
+            "name": "Multi-unit pressure display",
+            "desc": "Automatically converts and shows PSI, Bar and kgf/cm², the three common pressure units, at the same time"
+          },
+          {
+            "name": "Interactive reference table",
+            "desc": "Shows the original P1 and P2 data in full, with temperature and pressure filters; click any cell to load it directly into the calculator"
+          }
+        ],
+        "ai_usage": [
+          "AI parsed the structure of the original Excel reference table and automatically detected abnormal values, converting it into a standardized data matrix the web page can compute with directly",
+          "AI quickly generated complete front-end page code with a responsive interface, stoichiometric logic and a bilinear interpolation algorithm",
+          "AI helped organize the case structure and produce bilingual Chinese–English technical documentation"
+        ],
+        "tools": [
+          {
+            "name": "Gemini (AI-assisted development)",
+            "desc": "Parsing the Excel data, verifying the stoichiometric formulas and generating the complete interactive page code"
+          },
+          {
+            "name": "HTML / CSS / JavaScript",
+            "desc": "Building an install-free single-page calculator that opens offline on any device"
+          },
+          {
+            "name": "Python (pandas)",
+            "desc": "Reading and cleaning the Excel GV reference table data at the start"
+          }
+        ],
+        "results": [
+          "Turned more than 3,000 GV reference data points into a web tool with instant lookup and automatic ratio calculation, greatly shortening recipe calculation time",
+          "A single HTML file runs offline in a computer or phone browser, with no backend server required, so sales and technical staff can carry it with them"
+        ],
+        "value": [
+          {
+            "name": "For sales units",
+            "desc": "When discussing packaging pressure specifications or carbonation requirements with customers on site, they can calculate instantly and show the standard behind the figures, improving professionalism and communication efficiency"
+          },
+          {
+            "name": "For customers",
+            "desc": "More accurate and transparent carbonation data and trial ratios as a reference, shortening the sampling and specification confirmation cycle"
+          },
+          {
+            "name": "For the company",
+            "desc": "Turns scattered Excel experience tables into a reusable digital standard tool, reducing human calculation errors and speeding up internal knowledge accumulation"
+          }
+        ],
+        "extensions": [
+          "Can be extended to calculate correction factors for other gases (such as N₂ gas mixtures) or for the effect of different beverage sugar levels (Brix) on CO₂ solubility",
+          "The same \"Excel reference table to interactive calculator page\" pattern can be quickly copied to scenarios such as packaging pressure testing, blow-molding parameter conversion or raw material cost estimation"
+        ],
+        "limitations": [
+          "The built-in table covers water temperatures of 6.5°C to 33.5°C and gauge pressures of 10 to 65 PSI; conversion by table lookup is not possible outside this range",
+          "The stoichiometric results are theoretical grams; in an actual sealed container, headspace must be left and the container's pressure safety limit observed"
+        ],
+        "success_key": "Fully keeping and verifying the standard GV reference table that front-line staff are used to as the calculation basis, so the data matches existing operating standards exactly; and using a pure front-end single-file page architecture that balances intuitive operation with the convenience of offline use on site.",
+        "keywords": [
+          "GV value conversion",
+          "Carbonation",
+          "Baking soda",
+          "Citric acid",
+          "CO2 solubility",
+          "Recipe calculation",
+          "Digital tool"
+        ]
+      }
+    }
   }
 ]
