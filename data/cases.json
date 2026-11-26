@@ -17170,5 +17170,269 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-073",
+    "number": 73,
+    "updated": "2026.11",
+    "url": "https://script.google.com/macros/s/AKfycbzbNUMLfluzCzii0Z8gRUEAM85AmK0sUf6oj-j16Yih1Yk1ehWlYwRaGAp96lK3kbl6qQ/exec",
+    "video": [],
+    "screenshots": [
+      "assets/preform-packing-estimator-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "瓶胚／空瓶包裝數量與裝載配置預估工具",
+        "summary": "為工廠生管、包裝人員、倉管與採購製作的互動式網頁工具。使用者輸入瓶身、紙箱、棧板或貨櫃尺寸，即可估算紙箱裝瓶量、純棧板堆疊數量或貨櫃箱／籠裝載數，並查看俯視與側視排列示意，協助包裝規劃與數量初估。",
+        "category": [
+          "小工具",
+          "生產管理",
+          "業務支援"
+        ],
+        "unit_request": "研發技術處",
+        "unit_owner": "研發技術處",
+        "author": "洪欣妤",
+        "status": "已完成可操作的網頁版本，並備有 Google Apps Script 部署程式；正式上線狀態待確認",
+        "region": "不限地區；適用於使用公制尺寸規劃瓶胚或空瓶包裝的工廠",
+        "problem_background": "生管、包裝、倉管與採購在規劃瓶胚或空瓶的包裝及搬運時，需要依瓶型、包裝容器和堆疊限制估算可裝數量。若以人工逐項換算不同尺寸與排列方向，過程較繁複，也不容易快速比較紙箱、棧板與貨櫃配置。",
+        "core_problem": "如何讓使用者以一致、容易操作的方式輸入尺寸，快速取得可供初步規劃的裝載數量與排列資訊，並在輸入不合理或高度不足時提供提醒。",
+        "solution": "製作一個支援手機與桌機的網頁計算工具，依包裝模式切換所需欄位，使用幾何尺寸與整數排列方式進行容量預估，並將結果與配置圖同步呈現。工具另提供 Google Apps Script 版本，供部署為網頁應用程式使用。",
+        "process": [
+          "確認使用情境與輸入條件，規劃紙箱、純棧板及貨櫃三種模式",
+          "使用 HTML、CSS 與 JavaScript 建立尺寸表單、模式切換、計算邏輯與警示訊息",
+          "依使用者回饋逐步調整瓶型、排列方式、板材規格、裝櫃單位及結果示意",
+          "整理 Google Apps Script 所需檔案與部署說明，方便部署使用"
+        ],
+        "features": [
+          {
+            "name": "紙箱包裝",
+            "desc": "輸入瓶身、外箱及箱壁／內襯尺寸，估算每層支數、瓶層數與每箱支數"
+          },
+          {
+            "name": "純棧板包裝",
+            "desc": "支援空瓶直接堆板，估算每層支數、每板層數及每板總支數"
+          },
+          {
+            "name": "貨櫃模式",
+            "desc": "以完整箱或籠為單位，依箱／籠及貨櫃尺寸估算每層數量、堆疊層數與每櫃總數"
+          },
+          {
+            "name": "瓶型與排列",
+            "desc": "支援圓瓶、方瓶及長方瓶；圓瓶比較整齊與交錯排列，純棧板模式的長方瓶固定以長邊對齊棧板短邊"
+          },
+          {
+            "name": "板材規格",
+            "desc": "純棧板模式可輸入上蓋板與隔層紙板尺寸及厚度，並將板材厚度納入堆高估算"
+          },
+          {
+            "name": "排列示意",
+            "desc": "提供俯視及側視配置圖，協助理解平面排列與堆疊方式"
+          },
+          {
+            "name": "提醒與匯出",
+            "desc": "對不合理尺寸或超出可用高度顯示提醒；計算完成後可開啟列印視窗，另存結果為 PDF"
+          },
+          {
+            "name": "響應式介面",
+            "desc": "支援手機與桌機瀏覽，並提供清除重填與範例資料"
+          }
+        ],
+        "ai_usage": [
+          "協助把使用者描述的包裝計算需求整理成欄位、模式及估算規則",
+          "協助產生並修改 HTML、CSS、JavaScript 與 Google Apps Script 版本程式",
+          "根據使用者逐次提出的需求，迭代調整計算邏輯、提示文字、排列示意與 PDF 列印版面"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "協助整理需求、撰寫程式及依回饋修改功能"
+          },
+          {
+            "name": "HTML",
+            "desc": "建立網頁結構與輸入表單"
+          },
+          {
+            "name": "CSS",
+            "desc": "設計企業內部工具風格及手機、桌機版面"
+          },
+          {
+            "name": "JavaScript",
+            "desc": "處理尺寸驗證、數量估算、排列圖及列印功能"
+          },
+          {
+            "name": "Google Apps Script",
+            "desc": "提供可部署為網頁應用程式的版本"
+          }
+        ],
+        "results": [
+          "建立具紙箱、純棧板與貨櫃模式的包裝數量預估網頁",
+          "可依不同瓶型及裝載單位顯示數量結果與俯視、側視配置示意",
+          "提供本機使用版本及 GAS 部署所需程式檔案",
+          "提供計算結果的列印與另存 PDF 選項"
+        ],
+        "value": [
+          {
+            "name": "對業務單位",
+            "desc": "以尺寸輸入及即時計算協助初步包裝規劃，減少重複手動換算"
+          },
+          {
+            "name": "對客戶",
+            "desc": "目前定位為工廠內部規劃工具；如需對客戶提供估算，仍應由相關人員確認實際包裝條件"
+          },
+          {
+            "name": "對公司",
+            "desc": "將常見尺寸估算流程整理為可重複使用的工具，並提供後續部署與功能擴充基礎"
+          }
+        ],
+        "extensions": [
+          "可依不同瓶型、箱型、棧板規格及貨櫃尺寸調整預設值與使用說明",
+          "可延伸加入公司核准的包裝規格、常用尺寸範本或估算結果紀錄功能"
+        ],
+        "limitations": [
+          "計算結果為幾何容量預估，實際使用仍須確認瓶身尺寸、包材公差、承重、支撐、堆疊穩定性及搬運條件",
+          "貨櫃模式以箱／籠外部尺寸估算，不代表已檢核櫃門通過條件、實際裝櫃作業或承重限制",
+          "預估數量不取代現場試裝及包裝工程確認",
+          "正式 GAS 上線網址、權限設定及實際使用成效尚待補充確認"
+        ],
+        "success_key": "將實際作業情境拆解為清楚的輸入欄位與計算模式，並透過使用者逐步回饋修正排列方向、材料規格與結果呈現，使工具能貼近工廠包裝規劃流程。",
+        "keywords": [
+          "瓶胚",
+          "空瓶",
+          "包裝數量估算",
+          "紙箱",
+          "棧板",
+          "貨櫃",
+          "排列示意",
+          "Google Apps Script",
+          "AI 輔助開發"
+        ]
+      },
+      "en": {
+        "title": "Preform / Empty Bottle Packing Quantity and Loading Layout Estimator",
+        "summary": "An interactive web tool built for factory production planners, packing staff, warehouse staff and purchasers. By entering the dimensions of the bottle, carton, pallet or container, users can estimate how many bottles fit in a carton, how many stack on a bare pallet, or how many cartons/cages load into a container, and view top-view and side-view layout diagrams to support packing planning and quick quantity estimates.",
+        "category": [
+          "Utility Tools",
+          "Production Management",
+          "Business Support"
+        ],
+        "unit_request": "R&D Technology Division",
+        "unit_owner": "R&D Technology Division",
+        "author": "Hung Hsin-Yu",
+        "status": "A working web version is complete, with Google Apps Script deployment code prepared; production go-live status is to be confirmed",
+        "region": "Not region-specific; suitable for factories that plan preform or empty bottle packing in metric dimensions",
+        "problem_background": "When planning the packing and handling of preforms or empty bottles, production planning, packing, warehouse and purchasing staff need to estimate how many can be loaded based on the bottle shape, packing container and stacking limits. Converting different dimensions and orientations by hand, one item at a time, is laborious, and it is hard to compare carton, pallet and container layouts quickly.",
+        "core_problem": "How can users enter dimensions in a consistent, easy way, quickly get loading quantities and layout information for preliminary planning, and be warned when inputs are unreasonable or the available height is insufficient?",
+        "solution": "Build a web calculator that works on phones and desktops, switching the required fields by packing mode, estimating capacity from geometric dimensions with whole-number arrangements, and showing the results together with a layout diagram. A Google Apps Script version is also provided for deployment as a web app.",
+        "process": [
+          "Confirm the usage scenarios and input conditions, and plan three modes: carton, bare pallet and container",
+          "Use HTML, CSS and JavaScript to build the dimension form, mode switching, calculation logic and warning messages",
+          "Adjust the bottle shapes, arrangements, board specifications, container loading units and result diagrams step by step based on user feedback",
+          "Prepare the files and deployment notes needed for Google Apps Script so it is easy to deploy"
+        ],
+        "features": [
+          {
+            "name": "Carton packing",
+            "desc": "Enter bottle, outer carton and wall/liner dimensions to estimate bottles per layer, number of layers and bottles per carton"
+          },
+          {
+            "name": "Bare pallet packing",
+            "desc": "Supports stacking empty bottles directly on a pallet, estimating bottles per layer, layers per pallet and total bottles per pallet"
+          },
+          {
+            "name": "Container mode",
+            "desc": "Uses whole cartons or cages as the unit, estimating the quantity per layer, number of stacked layers and total per container from carton/cage and container dimensions"
+          },
+          {
+            "name": "Bottle shapes and arrangements",
+            "desc": "Supports round, square and rectangular bottles; round bottles compare square and staggered arrangements, and in bare pallet mode rectangular bottles are fixed with the long side aligned to the pallet's short side"
+          },
+          {
+            "name": "Board specifications",
+            "desc": "In bare pallet mode, the size and thickness of the top cap board and layer separator sheets can be entered, and their thickness is included in the stack height estimate"
+          },
+          {
+            "name": "Layout diagrams",
+            "desc": "Provides top-view and side-view layout diagrams to help understand the horizontal arrangement and stacking"
+          },
+          {
+            "name": "Warnings and export",
+            "desc": "Shows warnings for unreasonable dimensions or when the available height is exceeded; after calculating, a print window can be opened to save the result as a PDF"
+          },
+          {
+            "name": "Responsive interface",
+            "desc": "Works on phones and desktops, with clear/reset and sample data"
+          }
+        ],
+        "ai_usage": [
+          "Helped turn the user's packing calculation needs into fields, modes and estimation rules",
+          "Helped generate and revise the HTML, CSS, JavaScript and Google Apps Script versions of the code",
+          "Iteratively adjusted the calculation logic, prompt text, layout diagrams and PDF print layout according to the user's successive requests"
+        ],
+        "tools": [
+          {
+            "name": "ChatGPT",
+            "desc": "Helped organize requirements, write code and modify features based on feedback"
+          },
+          {
+            "name": "HTML",
+            "desc": "Builds the page structure and input form"
+          },
+          {
+            "name": "CSS",
+            "desc": "Designs an internal-business-tool look and the phone and desktop layouts"
+          },
+          {
+            "name": "JavaScript",
+            "desc": "Handles dimension validation, quantity estimation, layout diagrams and printing"
+          },
+          {
+            "name": "Google Apps Script",
+            "desc": "Provides a version that can be deployed as a web app"
+          }
+        ],
+        "results": [
+          "Built a packing quantity estimation web page with carton, bare pallet and container modes",
+          "Shows quantity results and top-view and side-view layout diagrams for different bottle shapes and loading units",
+          "Provides a local-use version and the program files needed for GAS deployment",
+          "Provides options to print the calculation results or save them as PDF"
+        ],
+        "value": [
+          {
+            "name": "For sales units",
+            "desc": "Dimension entry and instant calculation support preliminary packing planning and reduce repeated manual conversion"
+          },
+          {
+            "name": "For customers",
+            "desc": "Currently positioned as an internal factory planning tool; if estimates are to be given to customers, relevant staff should still confirm the actual packing conditions"
+          },
+          {
+            "name": "For the company",
+            "desc": "Turns the common dimension estimation process into a reusable tool and provides a basis for later deployment and feature extension"
+          }
+        ],
+        "extensions": [
+          "Default values and instructions can be adjusted for different bottle shapes, carton types, pallet specifications and container sizes",
+          "Can be extended with company-approved packing specifications, common dimension templates or a record of estimation results"
+        ],
+        "limitations": [
+          "Results are geometric capacity estimates; actual use still requires confirming bottle dimensions, packaging tolerances, load capacity, support, stacking stability and handling conditions",
+          "Container mode estimates from the external dimensions of the carton/cage and does not mean door clearance, actual container loading operations or weight limits have been checked",
+          "The estimated quantities do not replace on-site trial loading and packaging engineering confirmation",
+          "The official GAS go-live URL, permission settings and actual benefits still need to be confirmed"
+        ],
+        "success_key": "Breaking the real work scenario down into clear input fields and calculation modes, and correcting the arrangement orientation, material specifications and result presentation through users' step-by-step feedback, so that the tool fits the factory's packing planning process.",
+        "keywords": [
+          "Preform",
+          "Empty bottle",
+          "Packing quantity estimation",
+          "Carton",
+          "Pallet",
+          "Container",
+          "Layout diagram",
+          "Google Apps Script",
+          "AI-assisted development"
+        ]
+      }
+    }
   }
 ]
