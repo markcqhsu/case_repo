@@ -16649,5 +16649,314 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-071",
+    "number": 71,
+    "updated": "2026.11",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/bf-system-cover.jpg",
+      "assets/bf-system-dashboard.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "BF 整合式生產管理系統",
+        "summary": "過去 BF 機台的紙芯標籤要手寫、生產資料散落多處，主管還得走到現場才知道機台狀態。生產計畫部門因此建了一套整合系統：平板上的標籤站自動列印標籤、中央伺服器接收每一捲資料、同一網路下用手機或電腦就能開啟即時看板、班別摘要與歷史資料可供查詢，另有以中央 BOM 為基礎的單位換算工具。結果是作業員做事更快、手寫和錯誤減少，產能從每小時 5.6 箱提升到 9 箱以上。目前已安裝 4 台機台（BF12～BF15）。",
+        "category": [
+          "生產管理",
+          "流程自動化",
+          "資料整合與分析"
+        ],
+        "unit_request": "泰國宏福廠",
+        "unit_owner": "泰國宏福廠",
+        "author": "Pongwish Kampetch",
+        "status": "BF12～BF15 已正式使用；BF09 是舊機台、沒有安裝支架，尚待安裝",
+        "region": "泰國廠區（Hon Chuan FD Packaging）",
+        "problem_background": "- 紙芯標籤靠手寫，速度慢、容易出錯，事後也很難追溯。\n- 生產資料散落多處，不清楚哪個工單在哪台機台跑、產出多少、由誰操作。\n- 主管要走到現場才能確認機台狀態，容易造成協調錯誤、浪費時間。\n- 班別摘要要花很多時間整理，廢料的單位換算也靠手算。\n- 平均產能為每小時 5.6 箱。",
+        "core_problem": "如何把標籤列印、資料記錄與機台狀態追蹤整合成一套即時系統，讓作業員不用手寫、主管不用跑現場，同時提升產能？",
+        "solution": "- 平板上的標籤站：每個工單只需輸入一次工單資料，之後就能自動編捲號並列印每一捲的標籤。\n- 中央伺服器（Node.js，port 4000）：接收每一捲資料與工單結束摘要，存成檔案並立即傳給看板。\n- 即時看板：顯示機台狀態、作業員、工單代號、SO 與客戶、捲數與箱數、對照每小時 9 箱目標的速度，以及班別時間軸。\n- 以捲與捲之間的間隔，計算每台機台在班別內的運轉與閒置分鐘數，看出機台在哪裡停下來。\n- 自動產生班別摘要，一鍵複製到 LINE，也能匯出 Excel，包含每台機台的所有工單。\n- 每一捲、每一個工單都有完整歷史紀錄，有問題的工單可立刻追溯。\n- 公斤、公尺、片數、箱、捲的單位換算工具使用同一份 BOM，每個站別都有 QR Code。\n- 看板上每台機台都標示每小時 9 箱的速度目標。",
+        "process": [
+          "作業員在平板輸入工單資料後按列印，一直列印到整個工單結束",
+          "工單結束時，作業員輸入良品片數與廢料（kg），系統自動把廢料換算成片數與公尺",
+          "伺服器接收資料，即時看板立刻顯示狀態",
+          "主管在同一網路下用手機或電腦查看狀態，不必走到機台旁",
+          "班別結束時，系統產生摘要，可複製到 LINE 或匯出 Excel",
+          "工單若有問題，可立刻查詢該工單各捲與工單的歷史紀錄"
+        ],
+        "features": [
+          {
+            "name": "即時看板",
+            "desc": "顯示每台機台的狀態、作業員、工單代號、SO、客戶、當日捲數與箱數、速度與班別時間軸"
+          },
+          {
+            "name": "運轉與閒置分鐘數",
+            "desc": "依機台顯示班別內的運轉與閒置時間，並列出最長的閒置間隔"
+          },
+          {
+            "name": "依工單代號彙總",
+            "desc": "把同一工單代號在所有機台上的良品片數與廢料合併計算"
+          },
+          {
+            "name": "班別摘要",
+            "desc": "自動儲存、可複製到 LINE，也能匯出 Excel"
+          },
+          {
+            "name": "歷史資料",
+            "desc": "每一捲與每一個工單都會保存，可搜尋與查證"
+          },
+          {
+            "name": "單位換算工具",
+            "desc": "輸入任一個數值（kg、m、pcs 或箱），即可從同一份 BOM 得到其餘數值"
+          },
+          {
+            "name": "速度目標",
+            "desc": "每小時 9 箱，並在看板上比較"
+          }
+        ],
+        "ai_usage": [
+          "用 AI 協助開發與調整整套系統：標籤站、伺服器、看板、單位換算工具與班別摘要",
+          "用 AI 分析歷史每一捲的資料，找出各機台的閒置時段與產出",
+          "用 AI 協助為在手機上查看的主管設計看板，並協助製作教育訓練影片"
+        ],
+        "tools": [
+          {
+            "name": "標籤站（HTML）",
+            "desc": "平板上的標籤列印頁面"
+          },
+          {
+            "name": "Zebra",
+            "desc": "紙芯用的標籤印表機"
+          },
+          {
+            "name": "Node.js 伺服器",
+            "desc": "接收與儲存資料，並提供看板與 BOM"
+          },
+          {
+            "name": "即時看板（HTML）",
+            "desc": "給主管看的即時看板"
+          },
+          {
+            "name": "BOM（Excel）",
+            "desc": "集中管理的單位換算資料庫"
+          },
+          {
+            "name": "QR Code",
+            "desc": "在每台機台開啟單位換算工具"
+          }
+        ],
+        "results": [
+          "產能從每小時 5.6 箱提升到 9 箱以上",
+          "已安裝 4 台機台（BF12～BF15），四台的資料都送到伺服器",
+          "標籤自動列印，減少手寫與錯誤",
+          "主管不用走到現場，就能即時看到機台狀態",
+          "班別摘要更快完成，且有歷史資料可供查證",
+          "作業員對系統很滿意，BF09 的作業員也要求安裝"
+        ],
+        "value": [
+          {
+            "name": "對作業員",
+            "desc": "做事更快，手寫與計算更少"
+          },
+          {
+            "name": "對主管與協調人員",
+            "desc": "即時看到機台狀態，減少協調錯誤"
+          },
+          {
+            "name": "對生產與管理單位",
+            "desc": "產能提升，並有歷史資料可作為決策依據"
+          },
+          {
+            "name": "對公司",
+            "desc": "建立中央生產資料庫，作為日後連接 MES 的基礎"
+          }
+        ],
+        "extensions": [
+          "BF09 是舊機台，等有合適的安裝支架後再安裝",
+          "把同樣的設計套用到其他使用相同站別與 BOM 的機台或產線",
+          "新增班別摘要自動寄送 email，以及給主管用手機看的看板頁面",
+          "準備好之後再連接 MES"
+        ],
+        "limitations": [
+          "裝置必須與伺服器在同一個 Wi-Fi 網路，防火牆也要開放 port 4000，這需要管理員處理",
+          "伺服器電腦開機時自動啟動尚未設定，安裝腳本必須用管理員權限執行",
+          "伺服器需要固定 IP 位址，要向資訊部門申請",
+          "班別摘要的 email 寄送（SMTP）與時區設定，還在等資訊部門設定",
+          "BF09 是舊機台、沒有安裝支架，安裝前必須先準備支架",
+          "每小時 5.6 箱與 9 箱以上這兩個數字是生產單位回報的，要比較前應先記錄明確的量測方法",
+          "成果取決於 BOM，有新工單代號時必須更新",
+          "因為機台不會送出狀態訊號，閒置時段目前還無法依原因（換線、故障或等待）區分",
+          "資料存在伺服器電腦上，必須定期備份"
+        ],
+        "success_key": "作業員實際測試並調整畫面，讓系統在現場真的用得起來；每個工單只輸入一次資料，減少現場的操作步驟；整套系統使用同一份 BOM，讓每個畫面的數字一致；安裝與備份不必依賴開發人員。",
+        "keywords": [
+          "BF 系統",
+          "紙芯標籤",
+          "中央伺服器",
+          "即時看板",
+          "即時",
+          "班別摘要",
+          "運轉與閒置分鐘數",
+          "BOM",
+          "單位換算",
+          "QR Code",
+          "LINE",
+          "Excel",
+          "每小時 9 箱",
+          "生產計畫",
+          "Hon Chuan FD Packaging",
+          "AI"
+        ]
+      },
+      "en": {
+        "title": "BF Integrated Production System",
+        "summary": "Previously, roll-core labels on the BF machines were handwritten, production data was scattered across several places, and supervisors had to walk to the floor to check machine status. The Production Planning team therefore built one integrated system. It consists of a Label Station on a tablet that prints labels automatically, a central server that receives every roll, a live dashboard that supervisors can open from a phone or computer on the same network, shift summaries with historical data, and a unit converter based on a central BOM. The results: operators work faster, handwriting and errors are reduced, and output has risen from 5.6 boxes per hour to more than 9 boxes per hour. Four machines (BF12 to BF15) are installed now.",
+        "category": [
+          "Production Management",
+          "Process Automation",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Hon Chuan FD Packaging (Thailand)",
+        "unit_owner": "Hon Chuan FD Packaging (Thailand)",
+        "author": "Pongwish Kampetch",
+        "status": "In production use on BF12 to BF15. Installation on BF09 is pending because it is an older machine without a mounting bracket.",
+        "region": "Thailand plant (Hon Chuan FD Packaging)",
+        "problem_background": "- Roll-core labels were handwritten, which was slow, error-prone and hard to trace afterwards\n- Production data was spread across several places, and it was unclear which job ran on which machine, how much it produced, and who operated it\n- Supervisors had to walk to the floor to check machine status, which led to coordination errors and wasted time\n- Shift summaries took a long time, and waste conversion between units was done by hand\n- Average output was 5.6 boxes per hour",
+        "core_problem": "How can label printing, data recording and machine status tracking become one real-time system, so that operators do not handwrite and supervisors do not need to walk to the machines, while output also increases?",
+        "solution": "- Label Station on a tablet: enter job data once per run, then print every roll label automatically with roll numbers assigned\n- Central server (Node.js, port 4000) receives every roll and job-end summary, stores them in files, and passes them to the dashboard immediately\n- Real-time live dashboard: machine status, operator, job code, SO and customer, roll and box counts, speed against the 9 boxes/hour target, and a shift timeline\n- Run and idle minutes per machine within the shift, calculated from the gaps between rolls, showing where machines stop\n- Automatic shift summary, copy to LINE in one step, and Excel export, including every job per machine\n- Full historical record of every roll and job, so problem jobs can be traced immediately\n- Unit converter for kg, m, pcs, boxes and rolls, using the same BOM, with a QR Code at each station\n- Speed target of 9 boxes/hour shown for every machine on the dashboard",
+        "process": [
+          "The operator enters job data on the tablet and presses print, then prints every roll until the job is finished",
+          "At job end, the operator enters good pieces and waste (kg); the system converts waste to pieces and meters automatically",
+          "The server receives the data and the live dashboard shows the status immediately",
+          "Supervisors check status from a phone or computer on the same network instead of walking to the machines",
+          "At the end of the shift, the system generates the summary, which can be copied to LINE or exported to Excel",
+          "If a job has a problem, the historical record of its rolls and jobs can be checked immediately"
+        ],
+        "features": [
+          {
+            "name": "Live dashboard",
+            "desc": "Status of every machine, operator, job code, SO, customer, roll and box counts for today, speed, and shift timeline"
+          },
+          {
+            "name": "Run and idle minutes",
+            "desc": "Shown per machine for the shift, with the longest idle gaps"
+          },
+          {
+            "name": "Summary by job code",
+            "desc": "Good pieces and waste combined across all machines running the same job code"
+          },
+          {
+            "name": "Shift summary",
+            "desc": "Saved automatically, copied to LINE, and exported to Excel"
+          },
+          {
+            "name": "Historical data",
+            "desc": "Every roll and job is stored and can be searched and verified"
+          },
+          {
+            "name": "Unit converter",
+            "desc": "Enter one value (kg, m, pcs or boxes) and get the rest from the same BOM"
+          },
+          {
+            "name": "Speed target",
+            "desc": "9 boxes/hour, compared on the dashboard"
+          }
+        ],
+        "ai_usage": [
+          "AI helped develop and adjust the whole system: the label station, server, dashboard, unit converter and shift summary",
+          "AI analysed historical roll data to find idle periods and output per machine",
+          "AI helped design the dashboard for supervisors who check it on their phones, and helped produce the training video"
+        ],
+        "tools": [
+          {
+            "name": "Label Station (HTML)",
+            "desc": "Label printing page on the tablet"
+          },
+          {
+            "name": "Zebra",
+            "desc": "Label printer on the roll core"
+          },
+          {
+            "name": "Node.js server",
+            "desc": "Receives and stores data, serves the dashboard and BOM"
+          },
+          {
+            "name": "Live dashboard (HTML)",
+            "desc": "Real-time dashboard for supervisors"
+          },
+          {
+            "name": "BOM (Excel)",
+            "desc": "Central unit-conversion database"
+          },
+          {
+            "name": "QR Code",
+            "desc": "Opens the unit converter at each machine"
+          }
+        ],
+        "results": [
+          "Output increased from 5.6 to more than 9 boxes per hour",
+          "Four machines installed (BF12 to BF15), and data from all four reaches the server",
+          "Labels print automatically, reducing handwriting and errors",
+          "Supervisors see machine status in real time without walking to the floor",
+          "Shift summaries are faster, with historical data available for verification",
+          "Operators are happy with the system, and the BF09 operators have asked for it to be installed too"
+        ],
+        "value": [
+          {
+            "name": "For operators",
+            "desc": "Work faster, with less handwriting and calculation"
+          },
+          {
+            "name": "For supervisors and coordinators",
+            "desc": "Real-time machine status reduces coordination errors"
+          },
+          {
+            "name": "For production and management",
+            "desc": "Higher output and historical data for decisions"
+          },
+          {
+            "name": "For the company",
+            "desc": "A central production database as the foundation for a future MES connection"
+          }
+        ],
+        "extensions": [
+          "Install on BF09 once a suitable mounting bracket is available for the older machine",
+          "Apply the same design to other machines or lines that use the same station and BOM",
+          "Add automatic email delivery of shift summaries and a phone-friendly dashboard page for supervisors",
+          "Connect to an MES when ready"
+        ],
+        "limitations": [
+          "Devices must be on the same Wi-Fi network as the server, and port 4000 must be opened in the firewall, which requires an administrator",
+          "Automatic start when the server PC boots is not yet configured; the install script must be run with administrator rights",
+          "The server needs a fixed IP address, to be requested from IT",
+          "Email delivery of shift summaries (SMTP) and time zone settings are waiting for IT configuration",
+          "BF09 is an older machine without a mounting bracket, so a bracket must be prepared before installation",
+          "The 5.6 and 9+ boxes/hour figures are as reported by production; a clear measurement method should be recorded before comparing",
+          "Results depend on the BOM, which must be updated whenever a new job code is added",
+          "Idle periods cannot yet be separated by cause (setup, breakdown or waiting) because the machines do not send status signals",
+          "Data is stored on the server PC and must be backed up regularly"
+        ],
+        "success_key": "Operators tested the system and adjusted the screens so they work in practice. Data is entered once per run, which reduces steps on the floor. The same BOM is used across the whole system so that numbers match on every screen. It can be installed and backed up without depending on developers.",
+        "keywords": [
+          "BF system",
+          "Roll labels",
+          "Central server",
+          "Live dashboard",
+          "Real-time",
+          "Shift summary",
+          "Run and idle minutes",
+          "BOM",
+          "Unit conversion",
+          "QR Code",
+          "LINE",
+          "Excel",
+          "9 boxes per hour",
+          "Production Planning",
+          "Hon Chuan FD Packaging",
+          "AI"
+        ]
+      }
+    }
   }
 ]
