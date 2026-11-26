@@ -17435,5 +17435,217 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-074",
+    "number": 74,
+    "updated": "2026.11",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/preform-injection-params-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "雲端瓶胚射出機製程參數查詢系統",
+        "summary": "瓶胚廠換模或再次生產同一品項時，調機人員可登入系統，依機台、瓶胚重量、模號及版本日期，調出上次留下的製程參數。人員先核對這筆紀錄與本次生產條件，再依現場程序調機、確認品質。這讓前一班調機完成後留下的設定，成為下一次生產可查用的起點。",
+        "category": [
+          "生產管理",
+          "內部管理工具",
+          "資料整合與分析"
+        ],
+        "unit_request": "瓶胚廠（射出生產與調機人員）",
+        "unit_owner": "海外技術處",
+        "author": "張佳揚",
+        "status": "已建置查詢系統並留有結案操作影片；現行部署版本與使用產線數待確認",
+        "region": "",
+        "problem_background": "依原始提案，瓶胚廠當時有 19 條頻繁換模的射出產線、7 種模具穴數及 80 餘種品項。相同重量的瓶胚可能安排在不同機台或使用不同模具。換型後若找不到條件相符的舊紀錄，師傅就得重新摸索設定，試調期間也會耗用原料。",
+        "core_problem": "換模時，現場人員如何從多份製程表中，找出「這台機器、這個瓶胚重量、這組模具」曾經使用的設定，並確認紀錄日期？",
+        "solution": "將各次調機留下的製程表整理到雲端，建立對應機台、瓶胚重量、模號與版本日期的索引。人員從網頁逐項選擇，每選一項，下一欄只列出符合前面條件的選項。即使同一機台生產過多個相近品項，也能逐步縮小範圍，找到要參考的那份表。",
+        "process": [
+          "調機完成後，記錄該次生產的製程參數，核對機台、瓶胚重量與模號，再由資料維護人員整理歸檔",
+          "再次生產時，登入查詢頁，依序選擇機台、瓶胚重量、模號及版本日期",
+          "開啟對應參數表，核對本次工單、實際機台與模具；若缺少符合的版本，向資料維護人員確認",
+          "調機人員依現行作業程序試調並確認品質；若此次形成可供日後參考的新設定，再留下對應日期的紀錄"
+        ],
+        "features": [
+          {
+            "name": "條件連動查詢",
+            "desc": "依機台、重量、模號與版本日期篩選；更換機台時，系統會清除後續選項，避免沿用上一台的條件"
+          },
+          {
+            "name": "依日期查閱",
+            "desc": "同一組條件有多筆紀錄時，可指定版本日期，查閱所需的參數表"
+          },
+          {
+            "name": "資料整理與歸檔",
+            "desc": "管理端提供 Excel 轉 Google 試算表、檔案版本註記及歸檔程序，供維護人員整理製程資料"
+          },
+          {
+            "name": "帳號與權限管理",
+            "desc": "提供註冊、登入及使用者權限管理介面，供管理人員維護查詢帳號"
+          }
+        ],
+        "ai_usage": [
+          "本案的參數來自現場留存的製程表。系統依使用者選定的條件查表，調機人員負責判斷既有設定是否適用。查詢流程無須由 AI 推算參數"
+        ],
+        "tools": [
+          {
+            "name": "Google Apps Script",
+            "desc": "串接登入、條件篩選、參數讀取及管理端資料處理"
+          },
+          {
+            "name": "Google 試算表與 Google 雲端硬碟",
+            "desc": "存放製程表、查詢索引與歸檔資料"
+          },
+          {
+            "name": "Excel",
+            "desc": "承接現場既有的製程參數表，作為雲端整理程序的資料來源"
+          },
+          {
+            "name": "HTML、JavaScript",
+            "desc": "提供瀏覽器操作介面，依前一欄的選擇更新後續選項"
+          }
+        ],
+        "results": [
+          "專案已建置四層條件查詢，並留有主功能、帳號註冊及登入錯誤鎖定三支結案示範影片",
+          "提案實施成果表引用現場人員估計，每次調機約可節省 0.5 小時（30 分鐘）；這是現場估計值，實際成效仍需以相同生產條件下的換模與調機紀錄驗證"
+        ],
+        "value": [
+          {
+            "name": "對調機人員",
+            "desc": "再次生產熟悉品項時，可先找到條件相符的舊設定，減少從頭試調的需要"
+          },
+          {
+            "name": "對班組主管",
+            "desc": "交班時可指明機台、模號及參考版本，讓接班人員知道前一班採用哪一份資料"
+          },
+          {
+            "name": "對工廠",
+            "desc": "讓不同班別可重用累積的調機經驗，也可用實際調機時間與試調耗料評估改善幅度"
+          }
+        ],
+        "extensions": [
+          "可沿用相同方式建立其他設備的參數庫，由各產線決定足以辨別配方的條件，例如機台、模具、產品規格與版本",
+          "可將換模起訖時間、試調耗料與參考版本一併記錄，評估哪些機台或品項最能從參數重用中受益"
+        ],
+        "limitations": [
+          "歷史設定僅供調機參考；即使重量相同，也要核對機台、模具及本次生產條件，依核准程序完成試調與品質確認",
+          "可查到的內容取決於已歸檔的資料；版本日期代表紀錄時間，是否適用仍須依現行工單及製程規範判定",
+          "製程參數屬內部生產資料，查詢帳號與雲端檔案的分享權限應由資料管理人員依職務維護"
+        ],
+        "success_key": "一份參數表要能在下次換模時派上用場，除了寫下設定值，還要讓下一班能辨認機台、瓶胚重量、模號與日期。把這幾項資料的記錄與核對納入日常交班，現場經驗才找得到、用得上。",
+        "keywords": [
+          "瓶胚射出機",
+          "製程參數",
+          "換模調機",
+          "瓶胚重量",
+          "模號",
+          "版本查詢",
+          "Google Apps Script",
+          "製程知識管理"
+        ]
+      },
+      "en": {
+        "title": "Cloud-Based Preform Injection Machine Process Parameter Lookup System",
+        "summary": "When a preform plant changes molds or runs the same item again, setup technicians can log in to the system and retrieve the process parameters left from the last run by machine, preform weight, mold number and version date. They first check that record against the current production conditions, then set up the machine and confirm quality following the on-site procedure. This turns the settings left by the previous shift's setup into a starting point that can be looked up for the next run.",
+        "category": [
+          "Production Management",
+          "Internal Management Tools",
+          "Data Integration & Analysis"
+        ],
+        "unit_request": "Preform plant (injection production and setup staff)",
+        "unit_owner": "Overseas Technical Division",
+        "author": "Chang Chia-Yang",
+        "status": "The lookup system has been built and a closing demonstration video is on file; the currently deployed version and the number of lines using it are to be confirmed",
+        "region": "",
+        "problem_background": "According to the original proposal, the preform plant then had 19 injection lines with frequent mold changes, 7 mold cavity counts and more than 80 items. Preforms of the same weight might be scheduled on different machines or use different molds. After a changeover, if no earlier record with matching conditions could be found, the technician had to work out the settings again, consuming raw material during trial adjustment.",
+        "core_problem": "At a mold change, how can floor staff find, among many process sheets, the settings once used for \"this machine, this preform weight and this set of molds\", and confirm the record date?",
+        "solution": "Organize the process sheets left by each setup in the cloud and build an index by machine, preform weight, mold number and version date. Users choose item by item on a web page, and after each choice the next field lists only the options that match the earlier conditions. Even if the same machine has produced several similar items, the range narrows step by step until the sheet to refer to is found.",
+        "process": [
+          "After a setup is finished, record that run's process parameters, check the machine, preform weight and mold number, and have the data maintainer organize and archive them",
+          "When the item is produced again, log in to the lookup page and choose the machine, preform weight, mold number and version date in turn",
+          "Open the matching parameter sheet and check it against the current work order, the actual machine and the mold; if no matching version exists, confirm with the data maintainer",
+          "The setup technician runs trial adjustment and confirms quality following the current operating procedure; if the run produces new settings worth referring to later, a record with the corresponding date is kept"
+        ],
+        "features": [
+          {
+            "name": "Linked condition lookup",
+            "desc": "Filter by machine, weight, mold number and version date; when the machine is changed, the system clears the later options so the previous machine's conditions are not carried over"
+          },
+          {
+            "name": "Lookup by date",
+            "desc": "When one set of conditions has several records, a version date can be specified to view the parameter sheet needed"
+          },
+          {
+            "name": "Data organization and archiving",
+            "desc": "The admin side provides Excel-to-Google-Sheets conversion, file version notes and an archiving procedure for maintainers organizing process data"
+          },
+          {
+            "name": "Account and permission management",
+            "desc": "Provides registration, login and user permission management screens so administrators can maintain lookup accounts"
+          }
+        ],
+        "ai_usage": [
+          "The parameters in this case come from process sheets kept on site. The system looks up sheets by the conditions the user selects, and the setup technician judges whether the existing settings apply. The lookup flow does not need AI to calculate parameters"
+        ],
+        "tools": [
+          {
+            "name": "Google Apps Script",
+            "desc": "Connects login, condition filtering, parameter reading and admin-side data handling"
+          },
+          {
+            "name": "Google Sheets and Google Drive",
+            "desc": "Store the process sheets, lookup index and archived data"
+          },
+          {
+            "name": "Excel",
+            "desc": "Carries the existing on-site process parameter sheets as the data source for the cloud organization procedure"
+          },
+          {
+            "name": "HTML, JavaScript",
+            "desc": "Provide the browser interface that updates later options based on the previous field's selection"
+          }
+        ],
+        "results": [
+          "The project has built a four-level conditional lookup and has three closing demonstration videos on file: the main function, account registration and login error lockout",
+          "The proposal's results table cites an on-site staff estimate of about 0.5 hour (30 minutes) saved per setup; this is an on-site estimate, and the actual benefit still needs to be verified against changeover and setup records under the same production conditions"
+        ],
+        "value": [
+          {
+            "name": "For setup technicians",
+            "desc": "When running a familiar item again, they can first find the earlier settings with matching conditions, reducing the need to start trial adjustment from scratch"
+          },
+          {
+            "name": "For shift supervisors",
+            "desc": "At handover, the machine, mold number and reference version can be named, so the incoming shift knows which data the previous shift used"
+          },
+          {
+            "name": "For the plant",
+            "desc": "Different shifts can reuse accumulated setup experience, and actual setup time and trial-run material consumption can be used to assess the size of the improvement"
+          }
+        ],
+        "extensions": [
+          "The same approach can be used to build parameter libraries for other equipment, with each line deciding the conditions enough to identify a recipe, such as machine, mold, product specification and version",
+          "Changeover start and end times, trial-run material consumption and the reference version can be recorded together to assess which machines or items benefit most from parameter reuse"
+        ],
+        "limitations": [
+          "Historical settings are for setup reference only; even for the same weight, the machine, mold and current production conditions must be checked, and trial adjustment and quality confirmation completed under the approved procedure",
+          "What can be found depends on the data archived; the version date is the time of the record, and whether it applies must still be judged against the current work order and process specification",
+          "Process parameters are internal production data, so lookup accounts and cloud file sharing permissions should be maintained by data administrators according to job role"
+        ],
+        "success_key": "For a parameter sheet to be useful at the next mold change, besides writing down the settings, the next shift must be able to identify the machine, preform weight, mold number and date. Building the recording and checking of these items into the daily handover makes on-site experience findable and usable.",
+        "keywords": [
+          "Preform injection machine",
+          "Process parameters",
+          "Mold change setup",
+          "Preform weight",
+          "Mold number",
+          "Version lookup",
+          "Google Apps Script",
+          "Process knowledge management"
+        ]
+      }
+    }
   }
 ]
