@@ -16407,5 +16407,247 @@
         ]
       }
     }
+  },
+  {
+    "id": "case-070",
+    "number": 70,
+    "updated": "2026.11",
+    "url": "",
+    "video": [],
+    "screenshots": [
+      "assets/qr-waste-converter-cover.jpg"
+    ],
+    "i18n": {
+      "zh": {
+        "title": "標籤廢料單位換算系統",
+        "summary": "標籤分切（slitting）後產生的廢料，過去要由作業員手算公斤（kg）、片數（pcs）與公尺（m）的換算，才能填報廢料報表，既慢又容易出錯。生產計畫部門做了一個換算用的 QR Code，貼在每台機台上，數值取自全廠共用的同一份 BOM 資料庫。輸入工單代號和其中任一個數值，系統立刻算出其餘數值。2026/11/10 起試用並與手算結果比對，2026/11/24 起正式上線。",
+        "category": [
+          "生產管理",
+          "小工具",
+          "流程自動化"
+        ],
+        "unit_request": "泰國宏福廠",
+        "unit_owner": "泰國宏福廠",
+        "author": "Pongwish Kampetch",
+        "status": "已正式上線（2026/11/24 起，相關站別的機台皆已貼上 QR Code）",
+        "region": "泰國廠區（Hon Chuan FD Packaging）",
+        "problem_background": "- 作業員要用手算 kg、pcs、m 來填報表，花時間也容易算錯。\n- 倉儲或工廠助理需要再花時間核對計算結果，增加加班（OT）時間。\n- 計算需要多個參數，例如膜厚、寬度（AW）與各種膜材的密度；SKU 很多時很容易混淆。",
+        "core_problem": "如何讓所有站別的標籤分切廢料單位換算都使用同一份 BOM，並在不降低報表正確性的前提下，減少手動計算。",
+        "solution": "- 共用資料庫：各站別統一使用同一份 BOM 檔案中的 kg/片 與 m/片 數值。\n- 換算用 QR Code：輸入工單代號，再輸入 kg、m 或 pcs 其中一個數值，系統自動算出另外兩個。\n- 進位規則：片數與公尺一律無條件捨去取整數，kg 顯示小數點後 2 位。\n- 箱與捲規則：1 捲 = 1 箱；每捲公尺數 = 每箱片數 × 每片公尺數。\n- 若工單代號不在 BOM 內，系統只記錄 kg，改由手算，並通知生產計畫部門。",
+        "process": [
+          "掃描貼在機台上的 QR Code",
+          "輸入工單代號，或從 BOM 清單中選取",
+          "輸入 kg、m 或 pcs 其中一個數值，系統顯示其餘數值與每片換算率",
+          "把算出的數值填入報表；結果若有異常，立即通報並改用手算重新計算"
+        ],
+        "features": [
+          {
+            "name": "搜尋工單代號",
+            "desc": "可從 BOM 清單選取或直接輸入代號，系統會記住最近使用過的代號"
+          },
+          {
+            "name": "雙向換算",
+            "desc": "輸入任一個數值，即可得到其他所有數值"
+          },
+          {
+            "name": "清楚顯示每片換算率",
+            "desc": "每次計算都會列出所用的換算率，例如 1 kg = X 片"
+          },
+          {
+            "name": "可自行用檔案更新 BOM",
+            "desc": "新增工單代號時不需要修改程式碼"
+          },
+          {
+            "name": "箱與捲換算",
+            "desc": "在儀表板中使用 BOM 的每箱片數，並以 1 捲 = 1 箱計算"
+          }
+        ],
+        "ai_usage": [
+          "用 AI 協助撰寫單位換算邏輯，並讀懂格式不一的 BOM 檔案結構",
+          "用 AI 以實際案例驗證公式，例如工單代號 3450008871 的 10 箱 + 6,000 片，算得 12,464 公尺，與現場計算結果相符"
+        ],
+        "tools": [
+          {
+            "name": "QR Code",
+            "desc": "貼在機台上，開啟該站別的換算頁面"
+          },
+          {
+            "name": "BF Waste Converter（HTML）",
+            "desc": "由中央伺服器開啟的單位換算頁面"
+          },
+          {
+            "name": "BOM 檔案（Excel）",
+            "desc": "儲存每片數值、每箱片數與每片 kg 的資料庫"
+          },
+          {
+            "name": "Live Dashboard",
+            "desc": "使用每箱片數與每捲公尺數計算數量"
+          }
+        ],
+        "results": [
+          "2026/11/10 起試用，與手算結果比對，評估穩定度足夠",
+          "2026/11/24 起正式上線，相關站別機台已貼上 QR Code",
+          "各畫面的數值都來自同一份 BOM，因此各站別與儀表板的數字一致"
+        ],
+        "value": [
+          {
+            "name": "對生產單位",
+            "desc": "減少手算，提升報表填寫效率"
+          },
+          {
+            "name": "對品質與工廠單位",
+            "desc": "減少計算錯誤，縮短工廠助理核對的時間"
+          },
+          {
+            "name": "對公司",
+            "desc": "降低因核對而產生的加班（OT）費用，並建立統一的標準 BOM 資料庫"
+          }
+        ],
+        "extensions": [
+          "待界定範圍並補充規則後，可擴大到其他使用同一份 BOM 的站別",
+          "取得各產品的標準值後，可再增加成品與出貨的單位換算"
+        ],
+        "limitations": [
+          "只適用於已分切成單排（slit）的產品，不適用於已印刷的半成品",
+          "只適用於 BL（貼合／黏合）、BF（目視檢查）、BFR（撕裂線打孔）與 BCC（裁片）站別",
+          "若換算結果異常或資料有誤，須立即通報，並改用原本的手算方式重新計算",
+          "數值是否正確取決於 BOM，有新工單代號時必須更新檔案",
+          "BOM 中有 39 個代號資料不完整，不會進行換算，需先修正檔案內的數值",
+          "必須與伺服器連在同一個 Wi-Fi 網路"
+        ],
+        "success_key": "正式上線前先試用，並與手算結果比對；全系統使用同一份 BOM，讓各處數字一致；並訂有異常通報與改用手算重新計算的標準做法。",
+        "keywords": [
+          "單位換算",
+          "標籤廢料",
+          "分切",
+          "BOM",
+          "公斤",
+          "公尺",
+          "片數",
+          "箱",
+          "捲",
+          "PCS/BOK",
+          "QR Code",
+          "生產計畫",
+          "Hon Chuan FD Packaging",
+          "AI"
+        ]
+      },
+      "en": {
+        "title": "Label Waste Unit Conversion System",
+        "summary": "Waste produced after label slitting used to be converted by operators by hand between kilograms (kg), pieces (pcs) and meters (m) before it could be entered in the waste report, which was slow and error-prone. The Production Planning team built a conversion QR Code that is posted on each machine and draws its values from the single BOM database used across the whole plant. Enter a job code and any one of the values, and the system instantly calculates the others. Trial use with comparison against manual calculation began on 10 Nov 2026, and the system went live on 24 Nov 2026.",
+        "category": [
+          "Production Management",
+          "Utility Tools",
+          "Process Automation"
+        ],
+        "unit_request": "Hon Chuan FD Packaging (Thailand)",
+        "unit_owner": "Hon Chuan FD Packaging (Thailand)",
+        "author": "Pongwish Kampetch",
+        "status": "Live (since 24 Nov 2026; QR Codes are posted on the machines of all stations involved)",
+        "region": "Thailand plant (Hon Chuan FD Packaging)",
+        "problem_background": "- Operators had to calculate kg, pcs and m by hand to fill in reports, which took time and invited mistakes.\n- Warehouse staff or factory assistants had to spend time checking the calculations, adding overtime (OT).\n- The calculation needs several parameters, such as film thickness, width (AW) and the density of each film type; with many SKUs it was easy to get confused.",
+        "core_problem": "How can unit conversion of post-slitting label waste at every station use one and the same BOM, and cut down manual calculation without reducing the accuracy of the reports?",
+        "solution": "- Central database: every station uses the kg/piece and m/piece values from the same BOM file.\n- Conversion QR Code: enter the job code and one of kg, m or pcs, and the system calculates the other two.\n- Rounding rules: pieces and meters are always rounded down to whole numbers; kg is shown to 2 decimal places.\n- Box and roll rule: 1 roll = 1 box; meters per roll = pieces per box × meters per piece.\n- If the job code is not in the BOM, the system records only kg, the calculation is done by hand, and Production Planning is notified.",
+        "process": [
+          "Scan the QR Code posted on the machine",
+          "Type the job code or pick it from the BOM list",
+          "Enter one of kg, m or pcs; the system shows the other values together with the per-piece rate",
+          "Enter the resulting values in the report; if a result looks abnormal, report it immediately and recalculate by hand"
+        ],
+        "features": [
+          {
+            "name": "Job code search",
+            "desc": "Pick from the BOM list or type the code; the system remembers the most recently used codes"
+          },
+          {
+            "name": "Two-way conversion",
+            "desc": "Enter any one value to get all the others"
+          },
+          {
+            "name": "Per-piece rate shown clearly",
+            "desc": "Every calculation shows the rate it used, for example 1 kg = X pieces"
+          },
+          {
+            "name": "BOM can be updated from a file",
+            "desc": "New job codes can be added without changing the program code"
+          },
+          {
+            "name": "Box and roll conversion",
+            "desc": "The dashboard uses pieces per box from the BOM, with 1 roll = 1 box"
+          }
+        ],
+        "ai_usage": [
+          "AI helped write the unit conversion logic and read the structure of BOM files that come in several formats",
+          "AI checked the formulas against real examples, for example 10 boxes + 6,000 pieces of job code 3450008871 gives 12,464 meters, matching the shop-floor calculation"
+        ],
+        "tools": [
+          {
+            "name": "QR Code",
+            "desc": "Posted on the machine to open the conversion page of that station"
+          },
+          {
+            "name": "BF Waste Converter (HTML)",
+            "desc": "The unit conversion page opened from the central server"
+          },
+          {
+            "name": "BOM file (Excel)",
+            "desc": "The database of per-piece values, pieces per box and kg per piece"
+          },
+          {
+            "name": "Live Dashboard",
+            "desc": "Uses pieces per box and meters per roll to calculate quantities"
+          }
+        ],
+        "results": [
+          "Trial use began on 10 Nov 2026 with results compared against manual calculation, and was judged stable enough",
+          "Went live on 24 Nov 2026, with QR Codes posted on the machines of the relevant stations",
+          "Every screen takes its values from the same BOM, so the numbers match across stations and the dashboard"
+        ],
+        "value": [
+          {
+            "name": "For production units",
+            "desc": "Less manual calculation and more efficient report entry"
+          },
+          {
+            "name": "For quality and factory staff",
+            "desc": "Fewer calculation errors and less time spent by factory assistants on checking"
+          },
+          {
+            "name": "For the company",
+            "desc": "Lower overtime (OT) cost caused by checking, and a single standard BOM database"
+          }
+        ],
+        "extensions": [
+          "Extend to other stations that use the same BOM once the scope and extra rules are defined",
+          "Add unit conversion for finished goods and shipping once standard values are available for each product"
+        ],
+        "limitations": [
+          "Only for products already slit into a single lane; not for printed semi-finished products",
+          "Only for the BL (gluing/laminating), BF (visual inspection), BFR (tear-line perforation) and BCC (sheet cutting) stations",
+          "If a conversion result looks abnormal or the data is wrong, report it immediately and recalculate with the original manual method",
+          "Correct values depend on the BOM, so the file must be updated whenever there is a new job code",
+          "39 codes in the BOM have incomplete data and are not converted; the values in the file must be fixed first",
+          "Must be on the same Wi-Fi network as the server"
+        ],
+        "success_key": "Trial before going live and compare with manual calculation; use one BOM database across the whole system so the numbers match everywhere; and have a standard way to report abnormal results and recalculate by hand.",
+        "keywords": [
+          "Unit conversion",
+          "Label waste",
+          "Slitting",
+          "BOM",
+          "Kilogram",
+          "Meter",
+          "Pieces",
+          "Box",
+          "Roll",
+          "PCS/BOK",
+          "QR Code",
+          "Production Planning",
+          "Hon Chuan FD Packaging",
+          "AI"
+        ]
+      }
+    }
   }
 ]
