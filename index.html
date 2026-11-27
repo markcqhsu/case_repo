@@ -15,8 +15,14 @@
 <link rel="manifest" href="manifest.json" />
 <script>
 // 還沒輸入過入口密碼就先鎖住畫面（雜湊值要和下方 GATE_HASH 一致）
-try { if (localStorage.getItem('caseLibGate') !== '6e2a7d9e94d2e59370c57dfcafc70860c34f5a84a317bd16772f40149a6b6b17') document.documentElement.classList.add('gate-locked'); }
-catch (e) { document.documentElement.classList.add('gate-locked'); }
+// 站別判斷：網址是 github.io 的是公開版，其他（內網）都是內網版；測試時可加 ?site=public 或 ?site=intranet 強制指定。
+// 內網版不需要入口密碼，並會在首頁顯示海外服務連線提示。
+var SITE_PARAM = new URLSearchParams(location.search).get('site');
+var IS_INTRANET = SITE_PARAM ? SITE_PARAM === 'intranet' : !/(^|\.)github\.io$/i.test(location.hostname);
+if (!IS_INTRANET) {
+  try { if (localStorage.getItem('caseLibGate') !== '6e2a7d9e94d2e59370c57dfcafc70860c34f5a84a317bd16772f40149a6b6b17') document.documentElement.classList.add('gate-locked'); }
+  catch (e) { document.documentElement.classList.add('gate-locked'); }
+}
 </script>
 <style>
   :root {
@@ -144,6 +150,8 @@ catch (e) { document.documentElement.classList.add('gate-locked'); }
   .changelog-entry .notes { font-size: var(--fs-sm); line-height: 1.6; }
   header h1 { margin: 0 0 10px; font-size: var(--fs-xl); font-weight: 800; letter-spacing: -0.01em; }
   #pageTitle { color: inherit; text-decoration: none; border-radius: 6px; }
+  .intranet-notice { margin: -6px 0 14px; padding: 8px 12px; border-left: 3px solid #e0a100; border-radius: 6px; background: #fff8e1; color: #6b4e00 !important; font-size: var(--fs-sm, 14px) !important; line-height: 1.6; }
+  .intranet-notice[hidden] { display: none; }
   header p { margin: 0 0 14px; color: var(--text-muted); font-size: var(--fs-base); }
   #totalCount {
     display: inline-block;
@@ -875,6 +883,7 @@ catch (e) { document.documentElement.classList.add('gate-locked'); }
     <div class="gate-card" id="gateCard">
       <div class="gate-lang" role="group" aria-label="語言 Language">
         <button type="button" data-gate-lang="zh" lang="zh-Hant">中文</button>
+        <button type="button" data-gate-lang="zh-CN" lang="zh-Hans">简体</button>
         <button type="button" data-gate-lang="en" lang="en">EN</button>
       </div>
       <div class="gate-head">
@@ -915,6 +924,7 @@ catch (e) { document.documentElement.classList.add('gate-locked'); }
       <button id="leaderboardBtn" class="leaderboard-btn" type="button"></button>
       <div class="lang-toggle" role="group" aria-label="語言 Language">
         <button class="lang-btn" type="button" data-lang="zh" lang="zh-Hant">中文</button>
+        <button class="lang-btn" type="button" data-lang="zh-CN" lang="zh-Hans">简体</button>
         <button class="lang-btn" type="button" data-lang="en" lang="en">EN</button>
       </div>
       <details class="version-toggle" id="changelogDetails">
@@ -927,6 +937,7 @@ catch (e) { document.documentElement.classList.add('gate-locked'); }
     </div>
     <h1><a id="pageTitle" href="#">宏全AI應用推動案例庫</a></h1>
     <p id="pageSubtitle">分享用 AI 或自動化工具解決廠內流程問題的實際案例</p>
+    <p id="intranetNotice" class="intranet-notice" role="note" hidden></p>
     <span id="totalCount" role="status" aria-live="polite"></span>
   </header>
 
@@ -978,9 +989,11 @@ let cases = [];
 let changelogData = null;
 let activeCategory = null;
 let currentLang = localStorage.getItem('caseLibLang') || 'zh';
+if (!['zh', 'zh-CN', 'en'].includes(currentLang)) currentLang = 'zh';
 
 const UI_STRINGS = {
   zh: {
+    intranetNotice: '提示：部分網站資源因為使用的是海外服務，所以有可能會有無法連線的狀況。',
     pageTitle: '宏全AI應用推動案例庫',
     subtitle: '分享用 AI 或自動化工具解決廠內流程問題的實際案例',
     searchPlaceholder: '搜尋標題、問題、工具、製作人、關鍵字...',
@@ -1022,7 +1035,51 @@ const UI_STRINGS = {
     nextImage: '下一張',
     highlightsLabel: '成效摘要'
   },
+  'zh-CN': {
+    intranetNotice: '提示：部分网站资源因为使用的是海外服务，所以有可能会有无法连接的情况。',
+    pageTitle: '宏全AI应用推动案例库',
+    subtitle: '分享用 AI 或自动化工具解决厂内流程问题的实际案例',
+    searchPlaceholder: '搜索标题、问题、工具、制作人、关键字...',
+    clearSearch: '清除搜索',
+    filterLabel: '分类',
+    all: '全部',
+    empty: '找不到符合的案例',
+    totalCount: (n) => `共收录 ${n} 个案例`,
+    authorLabel: '制作人',
+    ownerLabel: '负责单位',
+    noScreenshot: '尚无画面',
+    noUrl: '尚无网站链接',
+    backBtn: '← 返回案例库',
+    currentVersion: '目前版本',
+    notProvided: '未提供',
+    listSep: '、',
+    colon: '：',
+    divider: ' ｜ ',
+    leaderboardBtn: '🏆 排行榜',
+    leaderboardTitle: '案例贡献排行榜',
+    leaderboardSubtitle: '依「负责单位」的案例数量排序',
+    caseCountLabel: (n) => `${n} 个案例`,
+    prevPage: '上一页',
+    nextPage: '下一页',
+    shownCount: (f, n) => `显示 ${f} / ${n} 个案例`,
+    searchLabel: '搜索案例',
+    filterGroup: '依分类筛选',
+    listHeading: '案例列表',
+    paginationLabel: '分页',
+    pageLabel: (p) => `第 ${p} 页`,
+    langGroup: '语言',
+    loadError: '案例数据加载失败，请确认网络连接后再试一次。',
+    retry: '重新加载',
+    openImage: '放大查看图片',
+    imageN: (i, n) => `第 ${i} 张图，共 ${n} 张`,
+    lightboxLabel: '图片查看',
+    close: '关闭',
+    prevImage: '上一张',
+    nextImage: '下一张',
+    highlightsLabel: '成效摘要'
+  },
   en: {
+    intranetNotice: 'Note: some web resources use overseas services, so they may be unreachable from the intranet.',
     pageTitle: 'Hon Chuan AI Application Case Library',
     subtitle: 'Real cases of using AI or automation tools to solve in-plant process problems',
     searchPlaceholder: 'Search title, problem, tool, author, keyword...',
@@ -1067,28 +1124,28 @@ const UI_STRINGS = {
 };
 
 const FIELD_LABELS = {
-  category: { zh: '案例分類', en: 'Category' },
-  unit_request: { zh: '需求單位', en: 'Requesting Unit' },
-  unit_owner: { zh: '負責單位', en: 'Owning Unit' },
-  author: { zh: '案例負責人', en: 'Case Owner' },
-  status: { zh: '案例狀態', en: 'Status' },
-  region: { zh: '適用地區', en: 'Region' },
-  url: { zh: '網站連結', en: 'Website Link' },
-  video: { zh: '影片介紹', en: 'Video Walkthrough' },
-  problem_background: { zh: '問題背景', en: 'Background' },
-  core_problem: { zh: '核心問題', en: 'Core Problem' },
-  solution: { zh: '解決方案', en: 'Solution' },
-  process: { zh: '執行流程', en: 'Process' },
-  features: { zh: '主要功能', en: 'Key Features' },
-  ai_usage: { zh: 'AI 的應用方式', en: 'How AI Was Used' },
-  tools: { zh: '使用工具', en: 'Tools Used' },
-  results: { zh: '執行成果', en: 'Results' },
-  value: { zh: '產生價值', en: 'Value Created' },
-  extensions: { zh: '可複製與延伸應用', en: 'Reusable & Extended Applications' },
-  limitations: { zh: '使用限制與注意事項', en: 'Limitations & Notes' },
-  success_key: { zh: '成功關鍵', en: 'Key to Success' },
-  keywords: { zh: '案例關鍵字', en: 'Keywords' },
-  updated: { zh: '更新時間', en: 'Updated' }
+  category: { zh: '案例分類', 'zh-CN': '案例分类', en: 'Category' },
+  unit_request: { zh: '需求單位', 'zh-CN': '需求单位', en: 'Requesting Unit' },
+  unit_owner: { zh: '負責單位', 'zh-CN': '负责单位', en: 'Owning Unit' },
+  author: { zh: '案例負責人', 'zh-CN': '案例负责人', en: 'Case Owner' },
+  status: { zh: '案例狀態', 'zh-CN': '案例状态', en: 'Status' },
+  region: { zh: '適用地區', 'zh-CN': '适用地区', en: 'Region' },
+  url: { zh: '網站連結', 'zh-CN': '网站链接', en: 'Website Link' },
+  video: { zh: '影片介紹', 'zh-CN': '视频介绍', en: 'Video Walkthrough' },
+  problem_background: { zh: '問題背景', 'zh-CN': '问题背景', en: 'Background' },
+  core_problem: { zh: '核心問題', 'zh-CN': '核心问题', en: 'Core Problem' },
+  solution: { zh: '解決方案', 'zh-CN': '解决方案', en: 'Solution' },
+  process: { zh: '執行流程', 'zh-CN': '执行流程', en: 'Process' },
+  features: { zh: '主要功能', 'zh-CN': '主要功能', en: 'Key Features' },
+  ai_usage: { zh: 'AI 的應用方式', 'zh-CN': 'AI 的应用方式', en: 'How AI Was Used' },
+  tools: { zh: '使用工具', 'zh-CN': '使用工具', en: 'Tools Used' },
+  results: { zh: '執行成果', 'zh-CN': '执行成果', en: 'Results' },
+  value: { zh: '產生價值', 'zh-CN': '产生价值', en: 'Value Created' },
+  extensions: { zh: '可複製與延伸應用', 'zh-CN': '可拷贝与延伸应用', en: 'Reusable & Extended Applications' },
+  limitations: { zh: '使用限制與注意事項', 'zh-CN': '使用限制与注意事项', en: 'Limitations & Notes' },
+  success_key: { zh: '成功關鍵', 'zh-CN': '成功关键', en: 'Key to Success' },
+  keywords: { zh: '案例關鍵字', 'zh-CN': '案例关键字', en: 'Keywords' },
+  updated: { zh: '更新時間', 'zh-CN': '更新时间', en: 'Updated' }
 };
 
 function ui() { return UI_STRINGS[currentLang]; }
@@ -1141,9 +1198,12 @@ async function load() {
 function applyStaticText() {
   const s = ui();
   document.title = s.pageTitle;
-  document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en';
+  document.documentElement.lang = ({ zh: 'zh-Hant', 'zh-CN': 'zh-Hans', en: 'en' })[currentLang] || 'zh-Hant';
   document.getElementById('pageTitle').textContent = s.pageTitle;
   document.getElementById('pageSubtitle').textContent = s.subtitle;
+  const notice = document.getElementById('intranetNotice');
+  notice.textContent = s.intranetNotice;
+  notice.hidden = !IS_INTRANET;
   document.getElementById('search').placeholder = s.searchPlaceholder;
   document.getElementById('searchLabel').textContent = s.searchLabel;
   document.getElementById('searchClear').setAttribute('aria-label', s.clearSearch);
@@ -1206,7 +1266,7 @@ function renderVersion() {
   content.innerHTML = changelogData.entries.map(e => `
       <div class="changelog-entry">
         <div class="date">${escapeHtml(e.date)}</div>
-        <div class="notes">${escapeHtml(e.notes)}</div>
+        <div class="notes">${escapeHtml(currentLang === 'zh-CN' && e.notes_cn ? e.notes_cn : e.notes)}</div>
       </div>
     `).join('');
 }
@@ -1811,6 +1871,29 @@ const GATE_TEXT = {
     errWrong: '密碼不正確，請再試一次',
     errUnsupported: '這個瀏覽器無法驗證密碼，請改用 Chrome、Edge 或 Safari 開啟',
   },
+  'zh-CN': {
+    corp: '宏全国际集团',
+    title: '宏全 AI 应用<br><mark>推动案例库</mark>',
+    desc: '大家用 AI 和自动化工具解决工作问题的好点子，都收在这里。',
+    chips: ['🤖 流程自动化', '📊 数据分析', '🏭 生产管理', '🛠️ 小工具', '✅ 品保流程'],
+    badge: '宏全同仁专属',
+    heading: '欢迎来逛逛！',
+    hint: '输入通关密码，就能看到所有案例',
+    label: '通关密码',
+    placeholder: '请输入通关密码',
+    show: '显示密码',
+    hide: '隐藏密码',
+    submit: '进入案例库',
+    checking: '确认中…',
+    footNote: '内部分享・仅供宏全同仁使用',
+    bubbleHello: '嗨！输入通关密码，一起来看大家的 AI 好点子 ✨',
+    bubbleEmpty: '先输入通关密码，我才能帮你开门喔！',
+    bubbleWrong: '哎呀，密码不对，再试一次吧！',
+    bubbleOk: '答对了，欢迎光临！🎉',
+    errEmpty: '请输入通关密码',
+    errWrong: '密码不正确，请再试一次',
+    errUnsupported: '这个浏览器无法验证密码，请改用 Chrome、Edge 或 Safari 打开',
+  },
   en: {
     corp: 'Hon Chuan Group',
     title: 'Hon Chuan AI<br><mark>Case Library</mark>',
@@ -1878,7 +1961,7 @@ function gateRenderText() {
     btn.classList.toggle('active', on);
     btn.setAttribute('aria-pressed', String(on));
   });
-  document.documentElement.lang = currentLang === 'en' ? 'en' : 'zh-Hant';
+  document.documentElement.lang = ({ zh: 'zh-Hant', 'zh-CN': 'zh-Hans', en: 'en' })[currentLang] || 'zh-Hant';
   document.getElementById('gateBubble').textContent = t['bubble' + gateBubbleState];
   if (gateErrorKey) document.getElementById('gateError').textContent = t[gateErrorKey];
 }
