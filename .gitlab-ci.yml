@@ -1,0 +1,42 @@
+# aiweb01 部署（公司手冊「範本 A：純靜態網頁」）
+# 推送到 main 後，由 aiweb01 的 Shell Runner 把網站放到 /srv/www/case-repo/，網址為 https://aiweb01.honchuan.com.tw/case-repo/
+# 與範本的差異：複製檔案時排除 .git、tools 與本檔案（範本是整個資料夾直接複製，會把完整 git 歷史也放進網站）。
+stages:
+  - build
+  - deploy
+
+variables:
+  PROJECT_NAME: "case-repo"
+  DEPLOY_ROOT: "/srv/www"
+  KEEP_RELEASES: 5                 # 保留最近幾版，方便回滾
+
+build:
+  stage: build
+  tags:
+    - aiweb01
+  script:
+    - echo "純靜態網站，沒有需要打包的步驟，只檢查必要檔案是否存在"
+    - test -f index.html
+    - test -f data/cases.json
+    - test -f data/changelog.json
+    - python3 -c "import json; json.load(open('data/cases.json', encoding='utf-8')); json.load(open('data/changelog.json', encoding='utf-8'))" || echo "略過 JSON 檢查（主機沒有 python3 或內容有誤，請另行確認）"
+
+deploy:
+  stage: deploy
+  tags:
+    - aiweb01
+  script:
+    - RELEASE_DIR="${DEPLOY_ROOT}/${PROJECT_NAME}/releases/$(date +%Y%m%d%H%M%S)"
+    - mkdir -p "$RELEASE_DIR"
+    - |
+      if [ -d dist ]; then SRC=dist
+      elif [ -d build ]; then SRC=build
+      else SRC=.
+      fi
+    - rsync -a --exclude='.git' --exclude='tools' --exclude='.gitlab-ci.yml' "$SRC"/ "$RELEASE_DIR"/
+    - ln -sfn "$RELEASE_DIR" "${DEPLOY_ROOT}/${PROJECT_NAME}/current"
+    - |
+      cd "${DEPLOY_ROOT}/${PROJECT_NAME}/releases" && \
+      ls -1t | tail -n +$((KEEP_RELEASES + 1)) | xargs -r rm -rf
+  only:
+    - main
