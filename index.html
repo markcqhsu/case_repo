@@ -16,7 +16,7 @@
 <script>
 // 還沒輸入過入口密碼就先鎖住畫面（雜湊值要和下方 GATE_HASH 一致）
 // 站別判斷：網址是 github.io 的是公開版，其他（內網）都是內網版；測試時可加 ?site=public 或 ?site=intranet 強制指定。
-// 內網版不需要入口密碼，並會在首頁顯示海外服務連線提示。
+// 內網版不需要入口密碼；切到簡體時，首頁會顯示海外服務可能無法連線的提示。
 var SITE_PARAM = new URLSearchParams(location.search).get('site');
 var IS_INTRANET = SITE_PARAM ? SITE_PARAM === 'intranet' : !/(^|\.)github\.io$/i.test(location.hostname);
 if (!IS_INTRANET) {
@@ -1203,7 +1203,7 @@ function applyStaticText() {
   document.getElementById('pageSubtitle').textContent = s.subtitle;
   const notice = document.getElementById('intranetNotice');
   notice.textContent = s.intranetNotice;
-  notice.hidden = !IS_INTRANET;
+  notice.hidden = !(IS_INTRANET && currentLang === 'zh-CN');  // 只有內網版切到簡體時才顯示
   document.getElementById('search').placeholder = s.searchPlaceholder;
   document.getElementById('searchLabel').textContent = s.searchLabel;
   document.getElementById('searchClear').setAttribute('aria-label', s.clearSearch);
